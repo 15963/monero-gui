@@ -1,6 +1,6 @@
 #!/bin/bash
 MONERO_URL=https://code.aliyun.com/behe/monero.git
-MONERO_BRANCH=etn-v0.11.1.0
+MONERO_BRANCH=master
 
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
