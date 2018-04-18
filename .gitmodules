@@ -1,5 +1,5 @@
 [submodule "monero"]
 	path = monero
-    url = https://code.aliyun.com/behe/monero
+	url = https://code.aliyun.com/behe/monero.git
     branch = etn-v0.11.1.0
-	ignore = all
+    ignore = all
