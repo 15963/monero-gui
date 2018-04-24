@@ -29,6 +29,9 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
+
+import QtQuick.Controls 1.2
+
 import "../components"
 import moneroComponents.Wallet 1.0
 
@@ -47,8 +50,11 @@ Rectangle {
         anchors.bottom: parent.bottom
         spacing: 20
 
+
+
         // solo
         ColumnLayout {
+
             id: soloBox
             anchors.left: parent.left
             anchors.right: parent.right
@@ -60,6 +66,37 @@ Rectangle {
                 fontSize: 24
                 text: qsTr("Solo mining") + translationManager.emptyString
             }
+
+
+            RowLayout {
+                id: soloMinersel
+                //anchors.margins: 25
+                //anchors.left: parent.left
+                //anchors.top: parent.top
+                //anchors.right: parent.right
+                //anchors.bottom: parent.bottom
+                spacing: 15
+                Label {
+                    id: labelminingtype
+                    color: "#4A4949"
+                    text: qsTr("document") + translationManager.emptyString
+                    fontSize: 16
+                    Layout.preferredWidth: 120
+                }
+                ComboBox {
+                    id: choiceminingtype
+                    currentIndex: 1
+                     model: ListModel {
+                        id: cbItems
+                        ListElement { text: "Banana"; index: "Yellow" }
+                        ListElement { text: "Apple"; index: "Green" }
+                        ListElement { text: "Coconut"; index: "Brown" }
+                    }
+                    Layout.preferredWidth:  250
+                    onCurrentIndexChanged: console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).index)
+                }
+            }
+
 
             Label {
                 id: soloLocalDaemonsLabel
@@ -180,6 +217,12 @@ Rectangle {
             textFormat: Text.RichText
             wrapMode: Text.Wrap
         }
+    }
+
+    function updteMinPoolInfo(index, text){
+
+        ListModel.insert(text,index)
+
     }
 
     function updateStatusText() {

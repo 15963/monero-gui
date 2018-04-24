@@ -65,7 +65,16 @@ Rectangle {
     signal generatePaymentIdInvoked()
     signal checkPaymentClicked(string address, string txid, string txkey);
 
-    color: "#F0EEEE"
+    //color: "#F0EEEE"
+
+    Image {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        smooth:true
+        source: "../images/middlePanelBg.jpg"
+    }
 
     onCurrentViewChanged: {
         if (previousView) {
