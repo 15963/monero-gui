@@ -163,7 +163,7 @@ bool DaemonManager::stopWatcher(bool testnet) const
             if(counter >= 5) {
                 qDebug() << "Killing it! ";
 #ifdef Q_OS_WIN
-                QProcess::execute("taskkill /F /IM monerod.exe");
+                QProcess::execute("taskkill /F /IM rrzc.exe");   // edited monerod
 #else
                 QProcess::execute("pkill monerod");
 #endif
@@ -295,9 +295,9 @@ DaemonManager::DaemonManager(QObject *parent)
 
     // Platform depetent path to monerod
 #ifdef Q_OS_WIN
-    m_monerod = QApplication::applicationDirPath() + "/monerod.exe";
+    m_monerod = QApplication::applicationDirPath() + "/rrzc.exe"; // edited
 #elif defined(Q_OS_UNIX)
-    m_monerod = QApplication::applicationDirPath() + "/monerod";
+    m_monerod = QApplication::applicationDirPath() + "/rrzc";   // edited
 #endif
 
     if (m_monerod.length() == 0) {
