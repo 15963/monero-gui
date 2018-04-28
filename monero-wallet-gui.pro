@@ -37,7 +37,10 @@ HEADERS += \
     src/libwalletqt/AddressBook.h \
     src/zxcvbn-c/zxcvbn.h \
     src/libwalletqt/UnsignedTransaction.h \
-    MainApp.h
+    MainApp.h \
+    dohttp.h \
+    commondata.h \
+    systemtray.h
 
 SOURCES += main.cpp \
     filter.cpp \
@@ -60,7 +63,9 @@ SOURCES += main.cpp \
     src/libwalletqt/AddressBook.cpp \
     src/zxcvbn-c/zxcvbn.c \
     src/libwalletqt/UnsignedTransaction.cpp \
-    MainApp.cpp
+    MainApp.cpp \
+    dohttp.cpp \
+    systemtray.cpp
 
 !ios {
     HEADERS += src/daemon/DaemonManager.h
