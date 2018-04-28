@@ -1407,4 +1407,33 @@ ApplicationWindow {
         return false
     }
 
+    Connections {
+        target: systemTray
+        // signal - show window
+        onSignalShow: {
+            show();
+        }
+        onSignalHide: {
+            hide()
+        }
+        // signal - close app, ignore checkbox
+        onSignalQuit: {
+             close();
+        }
+        // show/hidden window (click on system tray)
+        onSignalIconActivated: {
+           // if(application.visibility === Window.Hidden) {
+           //     application.hide()
+           // } else {
+           //     application.hide()
+           // }
+        }
+        onSignalShowActivated:{
+           // systemTray.testOut("rccp")
+        }
+        // on window exit
+        onClosing: {
+            Qt.quit()
+        }
+    }
 }

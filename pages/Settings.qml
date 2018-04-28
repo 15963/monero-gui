@@ -40,6 +40,7 @@ import moneroComponents.Clipboard 1.0
 Rectangle {
     property var daemonAddress
     property bool viewOnly: false
+    property var nodes
     id: page
 
     color: "#F0EEEE"
@@ -246,7 +247,6 @@ Rectangle {
                     daemonConsolePopup.open();
                 }
             }
-
         }
 
         RowLayout {
@@ -306,8 +306,35 @@ Rectangle {
                 text: qsTr("Daemon address") + translationManager.emptyString
                 fontSize: 16
             }
-        }
 
+            ComboBox {
+                id: choicenotetype
+                // currentIndex: 1
+                 Layout.fillWidth: true
+                model: ListModel {
+                    id: nodeItems
+                     ListElement { text: ""; index: "" }
+                    // ListElement { text: "Apple"; index: "Green" }
+                    // ListElement { text: "Coconut"; index: "Brown" }
+                }
+                Layout.preferredWidth:  250
+                onCurrentIndexChanged:{
+                console.debug(nodeItems.get(currentIndex).text + ", " + nodeItems.get(currentIndex).index)
+                if(currentIndex !=  0){
+                    daemonAddr.text = nodeItems.get(currentIndex).index
+                    daemonPort.text = daemonAddress[1]
+                    // daemonUsername =
+                    // daemonPassword =
+                }
+                else{
+                    daemonAddr.text = daemonAddress[0];
+                    daemonPort.text = daemonAddress[1];
+                    // daemonUsername =
+                    // daemonPassword =
+                }
+            }
+        }
+    }
         GridLayout {
             id: daemonAddrRow
             Layout.fillWidth: true
@@ -327,7 +354,7 @@ Rectangle {
                 id: daemonPort
                 Layout.preferredWidth: 100
                 Layout.fillWidth: true
-                text: (daemonAddress !== undefined) ? daemonAddress[1] : "18081"
+                text: (daemonAddress !== undefined) ? daemonAddress[1] : "22338"
                 placeholderText: qsTr("Port") + translationManager.emptyString
             }
         }
@@ -565,8 +592,6 @@ Rectangle {
             }
         }
 
-
-
         TextBlock {
             Layout.fillWidth: true
             text:  (typeof currentWallet == "undefined") ? "" : qsTr("Wallet log path: ") + currentWallet.walletLogPath + translationManager.emptyString
@@ -699,9 +724,30 @@ Rectangle {
 
     }
 
+    // update the pool info
+    function updteRemoteNodeInfo(){
+        nodeItems.clear()
+        nodeItems.append({"text": "localnode", "index":"localnode"})
+
+        choicenotetype.currentIndex = 0;
+        var data = JSON.parse(dohttp.get_nodes_info())
+        if(data.code !== 0){ // okdata
+            return
+        }else{
+            for (var i= 0;i<data.data.length;i++){
+                nodeItems.append({"text": "remotenode"+i.toString(), "index":data.data[i]})
+            }
+        }
+
+     }
+
     // fires on every page load
     function onPageCompleted() {
         console.log("Settings page loaded");
+
+        // update nodes
+        updteRemoteNodeInfo()
+
         initSettings();
         viewOnly = currentWallet.viewOnly;
 

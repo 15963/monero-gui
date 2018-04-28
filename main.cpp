@@ -50,6 +50,8 @@
 #include "model/AddressBookModel.h"
 #include "wallet/wallet2_api.h"
 #include "MainApp.h"
+#include "dohttp.h"
+#include "systemtray.h"
 
 // IOS exclusions
 #ifndef Q_OS_IOS
@@ -75,16 +77,16 @@ int main(int argc, char *argv[])
 //#endif
 
     // Log settings
-    Monero::Wallet::init(argv[0], "monero-wallet-gui");
+    Monero::Wallet::init(argv[0], "，monero-wallet-gui");
 //    qInstallMessageHandler(messageHandler);
 
     MainApp app(argc, argv);
 
     qDebug() << "app startd";
 
-    app.setApplicationName("monero-core");
+    app.setApplicationName("，monero-core");
     app.setOrganizationDomain("getmonero.org");
-    app.setOrganizationName("monero-project");
+    app.setOrganizationName("，monero-project");
 
     filter *eventFilter = new filter;
     app.installEventFilter(eventFilter);
@@ -140,6 +142,16 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
+    // http get pools and nodes
+    Dohttp dohttp;
+    engine.rootContext()->setContextProperty("dohttp", &dohttp);
+    dohttp.fetch_nodes();
+    dohttp.fetch_pools();
+
+    // system tray
+    SystemTray * systemTray = new SystemTray();
+    engine.rootContext()->setContextProperty("systemTray", systemTray);
+
     OSCursor cursor;
     engine.rootContext()->setContextProperty("globalCursor", &cursor);
     OSHelper osHelper;
@@ -189,7 +201,6 @@ int main(int argc, char *argv[])
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
 
-
     // Get default account name
     QString accountName = qgetenv("USER"); // mac/linux
     if (accountName.isEmpty()){
@@ -223,6 +234,8 @@ int main(int argc, char *argv[])
         qDebug() << "QrCodeScanner : something went wrong !";
     }
 #endif
+
+
 
     QObject::connect(eventFilter, SIGNAL(sequencePressed(QVariant,QVariant)), rootObject, SLOT(sequencePressed(QVariant,QVariant)));
     QObject::connect(eventFilter, SIGNAL(sequenceReleased(QVariant,QVariant)), rootObject, SLOT(sequenceReleased(QVariant,QVariant)));

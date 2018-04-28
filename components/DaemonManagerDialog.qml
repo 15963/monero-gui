@@ -129,7 +129,7 @@ Window {
                 shadowPressedColor: "#B32D00"
                 releasedColor: "#FF6C3C"
                 pressedColor: "#FF4304"
-                text: qsTr("Use custom settings")
+                text: qsTr("Use custom settings") + translationManager.emptyString
 
                 onClicked: {
                     timer.stop();

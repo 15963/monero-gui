@@ -144,5 +144,6 @@
         <file>components/MobileHeader.qml</file>
         <file>components/TextBlock.qml</file>
         <file>images/middlePanelBg.jpg</file>
+        <file>images/trash.png</file>
     </qresource>
 </RCC>

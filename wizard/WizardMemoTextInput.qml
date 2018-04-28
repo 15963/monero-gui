@@ -86,8 +86,15 @@ Column {
                 color: "#4A4646"
                 wrapMode: Text.Wrap
                 text: qsTr("This seed is <b>very</b> important to write down and keep secret. It is all you need to backup and restore your wallet.")
-                    + translationManager.emptyString
+                      + translationManager.emptyString
             }
         }
+    }
+
+    Image {
+        id: image
+        width: 64
+        height: 100
+        source: "qrc:/qtquickplugin/images/template_image.png"
     }
 }

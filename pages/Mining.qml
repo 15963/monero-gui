@@ -85,18 +85,21 @@ Rectangle {
                 }
                 ComboBox {
                     id: choiceminingtype
-                    currentIndex: 1
-                     model: ListModel {
+                    // currentIndex: 1
+                    model: ListModel {
                         id: cbItems
-                        ListElement { text: "Banana"; index: "Yellow" }
-                        ListElement { text: "Apple"; index: "Green" }
-                        ListElement { text: "Coconut"; index: "Brown" }
+                          ListElement { text: ""; index: "" }
+                         // ListElement { text: "Apple"; index: "Green" }
+                         // ListElement { text: "Coconut"; index: "Brown" }
                     }
                     Layout.preferredWidth:  250
-                    onCurrentIndexChanged: console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).index)
+                    onCurrentIndexChanged:{
+                       console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).index)
+                       walletManager.stopMining()
+                       update()
+                   }
                 }
             }
-
 
             Label {
                 id: soloLocalDaemonsLabel
@@ -179,6 +182,7 @@ Rectangle {
                     releasedColor: "#FF6C3C"
                     pressedColor: "#FF4304"
                     onClicked: {
+                        console.debug(cbItems.get(choiceminingtype.currentIndex).text + ", " + cbItems.get(choiceminingtype.currentIndex).index)
                         var success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
                         if (success) {
                             update()
@@ -219,9 +223,20 @@ Rectangle {
         }
     }
 
-    function updteMinPoolInfo(index, text){
+    // update the pool info
+    function updteMinPoolInfo(){
+        cbItems.clear()
 
-        ListModel.insert(text,index)
+        cbItems.append({"text": "localmin", "index":"localmin"})
+        choiceminingtype.currentIndex = 0;
+        var data = JSON.parse(dohttp.get_pools_info())
+        if(data.code !== 0){ // okdata
+            return
+        }else{
+            for (var i= 0;i<data.data.length;i++){
+                cbItems.append({"text": "remotepool"+i.toString(), "index":data.data[i].ip+":"+data.data[i].port.toString()})
+            }
+        }
 
     }
 
@@ -257,6 +272,8 @@ Rectangle {
 
     function onPageCompleted() {
         console.log("Mining page loaded");
+
+        updteMinPoolInfo()
 
         update()
         timer.running = isDaemonLocal()
