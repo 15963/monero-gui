@@ -50,7 +50,7 @@ Item {
         anchors.right: parent.right
         height: parent.height - 1
         y: buttonArea.pressed ? 0 : 1
-        //radius: 4
+        radius: 4
         color: {
             parent.enabled ? (buttonArea.pressed ? parent.shadowPressedColor : parent.shadowReleasedColor)
                            : Qt.lighter(parent.shadowReleasedColor)
@@ -70,7 +70,7 @@ Item {
                            : Qt.lighter(parent.releasedColor)
 
         }
-        //radius: 4
+        radius: 4
 
 
     }

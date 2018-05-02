@@ -65,6 +65,7 @@ Rectangle {
             Label {
                 id: soloTitleLabel
                 fontSize: 24
+                color:"#ffffff"
                 text: qsTr("Solo mining") + translationManager.emptyString
             }
 
@@ -79,7 +80,7 @@ Rectangle {
                 spacing: 15
                 Label {
                     id: labelminingtype
-                    color: "#4A4949"
+                    color: "#ffffff"
                     text: qsTr("document") + translationManager.emptyString
                     fontSize: 16
                     Layout.preferredWidth: 120
@@ -112,6 +113,7 @@ Rectangle {
 
             Text {
                 id: soloMainLabel
+                color:"#ffffff"
                 text: qsTr("Mining with your computer helps strengthen the Monero network. The more that people mine, the harder it is for the network to be attacked, and every little bit helps.<br> <br>Mining also gives you a small chance to earn some Monero. Your computer will create hashes looking for block solutions. If you find a block, you will get the associated reward. Good luck!") + translationManager.emptyString
                 wrapMode: Text.Wrap
                 Layout.fillWidth: true
@@ -121,7 +123,7 @@ Rectangle {
                 id: soloMinerThreadsRow
                 Label {
                     id: soloMinerThreadsLabel
-                    color: "#4A4949"
+                    color: "#ffffff"
                     text: qsTr("CPU threads") + translationManager.emptyString
                     fontSize: 16
                     Layout.preferredWidth: 120
@@ -167,7 +169,7 @@ Rectangle {
             RowLayout {
                 Label {
                     id: manageSoloMinerLabel
-                    color: "#4A4949"
+                    color: "#ffffff"
                     text: qsTr("Manage miner") + translationManager.emptyString
                     fontSize: 16
                 }
@@ -218,6 +220,7 @@ Rectangle {
 
         Text {
             id: statusText
+            color:"#ffffff"
             text: qsTr("Status: not mining")
             textFormat: Text.RichText
             wrapMode: Text.Wrap

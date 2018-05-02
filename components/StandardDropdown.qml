@@ -35,7 +35,7 @@ Item {
     property string shadowReleasedColor
     property string pressedColor
     property string releasedColor
-    property string textColor: "#FFFFFF"
+    property string textColor: "#4d4d4d"
     property alias currentIndex: column.currentIndex
     property bool expanded: false
     height: 37
@@ -67,7 +67,7 @@ Item {
             height: parent.height - 1
             y: dropdown.expanded || droplist.height > 0 ? 0 : 1
             color: dropdown.expanded || droplist.height > 0 ? dropdown.shadowPressedColor : dropdown.shadowReleasedColor
-            //radius: 4
+            radius: 4
         }
 
         Rectangle {
@@ -76,7 +76,7 @@ Item {
             height: parent.height - 1
             y: dropdown.expanded || droplist.height > 0 ? 1 : 0
             color: dropdown.expanded || droplist.height > 0 ? dropdown.pressedColor : dropdown.releasedColor
-            //radius: 4
+            radius: 4
         }
 
         Rectangle {
@@ -106,7 +106,7 @@ Item {
             font.family: "Arial"
             font.bold: true
             font.pixelSize: 12
-            color: "#FFFFFF"
+            color: "#525252"
             text: column.currentIndex < repeater.model.rowCount() ? qsTr(repeater.model.get(column.currentIndex).column1) + translationManager.emptyString : ""
         }
 
@@ -118,7 +118,7 @@ Item {
             width: dropdown.expanded ? w : (separator.x - 12) - (firstColText.x + firstColText.width + 5)
             font.family: "Arial"
             font.pixelSize: 12
-            color: "#FFFFFF"
+            color: "#525252"
             text: column.currentIndex < repeater.model.rowCount() ? qsTr(repeater.model.get(column.currentIndex).column2) + translationManager.emptyString : ""
 
             property int w: 0
@@ -131,7 +131,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             height: 18
             width: 1
-            color: "#FFFFFF"
+            color: "#525252"
         }
 
         Item {
@@ -163,7 +163,7 @@ Item {
         clip: true
         height: dropdown.expanded ? column.height : 0
         color: dropdown.pressedColor
-        //radius: 4
+        radius: 4
 
         Rectangle {
             anchors.left: parent.left
@@ -187,7 +187,7 @@ Item {
             id: column
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: parent.top
+            anchors.top: parent.topt
             property int currentIndex: 0
 
             Repeater {

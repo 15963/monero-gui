@@ -36,14 +36,14 @@ Rectangle {
     property int offset: 0
 
     height: 31
-    color: "#FFFFFF"
+    color: "#29353e"
 
     Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         height: 1
-        color: "#DBDBDB"
+        color: "#44515a"
     }
 
     Row {
@@ -57,7 +57,7 @@ Rectangle {
         Rectangle {
             height: 31
             width: 1
-            color: "#DBDBDB"
+            color: "#44515a"
         }
 
         Repeater {
@@ -74,7 +74,7 @@ Rectangle {
                 property bool desc: false
                 height: 31
                 width: columnWidth
-
+                color:"#303c49"
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.verticalCenterOffset: -2
@@ -88,7 +88,7 @@ Rectangle {
                     color: {
                         if(delegateArea.pressed)
                             return "#4ed9d9"
-                        return index === header.activeSortColumn || delegateArea.containsMouse ? "#FF6C3C" : "#4A4949"
+                        return index === header.activeSortColumn || delegateArea.containsMouse ? "#4ed9d9" : "#ffffff"
                     }
                     text: qsTr(columnName) + translationManager.emptyString
                 }
@@ -109,7 +109,6 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     anchors.rightMargin: 9
-
                     Item {
                         width: 14
                         anchors.top: parent.top
@@ -172,7 +171,7 @@ Rectangle {
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     height: 1
-                    color: index === header.activeSortColumn ? "#FFFFFF" : "#DBDBDB"
+                    color: index === header.activeSortColumn ? "#FFFFFF" : "#DBDBDB"  // active bottom line
                 }
 
                 Rectangle {
@@ -180,7 +179,7 @@ Rectangle {
                     anchors.bottom: parent.bottom
                     anchors.right: parent.right
                     width: 1
-                    color: "#DBDBDB"
+                    color: "#44515a"
                 }
             }
         }

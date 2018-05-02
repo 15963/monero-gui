@@ -69,7 +69,7 @@ Rectangle {
             Label {
                 id: manageWalletLabel
                 Layout.fillWidth: true
-                color: "#4A4949"
+                color: "#ffffff"
                 text: qsTr("Manage wallet") + translationManager.emptyString
                 fontSize: 16
                 Layout.topMargin: 10
@@ -190,7 +190,7 @@ Rectangle {
             Label {
                 id: manageDaemonLabel
                 Layout.fillWidth: true
-                color: "#4A4949"
+                color: "#ffffff"
                 text: qsTr("Manage daemon") + translationManager.emptyString
                 fontSize: 16
                 anchors.topMargin: 30
@@ -249,11 +249,11 @@ Rectangle {
             }
         }
 
-        RowLayout {
+        ColumnLayout {
             id: blockchainFolderRow
             Label {
                 id: blockchainFolderLabel
-                color: "#4A4949"
+                color: "#ffffff"
                 text: qsTr("Blockchain location") + translationManager.emptyString
                 fontSize: 16
             }
@@ -278,11 +278,11 @@ Rectangle {
             }
         }
 
-        RowLayout {
+        ColumnLayout {
             id: daemonFlagsRow
             Label {
                 id: daemonFlagsLabel
-                color: "#4A4949"
+                color: "#ffffff"
                 text: qsTr("Daemon startup flags") + translationManager.emptyString
                 fontSize: 16
             }
@@ -295,14 +295,14 @@ Rectangle {
             }
         }
 
-        RowLayout {
+        ColumnLayout {
             Layout.fillWidth: true
             spacing: 10
 
             Label {
                 id: daemonAddrLabel
                 Layout.fillWidth: true
-                color: "#4A4949"
+                color: "#ffffff"
                 text: qsTr("Daemon address") + translationManager.emptyString
                 fontSize: 16
             }
@@ -310,7 +310,8 @@ Rectangle {
             ComboBox {
                 id: choicenotetype
                 // currentIndex: 1
-                 Layout.fillWidth: true
+                // Layout.fillWidth: true
+                // width: daemonFlags.width
                 model: ListModel {
                     id: nodeItems
                      ListElement { text: ""; index: "" }
@@ -365,7 +366,7 @@ Rectangle {
             Label {
                 id: daemonLoginLabel
                 Layout.fillWidth: true
-                color: "#4A4949"
+                color: "#ffffff"
                 text: qsTr("Login (optional)") + translationManager.emptyString
                 fontSize: 16
             }
@@ -421,7 +422,7 @@ Rectangle {
 
         RowLayout {
             Label {
-                color: "#4A4949"
+                color: "#ffffff"
                 text: qsTr("Layout settings") + translationManager.emptyString
                 fontSize: 16
                 anchors.topMargin: 30
@@ -449,7 +450,7 @@ Rectangle {
 
         RowLayout {
             Label {
-                color: "#4A4949"
+                color: "#ffffff"
                 text: qsTr("Log level") + translationManager.emptyString
                 fontSize: 16
                 anchors.topMargin: 30
@@ -499,7 +500,7 @@ Rectangle {
         // Version
         RowLayout {
             Label {
-                color: "#4A4949"
+                color: "#ffffff"
                 text: qsTr("Debug info") + translationManager.emptyString
                 fontSize: 16
                 anchors.topMargin: 30

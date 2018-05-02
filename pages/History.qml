@@ -143,6 +143,7 @@ Rectangle {
         anchors.rightMargin: 17
         anchors.topMargin: 17
         text: getSelectedAmount()
+        color:"#ffffff"
         fontSize: 14
     }
 
@@ -277,10 +278,10 @@ Rectangle {
         anchors.leftMargin: 17
         width: 60
         text: qsTr("Filter") + translationManager.emptyString
-        shadowReleasedColor: "#4D0051"
-        shadowPressedColor: "#2D002F"
-        releasedColor: "#6B0072"
-        pressedColor: "#4D0051"
+        shadowReleasedColor: "#4ed9d9"
+        shadowPressedColor: "#4ed9d9"
+        releasedColor: "#4ed9d9"
+        pressedColor: "#4ed9d9"
         onClicked:  {
             // Apply filter here;
 
@@ -334,6 +335,7 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 17
         width: 156
+        color:"#ffffff"
         text: qsTr("Type of transaction") + translationManager.emptyString
         fontSize: 14
     }
@@ -354,10 +356,10 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 5
         width: 156
-        shadowReleasedColor: "#4D0051"
-        shadowPressedColor: "#2D002F"
-        releasedColor: "#6B0072"
-        pressedColor: "#4D0051"
+        shadowReleasedColor: "#e9eaeb"
+        shadowPressedColor: "#ffffff"
+        releasedColor: "#e9eaeb"
+        pressedColor: "#ffffff"
         dataModel: transactionsModel
         z: 1
     }
@@ -370,6 +372,7 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 17
         width: 156
+        color:"#ffffff"
         text: qsTr("Amount from") + translationManager.emptyString
         fontSize: 14
     }
@@ -511,7 +514,7 @@ Rectangle {
             anchors.leftMargin: 14
             anchors.rightMargin: 14
             dataModel: columnsModel
-            // color:"transparent"
+            color:"#303c49"
             offset: 20
             onSortRequest: {
                 console.log("column: " + column + " desc: " + desc)
@@ -557,6 +560,7 @@ Rectangle {
             onContentYChanged: flickableScroll.flickableContentYChanged()
             model: root.model
             addressBookModel: null
+
         }
     }
 

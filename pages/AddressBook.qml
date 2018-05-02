@@ -48,7 +48,7 @@ Rectangle {
         elide: Text.ElideRight
         font.family: "Arial"
         font.pixelSize: 18
-        color: "#4A4949"
+        color: "#ffffff"
         text: qsTr("Add new entry") + translationManager.emptyString
     }
 
@@ -58,6 +58,8 @@ Rectangle {
         anchors.top: newEntryText.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 17
+        color: "#ffffff"
+
         text: qsTr("Address") + translationManager.emptyString
         fontSize: 14
     }
@@ -99,6 +101,7 @@ Rectangle {
         anchors.top: addressLine.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 17
+        color: "#ffffff"
         text: qsTr("Payment ID <font size='2'>(Optional)</font>") + translationManager.emptyString
         fontSize: 14
     }
@@ -120,6 +123,7 @@ Rectangle {
         anchors.top: paymentIdLine.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 17
+        color: "#ffffff"
         text: qsTr("Description <font size='2'>(Optional)</font>") + translationManager.emptyString
         fontSize: 14
     }

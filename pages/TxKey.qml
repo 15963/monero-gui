@@ -88,26 +88,31 @@ Rectangle {
 
                 Text {
                     text: qsTr("Verify that a third party made a payment by supplying:") + translationManager.emptyString
+                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr(" - the recipient address") + translationManager.emptyString
+                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr(" - the transaction ID") + translationManager.emptyString
+                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr(" - the secret transaction key supplied by the sender") + translationManager.emptyString
+                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr("If a payment had several transactions then each must be checked and the results combined.") + translationManager.emptyString
+                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
@@ -121,6 +126,7 @@ Rectangle {
                 id: addressLabel
                 fontSize: 14
                 text: qsTr("Address") + translationManager.emptyString
+                color:"#ffffff"
                 width: mainLayout.labelWidth
             }
 
@@ -150,6 +156,7 @@ Rectangle {
                 id: txIdLabel
                 fontSize: 14
                 text: qsTr("Transaction ID") + translationManager.emptyString
+                color:"#ffffff"
                 width: mainLayout.labelWidth
             }
 
@@ -183,6 +190,7 @@ Rectangle {
                 id: paymentIdLabel
                 fontSize: 14
                 text: qsTr("Transaction key") + translationManager.emptyString
+                color:"#ffffff"
                 width: mainLayout.labelWidth
             }
 

@@ -66,10 +66,10 @@ ListView {
 
 
     footer: Rectangle {
-        height: 127
+        height: 450
         width: listView.width
         // color: "#ffffff"
-        color: "#25313c"
+        color: "#303c49"
 
         Text {
             anchors.centerIn: parent

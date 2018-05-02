@@ -35,6 +35,7 @@ TextField {
     horizontalAlignment: TextInput.AlignLeft
 
     style: TextFieldStyle {
+
         textColor: "#ffffff"
         placeholderTextColor: "#BABABA"
 
@@ -42,6 +43,7 @@ TextField {
             border.width: 0.5
             border.color: "#ffffff"
             color: "#25313c"
+            radius: 4
         }
     }
 }

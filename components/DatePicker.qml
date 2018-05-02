@@ -65,21 +65,24 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height
-            //radius: 4
+            radius: 4
             y: 0
-            color: "#DBDBDB"
+            color: "#ffffff"
 
         }
 
         Rectangle {
+            border.width: 1
+            border.color: "#ffffff"
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height - 1
             anchors.leftMargin: datePicker.expanded ? 1 : 0
             anchors.rightMargin: datePicker.expanded ? 1 : 0
-            //radius: 4
+            radius: 4
             y: 1
             color: datePicker.error ? datePicker.errorColor : datePicker.backgroundColor
+
         }
 
         Item {
@@ -114,7 +117,7 @@ Item {
                 onClicked: datePicker.expanded = false
             }
         }
-
+        /*
         Rectangle {
             id: separator
             anchors.verticalCenter: parent.verticalCenter
@@ -125,7 +128,7 @@ Item {
             color: "#DBDBDB"
             visible: datePicker.expanded
         }
-
+        */
         Row {
             id: dateInput
             anchors.verticalCenter: parent.verticalCenter
@@ -154,6 +157,7 @@ Item {
                 font.family: "Arial"
                 font.pixelSize: 18
                 // color: "#525252"
+                color:"#ffffff"
                 maximumLength: 2
                 horizontalAlignment: TextInput.AlignHCenter
                 validator: IntValidator{bottom: 01; top: 31;}
@@ -177,6 +181,7 @@ Item {
                 font.family: "Arial"
                 font.pixelSize: 18
                 // color: "#525252"
+                color:"#ffffff"
                 text: "."
             }
 
@@ -187,6 +192,7 @@ Item {
                 font.family: "Arial"
                 font.pixelSize: 18
                 // color: "#525252"
+                color:"#ffffff"
                 maximumLength: 2
                 horizontalAlignment: TextInput.AlignHCenter
                 validator: IntValidator{bottom: 01; top: 12;}
@@ -209,6 +215,7 @@ Item {
                 font.family: "Arial"
                 font.pixelSize: 18
                 // color: "#525252"
+                color:"#ffffff"
                 text: "."
             }
 
@@ -218,6 +225,7 @@ Item {
                 font.family: "Arial"
                 font.pixelSize: 18
                 /// color: "#525252"
+                color:"#ffffff"
                 maximumLength: 4
                 horizontalAlignment: TextInput.AlignHCenter
                 validator: IntValidator{bottom: 1000; top: 9999;}
@@ -244,7 +252,7 @@ Item {
         border.color: "#DBDBDB"
         height: datePicker.expanded ? calendar.height + 2 : 0
         clip: true
-        //radius: 4
+        radius: 4
 
         Behavior on height {
             NumberAnimation { duration: 100; easing.type: Easing.InQuad }

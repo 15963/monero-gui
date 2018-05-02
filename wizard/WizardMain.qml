@@ -260,7 +260,7 @@ ColumnLayout {
 
     WizardOptions {
         id: optionsPage
-        Layout.bottomMargin: wizardBottomMargin
+        //Layout.bottomMargin: wizardBottomMargin
         Layout.topMargin: wizardTopMargin
         onCreateWalletClicked: wizard.openCreateWalletPage()
         onRecoveryWalletClicked: wizard.openRecoveryWalletPage()

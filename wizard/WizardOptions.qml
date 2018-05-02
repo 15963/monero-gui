@@ -60,13 +60,14 @@ ColumnLayout {
         id: headerColumn
         Layout.leftMargin: wizardLeftMargin
         Layout.rightMargin: wizardRightMargin
-        Layout.bottomMargin: (!isMobile) ? 40 : 20
-        spacing: 30
+        Layout.bottomMargin: (!isMobile) ? 100 : 20
+        spacing: 10
 
         Text {
             Layout.fillWidth: true
             font.family: "Arial"
             font.pixelSize: 28
+            Layout.bottomMargin: 25
             //renderType: Text.NativeRendering
             color: "#ffffff"
             wrapMode: Text.Wrap

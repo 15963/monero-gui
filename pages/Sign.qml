@@ -39,7 +39,7 @@ import moneroComponents.WalletManager 1.0
 Rectangle {
     id: mainLayout
 
-    property int labelWidth: 120
+    property int labelWidth: 30
 //    property int editWidth: 400
     property int lineEditFontSize: 12
 
@@ -98,16 +98,19 @@ Rectangle {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
-        spacing: 20
+        spacing: 5
 
         // sign
         ColumnLayout {
             id: signBox
 
+            spacing: 5
+
             RowLayout {
                 ColumnLayout {
                     spacing: 8
                     Label {
+                        color:"#ffffff"
                         text: qsTr("Sign a message or file contents with your address:") + translationManager.emptyString
                         fontSize: 16
                         wrapMode: Text.Wrap
@@ -120,6 +123,7 @@ Rectangle {
                 id: signMessageLabel
                 fontSize: 14
                 text: qsTr("Either message:") + translationManager.emptyString
+                color:"#ffffff"
                 width: mainLayout.labelWidth
             }
 
@@ -168,7 +172,9 @@ Rectangle {
 
             Label {
                 id: signMessageFileLabel
+                anchors.top:signMessageLine.Bottom+10
                 fontSize: 14
+                color:"#ffffff"
                 text: qsTr("Or file:") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -177,7 +183,7 @@ Rectangle {
                 id: signFileRow
                 anchors.topMargin: 17
                 anchors.left: parent.left
-		anchors.right: parent.right
+                anchors.right: parent.right
 
                 FileDialog {
                     id: signFileDialog
@@ -241,13 +247,14 @@ Rectangle {
                 }
             }
 
-            RowLayout {
+            ColumnLayout {
                 id: signSignatureRow
                 anchors.topMargin: 17
 
                 Label {
                     id: signSignatureLabel
                     fontSize: 14
+                    color: "#ffffff"
                     text: qsTr("Signature") + translationManager.emptyString
                 }
 
@@ -279,6 +286,7 @@ Rectangle {
                 ColumnLayout {
                     spacing: 8
                     Label {
+                        color:"#ffffff"
                         text: qsTr("Verify a message or file signature from an address:") + translationManager.emptyString
                         fontSize: 16
 //                        Layout.fillWidth: true
@@ -291,6 +299,7 @@ Rectangle {
             Label {
                 id: verifyMessageLabel
                 fontSize: 14
+                color:"#ffffff"
                 text: qsTr("Either message:") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -340,6 +349,7 @@ Rectangle {
             Label {
                 id: verifyMessageFileLabel
                 fontSize: 14
+                color:"#ffffff"
                 text: qsTr("Or file:") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -435,13 +445,14 @@ Rectangle {
                 // validator: RegExpValidator { regExp: /[0-9A-Fa-f]{95}/g }
             }
 
-            RowLayout {
+            ColumnLayout {
                 id: verifySignatureRow
                 anchors.topMargin: 17
 
                 Label {
                     id: verifySignatureLabel
                     fontSize: 14
+                    color:"#ffffff"
                     text: qsTr("Signature") + translationManager.emptyString
                 }
 

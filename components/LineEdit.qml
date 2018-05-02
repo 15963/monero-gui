@@ -55,7 +55,7 @@ Item {
         anchors.fill: parent
         anchors.bottomMargin: 1
         color: "#25313c" // 0d0d0d
-        //radius: 4
+        radius: 4
     }
 
     Rectangle {
@@ -64,10 +64,11 @@ Item {
         anchors.leftMargin: 1
         anchors.rightMargin: 30
         color: getColor(error)
-        //radius: 4
+        radius: 4
     }
 
     Input {
+
         id: input
         anchors.fill: parent
          anchors.leftMargin: 1

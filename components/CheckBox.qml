@@ -76,7 +76,7 @@ Item {
         anchors.leftMargin: 25 + 12
         font.family: "Arial"
         font.pixelSize: checkBox.fontSize
-        color: "#525252"
+        color: "#ffffff"
     }
 
     MouseArea {

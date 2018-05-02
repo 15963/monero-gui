@@ -188,6 +188,7 @@ Rectangle {
                 id: addressLabel
                 fontSize: 14
                 text: qsTr("Address") + translationManager.emptyString
+                color: "#ffffff"
                 width: mainLayout.labelWidth
             }
 
@@ -219,6 +220,7 @@ Rectangle {
                 Layout.columnSpan: 2
                 id: paymentIdLabel
                 fontSize: 14
+                color: "#ffffff"
                 text: qsTr("Payment ID") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -273,6 +275,7 @@ Rectangle {
             Label {
                 id: integratedAddressLabel
                 fontSize: 14
+                color: "#ffffff"
                 text: qsTr("Integrated address") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -306,6 +309,7 @@ Rectangle {
             Label {
                 id: amountLabel
                 fontSize: 14
+                color: "#ffffff"
                 text: qsTr("Amount") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }

@@ -401,8 +401,8 @@ android{
 
 OTHER_FILES += \
     .gitignore \
-    $$TRANSLATIONS
-
+    $$TRANSLATIONS\
+    components/*.qml \
 DISTFILES += \
     notes.txt \
     monero/src/wallet/CMakeLists.txt \
