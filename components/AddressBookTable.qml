@@ -37,7 +37,7 @@ ListView {
     footer: Rectangle {
         height: 127
         width: listView.width
-        color: "#FFFFFF"
+        color: "#25313c"
 
         Text {
             anchors.centerIn: parent

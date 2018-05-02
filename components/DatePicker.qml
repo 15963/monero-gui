@@ -35,7 +35,8 @@ Item {
     property bool expanded: false
     property date currentDate
     property bool showCurrentDate: true
-    property color backgroundColor : "#FFFFFF"
+    property color backgroundColor : "#25313c"
+ // "#FFFFFF"
     property color errorColor : "#FFDDDD"
     property bool error: false
 

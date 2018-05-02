@@ -95,8 +95,8 @@ ColumnLayout {
             id: dotsModel
             ListElement { dotColor: "#36B05B" }
             //ListElement { dotColor: "#DBDBDB" }
-            ListElement { dotColor: "#DBDBDB" }
-            ListElement { dotColor: "#DBDBDB" }
+            ListElement { dotColor: "#3F3F3F" }
+            ListElement { dotColor: "#3F3F3F" }
         }
 
         Repeater {
@@ -120,7 +120,7 @@ ColumnLayout {
             font.family: "Arial"
             font.pixelSize: 28
             wrapMode: Text.Wrap
-            color: "#3F3F3F"
+            color: "#ffffff"
         }
     }
 
@@ -130,6 +130,7 @@ ColumnLayout {
         Label {
             Layout.topMargin: 20
             fontSize: 14
+            color: "#ffffff"
             text:  qsTr("Wallet name")
                    + translationManager.emptyString
         }
@@ -150,10 +151,10 @@ ColumnLayout {
         StandardButton {
             id: recoverFromSeedButton
             text: qsTr("Restore from seed") + translationManager.emptyString
-            shadowReleasedColor: "#FF4304"
-            shadowPressedColor: "#B32D00"
-            releasedColor: "#FF6C3C"
-            pressedColor: "#FF4304"
+            shadowReleasedColor: "#4ed9d9"
+            shadowPressedColor: "#4ed9d9"
+            releasedColor: "#4ed9d9"
+            pressedColor: "#4ed9ff"
             enabled: recoverFromKeys.visible
             onClicked: {
                 recoverFromSeedMode = true;
@@ -164,10 +165,10 @@ ColumnLayout {
         StandardButton {
             id: recoverFromKeysButton
             text: qsTr("Restore from keys") + translationManager.emptyString
-            shadowReleasedColor: "#FF4304"
-            shadowPressedColor: "#B32D00"
-            releasedColor: "#FF6C3C"
-            pressedColor: "#FF4304"
+            shadowReleasedColor: "#4ed9d9"
+            shadowPressedColor: "#4ed9d9"
+            releasedColor: "#4ed9d9"
+            pressedColor: "#4ed9ff"
             enabled: recoverFromSeed.visible
             onClicked: {
                 recoverFromSeedMode = false;
@@ -242,7 +243,8 @@ ColumnLayout {
             Layout.fillWidth: true
             Layout.topMargin: 20
             fontSize: 14
-            text: qsTr("Your wallet is stored in") + ": " + fileUrlInput.text;
+            color: "#ffffff"
+            text: qsTr("Your wallet is stored in") + translationManager.emptyString + ": " + fileUrlInput.text;
         }
 
         LineEdit {

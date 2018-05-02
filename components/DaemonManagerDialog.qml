@@ -53,6 +53,8 @@ Window {
     width: 480
     height: 200
 
+    color:"red"
+
     // Make window draggable
     MouseArea {
         anchors.fill: parent
@@ -108,10 +110,10 @@ Window {
                 id: okButton
                 visible:false
                 fontSize: 14
-                shadowReleasedColor: "#FF4304"
-                shadowPressedColor: "#B32D00"
-                releasedColor: "#FF6C3C"
-                pressedColor: "#FF4304"
+                shadowReleasedColor: "#4ed9d9"
+                shadowPressedColor: "#4ed9d9"
+                releasedColor: "#4ed9d9"
+                pressedColor: "#4ed9d9"
                 text: qsTr("Start daemon (%1)").arg(countDown)
                 KeyNavigation.tab: cancelButton
                 onClicked: {
@@ -125,10 +127,10 @@ Window {
             MoneroComponents.StandardButton {
                 id: cancelButton
                 fontSize: 14
-                shadowReleasedColor: "#FF4304"
-                shadowPressedColor: "#B32D00"
-                releasedColor: "#FF6C3C"
-                pressedColor: "#FF4304"
+                shadowReleasedColor: "#4ed9d9"
+                shadowPressedColor: "#4ed9d9"
+                releasedColor: "#4ed9d9"
+                pressedColor: "#4ed9d9"
                 text: qsTr("Use custom settings") + translationManager.emptyString
 
                 onClicked: {

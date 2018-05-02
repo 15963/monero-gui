@@ -1748,8 +1748,8 @@ Please upgrade or connect to another daemon</source>
     </message>
     <message>
         <location filename="../wizard/WizardMain.qml" line="366"/>
-        <source>USE MONERO</source>
-        <translation>使用 MONERO</translation>
+        <source>USE CSSP</source>
+        <translation>使用 CSSP</translation>
     </message>
     <message>
         <location filename="../wizard/WizardMain.qml" line="383"/>
@@ -1844,8 +1844,8 @@ Please upgrade or connect to another daemon</source>
     <name>WizardOptions</name>
     <message>
         <location filename="../wizard/WizardOptions.qml" line="87"/>
-        <source>Welcome to Monero!</source>
-        <translation>歡迎使用 Monero！</translation>
+        <source>Welcome to CSSP!</source>
+        <translation>歡迎使用 CSSP！</translation>
     </message>
     <message>
         <location filename="../wizard/WizardOptions.qml" line="98"/>

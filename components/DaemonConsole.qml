@@ -83,13 +83,13 @@ Window {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 32
                 font.family: "Arial"
-                color: "#555555"
+                color: "#ffffff"
             }
 
         }
 
         RowLayout {
-            TextArea {
+             TextArea {
                 id : dialogContent
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -110,10 +110,10 @@ Window {
                 id: okButton
                 width: 120
                 fontSize: 14
-                shadowReleasedColor: "#FF4304"
-                shadowPressedColor: "#B32D00"
-                releasedColor: "#FF6C3C"
-                pressedColor: "#FF4304"
+                shadowReleasedColor: "#4ed9d9"
+                shadowPressedColor: "#4ed9d9"
+                releasedColor: "#4ed9d9"
+                pressedColor: "#4ed9d9"
                 text: qsTr("Close") + translationManager.emptyString
                 onClicked: {
                     root.close()

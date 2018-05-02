@@ -145,5 +145,11 @@
         <file>components/TextBlock.qml</file>
         <file>images/middlePanelBg.jpg</file>
         <file>images/trash.png</file>
+        <file>images/createWalletpr.png</file>
+        <file>images/nextPage_pr.png</file>
+        <file>images/recoverWalletpr.png</file>
+        <file>images/openAccountpr.png</file>
+        <file>images/prevPagepr.png</file>
+        <file>images/greyTrianglepr.png</file>
     </qresource>
 </RCC>

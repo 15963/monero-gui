@@ -35,12 +35,13 @@ TextField {
     horizontalAlignment: TextInput.AlignLeft
 
     style: TextFieldStyle {
-        textColor: "#3F3F3F"
+        textColor: "#ffffff"
         placeholderTextColor: "#BABABA"
 
         background: Rectangle {
-            border.width: 0
-            color: "transparent"
+            border.width: 0.5
+            border.color: "#ffffff"
+            color: "#25313c"
         }
     }
 }

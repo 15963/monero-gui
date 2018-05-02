@@ -68,7 +68,7 @@ Rectangle {
     }
 
     width: (isMobile)? appWindow.width : 260
-    color: "#FFFFFF"
+    color: "#2f3943"
 
     // Item with monero logo
     Item {
@@ -132,6 +132,7 @@ Rectangle {
             text: qsTr("Balance") + translationManager.emptyString
             anchors.left: parent.left
             anchors.leftMargin: 50
+            color:"#b2b6ba"
         }
 
         Row {
@@ -152,7 +153,7 @@ Rectangle {
                 id: balanceText
                 anchors.verticalCenter: parent.verticalCenter
                 font.family: "Arial"
-                color: "#000000"
+                color: "#ffffff"
                 text: "N/A"
                 // dynamically adjust text size
                 font.pixelSize: {
@@ -177,6 +178,7 @@ Rectangle {
             text: qsTr("Unlocked balance") + translationManager.emptyString
             anchors.left: parent.left
             anchors.leftMargin: 50
+            color:"#b2b6ba"
         }
 
         Text {
@@ -184,7 +186,7 @@ Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: 50
             font.family: "Arial"
-            color: "#000000"
+            color: "#ffffff"
             text: "N/A"
             // dynamically adjust text size
             font.pixelSize: {
@@ -224,7 +226,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.top: (isMobile)? parent.top : column1.bottom
         anchors.topMargin: (isMobile)? 0 : 25
-        color: "#1C1C1C"
+        color: "#2f3943"
 
 
         Flickable {
@@ -290,8 +292,8 @@ Rectangle {
                 visible: transferButton.present
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: "#505050"
+                // anchors.leftMargin: 16
+                color: "#3c4650"
                 height: 1
             }
 
@@ -316,8 +318,8 @@ Rectangle {
                 visible: addressBookButton.present
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: "#505050"
+                // anchors.leftMargin: 16
+                color: "#3c4650"
                 height: 1
             }
 
@@ -339,8 +341,8 @@ Rectangle {
                 visible: receiveButton.present
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: "#505050"
+                // anchors.leftMargin: 16
+                color: "#3c4650"
                 height: 1
             }
 
@@ -363,8 +365,8 @@ Rectangle {
                 visible: historyButton.present
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: "#505050"
+                // anchors.leftMargin: 16
+                color: "#3c4650"
                 height: 1
             }
 
@@ -385,8 +387,8 @@ Rectangle {
                 visible: advancedButton.present
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: "#505050"
+                // anchors.leftMargin: 16
+                color: "#3c4650"
                 height: 1
             }
 
@@ -410,8 +412,8 @@ Rectangle {
                 visible: miningButton.present
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: miningButton.checked || settingsButton.checked ? "#1C1C1C" : "#505050"
+                // anchors.leftMargin: 16
+                color: miningButton.checked || settingsButton.checked ? "#1C1C1C" : "#3c4650"
                 height: 1
             }
             // ------------- TxKey tab ---------------
@@ -433,8 +435,8 @@ Rectangle {
                 visible: txkeyButton.present
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: "#505050"
+                // anchors.leftMargin: 16
+                color: "#3c4650"
                 height: 1
             }
 
@@ -457,8 +459,8 @@ Rectangle {
                 visible: signButton.present
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: "#505050"
+                // anchors.leftMargin: 16
+                color: "#3c4650"
                 height: 1
             }
             // ------------- Settings tab ---------------
@@ -479,8 +481,8 @@ Rectangle {
                 visible: settingsButton.present
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.leftMargin: 16
-                color: "#505050"
+                // anchors.leftMargin: 16
+                color: "#3c4650"
                 height: 1
             }
 

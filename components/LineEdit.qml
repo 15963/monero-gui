@@ -46,21 +46,23 @@ Item {
 
     function getColor(error) {
       if (error)
-        return "#FFDDDD"
+        return "#FF3030"
       else
-        return "#FFFFFF"
+        return "#fffff"
     }
 
     Rectangle {
         anchors.fill: parent
         anchors.bottomMargin: 1
-        color: "#DBDBDB"
+        color: "#25313c" // 0d0d0d
         //radius: 4
     }
 
     Rectangle {
         anchors.fill: parent
         anchors.topMargin: 1
+        anchors.leftMargin: 1
+        anchors.rightMargin: 30
         color: getColor(error)
         //radius: 4
     }
@@ -68,8 +70,8 @@ Item {
     Input {
         id: input
         anchors.fill: parent
-        anchors.leftMargin: 4
-        anchors.rightMargin: 30
+         anchors.leftMargin: 1
+         anchors.rightMargin: 30
         font.pixelSize: parent.fontSize
         onEditingFinished: item.editingFinished()
         onAccepted: item.accepted();

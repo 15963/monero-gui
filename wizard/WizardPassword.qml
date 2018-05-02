@@ -84,7 +84,7 @@ ColumnLayout {
             ListElement { dotColor: "#36B05B" }
             ListElement { dotColor: "#36B05B" }
             //ListElement { dotColor: "#FFE00A" }
-            ListElement { dotColor: "#DBDBDB" }
+            ListElement { dotColor: "#ffffff" }
         }
 
         Repeater {
@@ -111,7 +111,7 @@ ColumnLayout {
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             //renderType: Text.NativeRendering
-            color: "#3F3F3F"
+            color: "#ffffff"
 
         }
 
@@ -119,10 +119,10 @@ ColumnLayout {
             Layout.fillWidth: true
             Layout.bottomMargin: 30
             font.family: "Arial"
-            font.pixelSize: 18
+            font.pixelSize: 16
             wrapMode: Text.Wrap
             //renderType: Text.NativeRendering
-            color: "#4A4646"
+            color: "#ffffff"
             horizontalAlignment: Text.AlignHCenter
             text: qsTr(" <br>Note: this password cannot be recovered. If you forget it then the wallet will have to be restored from its 25 word mnemonic seed.<br/><br/>
                         <b>Enter a strong password</b> (using letters, numbers, and/or symbols):")

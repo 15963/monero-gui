@@ -48,7 +48,7 @@ Rectangle {
         return offset
     }
 
-    color: checked ? "#FFFFFF" : "#1C1C1C"
+    color: checked ? "#25313c" : "#2f3943" // "#FFFFFF" : "#1C1C1C"
     property bool present: !under || under.checked || checked || under.numSelectedChildren > 0
     height: present ? ((appWindow.height >= 800) ? 64 : 52) : 0
 
@@ -90,7 +90,7 @@ Rectangle {
                 width: 12
                 height: width
                 radius: height / 2
-                color: "#1C1C1C"
+                color: "#2f3943"
                 visible: !button.checked && !buttonArea.containsMouse
             }
         }
@@ -100,7 +100,7 @@ Rectangle {
             anchors.centerIn: parent
             font.pixelSize: 11
             font.bold: true
-            color: button.checked || buttonArea.containsMouse ? "#FFFFFF" : dot.color
+            color: button.checked || buttonArea.containsMouse ? "#FFFFFF" : "#b2b6ba"//dot.color
             visible: appWindow.ctrlPressed
         }
     }

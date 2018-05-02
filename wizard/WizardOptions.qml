@@ -1,21 +1,21 @@
 // Copyright (c) 2014-2015, The Monero Project
-// 
+//
 // All rights reserved.
-// 
+//
 // Redistribution and use in source and binary forms, with or without modification, are
 // permitted provided that the following conditions are met:
-// 
+//
 // 1. Redistributions of source code must retain the above copyright notice, this list of
 //    conditions and the following disclaimer.
-// 
+//
 // 2. Redistributions in binary form must reproduce the above copyright notice, this list
 //    of conditions and the following disclaimer in the documentation and/or other
 //    materials provided with the distribution.
-// 
+//
 // 3. Neither the name of the copyright holder nor the names of its contributors may be
 //    used to endorse or promote products derived from this software without specific
 //    prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
 // MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
@@ -68,10 +68,10 @@ ColumnLayout {
             font.family: "Arial"
             font.pixelSize: 28
             //renderType: Text.NativeRendering
-            color: "#3F3F3F"
+            color: "#ffffff"
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
-            text: qsTr("Welcome to Monero!") + translationManager.emptyString
+            text: qsTr("Welcome to CSSP!") + translationManager.emptyString
         }
 
         Text {
@@ -79,7 +79,7 @@ ColumnLayout {
             font.family: "Arial"
             font.pixelSize: 18
             //renderType: Text.NativeRendering
-            color: "#4A4646"
+            color: "#ffffff"
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
             text: qsTr("Please select one of the following options:") + translationManager.emptyString
@@ -108,8 +108,7 @@ ColumnLayout {
                 Layout.preferredHeight: page.buttonSize
                 Layout.preferredWidth: page.buttonSize
                 radius: page.buttonSize
-                color: createWalletArea.containsMouse ? "#DBDBDB" : "#FFFFFF"
-
+                color: "transparent"
 
                 Image {
                     width: page.buttonImageSize
@@ -118,9 +117,18 @@ ColumnLayout {
                     horizontalAlignment: Image.AlignRight
                     verticalAlignment: Image.AlignTop
                     anchors.centerIn: parent
-                    source: "qrc:///images/createWallet.png"
+                    source: createWalletArea.containsMouse ? "qrc:///images/createWalletpr.png" : "qrc:///images/createWallet.png"
                 }
 
+                Text {
+                    Layout.preferredWidth: 190
+                    font.family: "Arial"
+                    font.pixelSize: 16
+                    color: createWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.WordWrap
+                    text: qsTr("Create a new wallet") + translationManager.emptyString
+                }
                 MouseArea {
                     id: createWalletArea
                     anchors.fill: parent
@@ -131,15 +139,6 @@ ColumnLayout {
                 }
             }
 
-            Text {
-                Layout.preferredWidth: 190
-                font.family: "Arial"
-                font.pixelSize: 16
-                color: "#4A4949"
-                horizontalAlignment: Text.AlignHCenter
-                wrapMode: Text.WordWrap
-                text: qsTr("Create a new wallet") + translationManager.emptyString
-            }
         }
 
         GridLayout {
@@ -153,15 +152,27 @@ ColumnLayout {
                 Layout.preferredHeight: page.buttonSize
                 Layout.preferredWidth:  page.buttonSize
                 radius: page.buttonSize
-                color: recoverWalletArea.containsMouse ? "#DBDBDB" : "#FFFFFF"
+                // color: recoverWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
+                color: "transparent"
 
                 Image {
                     width: page.buttomImageSize
                     height: page.buttonImageSize
                     fillMode: Image.PreserveAspectFit
                     anchors.centerIn: parent
-                    source: "qrc:///images/recoverWallet.png"
+                    source: recoverWalletArea.containsMouse ? "qrc:///images/recoverWalletpr.png" : "qrc:///images/recoverWallet.png"
                 }
+                Text {
+                    Layout.preferredWidth: 190
+                    font.family: "Arial"
+                    font.pixelSize: 16
+                    color: recoverWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    text: qsTr("Restore wallet from keys or mnemonic seed") + translationManager.emptyString
+                    width:page.buttonSize
+                    wrapMode: Text.WordWrap
+                }
+
 
                 MouseArea {
                     id: recoverWalletArea
@@ -172,17 +183,6 @@ ColumnLayout {
                     }
                 }
             }
-
-            Text {
-                Layout.preferredWidth: 190
-                font.family: "Arial"
-                font.pixelSize: 16
-                color: "#4A4949"
-                horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Restore wallet from keys or mnemonic seed") + translationManager.emptyString
-                width:page.buttonSize
-                wrapMode: Text.WordWrap
-            }
         }
 
         GridLayout {
@@ -196,14 +196,26 @@ ColumnLayout {
                 Layout.preferredHeight: page.buttonSize
                 Layout.preferredWidth:  page.buttonSize
                 radius: page.buttonSize
-                color: openWalletArea.containsMouse ? "#DBDBDB" : "#FFFFFF"
+                // color: openWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
+
+                color: "transparent"
 
                 Image {
                     width: page.buttonImageSize
                     height: page.buttonImageSize
                     fillMode: Image.PreserveAspectFit
                     anchors.centerIn: parent
-                    source: "qrc:///images/openAccount.png"
+                    source: openWalletArea.containsMouse ? "qrc:///images/openAccountpr.png" : "qrc:///images/openAccount.png"
+                }
+
+                Text {
+                    Layout.preferredWidth: 190
+                    font.family: "Arial"
+                    font.pixelSize: 16
+                    color: openWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    text: qsTr("Open a wallet from file") + translationManager.emptyString
+                    wrapMode: Text.WordWrap
                 }
 
                 MouseArea {
@@ -215,22 +227,10 @@ ColumnLayout {
                     }
                 }
             }
-
-            Text {
-                Layout.preferredWidth: 190
-                font.family: "Arial"
-                font.pixelSize: 16
-                color: "#4A4949"
-                horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Open a wallet from file") + translationManager.emptyString
-                wrapMode: Text.WordWrap
-            }
         }
-
-
-
     }
 
+    /*
     RowLayout {
         Layout.leftMargin: wizardLeftMargin
         Layout.rightMargin: wizardRightMargin
@@ -244,7 +244,7 @@ ColumnLayout {
                 id: testNet
                 text: qsTr("Testnet") + translationManager.emptyString
                 background: "#FFFFFF"
-                fontColor: "#4A4646"
+                fontColor: "#ffffff"
                 fontSize: 16
                 checkedIcon: "../images/checkedVioletIcon.png"
                 uncheckedIcon: "../images/uncheckedIcon.png"
@@ -256,5 +256,6 @@ ColumnLayout {
             }
         }
     }
+    */
 }
 

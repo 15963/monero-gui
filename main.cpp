@@ -77,16 +77,16 @@ int main(int argc, char *argv[])
 //#endif
 
     // Log settings
-    Monero::Wallet::init(argv[0], "，monero-wallet-gui");
+    Monero::Wallet::init(argv[0], "，Rcssp");
 //    qInstallMessageHandler(messageHandler);
 
     MainApp app(argc, argv);
 
     qDebug() << "app startd";
 
-    app.setApplicationName("，monero-core");
-    app.setOrganizationDomain("getmonero.org");
-    app.setOrganizationName("，monero-project");
+    // app.setApplicationName("，monero-core");
+    // app.setOrganizationDomain("getmonero.org");
+    // app.setOrganizationName("，monero-project");
 
     filter *eventFilter = new filter;
     app.installEventFilter(eventFilter);
@@ -197,7 +197,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("isIOS", isIOS);
 
     if (!moneroAccountsRootDir.empty()) {
-        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Monero/wallets";
+        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Rcssp/wallets";
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
 

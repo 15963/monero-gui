@@ -42,7 +42,7 @@ import "wizard"
 
 ApplicationWindow {
     id: appWindow
-    title: "Monero"
+    title: "Rcssp"
 
     property var currentItem
     property bool whatIsEnable: false
@@ -589,7 +589,7 @@ ApplicationWindow {
     //Choose where to save transaction
     FileDialog {
         id: saveTxDialog
-        title: "Please choose a location"
+        title: "Please choose a location" // need
         folder: "file://" +moneroAccountsDir
         selectExisting: false;
 
@@ -799,8 +799,8 @@ ApplicationWindow {
     visible: true
 //    width: Screen.width //rightPanelExpanded ? 1269 : 1269 - 300
 //    height: 900 //300//maxWindowHeight;
-    color: "#FFFFFF"
-    flags: persistentSettings.customDecorations ? (Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint) : (Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint | Qt.WindowMaximizeButtonHint)
+    color: "#25313c" // 0d0d0d
+    flags: persistentSettings.customDecorations ? (Qt.FramelessWindowHint | !Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint) : (!Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint | Qt.WindowMaximizeButtonHint)
     onWidthChanged: x -= 0
 
     function setCustomWindowDecorations(custom) {
@@ -812,9 +812,9 @@ ApplicationWindow {
         y = 0
       persistentSettings.customDecorations = custom
       if (custom)
-        appWindow.flags = Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint
+        appWindow.flags = Qt.FramelessWindowHint | !Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint
       else
-        appWindow.flags = Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint | Qt.WindowMaximizeButtonHint
+        appWindow.flags = !Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint | Qt.WindowMaximizeButtonHint
       appWindow.hide()
       appWindow.x = x
       appWindow.y = y
@@ -1042,7 +1042,7 @@ ApplicationWindow {
 //                PropertyChanges { target: frameArea; blocked: true }
                 PropertyChanges { target: titleBar; visible: true }
 //                PropertyChanges { target: titleBar; y: 0 }
-                PropertyChanges { target: titleBar; title: qsTr("Monero") + translationManager.emptyString }
+                PropertyChanges { target: titleBar; title: qsTr("Cssp") + translationManager.emptyString }
             }
         ]
 

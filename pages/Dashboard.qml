@@ -30,7 +30,7 @@ import QtQuick 2.0
 import "../components"
 
 Rectangle {
-    color: "#F0EEEE"
+    color: "#25313c"
 
     SearchInput {
         id: searchInput
@@ -87,10 +87,10 @@ Rectangle {
             id: sendButton
             width: 60
             text: qsTr("SEND")
-            shadowReleasedColor: "#FF4304"
-            shadowPressedColor: "#B32D00"
-            releasedColor: "#FF6C3C"
-            pressedColor: "#FF4304"
+            shadowReleasedColor: "#4ed9d9"
+            shadowPressedColor: "#4ed9d9"
+            releasedColor: "#4ed9d9"
+            pressedColor: "#4ed9d9"
         }
 
         Text {

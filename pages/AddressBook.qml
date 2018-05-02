@@ -33,7 +33,7 @@ import moneroComponents.AddressBook 1.0
 import moneroComponents.AddressBookModel 1.0
 
 Rectangle {
-    color: "#F0EEEE"
+    color: "#25313c"
     id: root
     property var model
 
@@ -69,10 +69,10 @@ Rectangle {
         anchors.topMargin: 5
         anchors.top: addressLabel.bottom
         text: qsTr("QRCODE") + translationManager.emptyString
-        shadowReleasedColor: "#FF4304"
-        shadowPressedColor: "#B32D00"
-        releasedColor: "#FF6C3C"
-        pressedColor: "#FF4304"
+        shadowReleasedColor: "#4ed9d9"
+        shadowPressedColor: "#4ed9d9"
+        releasedColor: "#4ed9d9"
+        pressedColor: "#4ed9d9"
         visible : appWindow.qrScannerEnabled
         enabled : visible
         width: visible ? 60 : 0
@@ -144,10 +144,10 @@ Rectangle {
         anchors.topMargin: 17
 
         StandardButton {
-            shadowReleasedColor: "#FF4304"
-            shadowPressedColor: "#B32D00"
-            releasedColor: "#FF6C3C"
-            pressedColor: "#FF4304"
+            shadowReleasedColor: "#4ed9d9"
+            shadowPressedColor: "#4ed9d9"
+            releasedColor: "#4ed9d9"
+            pressedColor: "#4ed9d9"
             text: qsTr("Add") + translationManager.emptyString
             enabled: checkInformation(addressLine.text, paymentIdLine.text, appWindow.persistentSettings.testnet)
 
@@ -203,7 +203,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         height: expandItem.expanded ? parent.height - newEntryText.y - newEntryText.height - 17 :
                                       parent.height - addButton.y - addButton.height - 17
-        color: "#FFFFFF"
+        color: "#25313c"
 
         Behavior on height {
             NumberAnimation { duration: 200; easing.type: Easing.InQuad }

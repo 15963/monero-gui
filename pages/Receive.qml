@@ -41,7 +41,7 @@ import moneroComponents.TransactionHistoryModel 1.0
 
 Rectangle {
 
-    color: "#F0EEEE"
+    color: "#25313c"
     property alias addressText : addressLine.text
     property alias paymentIdText : paymentIdLine.text
     property alias integratedAddressText : integratedAddressLine.text
@@ -247,10 +247,10 @@ Rectangle {
             StandardButton {
                 id: generatePaymentId
                 width: 80
-                shadowReleasedColor: "#FF4304"
-                shadowPressedColor: "#B32D00"
-                releasedColor: "#FF6C3C"
-                pressedColor: "#FF4304"
+                shadowReleasedColor: "#4ed9d9"
+                shadowPressedColor: "#4ed9d9"
+                releasedColor: "#4ed9d9"
+                pressedColor: "#4ed9d9"
                 text: qsTr("Generate") + translationManager.emptyString;
                 onClicked: updatePaymentId()
             }
@@ -259,10 +259,10 @@ Rectangle {
                 id: clearPaymentId
                 enabled: !!paymentIdLine.text
                 width: 80
-                shadowReleasedColor: "#FF4304"
-                shadowPressedColor: "#B32D00"
-                releasedColor: "#FF6C3C"
-                pressedColor: "#FF4304"
+                shadowReleasedColor: "#4ed9d9"
+                shadowPressedColor: "#4ed9d9"
+                releasedColor: "#4ed9d9"
+                pressedColor: "#4ed9d9"
                 text: qsTr("Clear") + translationManager.emptyString;
                 onClicked: updatePaymentId("")
             }

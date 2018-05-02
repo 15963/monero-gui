@@ -56,6 +56,8 @@ Window {
     width: 480
     height: walletName ? 240 : 200
 
+    color: "#25313c"
+
     // Make window draggable
     MouseArea {
         anchors.fill: parent
@@ -83,7 +85,7 @@ Window {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 24
                 font.family: "Arial"
-                color: "#555555"
+                color: "#ffffff"
             }
 
             TextField {
@@ -106,6 +108,7 @@ Window {
                     background: Rectangle {
                         radius: 0
                         border.width: 0
+                        color: "transparent"
                     }
                 }
                 Keys.onReturnPressed: {
@@ -149,10 +152,10 @@ Window {
                 id: cancelButton
                 width: 120
                 fontSize: 14
-                shadowReleasedColor: "#FF4304"
-                shadowPressedColor: "#B32D00"
-                releasedColor: "#FF6C3C"
-                pressedColor: "#FF4304"
+                shadowReleasedColor: "#4ed9d9"
+                shadowPressedColor: "#4ed9d9"
+                releasedColor: "#4ed9d9"
+                pressedColor: "#4ed9d9"
                 text: qsTr("Cancel") + translationManager.emptyString
                 KeyNavigation.tab: passwordInput
                 onClicked: {
@@ -164,10 +167,10 @@ Window {
                 id: okButton
                 width: 120
                 fontSize: 14
-                shadowReleasedColor: "#FF4304"
-                shadowPressedColor: "#B32D00"
-                releasedColor: "#FF6C3C"
-                pressedColor: "#FF4304"
+                shadowReleasedColor: "#4ed9d9"
+                shadowPressedColor: "#4ed9d9"
+                releasedColor: "#4ed9d9"
+                pressedColor: "#4ed9d9"
                 text: qsTr("Ok")
                 KeyNavigation.tab: cancelButton
                 onClicked: {

@@ -21,6 +21,7 @@ Column {
         }
         border.width: 1
         border.color: "#DBDBDB"
+        color:"#25313c" // 0d0d0d
 
         TextEdit {
             id: memoTextInput
@@ -29,6 +30,8 @@ Column {
             text: ""
             font.family: "Arial"
             font.pixelSize: 16
+            color:"#ffffff"
+
             wrapMode: TextInput.Wrap
             width: parent.width
             selectByMouse: true
@@ -42,7 +45,7 @@ Column {
                 anchors.margins: 8
                 font.bold:true
                 text: qsTr("Enter your 25 word mnemonic seed") + translationManager.emptyString
-                color: "#BABABA"
+                color: "#25313c" // 0d0d0d
                 visible: !memoTextInput.text/* && !parent.focus*/
             }
         }
@@ -50,14 +53,18 @@ Column {
             id : clipboardButton
             anchors.right: parent.right
             anchors.bottom: tipRect.top
-            source: "qrc:///images/greyTriangle.png"
+            // source: "qrc:///images/greyTriangle.png"
+            source: memoTextArea.containsMouse ? "qrc:///images/greyTrianglepr.png" : "qrc:///images/greyTriangle.png"
+
             Image {
                 anchors.centerIn: parent
-                source: "qrc:///images/copyToClipboard.png"
+                source: "qrc:///images/greyTriangle.png"
             }
             Clipboard { id: clipboard }
             MouseArea {
+                 id: memoTextArea
                 anchors.fill: parent
+                hoverEnabled: true
                 cursorShape: Qt.PointingHandCursor
                 onClicked: clipboard.setText(memoTextInput.text)
             }
@@ -69,7 +76,7 @@ Column {
             anchors.right: parent.right
             anchors.bottom: memoTextRect.bottom
             height: wordsTipText.contentHeight + wordsTipText.anchors.topMargin
-            color: "#DBDBDB"
+            color: "#25313c" // 0d0d0d
             property alias text: wordsTipText.text
 
             Text {
@@ -83,8 +90,9 @@ Column {
                 horizontalAlignment: Text.AlignHCenter
                 font.family: "Arial"
                 font.pixelSize: 15
-                color: "#4A4646"
+                color: "#ffffff"
                 wrapMode: Text.Wrap
+                //text: qsTr("This seed is <b><font color=\"#4ed9d9\">very</font></b> important to write down and keep secret. It is all you need to backup and restore your wallet.")
                 text: qsTr("This seed is <b>very</b> important to write down and keep secret. It is all you need to backup and restore your wallet.")
                       + translationManager.emptyString
             }

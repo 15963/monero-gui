@@ -1738,7 +1738,7 @@ Please upgrade or connect to another daemon</source>
     </message>
     <message>
         <location filename="../wizard/WizardMain.qml" line="366"/>
-        <source>USE MONERO</source>
+        <source>USE CSSP</source>
         <translation>모네로 사용하기</translation>
     </message>
     <message>
@@ -1834,7 +1834,7 @@ Please upgrade or connect to another daemon</source>
     <name>WizardOptions</name>
     <message>
         <location filename="../wizard/WizardOptions.qml" line="87"/>
-        <source>Welcome to Monero!</source>
+        <source>Welcome to CSSP!</source>
         <translation>모네로에 오신 것을 환영합니다!</translation>
     </message>
     <message>
@@ -1909,7 +1909,7 @@ Please upgrade or connect to another daemon</source>
     <name>WizardWelcome</name>
     <message>
         <location filename="../wizard/WizardWelcome.qml" line="79"/>
-        <source>Welcome to Monero!</source>
+        <source>Welcome to CSSP!</source>
         <translation>모네로에 오신 것을 환영합니다!</translation>
     </message>
     <message>

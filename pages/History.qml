@@ -45,7 +45,7 @@ Rectangle {
         property bool initialized: false
     }
 
-    color: "#F0EEEE"
+    color: "#25313c"
 
     function getSelectedAmount() {
       if (typeof model === 'undefined' || model == null)
@@ -131,7 +131,7 @@ Rectangle {
         elide: Text.ElideRight
         font.family: "Arial"
         font.pixelSize: 18
-        color: "#4A4949"
+        color: "#ffffff"
         text: qsTr("Filter transaction history") + translationManager.emptyString
     }
 
@@ -220,6 +220,7 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 17
         width: 156
+        color:"#ffffff"
         text: qsTr("Date from") + translationManager.emptyString
         fontSize: 14
     }
@@ -231,6 +232,7 @@ Rectangle {
         anchors.top: dateFromText.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 5
+
         z: 2
         onCurrentDateChanged: {
             error = currentDate > toDatePicker.currentDate
@@ -246,6 +248,7 @@ Rectangle {
         anchors.top:  searchLine.bottom //descriptionLine.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 17
+        color:"#ffffff"
         text: qsTr("To") + translationManager.emptyString
         fontSize: 14
     }
@@ -400,6 +403,7 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 17
         width: 156
+        color:"#ffffff"
         text: qsTr("To") + translationManager.emptyString
         fontSize: 14
     }
@@ -464,7 +468,9 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
 //        anchors.top: parent.top
-        color: "#FFFFFF"
+        // color: "#FFFFFF"
+        color: "#25313c"
+
         z: 1
 
         height: (isMobile)? parent.height : middleHeight
@@ -505,6 +511,7 @@ Rectangle {
             anchors.leftMargin: 14
             anchors.rightMargin: 14
             dataModel: columnsModel
+            // color:"transparent"
             offset: 20
             onSortRequest: {
                 console.log("column: " + column + " desc: " + desc)

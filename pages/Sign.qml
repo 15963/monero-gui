@@ -43,7 +43,7 @@ Rectangle {
 //    property int editWidth: 400
     property int lineEditFontSize: 12
 
-    color: "#F0EEEE"
+    color: "#25313c"
 
     Clipboard { id: clipboard }
 
@@ -154,10 +154,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Sign") + translationManager.emptyString
-                    shadowReleasedColor: "#FF4304"
-                    shadowPressedColor: "#B32D00"
-                    releasedColor: "#FF6C3C"
-                    pressedColor: "#FF4304"
+                    shadowReleasedColor: "#4ed9d9"
+                    shadowPressedColor: "#4ed9d9"
+                    releasedColor: "#4ed9d9"
+                    pressedColor: "#4ed9d9"
                     enabled: true
                     onClicked: {
                       var signature = appWindow.currentWallet.signMessage(signMessageLine.text, false)
@@ -195,10 +195,10 @@ Rectangle {
                     anchors.rightMargin: 17
                     width: 60
                     text: qsTr("Select") + translationManager.emptyString
-                    shadowReleasedColor: "#FF4304"
-                    shadowPressedColor: "#B32D00"
-                    releasedColor: "#FF6C3C"
-                    pressedColor: "#FF4304"
+                    shadowReleasedColor: "#4ed9d9"
+                    shadowPressedColor: "#4ed9d9"
+                    releasedColor: "#4ed9d9"
+                    pressedColor: "#4ed9d9"
                     enabled: true
                     onClicked: {
                       signFileDialog.open()
@@ -229,10 +229,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Sign") + translationManager.emptyString
-                    shadowReleasedColor: "#FF4304"
-                    shadowPressedColor: "#B32D00"
-                    releasedColor: "#FF6C3C"
-                    pressedColor: "#FF4304"
+                    shadowReleasedColor: "#4ed9d9"
+                    shadowPressedColor: "#4ed9d9"
+                    releasedColor: "#4ed9d9"
+                    pressedColor: "#4ed9d9"
                     enabled: true
                     onClicked: {
                       var signature = appWindow.currentWallet.signMessage(signFileLine.text, true)
@@ -325,10 +325,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Verify") + translationManager.emptyString
-                    shadowReleasedColor: "#FF4304"
-                    shadowPressedColor: "#B32D00"
-                    releasedColor: "#FF6C3C"
-                    pressedColor: "#FF4304"
+                    shadowReleasedColor: "#4ed9d9"
+                    shadowPressedColor: "#4ed9d9"
+                    releasedColor: "#4ed9d9"
+                    pressedColor: "#4ed9d9"
                     enabled: true
                     onClicked: {
                       var verified = appWindow.currentWallet.verifySignedMessage(verifyMessageLine.text, verifyAddressLine.text, verifySignatureLine.text, false)
@@ -366,10 +366,10 @@ Rectangle {
                     anchors.rightMargin: 17
                     width: 60
                     text: qsTr("Select") + translationManager.emptyString
-                    shadowReleasedColor: "#FF4304"
-                    shadowPressedColor: "#B32D00"
-                    releasedColor: "#FF6C3C"
-                    pressedColor: "#FF4304"
+                    shadowReleasedColor: "#4ed9d9"
+                    shadowPressedColor: "#4ed9d9"
+                    releasedColor: "#4ed9d9"
+                    pressedColor: "#4ed9d9"
                     enabled: true
                     onClicked: {
                       verifyFileDialog.open()
@@ -399,10 +399,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Verify") + translationManager.emptyString
-                    shadowReleasedColor: "#FF4304"
-                    shadowPressedColor: "#B32D00"
-                    releasedColor: "#FF6C3C"
-                    pressedColor: "#FF4304"
+                    shadowReleasedColor: "#4ed9d9"
+                    shadowPressedColor: "#4ed9d9"
+                    releasedColor: "#4ed9d9"
+                    pressedColor: "#4ed9d9"
                     enabled: true
                     onClicked: {
                       var verified = appWindow.currentWallet.verifySignedMessage(verifyFileLine.text, verifyAddressLine.text, verifySignatureLine.text, true)

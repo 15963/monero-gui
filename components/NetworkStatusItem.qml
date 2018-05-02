@@ -42,7 +42,7 @@ Row {
 
     function getConnectionStatusColor(status) {
         if (status == Wallet.ConnectionStatus_Connected)
-            return "#FF6C3B"
+            return "#4ed9d9"
         else
             return "#AAAAAA"
     }
@@ -81,7 +81,7 @@ Row {
             anchors.left: parent.left
             font.family: "Arial"
             font.pixelSize: 12
-            color: "#545454"
+            color: "#b2b6ba"
             text: qsTr("Network status") + translationManager.emptyString
         }
 

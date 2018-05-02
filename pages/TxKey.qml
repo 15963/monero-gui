@@ -36,7 +36,7 @@ import moneroComponents.Clipboard 1.0
 
 Rectangle {
 
-    color: "#F0EEEE"
+    color: "#25313c"
     property alias addressText : addressLine.text
     property alias txIdText : txIdLine.text
     property alias txKeyText : txKeyLine.text
@@ -214,10 +214,10 @@ Rectangle {
             anchors.topMargin: 17
             width: 60
             text: qsTr("Check") + translationManager.emptyString
-            shadowReleasedColor: "#FF4304"
-            shadowPressedColor: "#B32D00"
-            releasedColor: "#FF6C3C"
-            pressedColor: "#FF4304"
+            shadowReleasedColor: "#4ed9d9"
+            shadowPressedColor: "#4ed9d9"
+            releasedColor: "#4ed9d9"
+            pressedColor: "#4ed9d9"
             enabled: checkAddress(addressLine.text, appWindow.persistentSettings.testnet) && checkTxID(txIdLine.text) && checkTxKey(txKeyLine.text)
             onClicked: {
                 console.log("TxKey: Check clicked: address " + addressLine.text + ", txid " << txIdLine.text + ", tx key " + txKeyLine.text);

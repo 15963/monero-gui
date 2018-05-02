@@ -63,9 +63,9 @@ Item {
             width: row.x
 
             color: {
-                if(item.fillLevel < 3) return "#FF6C3C"
-                if(item.fillLevel < 13) return "#AAFFBB"
-                return "#36B25C"
+                if(item.fillLevel < 3) return "#4ed9d9"
+                if(item.fillLevel < 13) return "#4ed9d9"
+                return "#4ed9d9"
             }
 
             Timer {

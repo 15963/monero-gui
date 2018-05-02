@@ -37,7 +37,8 @@ import moneroComponents.Wallet 1.0
 
 Rectangle {
     id: root
-    color: "#F0EEEE"
+    color: "#25313c"
+
     property var currentHashRate: 0
 
     /* main layout */
@@ -177,10 +178,10 @@ Rectangle {
                     id: startSoloMinerButton
                     width: 110
                     text: qsTr("Start mining") + translationManager.emptyString
-                    shadowReleasedColor: "#FF4304"
-                    shadowPressedColor: "#B32D00"
-                    releasedColor: "#FF6C3C"
-                    pressedColor: "#FF4304"
+                    shadowReleasedColor: "#4ed9d9"
+                    shadowPressedColor: "#4ed9d9"
+                    releasedColor: "#4ed9d9"
+                    pressedColor: "#4ed9d9"
                     onClicked: {
                         console.debug(cbItems.get(choiceminingtype.currentIndex).text + ", " + cbItems.get(choiceminingtype.currentIndex).index)
                         var success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
@@ -203,10 +204,10 @@ Rectangle {
                     id: stopSoloMinerButton
                     width: 110
                     text: qsTr("Stop mining") + translationManager.emptyString
-                    shadowReleasedColor: "#FF4304"
-                    shadowPressedColor: "#B32D00"
-                    releasedColor: "#FF6C3C"
-                    pressedColor: "#FF4304"
+                    shadowReleasedColor: "#4ed9d9"
+                    shadowPressedColor: "#4ed9d9"
+                    releasedColor: "#4ed9d9"
+                    pressedColor: "#4ed9d9"
                     onClicked: {
                         walletManager.stopMining()
                         update()
