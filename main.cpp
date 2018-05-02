@@ -149,8 +149,8 @@ int main(int argc, char *argv[])
     dohttp.fetch_pools();
 
     // system tray
-    SystemTray * systemTray = new SystemTray();
-    engine.rootContext()->setContextProperty("systemTray", systemTray);
+    SystemTray systemTray;
+    engine.rootContext()->setContextProperty("systemTray", &systemTray);
 
     OSCursor cursor;
     engine.rootContext()->setContextProperty("globalCursor", &cursor);
