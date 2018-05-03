@@ -99,17 +99,18 @@ ColumnLayout {
         flow: isMobile ? GridLayout.TopToBottom : GridLayout.LeftToRight
 
         GridLayout {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
+            // Layout.fillHeight: true
+            // Layout.fillWidth: true
             flow: !isMobile ? GridLayout.TopToBottom : GridLayout.LeftToRight
             rowSpacing: 20
             columnSpacing: 10
 
-            Rectangle {
+            ColumnLayout {
                 Layout.preferredHeight: page.buttonSize
                 Layout.preferredWidth: page.buttonSize
-                radius: page.buttonSize
-                color: "transparent"
+               // radius: page.buttonSize
+               // color: "transparent"
+                spacing: 30
 
                 Image {
                     width: page.buttonImageSize
@@ -117,7 +118,7 @@ ColumnLayout {
                     fillMode: Image.PreserveAspectFit
                     horizontalAlignment: Image.AlignRight
                     verticalAlignment: Image.AlignTop
-                    anchors.centerIn: parent
+                    // anchors.centerIn: parent
                     source: createWalletArea.containsMouse ? "qrc:///images/createWalletpr.png" : "qrc:///images/createWallet.png"
                 }
 
@@ -143,24 +144,27 @@ ColumnLayout {
         }
 
         GridLayout {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+            // Layout.fillWidth: true
+            // Layout.fillHeight: true
             flow: !isMobile ? GridLayout.TopToBottom : GridLayout.LeftToRight
             rowSpacing: 20
             columnSpacing: 10
 
-            Rectangle {
+            ColumnLayout {
                 Layout.preferredHeight: page.buttonSize
                 Layout.preferredWidth:  page.buttonSize
-                radius: page.buttonSize
+                // radius: page.buttonSize
                 // color: recoverWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
-                color: "transparent"
+                // color: "transparent"
+                spacing: 30
 
                 Image {
-                    width: page.buttomImageSize
+                    width: page.buttonImageSize
                     height: page.buttonImageSize
                     fillMode: Image.PreserveAspectFit
-                    anchors.centerIn: parent
+                    horizontalAlignment: Image.AlignRight
+                    verticalAlignment: Image.AlignTop
+                    // anchors.centerIn: parent
                     source: recoverWalletArea.containsMouse ? "qrc:///images/recoverWalletpr.png" : "qrc:///images/recoverWallet.png"
                 }
                 Text {
@@ -187,25 +191,28 @@ ColumnLayout {
         }
 
         GridLayout {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
+            // Layout.fillHeight: true
+            // Layout.fillWidth: true
             flow: !isMobile ? GridLayout.TopToBottom : GridLayout.LeftToRight
             rowSpacing: 20
             columnSpacing: 10
 
-            Rectangle {
+            ColumnLayout {
                 Layout.preferredHeight: page.buttonSize
                 Layout.preferredWidth:  page.buttonSize
-                radius: page.buttonSize
+                // radius: page.buttonSize
                 // color: openWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
-
-                color: "transparent"
+                // color: "transparent"
+                spacing: 30
 
                 Image {
+
                     width: page.buttonImageSize
                     height: page.buttonImageSize
                     fillMode: Image.PreserveAspectFit
-                    anchors.centerIn: parent
+                    horizontalAlignment: Image.AlignRight
+                    verticalAlignment: Image.AlignTop
+                    // anchors.centerIn: parent
                     source: openWalletArea.containsMouse ? "qrc:///images/openAccountpr.png" : "qrc:///images/openAccount.png"
                 }
 
@@ -216,6 +223,7 @@ ColumnLayout {
                     color: openWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
                     horizontalAlignment: Text.AlignHCenter
                     text: qsTr("Open a wallet from file") + translationManager.emptyString
+                    width:page.buttonSize
                     wrapMode: Text.WordWrap
                 }
 

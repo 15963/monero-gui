@@ -53,7 +53,7 @@ Window {
     width: 480
     height: 200
 
-    color:"red"
+    color:"#25313c"
 
     // Make window draggable
     MouseArea {

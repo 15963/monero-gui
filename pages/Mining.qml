@@ -77,7 +77,7 @@ Rectangle {
                 //anchors.top: parent.top
                 //anchors.right: parent.right
                 //anchors.bottom: parent.bottom
-                spacing: 15
+                spacing: 3
                 Label {
                     id: labelminingtype
                     color: "#ffffff"
@@ -87,6 +87,7 @@ Rectangle {
                 }
                 ComboBox {
                     id: choiceminingtype
+
                     // currentIndex: 1
                     model: ListModel {
                         id: cbItems

@@ -260,7 +260,7 @@ ColumnLayout {
 
     WizardOptions {
         id: optionsPage
-        //Layout.bottomMargin: wizardBottomMargin
+        // Layout.bottomMargin: wizardBottomMargin
         Layout.topMargin: wizardTopMargin
         onCreateWalletClicked: wizard.openCreateWalletPage()
         onRecoveryWalletClicked: wizard.openRecoveryWalletPage()
@@ -347,7 +347,7 @@ ColumnLayout {
             anchors.centerIn: parent
             anchors.horizontalCenterOffset: 3
             // source: "qrc:///images/nextPage.png"
-            source: nextArea.containsMouse ? "qrc:///images/prevPagepr.png" : "qrc:///images/prevPage.png"
+            source: nextArea.containsMouse ? "qrc:///images/nextPage_pr.png" : "qrc:///images/nextPage.png"
 
         }
 

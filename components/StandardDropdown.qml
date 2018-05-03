@@ -222,7 +222,7 @@ Item {
                         font.family: "Arial"
                         font.bold: true
                         font.pixelSize: 12
-                        color: "#FFFFFF"
+                        color: "#4d4d4d"
                         text: qsTr(column1) + translationManager.emptyString
                     }
 
@@ -233,7 +233,7 @@ Item {
                         anchors.rightMargin: 45
                         font.family: "Arial"
                         font.pixelSize: 12
-                        color: "#FFFFFF"
+                        color: "#4d4d4d"
                         text: column2
                     }
 

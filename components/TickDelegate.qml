@@ -50,7 +50,7 @@ Item {
             font.family: "Arial"
             font.bold: true
             font.pixelSize: 12
-            color: "#4A4949"
+            color: "#ffffff"
             text: {
                 if(currentIndex === 0) return qsTr("Normal") + translationManager.emptyString
                 if(currentIndex === 13) return qsTr("High") + translationManager.emptyString

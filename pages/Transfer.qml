@@ -334,6 +334,7 @@ Rectangle {
           anchors.rightMargin: 17
           anchors.topMargin: 17
           fontSize: 14
+          color:"#ffffff"
           text: qsTr("Payment ID <font size='2'>( Optional )</font>") + translationManager.emptyString
       }
 
@@ -359,6 +360,7 @@ Rectangle {
           anchors.rightMargin: 17
           anchors.topMargin: 17
           fontSize: 14
+          color:"#ffffff"
           text: qsTr("Description <font size='2'>( Optional )</font>")
                 + translationManager.emptyString
       }
@@ -468,12 +470,14 @@ Rectangle {
             Label {
                 id: privacyLabel
                 fontSize: 14
+                color:"#ffffff"
                 text: ""
             }
 
             Label {
                 id: costLabel
                 fontSize: 14
+                color:"#ffffff"
                 text: qsTr("Transaction cost") + translationManager.emptyString
                 anchors.right: parent.right
             }

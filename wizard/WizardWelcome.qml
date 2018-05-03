@@ -126,7 +126,6 @@ ColumnLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-
             clip: true
 
             delegate: ColumnLayout {

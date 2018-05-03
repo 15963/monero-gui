@@ -78,7 +78,7 @@ Window {
             Layout.alignment: Qt.AlignHCenter
 
             Label {
-                text: root.walletName.length > 0 ? qsTr("Please enter wallet password for:<br>") + root.walletName : qsTr("Please enter wallet password")
+                text: root.walletName.length > 0 ? qsTr("Please enter wallet password for:<br>")  + translationManager.emptyString + root.walletName : qsTr("Please enter wallet password") + translationManager.emptyString
                 Layout.alignment: Qt.AlignHCenter
                 Layout.columnSpan: 2
                 Layout.fillWidth: true
@@ -101,8 +101,8 @@ Window {
                 KeyNavigation.tab: okButton
 
                 style: TextFieldStyle {
-                    renderType: Text.NativeRendering
-                    textColor: "#35B05A"
+                    renderType: Text.NativeRendering5
+                    textColor: "#ffffff"
                     passwordCharacter: "•"
                     // no background
                     background: Rectangle {
@@ -171,7 +171,7 @@ Window {
                 shadowPressedColor: "#4ed9d9"
                 releasedColor: "#4ed9d9"
                 pressedColor: "#4ed9d9"
-                text: qsTr("Ok")
+                text: qsTr("Ok") + translationManager.emptyString
                 KeyNavigation.tab: cancelButton
                 onClicked: {
                     root.close()
