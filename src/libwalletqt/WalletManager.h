@@ -7,6 +7,8 @@
 #include <QMutex>
 #include <QPointer>
 
+#include "pool_mining_manager.h"
+
 class Wallet;
 namespace Monero {
     class WalletManager;
@@ -112,7 +114,6 @@ public:
     Q_INVOKABLE quint64 blockchainHeight() const;
     Q_INVOKABLE quint64 blockchainTargetHeight() const;
     Q_INVOKABLE double miningHashRate() const;
-
     Q_INVOKABLE bool isMining() const;
     Q_INVOKABLE bool startMining(const QString &address, quint32 threads, bool backgroundMining, bool ignoreBattery);
     Q_INVOKABLE bool stopMining();
@@ -154,7 +155,6 @@ private:
     Monero::WalletManager * m_pimpl;
     QMutex m_mutex;
     QPointer<Wallet> m_currentWallet;
-
 };
 
 #endif // WALLETMANAGER_H

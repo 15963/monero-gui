@@ -295,9 +295,9 @@ DaemonManager::DaemonManager(QObject *parent)
 
     // Platform depetent path to monerod
 #ifdef Q_OS_WIN
-    m_monerod = QApplication::applicationDirPath() + "/rrzc.exe"; // edited
+    m_monerod = QApplication::applicationDirPath() + "/rrncd.exe"; // edited
 #elif defined(Q_OS_UNIX)
-    m_monerod = QApplication::applicationDirPath() + "/rrzc";   // edited
+    m_monerod = QApplication::applicationDirPath() + "/rrncd";   // edited
 #endif
 
     if (m_monerod.length() == 0) {

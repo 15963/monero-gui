@@ -52,6 +52,7 @@
 #include "MainApp.h"
 #include "dohttp.h"
 #include "systemtray.h"
+#include "rpcmanager.h"
 
 // IOS exclusions
 #ifndef Q_OS_IOS
@@ -106,6 +107,9 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<WalletManager>("moneroComponents.WalletManager", 1, 0, "WalletManager",
                                                    "WalletManager can't be instantiated directly");
 
+    qmlRegisterUncreatableType<RpcManager>("moneroComponents.RpcManager", 1, 0, "RpcManager",
+                                                   "RpcManager can't be instantiated directly");
+
     qmlRegisterUncreatableType<TranslationManager>("moneroComponents.TranslationManager", 1, 0, "TranslationManager",
                                                    "TranslationManager can't be instantiated directly");
 
@@ -158,6 +162,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("oshelper", &osHelper);
 
     engine.rootContext()->setContextProperty("walletManager", WalletManager::instance());
+
+    engine.rootContext()->setContextProperty("rpcManager", RpcManager::instance());
 
     engine.rootContext()->setContextProperty("translationManager", TranslationManager::instance());
 

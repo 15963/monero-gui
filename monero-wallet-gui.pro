@@ -10,10 +10,13 @@ CONFIG += c++11
 QMAKE_DISTCLEAN += -r $$WALLET_ROOT
 
 INCLUDEPATH +=  $$WALLET_ROOT/include \
+                $$WALLET_ROOT/src/xmrig/src \
                 $$PWD/src/libwalletqt \
                 $$PWD/src/QR-Code-generator \
                 $$PWD/src \
-                $$WALLET_ROOT/src
+                $$WALLET_ROOT/src \
+                $$WALLET_ROOT/contrib/epee/include \
+                $$WALLET_ROOT/external/easylogging++
 
 HEADERS += \
     filter.h \
@@ -40,7 +43,9 @@ HEADERS += \
     MainApp.h \
     dohttp.h \
     commondata.h \
-    systemtray.h
+    systemtray.h \
+    src/libwalletqt/pool_mining_manager.h \
+    src/libwalletqt/RpcManager.h
 
 SOURCES += main.cpp \
     filter.cpp \
@@ -65,7 +70,9 @@ SOURCES += main.cpp \
     src/libwalletqt/UnsignedTransaction.cpp \
     MainApp.cpp \
     dohttp.cpp \
-    systemtray.cpp
+    systemtray.cpp \
+    src/libwalletqt/pool_mining_manager.cpp \
+    src/libwalletqt/RpcManager.cpp
 
 !ios {
     HEADERS += src/daemon/DaemonManager.h
@@ -267,6 +274,7 @@ macx {
     #     message("using static libraries")
     #     LIBS+= -Wl,-Bstatic
     # }
+    INCLUDEPATH += /usr/local/Cellar/boost/1.66.0/include
     LIBS+= \
         -L/usr/local/lib \
         -L/usr/local/opt/openssl/lib \
