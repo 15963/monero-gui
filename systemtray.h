@@ -25,7 +25,7 @@ private slots:
 
 public slots:
     void hideIconTray();
-    // void testQmlOut(QString strInfo);
+    void qmlOut(QString strInfo);
 
 private:
     // object for icon in tray

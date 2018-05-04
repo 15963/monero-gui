@@ -66,7 +66,7 @@ Item {
         anchors.top: parent.top
         height: 22
         radius: 2
-        color: "#FFFFFF"
+        color: "#25313c"
 
         Rectangle {
             id: fillRect
@@ -78,9 +78,9 @@ Item {
             property int maxWidth: parent.width - 4
             width: (maxWidth * fillLevel) / 100
             color: {
-               if(item.fillLevel < 99 ) return "#FF6C3C"
+               if(item.fillLevel < 99 ) return "#4ed9d9"
                //if(item.fillLevel < 99) return "#FFE00A"
-                return "#36B25C"
+                return "#66d8f8"
             }
 
         }
@@ -96,7 +96,7 @@ Item {
                 anchors.bottom: parent.bottom
                 font.family: "Arial"
                 font.pixelSize: 12
-                color: "#000"
+                color: "#ffffff"
                 text: qsTr("Synchronizing blocks")
                 height:18
             }

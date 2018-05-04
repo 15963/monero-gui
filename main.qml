@@ -176,6 +176,7 @@ ApplicationWindow {
         var locale = persistentSettings.locale
         if (locale !== "") {
             translationManager.setLanguage(locale.split("_")[0]);
+            systemTray.qmlOut("");
         }
 
         // Reload transfer page with translations enabled
@@ -899,6 +900,7 @@ ApplicationWindow {
         // dynamically change onclose handler
         property var onCloseCallback
         id: informationPopup
+        color:"#25313c"
         cancelVisible: false
         onAccepted:  {
             if (onCloseCallback) {

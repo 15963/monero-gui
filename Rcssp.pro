@@ -77,7 +77,8 @@ SOURCES = *.qml \
           components/*.qml \
           pages/*.qml \
           wizard/*.qml \
-          wizard/*js
+          wizard/*js\
+          *.cpp
 }
 
 

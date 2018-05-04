@@ -48,7 +48,7 @@ Item {
       if (error)
         return "#FF3030"
       else
-        return "#fffff"
+        return "#747c82"
     }
 
     Rectangle {

@@ -110,7 +110,6 @@ int main(int argc, char *argv[])
                                                    "TranslationManager can't be instantiated directly");
 
 
-
     qmlRegisterUncreatableType<TransactionHistoryModel>("moneroComponents.TransactionHistoryModel", 1, 0, "TransactionHistoryModel",
                                                         "TransactionHistoryModel can't be instantiated directly");
 
@@ -193,8 +192,14 @@ int main(int argc, char *argv[])
     isMac = true;
 #endif
 
+    bool is32 = false;
+#ifdef Q_OS_DARWIN32 | Q_OS_WIN32
+    is32 = true;
+#endif
+
     engine.rootContext()->setContextProperty("isWindows", isWindows);
     engine.rootContext()->setContextProperty("isIOS", isIOS);
+    engine.rootContext()->setContextProperty("is32", is32);
 
     if (!moneroAccountsRootDir.empty()) {
         QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Rcssp/wallets";

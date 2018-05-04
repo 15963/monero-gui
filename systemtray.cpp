@@ -2,7 +2,6 @@
 #include <QDebug>
 #include <QMenu>
 
-
 SystemTray::SystemTray(QObject *parent) : QObject(parent)
 {
     // create context menu
@@ -31,6 +30,7 @@ SystemTray::SystemTray(QObject *parent) : QObject(parent)
     // connect tray icon click signal to slot
     connect(m_trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
+
 }
 
 SystemTray::~SystemTray()
@@ -43,7 +43,6 @@ void SystemTray::updateTrans(){
     viewhide->setText(QObject::tr("viewhide"));
     quit->setText(tr("quit"));
 }
-
 // click on icon in tray
 void SystemTray::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {
@@ -58,11 +57,12 @@ void SystemTray::iconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 
-/*
- void SystemTray::testQmlOut(QString strInfo)
+
+ void SystemTray::qmlOut(QString strInfo)
  {
+     updateTrans();
  }
-*/
+
 
 void SystemTray::hideIconTray()
 {

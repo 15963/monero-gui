@@ -40,6 +40,7 @@ Rectangle {
     color: "#25313c"
 
     property var currentHashRate: 0
+    property var currentPool:0
 
     /* main layout */
     ColumnLayout {
@@ -81,7 +82,7 @@ Rectangle {
                 Label {
                     id: labelminingtype
                     color: "#ffffff"
-                    text: qsTr("document") + translationManager.emptyString
+                    text: qsTr("mingtype") + translationManager.emptyString
                     fontSize: 16
                     Layout.preferredWidth: 120
                 }
@@ -97,6 +98,7 @@ Rectangle {
                     }
                     Layout.preferredWidth:  250
                     onCurrentIndexChanged:{
+                        currentPool = currentIndex
                        console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).index)
                        walletManager.stopMining()
                        update()
@@ -233,7 +235,6 @@ Rectangle {
         cbItems.clear()
 
         cbItems.append({"text": "localmin", "index":"localmin"})
-        choiceminingtype.currentIndex = 0;
         var data = JSON.parse(dohttp.get_pools_info())
         if(data.code !== 0){ // okdata
             return
@@ -242,6 +243,7 @@ Rectangle {
                 cbItems.append({"text": "remotepool"+i.toString(), "index":data.data[i].ip+":"+data.data[i].port.toString()})
             }
         }
+        choiceminingtype.currentIndex = currentPool
 
     }
 

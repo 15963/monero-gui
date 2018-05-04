@@ -41,6 +41,8 @@ Rectangle {
     property var daemonAddress
     property bool viewOnly: false
     property var nodes
+    property var currentNode
+    property bool isFresh: false
     id: page
 
     color: "#25313c"
@@ -162,8 +164,8 @@ Rectangle {
             StandardButton {
                 id: rescanSpentButton
                 text: qsTr("Rescan wallet balance") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b858b"
+                shadowPressedColor: "#3b858b"
                 releasedColor: "#4ed9d9"
                 pressedColor: "#4ed9d9"
                 onClicked: {
@@ -211,8 +213,8 @@ Rectangle {
                 enabled: !appWindow.daemonRunning
                 id: startDaemonButton
                 text: qsTr("Start daemon") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b858b"
+                shadowPressedColor: "#3b858b"
                 releasedColor: "#4ed9d9"
                 pressedColor: "#4ed9d9"
                 onClicked: {
@@ -321,6 +323,7 @@ Rectangle {
                 Layout.preferredWidth:  250
                 onCurrentIndexChanged:{
                 console.debug(nodeItems.get(currentIndex).text + ", " + nodeItems.get(currentIndex).index)
+                currentNode = currentIndex
                 if(currentIndex !=  0){
                     daemonAddr.text = nodeItems.get(currentIndex).index
                     daemonPort.text = daemonAddress[1]
@@ -328,9 +331,8 @@ Rectangle {
                     // daemonPassword =
                 }
                 else{
-                    daemonAddr.text = daemonAddress[0];
-                    daemonPort.text = daemonAddress[1];
-                    // daemonUsername =
+                    daemonAddr.text = "localhost";
+                     // daemonUsername =
                     // daemonPassword =
                 }
             }
@@ -516,12 +518,14 @@ Rectangle {
         TextBlock {
             Layout.topMargin: 8
             Layout.fillWidth: true
+            color: "#ffffff"
             text: qsTr("GUI version: ") + Version.GUI_VERSION + translationManager.emptyString
         }
 
         TextBlock {
             id: guiMoneroVersion
             Layout.fillWidth: true
+            color: "#ffffff"
             text: qsTr("Embedded Monero version: ") + Version.GUI_MONERO_VERSION + translationManager.emptyString
         }
         TextBlock {
@@ -531,7 +535,7 @@ Rectangle {
             property var txt: "<style type='text/css'>a {text-decoration: none; color: #FF6C3C}</style>" + qsTr("Wallet creation height: ") + currentWallet.walletCreationHeight + translationManager.emptyString
             property var linkTxt: qsTr(" <a href='#'>(Click to change)</a>") + translationManager.emptyString
             text: (typeof currentWallet == "undefined") ? "" : txt + linkTxt
-
+            color:"#ffffff"
             onLinkActivated: {
                 restoreHeightRow.visible = true;
             }
@@ -729,9 +733,9 @@ Rectangle {
     // update the pool info
     function updteRemoteNodeInfo(){
         nodeItems.clear()
-        nodeItems.append({"text": "localnode", "index":"localnode"})
+        nodeItems.append({"text": "localhost", "index":"localhost"})
 
-        choicenotetype.currentIndex = 0;
+        // choicenotetype.currentIndex = 0;
         var data = JSON.parse(dohttp.get_nodes_info())
         if(data.code !== 0){ // okdata
             return
@@ -740,6 +744,7 @@ Rectangle {
                 nodeItems.append({"text": "remotenode"+i.toString(), "index":data.data[i]})
             }
         }
+
 
      }
 
@@ -762,6 +767,7 @@ Rectangle {
         if(typeof daemonManager != "undefined")
             daemonManager.daemonConsoleUpdated.connect(onDaemonConsoleUpdated)
 
+        choicenotetype.currentIndex = currentNode
 
     }
 
