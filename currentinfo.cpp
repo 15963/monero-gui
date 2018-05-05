@@ -10,6 +10,9 @@ CurrentInfo::CurrentInfo(QObject *parent) : QObject(parent)
 {
     filepool = "pool";
     filenode = "node";
+    fileselpool = "selPool";
+    fileselnode = "selNode";
+
 }
 
 QString CurrentInfo::getCurrentPoolInfo()
@@ -55,7 +58,9 @@ bool CurrentInfo::setCurrentPoolInfo(QString pool_address,QString pool_port,QStr
     file.open(QIODevice::Truncate);
     file.close();
     file.open(QIODevice::WriteOnly);
-    io<<pool_address<<":"<<pool_port<<":"<<wallet_address<<":"<<threads;
+    QTextStream write(&file);
+    write<<pool_address<<":"<<pool_port<<":"<<wallet_address<<":"<<threads;
+    write.flush();
     file.close();
 }
 
@@ -71,7 +76,9 @@ bool CurrentInfo::setCurrentNodeInfo(QString nodeinfo,QString threads)
     file.open(QIODevice::Truncate);
     file.close();
     file.open(QIODevice::WriteOnly);
-    io<<nodeinfo<<":"<<threads;
+    QTextStream write(&file);
+    write<<nodeinfo<<":"<<threads;
+    write.flush();
     file.close();
 }
 
@@ -108,22 +115,25 @@ void CurrentInfo::createFile(QString filePath,QString fileName)
     qDebug()<<tempDir.currentPath();
 }
 
- void CurrentInfo::eleteFile(int type)
+ void CurrentInfo::deleteFile(int type)
  {
      switch (type)
      {
          case  1 : //pool
-                QFile data(path + filepool);
-                if (data.exists()) {
-                    data.remove(); 
+                {
+                    QFile file_pool(path + filepool);
+                    if (file_pool.exists()) {
+                        file_pool.remove();
+                    }
                 }
-
          break; 
          case  2 : //node
-                QFile data(path + filenode);
-                if (data.exists()) {
-                    data.remove(); 
+            {
+                QFile file_node(path + filenode);
+                if (file_node.exists()) {
+                    file_node.remove();
                 }
+            }
          break; 
      }
  }
@@ -144,4 +154,71 @@ int CurrentInfo::getCurrentType()
        }
 
        return (int)run_type; 
+}
+
+void CurrentInfo::setSelectMinInfo(QString mining,QString  back_ming,QString threads)
+{
+    createFile( path,fileselpool);
+    QFile file(path + fileselpool);
+    file.open(QIODevice::ReadOnly);
+    QTextStream io(&file);
+    int b;
+    io>>b;
+    file.close();
+    file.open(QIODevice::Truncate);
+    file.close();
+    file.open(QIODevice::WriteOnly);
+    QTextStream write(&file);
+    write<<mining<<":"<<back_ming<<":"<<threads;
+    write.flush();
+    file.close();
+}
+
+QString  CurrentInfo::getSelectMinInfo()
+{
+    QString currentMinInfo ="";
+    QFile data(path + fileselpool);
+     if (!data.exists())
+    {
+        return currentMinInfo;
+    }
+    if (data.open(QFile::ReadOnly)) {
+        QTextStream in(&data);
+        in >> currentMinInfo;
+    }
+    return currentMinInfo;
+}
+
+void  CurrentInfo::setSelectNodeInfo(QString node,QString port, QString name,QString password)
+{
+    createFile( path,fileselnode);
+    QFile file(path + fileselnode);
+    file.open(QIODevice::ReadOnly);
+    QTextStream io(&file);
+    int b;
+    io>>b;
+    file.close();
+    file.open(QIODevice::Truncate);
+    file.close();
+    file.open(QIODevice::WriteOnly);
+    QTextStream write(&file);
+    write<<node<<":"<<port<<":"<<name<<":"<<password;
+    write.flush();
+    file.close();
+}
+
+
+QString  CurrentInfo::getSelectNodeInfo()
+{
+    QString currentNodeInfo ="";
+    QFile data(path + fileselnode);
+     if (!data.exists())
+    {
+        return currentNodeInfo;
+    }
+    if (data.open(QFile::ReadOnly)) {
+        QTextStream in(&data);
+        in >> currentNodeInfo;
+    }
+    return currentNodeInfo;
 }

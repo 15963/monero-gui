@@ -27,7 +27,7 @@ AutoRunManager *AutoRunManager::instance()
 
 
 
-RpcManager::RpcManager(QObject *parent) : QObject(parent)
+AutoRunManager::AutoRunManager(QObject *parent) : QObject(parent)
 {
 
 }

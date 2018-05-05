@@ -225,12 +225,6 @@ int main(int argc, char *argv[])
 
     CurrentInfo currentInfo;
     currentInfo.path = moneroAccountsRootDir.at(0) + "/Rcssp/currentInfo/";
-    currentInfo.setCurrentNodeInfo("123");
-    QString strInfo = currentInfo.getCurrentNodeInfo();
-    currentInfo.setCurrentPoolInfo("456");
-    strInfo = currentInfo.getCurrentPoolInfo();
-    currentInfo.setCurrentNodeInfo("789");
-    currentInfo.setCurrentNodeInfo("101112");
     engine.rootContext()->setContextProperty("currentInfo", &currentInfo);
 
     // Get default account name

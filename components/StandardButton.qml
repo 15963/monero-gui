@@ -53,9 +53,9 @@ Item {
         radius: 4
         color: {
             parent.enabled ? (buttonArea.pressed ? parent.shadowPressedColor : parent.shadowReleasedColor)
-                           : Qt.lighter(parent.shadowReleasedColor)
+                           : parent.shadowReleasedColor
         }
-        border.color: Qt.darker(parent.releasedColor)
+        border.color: parent.releasedColor
         border.width: parent.focus ? 1 : 0
 
     }

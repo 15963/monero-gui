@@ -324,9 +324,12 @@ Rectangle {
                 onCurrentIndexChanged:{
                 console.debug(nodeItems.get(currentIndex).text + ", " + nodeItems.get(currentIndex).index)
                 currentNode = currentIndex
-                var pool_address = cbItems.get(currentIndex).index.split(":")[0];
+
+                /*
+                var pool_address = nodeItems.get(currentNode).index.split(":")[0];
                 var pool_port = cbItems.get(currentIndex).index.split(":")[1];
                 currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,"1")
+                */
 
                 if(currentIndex !=  0){
                     daemonAddr.text = nodeItems.get(currentIndex).index
@@ -419,6 +422,8 @@ Rectangle {
                     persistentSettings.daemonUsername = daemonUsername.text;
                     persistentSettings.daemonPassword = daemonPassword.text;
                     currentWallet.setDaemonLogin(persistentSettings.daemonUsername, persistentSettings.daemonPassword);
+
+                    currentInfo.setSelectNodeInfo(currentNode,"","","");
 
                     //Reinit wallet
                     currentWallet.initAsync(newDaemon);
@@ -749,8 +754,18 @@ Rectangle {
             }
         }
 
-
-
+        var selNodeInfo = currentInfo.getSelectNodeInfo()
+        if(selNodeInfo.split(":")[0].length > 0)
+        {
+            choicenotetype.currentIndex = selNodeInfo.split(":")[0]
+            // soloMinerThreadsLine.text =  selNodeInfo.split(":")[2]
+            // if(selNodeInfo.split(":")[1] === "true"){
+            //     backgroundMining.checked = true
+            // }
+            // else{
+            //     backgroundMining.checked = false
+            // }
+        }
      }
 
     // fires on every page load
@@ -772,12 +787,18 @@ Rectangle {
         if(typeof daemonManager != "undefined")
             daemonManager.daemonConsoleUpdated.connect(onDaemonConsoleUpdated)
 
-        if(currentInfo.getCurrentNodeInfo() !== "")
+        var selNodeInfo = currentInfo.getSelectNodeInfo()
+        if(selNodeInfo.split(":")[0].length > 0)
         {
-            ; // Auto start the node
+            choicenotetype.currentIndex = selNodeInfo.split(":")[0]
+            // soloMinerThreadsLine.text =  selNodeInfo.split(":")[2]
+            // if(selNodeInfo.split(":")[1] === "true"){
+            //     backgroundMining.checked = true
+            // }
+            // else{
+            //     backgroundMining.checked = false
+            // }
         }
-        choicenotetype.currentIndex = currentNode
-        currentInfo.setCurrentNodeInfo(currentIndex)
 
     }
 

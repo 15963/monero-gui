@@ -68,6 +68,7 @@ ApplicationWindow {
     property int blocksToSync: 1
     property var isMobile: (appWindow.width > 700) ? false : true
     property var cameraUi
+    property bool isLogin : false
 
     // true if wallet ever synchronized
     property bool walletInitialized : false
@@ -1408,17 +1409,25 @@ ApplicationWindow {
         var daemonHost = daemonAddress.split(":")[0]
         if (daemonHost === "127.0.0.1" || daemonHost === "localhost")
             return true
-        return false
+        // return false
     }
 
     Connections {
         target: systemTray
         // signal - show window
         onSignalShow: {
+            if(isLogin){
+                passwordDialog.show();
+                isLogin = false
+            }
             show();
         }
         onSignalHide: {
-            hide()
+            if(passwordDialog.active){
+                passwordDialog.hide();
+                isLogin = true
+            }
+            hide();
         }
         // signal - close app, ignore checkbox
         onSignalQuit: {

@@ -100,6 +100,7 @@ Rectangle {
                     Layout.preferredWidth:  250
                     onCurrentIndexChanged:{
                     currentPool = currentIndex
+                    //currentInfo.setSelectMinInfo(currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
                     if (currentIndex == 0) {
                   
                         currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);  
@@ -111,8 +112,8 @@ Rectangle {
                     }
                      
                     console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).index)
-                    walletManager.stopMining()
-                    update()
+                    //walletManager.stopMining()
+                    //update()
                    }
                 }
             }
@@ -155,6 +156,8 @@ Rectangle {
                            var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
                            var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+                           currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+
                          }
                          
                     }
@@ -210,11 +213,15 @@ Rectangle {
                     pressedColor: "#4ed9d9"
                     onClicked: {
 
+                        /*
                         mentionPopup.title = qsTr("mention starting mining") + translationManager.emptyString;
                         mentionPopup.text = qsTr("mention info<br>")
                         mentionPopup.text += qsTr(" mention info detail<br>")
                         mentionPopup.icon = StandardIcon.Critical
                         mentionPopup.open()
+                        */
+
+                        daemonManagerDialog.open();
 
 
                         console.debug(cbItems.get(choiceminingtype.currentIndex).text + ", " + cbItems.get(choiceminingtype.currentIndex).index)
@@ -229,6 +236,8 @@ Rectangle {
                            + "\"user\":" + "\""+ appWindow.currentWallet.address +"\"," + "\"password\":\"x\"}";
 
                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+
+                           currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
 
                            console.debug(json_config);
 
@@ -314,8 +323,12 @@ Rectangle {
     function updteMinPoolInfo(){
         cbItems.clear()
 
-        cbItems.append({"text": "localmin", "index":"localmin"})
-        choiceminingtype.currentIndex = 0;
+        // 32bit cannot local-mining
+        if(!is32){
+            cbItems.append({"text": "localmin", "index":"localmin"})
+            choiceminingtype.currentIndex = 0;
+        }
+
         var data = JSON.parse(dohttp.get_pools_info())
         if(data.code !== 0){ // okdata
             return
@@ -324,15 +337,20 @@ Rectangle {
                 cbItems.append({"text": "remotepool"+i.toString(), "index":data.data[i].ip+":"+data.data[i].port.toString()})
             }
         }
-        if(currentInfo.getCurrentPoolInfo() !== ""){
-            currentPool = currentInfo.getCurrentPoolInfo()
-            // auto start minging
 
+        var selNodeInfo = currentInfo.getSelectMinInfo()
+        if(selNodeInfo.split(":")[0].length > 0)
+        {
+            choiceminingtype.currentIndex = selNodeInfo.split(":")[0]
+            soloMinerThreadsLine.text =  selNodeInfo.split(":")[2]
+            if(selNodeInfo.split(":")[1] === "true"){
+                backgroundMining.checked = true
+            }
+            else{
+                backgroundMining.checked = false
+            }
         }
-        else{
-            ;
-        }
-        choiceminingtype.currentIndex = currentPool
+
     }
 
     function updateStatusText() {

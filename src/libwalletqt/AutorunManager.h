@@ -7,13 +7,12 @@
 class AutoRunManager : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool connected READ connected)
 
 public:
 
     static AutoRunManager * instance();
-    Q_INVOKABLE bool start();
-    Q_INVOKABLE bool stop();
+   // Q_INVOKABLE bool start();
+   // Q_INVOKABLE bool stop();
 
 private:
     explicit AutoRunManager(QObject *parent = 0);

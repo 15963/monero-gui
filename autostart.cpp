@@ -14,15 +14,10 @@ void AutoStart::init(int type)
     {
         QString application_name = QApplication::applicationName();
         QSettings *settings = new QSettings(REG_RUN, QSettings::NativeFormat);
-        if(is_auto_start)
-        {
-            QString application_path = QApplication::applicationFilePath();
-            settings->setValue(application_name, application_path.replace("/", "\\"));
-        }
-        else
-        {
-            settings->remove(application_name);
-        }
+        QString application_path = QApplication::applicationFilePath();
+        settings->setValue(application_name+ " -start -config", application_path.replace("/", "\\"));
+
         delete settings;
     }
+
 }
