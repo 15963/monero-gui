@@ -23,6 +23,7 @@ public:
     Q_INVOKABLE bool setRpcAddress(const std::string& ip,int port);
     Q_INVOKABLE bool startXmrig(int port);
     Q_INVOKABLE bool stopXmrig();
+    Q_INVOKABLE bool running(); 
 
 private:
     explicit RpcManager(QObject *parent = 0);

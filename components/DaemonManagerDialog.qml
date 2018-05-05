@@ -92,7 +92,8 @@ Window {
             }
 
             Text {
-                text: qsTr("Starting Monero daemon in %1 seconds").arg(countDown);
+                color:"#ffffff"
+                text: qsTr("Starting Rcssp daemon in %1 seconds").arg(countDown);
                 font.pixelSize: 18
                 Layout.alignment: Qt.AlignHCenter
                 Layout.fillWidth: true

@@ -679,6 +679,7 @@ Rectangle {
 
         Text {
             id: statusText
+            color:"#4ed9d9"
             anchors.fill:parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

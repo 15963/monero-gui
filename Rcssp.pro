@@ -45,7 +45,9 @@ HEADERS += \
     commondata.h \
     systemtray.h \
     src/libwalletqt/pool_mining_manager.h \
-    src/libwalletqt/RpcManager.h
+    src/libwalletqt/RpcManager.h \
+    autostart.h \
+    currentinfo.h
 
 SOURCES += main.cpp \
     filter.cpp \
@@ -72,7 +74,9 @@ SOURCES += main.cpp \
     dohttp.cpp \
     systemtray.cpp \
     src/libwalletqt/pool_mining_manager.cpp \
-    src/libwalletqt/RpcManager.cpp
+    src/libwalletqt/RpcManager.cpp \
+    autostart.cpp \
+    currentinfo.cpp
 
 !ios {
     HEADERS += src/daemon/DaemonManager.h
@@ -84,7 +88,8 @@ SOURCES = *.qml \
           components/*.qml \
           pages/*.qml \
           wizard/*.qml \
-          wizard/*js
+          wizard/*js\
+          *.cpp
 }
 
 
@@ -282,6 +287,7 @@ macx {
         -lboost_serialization \
         -lboost_thread-mt \
         -lboost_system \
+        -lboost_system-mt \
         -lboost_date_time \
         -lboost_filesystem \
         -lboost_regex \

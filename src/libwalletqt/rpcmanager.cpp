@@ -174,6 +174,18 @@ bool RpcManager::connected() const {
     return true;
 }
 
+bool RpcManager::running() {
+   
+   std::string status="CANCEL"; 
+   PoolMiningManager *ptr = m_miningManager.get();
+   if (!ptr)
+    {
+        return false;
+    }
+
+    return ptr->isRuning();
+}
+
 RpcManager::RpcManager(QObject *parent) : QObject(parent)
 {
     if (!m_miningManager.get()) {

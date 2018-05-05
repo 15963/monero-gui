@@ -176,6 +176,7 @@ ApplicationWindow {
         var locale = persistentSettings.locale
         if (locale !== "") {
             translationManager.setLanguage(locale.split("_")[0]);
+            systemTray.qmlOut("");
         }
 
         // Reload transfer page with translations enabled
@@ -899,6 +900,7 @@ ApplicationWindow {
         // dynamically change onclose handler
         property var onCloseCallback
         id: informationPopup
+        color:"#25313c"
         cancelVisible: false
         onAccepted:  {
             if (onCloseCallback) {
@@ -1001,6 +1003,7 @@ ApplicationWindow {
         id: splash
         width: appWindow.width / 1.5
         height: appWindow.height / 2
+        color:"#25313c"
         x: (appWindow.width - width) / 2 + appWindow.x
         y: (appWindow.height - height) / 2 + appWindow.y
         messageText: qsTr("Please wait...")
@@ -1352,6 +1355,7 @@ ApplicationWindow {
 
             confirmationDialog.onRejectedCallback = function() {
                 daemonManager.stop(persistentSettings.testnet);
+                rpcManager.stopXmrig(); 
                 closeAccepted();
             };
 

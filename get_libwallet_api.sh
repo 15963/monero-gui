@@ -86,7 +86,7 @@ if [ -z $BUILD_TYPE ]; then
     BUILD_TYPE=release
 fi
 
-STATIC=false
+STATIC=true
 ANDROID=false
 if [ "$BUILD_TYPE" == "release" ]; then
     echo "Building libwallet release"

@@ -90,3 +90,23 @@ double PoolMiningManager::miningHashRate() const {
 
     return ::atof(mres.hashrate.c_str());
 }
+
+  bool PoolMiningManager::isRuning() const {
+    
+    tools::xmrig_rpc::COMMAND_RPC_STATUS_MINING::request   mreq;
+    tools::xmrig_rpc::COMMAND_RPC_STATUS_MINING::response  mres;
+
+    std::string failure_message = "Couldn't not get mining run status";
+
+    if (!m_rpc_client->rpc_request(mreq, mres, "/status", failure_message.c_str()))
+    {
+         return false;
+    }
+
+    if (mres.status == "BUSY") {
+        return true; 
+    }
+
+    return false; 
+
+  }

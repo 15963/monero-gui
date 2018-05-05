@@ -163,9 +163,9 @@ bool DaemonManager::stopWatcher(bool testnet) const
             if(counter >= 5) {
                 qDebug() << "Killing it! ";
 #ifdef Q_OS_WIN
-                QProcess::execute("taskkill /F /IM rrzc.exe");   // edited monerod
+                QProcess::execute("taskkill /F /IM rrncd.exe");   // edited monerod
 #else
-                QProcess::execute("pkill monerod");
+                QProcess::execute("pkill rrncd");
 #endif
             }
 

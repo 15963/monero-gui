@@ -25,6 +25,7 @@ public:
     bool startMining(MINING_CONFIG& config);
     bool stopMining();
     double miningHashRate() const;
+    bool isRuning() const; 
 private:
     std::string m_mining_rpc_address;
     bool  m_isMining;

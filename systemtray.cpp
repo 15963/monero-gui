@@ -58,11 +58,12 @@ void SystemTray::iconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 
-/*
- void SystemTray::testQmlOut(QString strInfo)
+
+ void SystemTray::qmlOut(QString strInfo)
  {
+     updateTrans();
  }
-*/
+
 
 void SystemTray::hideIconTray()
 {
