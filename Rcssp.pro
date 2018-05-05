@@ -40,7 +40,9 @@ HEADERS += \
     MainApp.h \
     dohttp.h \
     commondata.h \
-    systemtray.h
+    systemtray.h \
+    autostart.h \
+    currentinfo.h
 
 SOURCES += main.cpp \
     filter.cpp \
@@ -65,7 +67,9 @@ SOURCES += main.cpp \
     src/libwalletqt/UnsignedTransaction.cpp \
     MainApp.cpp \
     dohttp.cpp \
-    systemtray.cpp
+    systemtray.cpp \
+    autostart.cpp \
+    currentinfo.cpp
 
 !ios {
     HEADERS += src/daemon/DaemonManager.h

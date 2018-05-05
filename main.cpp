@@ -52,6 +52,8 @@
 #include "MainApp.h"
 #include "dohttp.h"
 #include "systemtray.h"
+#include "autostart.h"
+#include "currentinfo.h"
 
 // IOS exclusions
 #ifndef Q_OS_IOS
@@ -83,6 +85,8 @@ int main(int argc, char *argv[])
     MainApp app(argc, argv);
 
     qDebug() << "app startd";
+
+
 
     // app.setApplicationName("，monero-core");
     // app.setOrganizationDomain("getmonero.org");
@@ -179,16 +183,21 @@ int main(int argc, char *argv[])
     bool isWindows = false;
     bool isIOS = false;
     bool isMac = false;
+    int type = -1;
 #ifdef Q_OS_WIN
     isWindows = true;
+    type = 0;
     QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
 #elif defined(Q_OS_IOS)
     isIOS = true;
+    type = 1;
     QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
 #elif defined(Q_OS_UNIX)
+    type = 2;
     QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
 #endif
 #ifdef Q_OS_MAC
+    type = 3;
     isMac = true;
 #endif
 
@@ -205,6 +214,19 @@ int main(int argc, char *argv[])
         QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Rcssp/wallets";
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
+
+    AutoStart autoStart;
+    autoStart.init(type);
+
+    CurrentInfo currentInfo;
+    currentInfo.path = moneroAccountsRootDir.at(0) + "/Rcssp/currentInfo/";
+    currentInfo.setCurrentNodeInfo("123");
+    QString strInfo = currentInfo.getCurrentNodeInfo();
+    currentInfo.setCurrentPoolInfo("456");
+    strInfo = currentInfo.getCurrentPoolInfo();
+    currentInfo.setCurrentNodeInfo("789");
+    currentInfo.setCurrentNodeInfo("101112");
+    engine.rootContext()->setContextProperty("currentInfo", &currentInfo);
 
     // Get default account name
     QString accountName = qgetenv("USER"); // mac/linux
@@ -239,8 +261,6 @@ int main(int argc, char *argv[])
         qDebug() << "QrCodeScanner : something went wrong !";
     }
 #endif
-
-
 
     QObject::connect(eventFilter, SIGNAL(sequencePressed(QVariant,QVariant)), rootObject, SLOT(sequencePressed(QVariant,QVariant)));
     QObject::connect(eventFilter, SIGNAL(sequenceReleased(QVariant,QVariant)), rootObject, SLOT(sequenceReleased(QVariant,QVariant)));

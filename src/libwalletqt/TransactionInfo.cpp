@@ -19,7 +19,6 @@ bool TransactionInfo::isFailed() const
     return m_pimpl->isFailed();
 }
 
-
 double TransactionInfo::amount() const
 {
     // there's no unsigned uint64 for JS, so better use double

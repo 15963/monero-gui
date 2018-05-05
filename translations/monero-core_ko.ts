@@ -423,92 +423,107 @@
 <context>
     <name>Mining</name>
     <message>
-        <location filename="../pages/Mining.qml" line="69"/>
+        <location filename="../pages/Mining.qml" line="70"/>
         <source>Solo mining</source>
         <translation>개별 마이닝</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="84"/>
-        <source>document</source>
+        <location filename="../pages/Mining.qml" line="85"/>
+        <source>mingtype</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="111"/>
+        <location filename="../pages/Mining.qml" line="113"/>
         <source>(only available for local daemons)</source>
         <translation>(로컬 데몬에서만 사용 가능)</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="118"/>
+        <location filename="../pages/Mining.qml" line="120"/>
         <source>Mining with your computer helps strengthen the Monero network. The more that people mine, the harder it is for the network to be attacked, and every little bit helps.&lt;br&gt; &lt;br&gt;Mining also gives you a small chance to earn some Monero. Your computer will create hashes looking for block solutions. If you find a block, you will get the associated reward. Good luck!</source>
         <translation>당신의 컴퓨터로 마이닝을 하면 모네로 네트워크가 강화됩니다. 더 많은 사람이 조금씩이라도 마이닝을 시행할수록 네트워크가 공격으로부터 안전해집니다. 또한 마이닝은 약간의 모네로를 벌 수있는 작은 기회를 제공합니다. 컴퓨터가 마이닝을 시행하면, 블록 솔루션을 찾는 해시를 만들고, 맞는 블록을 찾으면 해당하는 보상을 받게됩니다. 행운을 빕니다!</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="128"/>
+        <location filename="../pages/Mining.qml" line="130"/>
         <source>CPU threads</source>
         <translation>CPU 쓰레드</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="136"/>
+        <location filename="../pages/Mining.qml" line="138"/>
         <source>(optional)</source>
         <translation>(선택 항목)</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="148"/>
+        <location filename="../pages/Mining.qml" line="150"/>
         <source>Background mining (experimental)</source>
         <translation>백그라운드 마이닝 (실험적 기능)</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="164"/>
+        <location filename="../pages/Mining.qml" line="166"/>
         <source>Enable mining when running on battery</source>
         <translation>배터리로 구동시 마이닝 사용가능</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="174"/>
+        <location filename="../pages/Mining.qml" line="176"/>
         <source>Manage miner</source>
         <translation>마이닝 관리</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="183"/>
+        <location filename="../pages/Mining.qml" line="185"/>
         <source>Start mining</source>
         <translation>마이닝 시작</translation>
     </message>
     <message>
+        <location filename="../pages/Mining.qml" line="192"/>
+        <source>mention starting mining</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pages/Mining.qml" line="193"/>
+        <source>mention info&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../pages/Mining.qml" line="194"/>
+        <source> mention info detail&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pages/Mining.qml" line="204"/>
         <source>Error starting mining</source>
         <translation>마이닝 시작 중 오류 발생</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="195"/>
+        <location filename="../pages/Mining.qml" line="205"/>
         <source>Couldn&apos;t start mining.&lt;br&gt;</source>
         <translation>마이닝을 시작할 수 없습니다.&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="197"/>
+        <location filename="../pages/Mining.qml" line="207"/>
         <source>Mining is only available on local daemons. Run a local daemon to be able to mine.&lt;br&gt;</source>
         <translation>마이닝은 로컬 데몬에서만 사용할 수 있습니다. 로컬 데몬을 실행하여 마이닝을 활성화합니다.&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="209"/>
+        <location filename="../pages/Mining.qml" line="219"/>
         <source>Stop mining</source>
         <translation>마이닝 중지</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="225"/>
+        <location filename="../pages/Mining.qml" line="235"/>
         <source>Status: not mining</source>
         <translation>상태: 마이닝중이 아님</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="253"/>
+        <location filename="../pages/Mining.qml" line="263"/>
         <source>Mining at %1 H/s</source>
         <translation> %1 H/s 로 마이닝 중</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="256"/>
+        <location filename="../pages/Mining.qml" line="266"/>
         <source>Not mining</source>
         <translation>마이닝중이 아님</translation>
     </message>
     <message>
-        <location filename="../pages/Mining.qml" line="258"/>
+        <location filename="../pages/Mining.qml" line="268"/>
         <source>Status: </source>
         <translation>상태: </translation>
     </message>
@@ -798,123 +813,123 @@
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../pages/Settings.qml" line="104"/>
+        <location filename="../pages/Settings.qml" line="106"/>
         <source>Create view only wallet</source>
         <translation>보기 전용 지갑 만들기</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="194"/>
+        <location filename="../pages/Settings.qml" line="196"/>
         <source>Manage daemon</source>
         <translation>데몬 관리</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="213"/>
+        <location filename="../pages/Settings.qml" line="215"/>
         <source>Start daemon</source>
         <translation>데몬 시작</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="227"/>
+        <location filename="../pages/Settings.qml" line="229"/>
         <source>Stop daemon</source>
         <translation>데몬 중지</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="240"/>
+        <location filename="../pages/Settings.qml" line="242"/>
         <source>Show status</source>
         <translation>상태 표시</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="286"/>
+        <location filename="../pages/Settings.qml" line="288"/>
         <source>Daemon startup flags</source>
         <translation>데몬 시작 플래그</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="265"/>
-        <location filename="../pages/Settings.qml" line="294"/>
+        <location filename="../pages/Settings.qml" line="267"/>
+        <location filename="../pages/Settings.qml" line="296"/>
         <source>(optional)</source>
         <translation>(선택 항목)</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="121"/>
+        <location filename="../pages/Settings.qml" line="123"/>
         <source>Show seed &amp; keys</source>
         <translation>시드 키 표시</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="164"/>
+        <location filename="../pages/Settings.qml" line="166"/>
         <source>Rescan wallet balance</source>
         <translation>지갑 잔액 다시 스캔하기</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="173"/>
+        <location filename="../pages/Settings.qml" line="175"/>
         <source>Error: </source>
         <translation>오류: </translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="178"/>
+        <location filename="../pages/Settings.qml" line="180"/>
         <source>Information</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="179"/>
+        <location filename="../pages/Settings.qml" line="181"/>
         <source>Sucessfully rescanned spent outputs</source>
         <translation>소비된 아웃풋이 성공적으로 다시 스캔되었습니다.</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="257"/>
+        <location filename="../pages/Settings.qml" line="259"/>
         <source>Blockchain location</source>
         <translation>블록체인 위치</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="306"/>
+        <location filename="../pages/Settings.qml" line="308"/>
         <source>Daemon address</source>
         <translation>데몬 주소</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="350"/>
+        <location filename="../pages/Settings.qml" line="352"/>
         <source>Hostname / IP</source>
         <translation>호스트 이름 / IP</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="359"/>
+        <location filename="../pages/Settings.qml" line="361"/>
         <source>Port</source>
         <translation>포트</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="370"/>
+        <location filename="../pages/Settings.qml" line="372"/>
         <source>Login (optional)</source>
         <translation>로그인 (선택 항목)</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="383"/>
+        <location filename="../pages/Settings.qml" line="385"/>
         <source>Username</source>
         <translation>사용자 이름</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="392"/>
+        <location filename="../pages/Settings.qml" line="394"/>
         <source>Password</source>
         <translation>암호</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="400"/>
+        <location filename="../pages/Settings.qml" line="402"/>
         <source>Connect</source>
         <translation>연결</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="426"/>
+        <location filename="../pages/Settings.qml" line="428"/>
         <source>Layout settings</source>
         <translation>레이아웃 설정</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="443"/>
+        <location filename="../pages/Settings.qml" line="445"/>
         <source>Custom decorations</source>
         <translation>사용자 설정 디자인</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="454"/>
+        <location filename="../pages/Settings.qml" line="456"/>
         <source>Log level</source>
         <translation>로그 레벨</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="488"/>
+        <location filename="../pages/Settings.qml" line="490"/>
         <source>(e.g. *:WARNING,net.p2p:DEBUG)</source>
         <translation>(예: *:WARNING,net.p2p:DEBUG)</translation>
     </message>
@@ -923,37 +938,37 @@
         <translation type="vanished">버전</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="520"/>
+        <location filename="../pages/Settings.qml" line="522"/>
         <source>GUI version: </source>
         <translation>GUI 버전:</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="527"/>
+        <location filename="../pages/Settings.qml" line="529"/>
         <source>Embedded Monero version: </source>
         <translation>임베디드 모네로 버전:</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="533"/>
+        <location filename="../pages/Settings.qml" line="535"/>
         <source>Wallet creation height: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="534"/>
+        <location filename="../pages/Settings.qml" line="536"/>
         <source> &lt;a href=&apos;#&apos;&gt;(Click to change)&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="560"/>
+        <location filename="../pages/Settings.qml" line="562"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="573"/>
+        <location filename="../pages/Settings.qml" line="575"/>
         <source>Rescan wallet cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="574"/>
+        <location filename="../pages/Settings.qml" line="576"/>
         <source>Are you sure you want to rebuild the wallet cache?
 The following information will be deleted
 - Recipient addresses
@@ -965,104 +980,104 @@ The old wallet cache file will be renamed and can be restored later.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="600"/>
+        <location filename="../pages/Settings.qml" line="602"/>
         <source>Wallet log path: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="604"/>
+        <location filename="../pages/Settings.qml" line="606"/>
         <source>Daemon log path: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="614"/>
+        <location filename="../pages/Settings.qml" line="616"/>
         <source>Daemon log</source>
         <translation>데몬 로그</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="678"/>
+        <location filename="../pages/Settings.qml" line="680"/>
         <source>Please choose a folder</source>
         <translation>폴더를 선택하세요</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="687"/>
+        <location filename="../pages/Settings.qml" line="689"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="690"/>
+        <location filename="../pages/Settings.qml" line="692"/>
         <source>Error: Filesystem is read only</source>
         <translation>오류: 해당 파일시스템은 읽기전용입니다</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="694"/>
+        <location filename="../pages/Settings.qml" line="696"/>
         <source>Warning: There&apos;s only %1 GB available on the device. Blockchain requires ~%2 GB of data.</source>
         <translation>경고 : 해당장치에 사용 가능한 공간은 %1 GB뿐입니다. 블록체인에는 ~ %2 GB의 데이터가 필요합니다.</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="696"/>
+        <location filename="../pages/Settings.qml" line="698"/>
         <source>Note: There&apos;s %1 GB available on the device. Blockchain requires ~%2 GB of data.</source>
         <translation>참고: %1 GB의 장치를 사용할 수 있습니다. 블록체인에는 ~ %2 GB의 데이터가 필요합니다.</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="700"/>
+        <location filename="../pages/Settings.qml" line="702"/>
         <source>Note: lmdb folder not found. A new folder will be created.</source>
         <translation>참고: lmdb 폴더를 찾을 수 없습니다. 새 폴더가 생성됩니다.</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="582"/>
-        <location filename="../pages/Settings.qml" line="705"/>
+        <location filename="../pages/Settings.qml" line="584"/>
+        <location filename="../pages/Settings.qml" line="707"/>
         <source>Cancel</source>
         <translation>취소</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="172"/>
-        <location filename="../pages/Settings.qml" line="644"/>
+        <location filename="../pages/Settings.qml" line="174"/>
+        <location filename="../pages/Settings.qml" line="646"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="504"/>
+        <location filename="../pages/Settings.qml" line="506"/>
         <source>Debug info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="630"/>
+        <location filename="../pages/Settings.qml" line="632"/>
         <source>Wallet seed &amp; keys</source>
         <translation>지갑 시드 키</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="632"/>
+        <location filename="../pages/Settings.qml" line="634"/>
         <source>Secret view key</source>
         <translation>비공개 키</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="633"/>
+        <location filename="../pages/Settings.qml" line="635"/>
         <source>Public view key</source>
         <translation>공개 키</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="634"/>
+        <location filename="../pages/Settings.qml" line="636"/>
         <source>Secret spend key</source>
         <translation>비공개 결제 키</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="635"/>
+        <location filename="../pages/Settings.qml" line="637"/>
         <source>Public spend key</source>
         <translation>공개 결제 키</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="645"/>
+        <location filename="../pages/Settings.qml" line="647"/>
         <source>Wrong password</source>
         <translation>잘못된 암호</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="73"/>
+        <location filename="../pages/Settings.qml" line="75"/>
         <source>Manage wallet</source>
         <translation>지갑 관리</translation>
     </message>
     <message>
-        <location filename="../pages/Settings.qml" line="89"/>
+        <location filename="../pages/Settings.qml" line="91"/>
         <source>Close wallet</source>
         <translation>지갑 닫기</translation>
     </message>
@@ -1242,17 +1257,17 @@ The old wallet cache file will be renamed and can be restored later.
 <context>
     <name>SystemTray</name>
     <message>
-        <location filename="../systemtray.cpp" line="11"/>
+        <location filename="../systemtray.cpp" line="10"/>
         <source>viewshow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemtray.cpp" line="12"/>
+        <location filename="../systemtray.cpp" line="11"/>
         <source>viewhide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemtray.cpp" line="13"/>
+        <location filename="../systemtray.cpp" line="12"/>
         <location filename="../systemtray.cpp" line="44"/>
         <source>quit</source>
         <translation type="unfinished"></translation>
@@ -2002,124 +2017,124 @@ Please upgrade or connect to another daemon</source>
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="329"/>
-        <location filename="../main.qml" line="497"/>
-        <location filename="../main.qml" line="509"/>
-        <location filename="../main.qml" line="559"/>
-        <location filename="../main.qml" line="571"/>
-        <location filename="../main.qml" line="613"/>
-        <location filename="../main.qml" line="622"/>
-        <location filename="../main.qml" line="674"/>
-        <location filename="../main.qml" line="712"/>
-        <location filename="../main.qml" line="742"/>
-        <location filename="../main.qml" line="925"/>
+        <location filename="../main.qml" line="330"/>
+        <location filename="../main.qml" line="498"/>
+        <location filename="../main.qml" line="510"/>
+        <location filename="../main.qml" line="560"/>
+        <location filename="../main.qml" line="572"/>
+        <location filename="../main.qml" line="614"/>
+        <location filename="../main.qml" line="623"/>
+        <location filename="../main.qml" line="675"/>
+        <location filename="../main.qml" line="713"/>
+        <location filename="../main.qml" line="743"/>
+        <location filename="../main.qml" line="926"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="330"/>
+        <location filename="../main.qml" line="331"/>
         <source>Couldn&apos;t open wallet: </source>
         <translation>지갑을 열 수 없습니다:</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="361"/>
+        <location filename="../main.qml" line="362"/>
         <source>Unlocked balance (waiting for block)</source>
         <translation>잠금해제된 잔액 (블록 대기 중)</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="361"/>
+        <location filename="../main.qml" line="362"/>
         <source>Unlocked balance (~%1 min)</source>
         <translation>잠금해제된 잔액 (~%1 분)</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="361"/>
+        <location filename="../main.qml" line="362"/>
         <source>Unlocked balance</source>
         <translation>잠금해제된 잔액</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="413"/>
+        <location filename="../main.qml" line="414"/>
         <source>Waiting for daemon to start...</source>
         <translation>데몬 시작까지 기다리는 중...</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="419"/>
+        <location filename="../main.qml" line="420"/>
         <source>Waiting for daemon to stop...</source>
         <translation>데몬 종료까지 기다리는 중...</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="444"/>
+        <location filename="../main.qml" line="445"/>
         <source>Daemon failed to start</source>
         <translation>데몬 시작에 실패했습니다</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="445"/>
+        <location filename="../main.qml" line="446"/>
         <source>Please check your wallet and daemon log for errors. You can also try to start %1 manually.</source>
         <translation>지갑과 데몬 로그에서 오류를 확인하십시오. 수동으로 %1을 시작할 수도 있습니다.</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="499"/>
+        <location filename="../main.qml" line="500"/>
         <source>Can&apos;t create transaction: Wrong daemon version: </source>
         <translation>잘못된 데몬 버전으로 거래를 만들 수 없습니다: </translation>
     </message>
     <message>
-        <location filename="../main.qml" line="501"/>
-        <location filename="../main.qml" line="614"/>
+        <location filename="../main.qml" line="502"/>
+        <location filename="../main.qml" line="615"/>
         <source>Can&apos;t create transaction: </source>
         <translation>거래를 만들 수 없습니다:</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="510"/>
-        <location filename="../main.qml" line="623"/>
+        <location filename="../main.qml" line="511"/>
+        <location filename="../main.qml" line="624"/>
         <source>No unmixable outputs to sweep</source>
         <translation>스윕처리할 비혼합 아웃풋 없습니다</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="522"/>
-        <location filename="../main.qml" line="635"/>
+        <location filename="../main.qml" line="523"/>
+        <location filename="../main.qml" line="636"/>
         <source>Confirmation</source>
         <translation>확인</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="523"/>
-        <location filename="../main.qml" line="636"/>
+        <location filename="../main.qml" line="524"/>
+        <location filename="../main.qml" line="637"/>
         <source>Please confirm transaction:
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="524"/>
+        <location filename="../main.qml" line="525"/>
         <source>
 Address: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="525"/>
+        <location filename="../main.qml" line="526"/>
         <source>
 Payment ID: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="527"/>
-        <location filename="../main.qml" line="638"/>
+        <location filename="../main.qml" line="528"/>
+        <location filename="../main.qml" line="639"/>
         <source>
 Fee: </source>
         <translation type="unfinished">수수료:</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="528"/>
+        <location filename="../main.qml" line="529"/>
         <source>
 
 Ringsize: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="529"/>
+        <location filename="../main.qml" line="530"/>
         <source>
 Number of transactions: </source>
         <translation type="unfinished">거래 횟수: </translation>
     </message>
     <message>
-        <location filename="../main.qml" line="530"/>
+        <location filename="../main.qml" line="531"/>
         <source>
 
 Description: </source>
@@ -2138,8 +2153,8 @@ Description: </source>
         <translation type="vanished">결제 아이디: </translation>
     </message>
     <message>
-        <location filename="../main.qml" line="526"/>
-        <location filename="../main.qml" line="637"/>
+        <location filename="../main.qml" line="527"/>
+        <location filename="../main.qml" line="638"/>
         <source>
 
 Amount: </source>
@@ -2154,32 +2169,32 @@ Amount: </source>
         <translation type="vanished"> 링사이즈: </translation>
     </message>
     <message>
-        <location filename="../main.qml" line="734"/>
+        <location filename="../main.qml" line="735"/>
         <source>This address received %1 monero, with %2 confirmation(s).</source>
         <translation>이 주소로 %1 XMR을 받아, %2 번의 컨펌을 받았습니다.</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1046"/>
+        <location filename="../main.qml" line="1047"/>
         <source>Cssp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1346"/>
+        <location filename="../main.qml" line="1347"/>
         <source>Daemon is running</source>
         <translation>데몬이 실행 중입니다</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1347"/>
+        <location filename="../main.qml" line="1348"/>
         <source>Daemon will still be running in background when GUI is closed.</source>
         <translation>GUI가 닫혀도 데몬은 백그라운드에서 계속 실행됩니다.</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1349"/>
+        <location filename="../main.qml" line="1350"/>
         <source>Stop daemon</source>
         <translation>데몬 중지</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1383"/>
+        <location filename="../main.qml" line="1384"/>
         <source>New version of monero-wallet-gui is available: %1&lt;br&gt;%2</source>
         <translation>monero-wallet-gui의 새 버전을 사용할 수 있습니다: %1&lt;br&gt;%2</translation>
     </message>
@@ -2192,72 +2207,72 @@ Amount: </source>
         <translation type="vanished">설명: </translation>
     </message>
     <message>
-        <location filename="../main.qml" line="560"/>
+        <location filename="../main.qml" line="561"/>
         <source>Amount is wrong: expected number from %1 to %2</source>
         <translation>금액이 잘못되었습니다 : % 1에서 % 2까지의 예상 숫자</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="572"/>
+        <location filename="../main.qml" line="573"/>
         <source>Insufficient funds. Unlocked balance: %1</source>
         <translation>잔액이 불충분합니다. 잠금해제 된 잔액: %1</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="675"/>
+        <location filename="../main.qml" line="676"/>
         <source>Couldn&apos;t send the money: </source>
         <translation>돈을 전송하지 못했습니다.</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="678"/>
+        <location filename="../main.qml" line="679"/>
         <source>Information</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="684"/>
+        <location filename="../main.qml" line="685"/>
         <source>Money sent successfully: %1 transaction(s) </source>
         <translation>송금 완료: %1 개의 거래 </translation>
     </message>
     <message>
-        <location filename="../main.qml" line="684"/>
+        <location filename="../main.qml" line="685"/>
         <source>Transaction saved to file: %1</source>
         <translation>거래 데이터를 파일에 저장되었습니다: %1</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="724"/>
+        <location filename="../main.qml" line="725"/>
         <source>Payment check</source>
         <translation>결제 확인</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="729"/>
+        <location filename="../main.qml" line="730"/>
         <source>This address received %1 monero, but the transaction is not yet mined</source>
         <translation>이 주소는 % 1XMR을 받았지만, 해당 거래가 아직 채굴에 포함되지 않았습니다</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="738"/>
+        <location filename="../main.qml" line="739"/>
         <source>This address received nothing</source>
         <translation>이 주소는 아무것도 받지 못했습니다</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="750"/>
+        <location filename="../main.qml" line="751"/>
         <source>Balance (syncing)</source>
         <translation>잔액 (동기화)</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="750"/>
+        <location filename="../main.qml" line="751"/>
         <source>Balance</source>
         <translation>잔액</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="926"/>
+        <location filename="../main.qml" line="927"/>
         <source>Wrong password</source>
         <translation type="unfinished">잘못된 암호</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1007"/>
+        <location filename="../main.qml" line="1008"/>
         <source>Please wait...</source>
         <translation>기다려주십시오...</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1031"/>
+        <location filename="../main.qml" line="1032"/>
         <source>Program setup wizard</source>
         <translation>프로그램 설치 마법사</translation>
     </message>
@@ -2266,7 +2281,7 @@ Amount: </source>
         <translation type="vanished">모네로</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1094"/>
+        <location filename="../main.qml" line="1095"/>
         <source>send to the same destination</source>
         <translation>동일한 대상에게 송금하기</translation>
     </message>

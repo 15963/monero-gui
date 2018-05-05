@@ -98,10 +98,11 @@ Rectangle {
                     }
                     Layout.preferredWidth:  250
                     onCurrentIndexChanged:{
-                        currentPool = currentIndex
-                       console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).index)
-                       walletManager.stopMining()
-                       update()
+                    currentPool = currentIndex
+                    currentInfo.setCurrentPoolInfo(currentIndex)
+                    console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).index)
+                    walletManager.stopMining()
+                    update()
                    }
                 }
             }
@@ -188,6 +189,14 @@ Rectangle {
                     releasedColor: "#4ed9d9"
                     pressedColor: "#4ed9d9"
                     onClicked: {
+
+                        mentionPopup.title = qsTr("mention starting mining") + translationManager.emptyString;
+                        mentionPopup.text = qsTr("mention info<br>")
+                        mentionPopup.text += qsTr(" mention info detail<br>")
+                        mentionPopup.icon = StandardIcon.Critical
+                        mentionPopup.open()
+
+
                         console.debug(cbItems.get(choiceminingtype.currentIndex).text + ", " + cbItems.get(choiceminingtype.currentIndex).index)
                         var success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
                         if (success) {
@@ -243,8 +252,15 @@ Rectangle {
                 cbItems.append({"text": "remotepool"+i.toString(), "index":data.data[i].ip+":"+data.data[i].port.toString()})
             }
         }
-        choiceminingtype.currentIndex = currentPool
+        if(currentInfo.getCurrentPoolInfo() !== ""){
+            currentPool = currentInfo.getCurrentPoolInfo()
+            // auto start minging
 
+        }
+        else{
+            ;
+        }
+        choiceminingtype.currentIndex = currentPool
     }
 
     function updateStatusText() {
@@ -270,7 +286,12 @@ Rectangle {
         id: errorPopup
         cancelVisible: false
     }
-
+    StandardDialog {
+        id: mentionPopup
+        cancelVisible: false
+        onAccepted: {
+        }
+    }
     Timer {
         id: timer
         interval: 2000; running: false; repeat: true
@@ -288,5 +309,10 @@ Rectangle {
     }
     function onPageClosed() {
         timer.running = false
+    }
+
+    Connections {
+        target: currentInfo
+
     }
 }

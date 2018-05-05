@@ -42,6 +42,7 @@ Window {
     height: 100
     opacity: 0.7
 
+
     ColumnLayout {
         id: rootLayout
 

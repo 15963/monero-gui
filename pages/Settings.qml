@@ -324,6 +324,8 @@ Rectangle {
                 onCurrentIndexChanged:{
                 console.debug(nodeItems.get(currentIndex).text + ", " + nodeItems.get(currentIndex).index)
                 currentNode = currentIndex
+                currentInfo.setCurrentNodeInfo(currentIndex)
+
                 if(currentIndex !=  0){
                     daemonAddr.text = nodeItems.get(currentIndex).index
                     daemonPort.text = daemonAddress[1]
@@ -746,6 +748,7 @@ Rectangle {
         }
 
 
+
      }
 
     // fires on every page load
@@ -767,7 +770,12 @@ Rectangle {
         if(typeof daemonManager != "undefined")
             daemonManager.daemonConsoleUpdated.connect(onDaemonConsoleUpdated)
 
+        if(currentInfo.getCurrentNodeInfo() !== "")
+        {
+            ; // Auto start the node
+        }
         choicenotetype.currentIndex = currentNode
+        currentInfo.setCurrentNodeInfo(currentIndex)
 
     }
 
@@ -776,7 +784,6 @@ Rectangle {
         daemonConsolePopup.textArea.append(message)
 
     }
-
 
 
 
