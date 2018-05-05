@@ -100,7 +100,16 @@ Rectangle {
                     Layout.preferredWidth:  250
                     onCurrentIndexChanged:{
                     currentPool = currentIndex
-                    currentInfo.setCurrentPoolInfo(currentIndex)
+                    if (currentIndex == 0) {
+                  
+                        currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);  
+                        
+                    } else  if (currentIndex > 0) {
+                        var pool_address = cbItems.get(currentIndex).index.split(":")[0];
+                        var pool_port = cbItems.get(currentIndex).index.split(":")[1];
+                        currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+                    }
+                     
                     console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).index)
                     walletManager.stopMining()
                     update()
@@ -139,6 +148,16 @@ Rectangle {
                     text: "1"
                     placeholderText: qsTr("(optional)") + translationManager.emptyString
                     validator: IntValidator { bottom: 1 }
+                    onTextUpdated: { 
+                        if (choiceminingtype.currentIndex == 0) {
+                            currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);  
+                         } else if (choiceminingtype.currentIndex > 0) {
+                           var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
+                           var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
+                           currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+                         }
+                         
+                    }
                 }
             }
 
@@ -209,6 +228,8 @@ Rectangle {
                            + "\"pool\":" + "\"" + pool_address + "\"," + "\"port\":" + pool_port + ","
                            + "\"user\":" + "\""+ appWindow.currentWallet.address +"\"," + "\"password\":\"x\"}";
 
+                           currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+
                            console.debug(json_config);
 
                            if (!rpcManager.isMining()) {
@@ -239,6 +260,7 @@ Rectangle {
                            }
 
                         } else {
+                               currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);  
                                success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
                         }
 
@@ -268,8 +290,10 @@ Rectangle {
                     onClicked: {
                          if (choiceminingtype.currentIndex > 0) {
                              rpcManager.stopMining()
+                             currentInfo.deleteFile(2)
                          } else {
                              walletManager.stopMining()
+                             currentInfo.deleteFile(1)
                          }
                         update()
                     }

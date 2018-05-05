@@ -14,8 +14,12 @@ CurrentInfo::CurrentInfo(QObject *parent) : QObject(parent)
 
 QString CurrentInfo::getCurrentPoolInfo()
 {
-    QString currentPool;
+    QString currentPool="";
     QFile data(path + filepool);
+    if (!data.exists())
+    {
+        return currentPool; 
+    }
     if (data.open(QFile::ReadOnly)) {
         QTextStream in(&data);
         int ans = 0;
@@ -26,8 +30,12 @@ QString CurrentInfo::getCurrentPoolInfo()
 
 QString CurrentInfo::getCurrentNodeInfo()
 {
-    QString currentNode;
+    QString currentNode="";
     QFile data(path + filenode);
+     if (!data.exists())
+    {
+        return currentNode; 
+    }
     if (data.open(QFile::ReadOnly)) {
         QTextStream in(&data);
         in >> currentNode;
@@ -35,7 +43,7 @@ QString CurrentInfo::getCurrentNodeInfo()
     return currentNode;
 }
 
-bool CurrentInfo::setCurrentPoolInfo(QString poolinfo)
+bool CurrentInfo::setCurrentPoolInfo(QString pool_address,QString pool_port,QString wallet_address,QString threads)
 {
     createFile( path,filepool);
     QFile file(path + filepool);
@@ -47,11 +55,11 @@ bool CurrentInfo::setCurrentPoolInfo(QString poolinfo)
     file.open(QIODevice::Truncate);
     file.close();
     file.open(QIODevice::WriteOnly);
-    io<<poolinfo;
+    io<<pool_address<<":"<<pool_port<<":"<<wallet_address<<":"<<threads;
     file.close();
 }
 
-bool CurrentInfo::setCurrentNodeInfo(QString nodeinfo)
+bool CurrentInfo::setCurrentNodeInfo(QString nodeinfo,QString threads)
 {
     createFile( path,filenode);
     QFile file(path + filenode);
@@ -63,7 +71,7 @@ bool CurrentInfo::setCurrentNodeInfo(QString nodeinfo)
     file.open(QIODevice::Truncate);
     file.close();
     file.open(QIODevice::WriteOnly);
-    io<<nodeinfo;
+    io<<nodeinfo<<":"<<threads;
     file.close();
 }
 
@@ -98,4 +106,42 @@ void CurrentInfo::createFile(QString filePath,QString fileName)
     //将程序当前路径设置为原来的路径
     tempDir.setCurrent(currentDir);
     qDebug()<<tempDir.currentPath();
+}
+
+ void CurrentInfo::eleteFile(int type)
+ {
+     switch (type)
+     {
+         case  1 : //pool
+                QFile data(path + filepool);
+                if (data.exists()) {
+                    data.remove(); 
+                }
+
+         break; 
+         case  2 : //node
+                QFile data(path + filenode);
+                if (data.exists()) {
+                    data.remove(); 
+                }
+         break; 
+     }
+ }
+
+int CurrentInfo::getCurrentType()
+{
+       Runtype run_type = RUN_NOTH; 
+       QFile file_pool(path + filepool);
+       QFile file_node(path + filenode);
+       
+       if (file_pool.exists() && file_node.exists())
+       {
+            run_type = RUN_BOTH; 
+       } else if (file_pool.exists()) {
+           run_type = RUN_POOL; 
+       } else if (file_node.exists()){
+           run_type = RUN_NODE; 
+       }
+
+       return (int)run_type; 
 }

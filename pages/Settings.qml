@@ -324,7 +324,9 @@ Rectangle {
                 onCurrentIndexChanged:{
                 console.debug(nodeItems.get(currentIndex).text + ", " + nodeItems.get(currentIndex).index)
                 currentNode = currentIndex
-                currentInfo.setCurrentNodeInfo(currentIndex)
+                var pool_address = cbItems.get(currentIndex).index.split(":")[0];
+                var pool_port = cbItems.get(currentIndex).index.split(":")[1];
+                currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,"1")
 
                 if(currentIndex !=  0){
                     daemonAddr.text = nodeItems.get(currentIndex).index

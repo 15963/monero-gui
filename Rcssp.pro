@@ -47,7 +47,8 @@ HEADERS += \
     src/libwalletqt/pool_mining_manager.h \
     src/libwalletqt/RpcManager.h \
     autostart.h \
-    currentinfo.h
+    currentinfo.h \
+    src/libwalletqt/AutorunManager.h
 
 SOURCES += main.cpp \
     filter.cpp \
@@ -76,7 +77,8 @@ SOURCES += main.cpp \
     src/libwalletqt/pool_mining_manager.cpp \
     src/libwalletqt/RpcManager.cpp \
     autostart.cpp \
-    currentinfo.cpp
+    currentinfo.cpp \
+    src/libwalletqt/AutorunManager.cpp
 
 !ios {
     HEADERS += src/daemon/DaemonManager.h
