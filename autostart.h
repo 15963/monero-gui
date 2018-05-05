@@ -8,7 +8,7 @@ class AutoStart : public QObject
     Q_OBJECT
 public:
     explicit AutoStart(QObject *parent = nullptr);
-    void init(int type);
+    void init(int type,QString path);
 signals:
 
 public slots:

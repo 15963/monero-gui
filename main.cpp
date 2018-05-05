@@ -220,12 +220,14 @@ int main(int argc, char *argv[])
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
 
-    AutoStart autoStart;
-    autoStart.init(type);
-
+    QString path =  moneroAccountsRootDir.at(0) + "/Rcssp/currentInfo/";
     CurrentInfo currentInfo;
-    currentInfo.path = moneroAccountsRootDir.at(0) + "/Rcssp/currentInfo/";
+    currentInfo.path = path;
     engine.rootContext()->setContextProperty("currentInfo", &currentInfo);
+
+
+    AutoStart autoStart;
+    autoStart.init(type,path);
 
     // Get default account name
     QString accountName = qgetenv("USER"); // mac/linux
