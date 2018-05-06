@@ -32,6 +32,7 @@
 #include <QStandardPaths>
 #include <QDebug>
 #include <QObject>
+#include <boost/program_options.hpp>
 #include "clipboardAdapter.h"
 #include "filter.h"
 #include "oscursor.h"
@@ -55,6 +56,7 @@
 #include "autostart.h"
 #include "currentinfo.h"
 #include "rpcmanager.h"
+#include "autorunmanager.h"
 
 // IOS exclusions
 #ifndef Q_OS_IOS
@@ -78,6 +80,63 @@ int main(int argc, char *argv[])
 //    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 //    qDebug() << "High DPI auto scaling - enabled";
 //#endif
+
+  bool isAutoStart = false; 
+  std::string configPath;
+
+  namespace po = boost::program_options;
+  po::options_description desc_params_help("Rsscp options");
+  desc_params_help.add_options()
+  ("help","produce help message")
+  ("start", "set Rsscp auto startup")
+  ("config", po::value<string>(&configPath),"set progame config path")
+  ("s", "set Rsscp auto startup")
+  ("c", po::value<string>(&configPath),"set progame config path");
+  
+
+  po::variables_map vm;          
+  po::store(po::parse_command_line(argc, argv, desc_params_help), vm);  
+  po::notify(vm);  
+    
+  if (vm.count("help") || argc < 2)
+  {
+     std::cout<< desc_params_help <<std::endl;
+     return 1; 
+  }
+  if (vm.count("start") || vm.count("s"))
+  {
+		isAutoStart = true;
+  }
+
+  //isAutoStart = true;
+  //configPath = "/Users/axis/Rcssp/currentInfo/";
+  
+  if (isAutoStart) {
+
+      MainApp app(argc, argv);
+      qDebug() << "app auto start startd";
+      CurrentInfo currentInfo;
+      currentInfo.path = QString::fromLocal8Bit(configPath.c_str()); 
+      int miningType = currentInfo.getCurrentType(); 
+      QVector<QString> params(3);
+      if (miningType == RUN_POOL) {
+         params[0]=currentInfo.getCurrentPoolInfo(); 
+         AutoRunManager::instance()->setMiningParam(params, miningType);          
+      } else if (miningType == RUN_NODE) {
+         params[0]=currentInfo.getCurrentNodeInfo(); 
+         AutoRunManager::instance()->setMiningParam(params, miningType);  
+      } else if (miningType == RUN_BOTH) {
+         params[0]=currentInfo.getCurrentPoolInfo(); 
+         params[1]=currentInfo.getCurrentNodeInfo(); 
+         AutoRunManager::instance()->setMiningParam(params, miningType);    
+      }
+      if (miningType != RUN_NOTH) {
+          AutoRunManager::instance()->start();
+      }
+
+      return app.exec();
+  }
+
 
     // Log settings
     Monero::Wallet::init(argv[0], "，Rcssp");

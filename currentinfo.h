@@ -7,7 +7,7 @@ typedef enum _RUNTYPE{
     RUN_POOL = 1,
     RUN_NODE = 2, 
     RUN_BOTH = 3,
-    RUN_NOTH = 4,
+    RUN_NOTH = 4
 } Runtype; 
 
 class CurrentInfo : public QObject
@@ -25,13 +25,11 @@ public slots:
     QString getCurrentPoolInfo();
     QString getCurrentNodeInfo();
     bool setCurrentPoolInfo(QString pool_address,QString pool_port,QString wallet_address,QString threads);
-    bool setCurrentNodeInfo(QString nodeinfo,QString threads);
-
+    bool setCurrentNodeInfo(QString nodeinfo,QString wallet_address,QString threads);
     void setSelectMinInfo(QString mining,QString  back_ming,QString threads);
     QString getSelectMinInfo();
     void setSelectNodeInfo(QString node,QString port, QString name,QString password);
     QString getSelectNodeInfo();
-
     void deleteFile(int type);
     int  getCurrentType(); 
 

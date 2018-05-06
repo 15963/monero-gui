@@ -64,7 +64,7 @@ bool CurrentInfo::setCurrentPoolInfo(QString pool_address,QString pool_port,QStr
     file.close();
 }
 
-bool CurrentInfo::setCurrentNodeInfo(QString nodeinfo,QString threads)
+bool CurrentInfo::setCurrentNodeInfo(QString nodeinfo,QString wallet_address,QString threads)
 {
     createFile( path,filenode);
     QFile file(path + filenode);
@@ -76,8 +76,8 @@ bool CurrentInfo::setCurrentNodeInfo(QString nodeinfo,QString threads)
     file.open(QIODevice::Truncate);
     file.close();
     file.open(QIODevice::WriteOnly);
-    QTextStream write(&file);
-    write<<nodeinfo<<":"<<threads;
+	QTextStream write(&file);
+    write<<nodeinfo<<":"<<wallet_address<<":"<<threads;
     write.flush();
     file.close();
 }
@@ -120,21 +120,21 @@ void CurrentInfo::createFile(QString filePath,QString fileName)
      switch (type)
      {
          case  1 : //pool
-                {
-                    QFile file_pool(path + filepool);
-                    if (file_pool.exists()) {
-                        file_pool.remove();
-                    }
+         {
+                QFile pool_file(path + filepool);
+                if (pool_file.exists()) {
+                    pool_file.remove(); 
                 }
+         }
          break; 
          case  2 : //node
-            {
-                QFile file_node(path + filenode);
-                if (file_node.exists()) {
-                    file_node.remove();
+         {
+                QFile node_file(path + filenode);
+                if (node_file.exists()) {
+                    node_file.remove(); 
                 }
-            }
-         break; 
+         }
+         break;
      }
  }
 
