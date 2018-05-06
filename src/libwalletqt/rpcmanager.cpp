@@ -55,14 +55,12 @@ bool RpcManager::stopXmrig()
     QThread::sleep(2);
     counter++;
     qDebug() << "Daemon still running.  " << counter;
-    if(counter >= 5) {
-                qDebug() << "Killing it! ";
+    qDebug() << "Killing it! ";
 #ifdef Q_OS_WIN
-                QProcess::execute("taskkill /F /IM rrzc.exe");   // edited monerod
+                QProcess::execute("taskkill /F /IM xmrig.exe");   // edited monerod
 #else
-                QProcess::execute("pkill monerod");
+                QProcess::execute("pkill xmrig");
 #endif
-            }
 
     return true;
 }

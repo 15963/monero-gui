@@ -11,6 +11,7 @@ class AutoRunManager : public QObject
 public:
     static AutoRunManager * instance();
     static void* start_mining(void* p);
+    static void* get_mining_hashrate(void*p);
     Q_INVOKABLE void setMiningParam(QVector<QString>& params,int runType);
     Q_INVOKABLE bool start();
     Q_INVOKABLE bool stop();

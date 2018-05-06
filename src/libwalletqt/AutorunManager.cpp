@@ -113,20 +113,33 @@ bool AutoRunManager::startXmrigMining() {
         return true; 
     }
 
+    RpcManager::instance()->stopXmrig();
+
     if (RpcManager::instance()->startXmrig(7777)) {
-                                    
+        QThread::sleep(2);
         bret = RpcManager::instance()->startMining(m_pool_config,(quint32)m_threads);
         if (bret == false) {
             RpcManager::instance()->stopXmrig();
+             QThread::sleep(2);
             if (RpcManager::instance()->startXmrig(7777)) {
+                 QThread::sleep(2);
                 bret = RpcManager::instance()->startMining(m_pool_config,(quint32)m_threads);
             }
+        }
+        else
+        {
+            bret = true;
         }
 
     } else {
         bret = false; 
     }
    
+    if (bret==true) {
+        boost::thread thr (boost::bind(&AutoRunManager::get_mining_hashrate,this));
+        thr.detach();
+    }
+
     return bret;      
 }
 
@@ -140,6 +153,21 @@ void* AutoRunManager::start_mining(void* p) {
       }
       QThread::sleep(5); // waiting 5 seconds
     }
+
+    return NULL;
+}
+
+void* AutoRunManager::get_mining_hashrate(void*p)
+{
+    AutoRunManager *ptr = (AutoRunManager*)p;
+    for(;;) {
+       double nrate = RpcManager::instance()->miningHashRate();
+       printf("hashrate: %3.1f H/s\n",nrate);
+       QThread::sleep(10);
+    }
+
+
+    return NULL;
 }
 
 bool AutoRunManager::startDaemonMining() {
