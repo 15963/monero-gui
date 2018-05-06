@@ -102,10 +102,11 @@ Rectangle {
                     currentPool = currentIndex
                     currentInfo.setSelectMinInfo(currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
                     if (currentIndex == 0) {
-                  
+                        currentInfo.deleteFile(2) //remove rpc pool_info
                         currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);  
                         
                     } else  if (currentIndex > 0) {
+                         currentInfo.deleteFile(1) //remove daemon node_info
                         var pool_address = cbItems.get(currentIndex).index.split(":")[0];
                         var pool_port = cbItems.get(currentIndex).index.split(":")[1];
                         currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
@@ -151,8 +152,10 @@ Rectangle {
                     validator: IntValidator { bottom: 1 }
                     onTextUpdated: { 
                         if (choiceminingtype.currentIndex == 0) {
+                            currentInfo.deleteFile(2) //remove rpc pool_info
                             currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);
                          } else if (choiceminingtype.currentIndex > 0) {
+                           currentInfo.deleteFile(1) //remove daemon node_info
                            var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
                            var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
@@ -235,10 +238,9 @@ Rectangle {
                            + "\"pool\":" + "\"" + pool_address + "\"," + "\"port\":" + pool_port + ","
                            + "\"user\":" + "\""+ appWindow.currentWallet.address +"\"," + "\"password\":\"x\"}";
 
+                           currentInfo.deleteFile(1) //remove daemon node_info
                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
-
                            currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
-
                            console.debug(json_config);
 
                            if (!rpcManager.isMining()) {
@@ -269,6 +271,7 @@ Rectangle {
                            }
 
                         } else {
+                               currentInfo.deleteFile(2) //remove rpc pool_info
                                currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
                                success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
                         }
@@ -334,7 +337,7 @@ Rectangle {
 
         // 32bit cannot local-mining
         if(!is32){
-            cbItems.append({"text": "localmin", "index":"localmin"})
+            cbItems.append({"text": "localmin", "index":"127.0.0.1:22338"})
             choiceminingtype.currentIndex = 0;
         }
 
