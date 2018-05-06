@@ -151,7 +151,7 @@ Rectangle {
                     validator: IntValidator { bottom: 1 }
                     onTextUpdated: { 
                         if (choiceminingtype.currentIndex == 0) {
-                            currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);  
+                            currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);
                          } else if (choiceminingtype.currentIndex > 0) {
                            var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
                            var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
@@ -221,7 +221,7 @@ Rectangle {
                         mentionPopup.open()
                         */
 
-                        daemonManagerDialog.open();
+                    //    daemonManagerDialog.open();
 
 
                         console.debug(cbItems.get(choiceminingtype.currentIndex).text + ", " + cbItems.get(choiceminingtype.currentIndex).index)
@@ -269,12 +269,21 @@ Rectangle {
                            }
 
                         } else {
-                               currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);  
+                               currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
                                success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
                         }
 
                         if (success) {
-                            update()
+
+                            updateStatusText()
+
+                            if (choiceminingtype.currentIndex > 0) {
+                               startSoloMinerButton.enabled = !rpcManager.isMining()
+                            } else  {
+                                startSoloMinerButton.enabled = !walletManager.isMining()
+                            }
+
+                            stopSoloMinerButton.enabled = !startSoloMinerButton.enabled
                         } else {
                             errorPopup.title  = qsTr("Error starting mining") + translationManager.emptyString;
                             errorPopup.text = qsTr("Couldn't start mining.<br>")

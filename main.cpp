@@ -58,6 +58,9 @@
 #include "rpcmanager.h"
 #include "autorunmanager.h"
 
+
+#include <QThread>
+
 // IOS exclusions
 #ifndef Q_OS_IOS
 #include "daemon/DaemonManager.h"
@@ -132,7 +135,7 @@ int main(int argc, char *argv[])
           AutoRunManager::instance()->start();
       }
 
-      return app.exec();
+     // return app.exec();
   }
 
 
@@ -268,6 +271,7 @@ int main(int argc, char *argv[])
     is32 = true;
 #endif
 
+    engine.rootContext()->setContextProperty("isAutoStart", isAutoStart);
     engine.rootContext()->setContextProperty("isWindows", isWindows);
     engine.rootContext()->setContextProperty("isIOS", isIOS);
     engine.rootContext()->setContextProperty("is32", is32);
@@ -324,6 +328,7 @@ int main(int argc, char *argv[])
     QObject::connect(eventFilter, SIGNAL(sequenceReleased(QVariant,QVariant)), rootObject, SLOT(sequenceReleased(QVariant,QVariant)));
     QObject::connect(eventFilter, SIGNAL(mousePressed(QVariant,QVariant,QVariant)), rootObject, SLOT(mousePressed(QVariant,QVariant,QVariant)));
     QObject::connect(eventFilter, SIGNAL(mouseReleased(QVariant,QVariant,QVariant)), rootObject, SLOT(mouseReleased(QVariant,QVariant,QVariant)));
+
 
     return app.exec();
 }

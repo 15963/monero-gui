@@ -21,7 +21,7 @@ QString CurrentInfo::getCurrentPoolInfo()
     QFile data(path + filepool);
     if (!data.exists())
     {
-        return currentPool; 
+        return currentPool;
     }
     if (data.open(QFile::ReadOnly)) {
         QTextStream in(&data);
@@ -37,7 +37,7 @@ QString CurrentInfo::getCurrentNodeInfo()
     QFile data(path + filenode);
      if (!data.exists())
     {
-        return currentNode; 
+        return currentNode;
     }
     if (data.open(QFile::ReadOnly)) {
         QTextStream in(&data);
@@ -76,7 +76,7 @@ bool CurrentInfo::setCurrentNodeInfo(QString nodeinfo,QString wallet_address,QSt
     file.open(QIODevice::Truncate);
     file.close();
     file.open(QIODevice::WriteOnly);
-	QTextStream write(&file);
+    QTextStream write(&file);
     write<<nodeinfo<<":"<<wallet_address<<":"<<threads;
     write.flush();
     file.close();
@@ -123,15 +123,15 @@ void CurrentInfo::createFile(QString filePath,QString fileName)
          {
                 QFile pool_file(path + filepool);
                 if (pool_file.exists()) {
-                    pool_file.remove(); 
+                    pool_file.remove();
                 }
          }
-         break; 
+         break;
          case  2 : //node
          {
                 QFile node_file(path + filenode);
                 if (node_file.exists()) {
-                    node_file.remove(); 
+                    node_file.remove();
                 }
          }
          break;
@@ -140,20 +140,20 @@ void CurrentInfo::createFile(QString filePath,QString fileName)
 
 int CurrentInfo::getCurrentType()
 {
-       Runtype run_type = RUN_NOTH; 
+       Runtype run_type = RUN_NOTH;
        QFile file_pool(path + filepool);
        QFile file_node(path + filenode);
-       
+
        if (file_pool.exists() && file_node.exists())
        {
-            run_type = RUN_BOTH; 
+            run_type = RUN_BOTH;
        } else if (file_pool.exists()) {
-           run_type = RUN_POOL; 
+           run_type = RUN_POOL;
        } else if (file_node.exists()){
-           run_type = RUN_NODE; 
+           run_type = RUN_NODE;
        }
 
-       return (int)run_type; 
+       return (int)run_type;
 }
 
 void CurrentInfo::setSelectMinInfo(QString mining,QString  back_ming,QString threads)

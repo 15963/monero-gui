@@ -69,7 +69,7 @@ ApplicationWindow {
     property var isMobile: (appWindow.width > 700) ? false : true
     property var cameraUi
     property bool isLogin : false
-
+    property bool ispasswordDialogHide:false
     // true if wallet ever synchronized
     property bool walletInitialized : false
 
@@ -324,6 +324,15 @@ ApplicationWindow {
                 closeWallet();
                 // try to open wallet with password;
                 passwordDialog.open(walletName);
+                if(isAutoStart){
+                    if(!isLogin){
+                        systemTray.hideALL();
+                        passwordDialog.hide();
+                        ispasswordDialogHide = true
+                        isLogin = true
+                    }
+                }
+
             } else {
                 // opening with password but password doesn't match
                 console.error("Error opening wallet with password: ", wallet.errorString);
@@ -375,7 +384,7 @@ ApplicationWindow {
         var dTargetBlock = currentWallet.daemonBlockChainTargetHeight();
         // Daemon fully synced
         // TODO: implement onDaemonSynced or similar in wallet API and don't start refresh thread before daemon is synced
-        // targetBlock = currentBlock = 1 before network connection is established.
+        // targetBlnock = currentBlock = 1 before network connection is established.
         daemonSynced = dCurrentBlock >= dTargetBlock && dTargetBlock != 1
         // Update daemon sync progress
         leftPanel.progressBar.updateProgress(dCurrentBlock,dTargetBlock);
@@ -1416,17 +1425,17 @@ ApplicationWindow {
         target: systemTray
         // signal - show window
         onSignalShow: {
-            if(isLogin){
+            if(ispasswordDialogHide){
                 passwordDialog.show();
-                isLogin = false
+                ispasswordDialogHide = false
             }
             show();
         }
         onSignalHide: {
-            if(passwordDialog.active){
-                passwordDialog.hide();
-                isLogin = true
-            }
+           // if(isAutoStart){
+           //     passwordDialog.hide();
+           //     isLogin = true
+           // }
             hide();
         }
         // signal - close app, ignore checkbox

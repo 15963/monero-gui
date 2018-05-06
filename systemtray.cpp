@@ -58,6 +58,10 @@ void SystemTray::iconActivated(QSystemTrayIcon::ActivationReason reason)
     }
 }
 
+void SystemTray::hideALL()
+{
+    emit this->signalHide();
+}
 
  void SystemTray::qmlOut(QString strInfo)
  {

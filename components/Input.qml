@@ -41,7 +41,7 @@ TextField {
 
         background: Rectangle {
             border.width: 0.5
-            border.color: "#ffffff"
+            border.color: "#747c82"
             color: "#25313c"
             radius: 4
         }

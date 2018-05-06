@@ -178,7 +178,6 @@ ColumnLayout {
                     wrapMode: Text.WordWrap
                 }
 
-
                 MouseArea {
                     id: recoverWalletArea
                     anchors.fill: parent
