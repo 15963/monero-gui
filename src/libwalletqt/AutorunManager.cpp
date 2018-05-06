@@ -96,7 +96,7 @@ void AutoRunManager::setMiningParam(QVector<QString>& params,int runType) {
        m_parameter = params[0];       
        parsePoolInfor(m_parameter); 
     } else if (runType == 2) {
-       m_parameter = params[1]; 
+       m_parameter = params[0];
        parseNodeInfor(m_parameter); 
     } else if (runType == 3) {
        QString pool_info = params[0]; 

@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 //    qDebug() << "High DPI auto scaling - enabled";
 //#endif
 
-  mlog_configure(mlog_get_default_log_path("rsscp.log"), true);
+  //mlog_configure(mlog_get_default_log_path("rsscp.log"), true);
   mlog_set_log_level(2);
     
   if (argc == 1) {
