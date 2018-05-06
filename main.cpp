@@ -83,31 +83,29 @@ int main(int argc, char *argv[])
 
   bool isAutoStart = false; 
   std::string configPath;
-
-  namespace po = boost::program_options;
-  po::options_description desc_params_help("Rsscp options");
-  desc_params_help.add_options()
-  ("help","produce help message")
-  ("start", "set Rsscp auto startup")
-  ("config", po::value<string>(&configPath),"set progame config path")
-  ("s", "set Rsscp auto startup")
-  ("c", po::value<string>(&configPath),"set progame config path");
-  
-
-  po::variables_map vm;          
-  po::store(po::parse_command_line(argc, argv, desc_params_help), vm);  
-  po::notify(vm);  
-    
-  if (vm.count("help") || argc < 2)
-  {
-     std::cout<< desc_params_help <<std::endl;
-     return 1; 
+  if （ argc > 2 ) {
+        namespace po = boost::program_options;
+        po::options_description desc_params_help("Rsscp options");
+        desc_params_help.add_options()
+        ("help","produce help message")
+        ("start", "set Rsscp auto startup")
+        ("config", po::value<string>(&configPath),"set progame config path")
+        ("s", "set Rsscp auto startup")
+        ("c", po::value<string>(&configPath),"set progame config path");
+        po::variables_map vm;          
+        po::store(po::parse_command_line(argc, argv, desc_params_help), vm);  
+        po::notify(vm);  
+            
+        if (vm.count("help"))
+        {
+            std::cout<< desc_params_help <<std::endl;
+            return 1; 
+        }
+        if (vm.count("start") || vm.count("s"))
+        {
+                isAutoStart = true;
+        }
   }
-  if (vm.count("start") || vm.count("s"))
-  {
-		isAutoStart = true;
-  }
-
   //isAutoStart = true;
   //configPath = "/Users/axis/Rcssp/currentInfo/";
   
