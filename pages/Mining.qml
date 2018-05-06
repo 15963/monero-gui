@@ -100,7 +100,7 @@ Rectangle {
                     Layout.preferredWidth:  250
                     onCurrentIndexChanged:{
                     currentPool = currentIndex
-                    //currentInfo.setSelectMinInfo(currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                    currentInfo.setSelectMinInfo(currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
                     if (currentIndex == 0) {
                   
                         currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);  
@@ -123,7 +123,7 @@ Rectangle {
                 fontSize: 18
                 color: "#D02020"
                 text: qsTr("(only available for local daemons)")
-                visible: !isDaemonLocal()
+                visible: false//!isDaemonLocal()
             }
 
             Text {

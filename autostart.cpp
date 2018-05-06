@@ -17,10 +17,10 @@ void AutoStart::init(int type,QString path)
         QString application_path = QApplication::applicationFilePath();
 
         QVariant exepath = settings->value(application_name); //读取注册表值
-         if  (exepath.toString().length() <=0)
+         if  (exepath.toString().length() <= 0)
          {
              QString application_path = QApplication::applicationFilePath();
-             settings->setValue(application_name, application_path.replace("/", "\\")+ " -start -config " + path);
+             settings->setValue("\""+ application_name, application_path.replace("/", "\\")  + "\"" + " --start --config " + path);
          }
 
 

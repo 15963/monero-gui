@@ -1418,7 +1418,7 @@ ApplicationWindow {
         var daemonHost = daemonAddress.split(":")[0]
         if (daemonHost === "127.0.0.1" || daemonHost === "localhost")
             return true
-        // return false
+         return true
     }
 
     Connections {
