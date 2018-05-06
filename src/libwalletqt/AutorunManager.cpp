@@ -187,6 +187,7 @@ bool AutoRunManager::startDaemonMining() {
       MGINFO("Rcssp auto start daemon ok.");
       WalletManager::instance()->setDaemonAddress(m_node_address);
       MGINFO("Rcssp auto start rrncd mining thread.");
+      QThread::sleep(10);
       boost::thread thr (boost::bind(&AutoRunManager::start_mining,this));
       thr.detach();
    }
