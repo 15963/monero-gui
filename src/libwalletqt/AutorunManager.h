@@ -17,6 +17,7 @@ public:
     Q_INVOKABLE bool stop();
     QString& getWalletAddress(){ return m_wallet_address; }
     int getThreadCount(){ return m_threads; }
+    int getAutoRunType(){ return m_runType; }
 private:
     explicit AutoRunManager(QObject *parent = 0);
     bool startXmrigMining(); 

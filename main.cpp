@@ -57,6 +57,7 @@
 #include "currentinfo.h"
 #include "rpcmanager.h"
 #include "autorunmanager.h"
+#include "misc_log_ex.h"
 
 
 #include <QThread>
@@ -84,9 +85,19 @@ int main(int argc, char *argv[])
 //    qDebug() << "High DPI auto scaling - enabled";
 //#endif
 
+  mlog_configure(mlog_get_default_log_path("rsscp.log"), true);
+  mlog_set_log_level(2);
+    
+  if (argc == 1) {
+        MGINFO("param argv[0]: " << argv[0]);
+  }
+
+  MGINFO("Rcssp starting ...");
+
   bool isAutoStart = false; 
   std::string configPath;
   if ( argc > 2 ) {
+        MGINFO("Rcssp is auto starting ...");
         namespace po = boost::program_options;
         po::options_description desc_params_help("Rsscp options");
         desc_params_help.add_options()
@@ -108,6 +119,14 @@ int main(int argc, char *argv[])
         {
                 isAutoStart = true;
         }
+        if (isAutoStart) {
+            MGINFO("Rcssp param --start is true");
+        } else {
+            MGINFO("Rcssp param --start is false");
+        }
+        
+        MGINFO("Rcssp param --config :"<<configPath);
+
   }
   //isAutoStart = true;
   //configPath = "/Users/axis/Rcssp/currentInfo/";
@@ -119,19 +138,24 @@ int main(int argc, char *argv[])
       CurrentInfo currentInfo;
       currentInfo.path = QString::fromLocal8Bit(configPath.c_str()); 
       int miningType = currentInfo.getCurrentType(); 
-      QVector<QString> params(3);
+       QVector<QString> params(3);
       if (miningType == RUN_POOL) {
          params[0]=currentInfo.getCurrentPoolInfo(); 
+         MGINFO("Rcssp auto start pool mining:"<<string((const char *)params[0].toLocal8Bit())); 
          AutoRunManager::instance()->setMiningParam(params, miningType);          
       } else if (miningType == RUN_NODE) {
          params[0]=currentInfo.getCurrentNodeInfo(); 
+         MGINFO("Rcssp auto start node mining:"<<string((const char *)params[0].toLocal8Bit())); 
          AutoRunManager::instance()->setMiningParam(params, miningType);  
       } else if (miningType == RUN_BOTH) {
          params[0]=currentInfo.getCurrentPoolInfo(); 
+         MGINFO("Rcssp auto start pool mining:"<<string((const char *)params[0].toLocal8Bit())); 
          params[1]=currentInfo.getCurrentNodeInfo(); 
+         MGINFO("Rcssp auto start node mining:"<<string((const char *)params[1].toLocal8Bit())); 
          AutoRunManager::instance()->setMiningParam(params, miningType);    
       }
       if (miningType != RUN_NOTH) {
+          MGINFO("Rcssp AutoRunManager::instance()->start");
           AutoRunManager::instance()->start();
       }
 
