@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
 
   bool isAutoStart = false; 
   std::string configPath;
-  if （ argc > 2 ) {
+  if ( argc > 2 ) {
         namespace po = boost::program_options;
         po::options_description desc_params_help("Rsscp options");
         desc_params_help.add_options()
