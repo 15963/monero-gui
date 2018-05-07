@@ -53,7 +53,7 @@ bool RpcManager::startRrncd()
 {
     QString program = "";
     QStringList arguments;
-    arguments<< "--data-dir" << " data ";
+    arguments<< "--data-dir" << "data";
 #ifdef Q_OS_WIN
     program = QApplication::applicationDirPath() + "/rrncd.exe"; // edited
 #elif defined(Q_OS_UNIX)
