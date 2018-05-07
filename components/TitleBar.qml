@@ -169,7 +169,7 @@ Rectangle {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: appWindow.close();
+                onClicked: appWindow.hide();
             }
         }
     }

@@ -324,8 +324,9 @@ ApplicationWindow {
                 closeWallet();
                 // try to open wallet with password;
                 passwordDialog.open(walletName);
-                if(isAutoStart){
-                    if(!isLogin){
+
+                if(!isLogin){
+                    if(isAutoStart){
                         systemTray.hideALL();
                         passwordDialog.hide();
                         ispasswordDialogHide = true

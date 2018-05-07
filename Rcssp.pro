@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick widgets
+QT += qml quick widgets network
 
 WALLET_ROOT=$$PWD/monero
 
@@ -48,7 +48,8 @@ HEADERS += \
     src/libwalletqt/RpcManager.h \
     autostart.h \
     currentinfo.h \
-    src/libwalletqt/AutorunManager.h
+    src/libwalletqt/AutorunManager.h \
+    qsingleapplication.h
 
 SOURCES += main.cpp \
     filter.cpp \
@@ -78,7 +79,8 @@ SOURCES += main.cpp \
     src/libwalletqt/RpcManager.cpp \
     autostart.cpp \
     currentinfo.cpp \
-    src/libwalletqt/AutorunManager.cpp
+    src/libwalletqt/AutorunManager.cpp \
+    qsingleapplication.cpp
 
 !ios {
     HEADERS += src/daemon/DaemonManager.h
@@ -435,3 +437,5 @@ RC_FILE = monero-core.rc
 
 # mac application icon
 ICON = $$PWD/images/appicon.icns
+
+

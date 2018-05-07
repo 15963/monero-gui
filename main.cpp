@@ -58,6 +58,8 @@
 #include "rpcmanager.h"
 #include "autorunmanager.h"
 #include "misc_log_ex.h"
+#include "qsingleapplication.h"
+#include <QMessageBox>
 
 
 #include <QThread>
@@ -85,7 +87,14 @@ int main(int argc, char *argv[])
 //    qDebug() << "High DPI auto scaling - enabled";
 //#endif
 
-  mlog_configure(mlog_get_default_log_path("Rcssp.log"), true);
+    SingleApplication app1(argc,argv);
+    if (app1.isRunning())
+    {
+        // QMessageBox::information(NULL, "Title", "already started", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+        exit(0);
+    }
+
+  mlog_configure(mlog_get_default_log_path("rsscp.log"), true);
   mlog_set_log_level(2);
     
   if (argc == 1) {
@@ -305,7 +314,7 @@ int main(int argc, char *argv[])
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
 
-    QString path =  moneroAccountsRootDir.at(0) + "/Rcssp/currentInfo/";
+    QString path =  moneroAccountsRootDir.at(0) + "/Rcssp/configure/";
     CurrentInfo currentInfo;
     currentInfo.path = path;
     engine.rootContext()->setContextProperty("currentInfo", &currentInfo);
