@@ -1,21 +1,21 @@
 // Copyright (c) 2014-2015, The Monero Project
-// 
+//
 // All rights reserved.
-// 
+//
 // Redistribution and use in source and binary forms, with or without modification, are
 // permitted provided that the following conditions are met:
-// 
+//
 // 1. Redistributions of source code must retain the above copyright notice, this list of
 //    conditions and the following disclaimer.
-// 
+//
 // 2. Redistributions in binary form must reproduce the above copyright notice, this list
 //    of conditions and the following disclaimer in the documentation and/or other
 //    materials provided with the distribution.
-// 
+//
 // 3. Neither the name of the copyright holder nor the names of its contributors may be
 //    used to endorse or promote products derived from this software without specific
 //    prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
 // EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
 // MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
@@ -100,7 +100,7 @@ Rectangle {
                     Layout.preferredWidth:  250
                     onCurrentIndexChanged:{
                     currentPool = currentIndex
-
+                   
                     // currentInfo.setSelectMinInfo(currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
 
                     if (currentIndex == 0) {
@@ -110,7 +110,7 @@ Rectangle {
                         var pool_port = cbItems.get(currentIndex).index.split(":")[1];
                         currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
                     }
-                     
+
                     console.debug(cbItems.get(currentIndex).text + ", " + cbItems.get(currentIndex).index)
                     //walletManager.stopMining()
                     //update()
@@ -149,18 +149,17 @@ Rectangle {
                     text: "1"
                     placeholderText: qsTr("(optional)") + translationManager.emptyString
                     validator: IntValidator { bottom: 1 }
-                    onTextUpdated: { 
+                    onTextUpdated: {
                         if (choiceminingtype.currentIndex == 0) {
                             currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
                          } else if (choiceminingtype.currentIndex > 0) {
                            var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
                            var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
-
                            currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
 
                          }
-                         
+
                     }
                 }
             }
@@ -236,6 +235,7 @@ Rectangle {
                            + "\"user\":" + "\""+ appWindow.currentWallet.address +"\"," + "\"password\":\"x\"}";
 
                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+                            console.debug( "###########setcurrentInurrentIndex2" +choiceminingtype.currentIndex)
                            currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
                            console.debug(json_config);
 
@@ -267,6 +267,7 @@ Rectangle {
                            }
 
                         } else {
+                               currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
                                currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
                                success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
                         }
@@ -307,7 +308,7 @@ Rectangle {
                         if (choiceminingtype.currentIndex > 0) {
                              rpcManager.stopMining()
                         } else {
-                             walletManager.stopMining()                           
+                             walletManager.stopMining()
                         }
                         update()
                     }

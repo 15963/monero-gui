@@ -104,8 +104,12 @@ int main(int argc, char *argv[])
   MGINFO("Rcssp starting ...");
 
   bool isAutoStart = false; 
+  bool isParamWith_started = false; 
   std::string configPath;
+  CurrentInfo currentInfo;
+
   if ( argc > 2 ) {
+
         MGINFO("Rcssp is auto starting ...");
         namespace po = boost::program_options;
         po::options_description desc_params_help("Rsscp options");
@@ -126,7 +130,12 @@ int main(int argc, char *argv[])
         }
         if (vm.count("start") || vm.count("s"))
         {
-            isAutoStart = true;
+            isParamWith_started = true; 
+            isAutoStart = currentInfo.isBackgroundMining();
+            if (isAutoStart)
+                MGINFO("Rcssp auto start with --start and is back ground mining\n"); 
+            else 
+                MGINFO("Rcssp auto start with --start but is not back ground mining\n"); 
         }
         if (isAutoStart) {
             MGINFO("Rcssp param --start is true");
@@ -134,17 +143,14 @@ int main(int argc, char *argv[])
             MGINFO("Rcssp param --start is false");
         }
         
-        MGINFO("Rcssp param --config :"<<configPath);
-
+        MGINFO("Rcssp param --config "<<configPath);
   }
-  //isAutoStart = true;
-  //configPath = "/Users/axis/Rcssp/currentInfo/";
   
   if (isAutoStart) {
-
+      
       MainApp app(argc, argv);
       qDebug() << "app auto start startd";
-      CurrentInfo currentInfo;
+     
       currentInfo.path = QString::fromLocal8Bit(configPath.c_str()); 
       int miningType = currentInfo.getCurrentType(); 
        QVector<QString> params(3);
@@ -271,7 +277,7 @@ int main(int argc, char *argv[])
 // Exclude daemon manager from IOS
 #ifndef Q_OS_IOS
     DaemonManager * daemonManager; 
-    if (isAutoStart) {
+    if (isParamWith_started) {
        QStringList argument_autostart; 
        argument_autostart << "Rsscp";
        daemonManager = DaemonManager::instance(&argument_autostart);

@@ -32,6 +32,7 @@ public slots:
     QString getSelectNodeInfo();
     void deleteFile(int type);
     int  getCurrentType(); 
+    bool isBackgroundMining(); 
 
 private:
     QString filepool;

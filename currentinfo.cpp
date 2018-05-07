@@ -160,6 +160,27 @@ int CurrentInfo::getCurrentType()
        return (int)run_type;
 }
 
+ bool CurrentInfo::isBackgroundMining()
+ {
+      bool bret = false; 
+      QString miningInfor = getSelectMinInfo(); 
+      MGINFO("Rcssp auto starting xmrig type"<< std::string((const char *)miningInfor.toLocal8Bit()));
+      QRegExp tagExp(":");
+      QStringList paramList = miningInfor.split(tagExp);
+      QString m_background_token = ""; 
+      if (paramList.length() > 1) {    
+          m_background_token = paramList.at(1);
+          MGINFO("Rcssp auto starting user select index:"<< std::string((const char *)m_background_token.toLocal8Bit()));
+          if (m_background_token == "true") {
+               bret = true; 
+          } else {
+              bret = false; 
+          }
+       }      
+      
+       return bret;
+ }
+
 void CurrentInfo::setSelectMinInfo(QString mining,QString  back_ming,QString threads)
 {
     createFile( path,fileselpool);
