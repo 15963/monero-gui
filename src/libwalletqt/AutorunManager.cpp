@@ -166,12 +166,12 @@ void* AutoRunManager::get_mining_hashrate(void*p)
     for(;;) {
        if (runtype == 1) {
            nrate = RpcManager::instance()->miningHashRate();
-           printf("hashrate: %3.1f H/s\n",nrate);
+           printf("hashrate: %3.1f H/\s\n",nrate);
            sprintf(buff,"%3.1f H/s", nrate); 
            MGINFO("Rcssp auto xmrig hash rate:\n"<< buff);
         } else {
            nrate = WalletManager::instance()->miningHashRate();
-           printf("hashrate: %3.1f H/s\n",nrate);
+           printf("hashrate: %3.1f H/\s\n",nrate);
            sprintf(buff,"%3.1f H/s", nrate); 
            MGINFO("Rcssp auto daemon hash rate:\n"<< buff);
         }

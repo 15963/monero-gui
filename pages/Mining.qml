@@ -100,9 +100,11 @@ Rectangle {
                     Layout.preferredWidth:  250
                     onCurrentIndexChanged:{
                     currentPool = currentIndex
-                    currentInfo.setSelectMinInfo(currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+
+                    // currentInfo.setSelectMinInfo(currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+
                     if (currentIndex == 0) {
-                        currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);                  
+                        currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
                     } else  if (currentIndex > 0) {
                         var pool_address = cbItems.get(currentIndex).index.split(":")[0];
                         var pool_port = cbItems.get(currentIndex).index.split(":")[1];
@@ -149,11 +151,12 @@ Rectangle {
                     validator: IntValidator { bottom: 1 }
                     onTextUpdated: { 
                         if (choiceminingtype.currentIndex == 0) {
-                            currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);
+                            currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
                          } else if (choiceminingtype.currentIndex > 0) {
                            var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
                            var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+
                            currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
 
                          }
