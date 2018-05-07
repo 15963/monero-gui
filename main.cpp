@@ -263,13 +263,21 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("translationManager", TranslationManager::instance());
 
     engine.addImageProvider(QLatin1String("qrcode"), new QRCodeImageProvider());
-    const QStringList arguments = QCoreApplication::arguments();
+
+    const QStringList arguments = QCoreApplication::arguments();  
 
     engine.rootContext()->setContextProperty("mainApp", &app);
 
 // Exclude daemon manager from IOS
 #ifndef Q_OS_IOS
-    DaemonManager * daemonManager = DaemonManager::instance(&arguments);
+    DaemonManager * daemonManager; 
+    if (isAutoStart) {
+       QStringList argument_autostart; 
+       argument_autostart << "Rsscp";
+       daemonManager = DaemonManager::instance(&argument_autostart);
+    } else {
+       daemonManager = DaemonManager::instance(&arguments);  
+    }
     engine.rootContext()->setContextProperty("daemonManager", daemonManager);
 #endif
 

@@ -13,6 +13,8 @@
 #include <QVariant>
 #include <QMap>
 
+#include "misc_log_ex.h"
+
 namespace {
     static const int DAEMON_START_TIMEOUT_SECONDS = 30;
 }
@@ -40,34 +42,46 @@ bool DaemonManager::start(const QString &flags, bool testnet, const QString &dat
     // Start daemon with --detach flag on non-windows platforms
 #ifndef Q_OS_WIN
     arguments << "--detach";
+    MGINFO("DaemonManager::start --detach");
 #endif
 
-    if(testnet)
+    if(testnet) {
         arguments << "--testnet";
+        MGINFO("DaemonManager::start --detach");
+    }
 
     foreach (const QString &str, m_clArgs) {
           qDebug() << QString(" [%1] ").arg(str);
-          if (!str.isEmpty())
+          if (!str.isEmpty()) {
             arguments << str;
+            MGINFO("DaemonManager::start #1 "<<std::string((const char *)str.toLocal8Bit()));
+          }
     }
 
     // Custom startup flags for daemon
     foreach (const QString &str, flags.split(" ")) {
           qDebug() << QString(" [%1] ").arg(str);
-          if (!str.isEmpty())
+          if (!str.isEmpty()) {
             arguments << str;
+            MGINFO("DaemonManager::start #2 "<<std::string((const char *)str.toLocal8Bit()));
+          }
     }
 
     // Custom data-dir
     if(!dataDir.isEmpty()) {
-        if(testnet)
+        if(testnet) {
             arguments << "--testnet-data-dir";
-        else
+            MGINFO("DaemonManager::start --testnet-data-dir ");
+        }
+        else {
             arguments << "--data-dir";
+            MGINFO("DaemonManager::start --data-dir "<<std::string((const char *)dataDir.toLocal8Bit()));
+        }
         arguments << dataDir;
     }
 
     arguments << "--check-updates" << "disabled";
+    MGINFO("DaemonManager::start --check-updates "<<"disabled");
 
 
 
@@ -89,11 +103,13 @@ bool DaemonManager::start(const QString &flags, bool testnet, const QString &dat
 
     if (!started) {
         qDebug() << "Daemon start error: " + m_daemon->errorString();
+        MGINFO("Daemon start error:"<< std::string((const char *)m_daemon->errorString().toLocal8Bit()));
         emit daemonStartFailure();
         return false;
     }
 
     // Start start watcher
+    MGINFO("DaemonManager::start Start startWatcher");
     QFuture<bool> future = QtConcurrent::run(this, &DaemonManager::startWatcher, testnet);
     QFutureWatcher<bool> * watcher = new QFutureWatcher<bool>();
     connect(watcher, &QFutureWatcher<bool>::finished,
@@ -107,7 +123,7 @@ bool DaemonManager::start(const QString &flags, bool testnet, const QString &dat
     });
     watcher->setFuture(future);
 
-
+    MGINFO("DaemonManager::start return true");
     return true;
 }
 
