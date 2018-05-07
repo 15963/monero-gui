@@ -64,8 +64,7 @@ void AutoRunManager::parsePoolInfor(QString& infor) {
 
         if (threads.isEmpty()) {
             m_threads = 1; 
-        }
-        else {
+        } else {
             m_threads = atoi(qPrintable(threads));
         }            
     }      
@@ -83,8 +82,7 @@ void AutoRunManager::parseNodeInfor(QString& infor) {
         QString threads = paramList.at(3);
         if (threads.isEmpty()) {
             m_threads = 1; 
-        }
-        else {
+        } else {
             m_threads = atoi(qPrintable(threads));
         }                    
     }      
@@ -115,21 +113,18 @@ bool AutoRunManager::startXmrigMining() {
     }
 
     RpcManager::instance()->stopXmrig();
-
     if (RpcManager::instance()->startXmrig(7777)) {
         MGINFO("Rcssp auto xmrig started ok.");
         QThread::sleep(2);
         bret = RpcManager::instance()->startMining(m_pool_config,(quint32)m_threads);
         if (bret == false) {
-            RpcManager::instance()->stopXmrig();
+             RpcManager::instance()->stopXmrig();
              QThread::sleep(2);
-            if (RpcManager::instance()->startXmrig(7777)) {
+             if (RpcManager::instance()->startXmrig(7777)) {
                  QThread::sleep(2);
-                bret = RpcManager::instance()->startMining(m_pool_config,(quint32)m_threads);
-            }
-        }
-        else
-        {
+                 bret = RpcManager::instance()->startMining(m_pool_config,(quint32)m_threads);
+             }
+        } else {
             bret = true;
         }
 
@@ -156,7 +151,7 @@ void* AutoRunManager::start_mining(void* p) {
           MGINFO("Rcssp auto start rrncd mining ok.");
           break;
       }
-      QThread::sleep(5); // waiting 5 seconds
+      QThread::sleep(30); // waiting 30 seconds
     }
 
     return NULL;
@@ -165,12 +160,22 @@ void* AutoRunManager::start_mining(void* p) {
 void* AutoRunManager::get_mining_hashrate(void*p)
 {
     AutoRunManager *ptr = (AutoRunManager*)p;
-    char buff[5]={0}; 
+    int runtype = ptr->getAutoRunType(); 
+    char buff[5] = {0}; 
+    double nrate = 0.0;
     for(;;) {
-       double nrate = RpcManager::instance()->miningHashRate();
-       printf("hashrate: %3.1f H/s\n",nrate);
-       sprintf(buff,"%3.1f H/s", nrate); 
-       MGINFO("Rcssp auto xmrig hash rate"<< buff);
+       if (runtype == 1) {
+           nrate = RpcManager::instance()->miningHashRate();
+           printf("hashrate: %3.1f H/s\n",nrate);
+           sprintf(buff,"%3.1f H/s", nrate); 
+           MGINFO("Rcssp auto xmrig hash rate:\n"<< buff);
+        } else {
+           nrate = WalletManager::instance()->miningHashRate();
+           printf("hashrate: %3.1f H/s\n",nrate);
+           sprintf(buff,"%3.1f H/s", nrate); 
+           MGINFO("Rcssp auto daemon hash rate:\n"<< buff);
+        }
+      
        QThread::sleep(10);
     }
 
@@ -180,19 +185,20 @@ void* AutoRunManager::get_mining_hashrate(void*p)
 bool AutoRunManager::startDaemonMining() {
     bool bret = false; 
     MGINFO("Rcssp auto start daemon ");
-    const QStringList arguments = QCoreApplication::arguments();
-    DaemonManager * daemonManager = DaemonManager::instance(&arguments);
-    bool daem_started = daemonManager->start("",false,"");
-   if (daem_started) {
-      MGINFO("Rcssp auto start daemon ok.");
-      WalletManager::instance()->setDaemonAddress(m_node_address);
-      MGINFO("Rcssp auto start rrncd mining thread.");
-      QThread::sleep(10);
-      boost::thread thr (boost::bind(&AutoRunManager::start_mining,this));
-      thr.detach();
-   }
+    RpcManager::instance()->stopRrncd();
+    bool daem_started = RpcManager::instance()->startRrncd(); 
+    if (daem_started) {
+        MGINFO("Rcssp auto start daemon ok.");
+        WalletManager::instance()->setDaemonAddress(m_node_address);
+        MGINFO("Rcssp auto start rrncd mining thread.");
+        QThread::sleep(20);
+        boost::thread thr (boost::bind(&AutoRunManager::start_mining,this));
+        thr.detach();
+    } else {
+        MGINFO("Rcssp auto start daemon failed.");
+    }
    
-     return bret; 
+    return bret; 
 }
 
 bool AutoRunManager::start() {
@@ -200,14 +206,13 @@ bool AutoRunManager::start() {
    bool bothStarted = false; 
    if (m_runType == 4) //noth
    {
-        MGINFO("Rcssp auto run start xmring and daemon mining.");
+       MGINFO("Rcssp auto run start xmring and daemon mining.");
        return false; 
    } 
 
    if (m_runType == 3) //both
    {
         MGINFO("Rcssp auto run start xmring and daemon mining.");
-
         bothStarted = startXmrigMining();
         if (bothStarted == true) {           
             bothStarted = startDaemonMining();
@@ -239,18 +244,19 @@ bool AutoRunManager::stop()
    {
         bothstoped = RpcManager::instance()->stopXmrig();
         if (bothstoped) {            
-            bothstoped = WalletManager::instance()->stopMining();
+            bothstoped = RpcManager::instance()->stopRrncd();
         }
        
         return bothstoped;  
    } 
    else if (m_runType == 2)//node
    {
-      return WalletManager::instance()->stopMining();
+      return RpcManager::instance()->stopRrncd();
    } 
    else if (m_runType == 1) //pool
    {
-     return  RpcManager::instance()->stopXmrig();    
+      return  RpcManager::instance()->stopXmrig();    
    }
+
    return true; 
 }

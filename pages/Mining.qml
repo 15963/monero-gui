@@ -102,11 +102,8 @@ Rectangle {
                     currentPool = currentIndex
                     currentInfo.setSelectMinInfo(currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
                     if (currentIndex == 0) {
-                        currentInfo.deleteFile(2) //remove rpc pool_info
-                        currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);  
-                        
+                        currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);                  
                     } else  if (currentIndex > 0) {
-                         currentInfo.deleteFile(1) //remove daemon node_info
                         var pool_address = cbItems.get(currentIndex).index.split(":")[0];
                         var pool_port = cbItems.get(currentIndex).index.split(":")[1];
                         currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
@@ -152,10 +149,8 @@ Rectangle {
                     validator: IntValidator { bottom: 1 }
                     onTextUpdated: { 
                         if (choiceminingtype.currentIndex == 0) {
-                            currentInfo.deleteFile(2) //remove rpc pool_info
                             currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,soloMinerThreadsLine.text);
                          } else if (choiceminingtype.currentIndex > 0) {
-                           currentInfo.deleteFile(1) //remove daemon node_info
                            var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
                            var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
@@ -178,7 +173,6 @@ Rectangle {
                     checkedIcon: "../images/checkedVioletIcon.png"
                     uncheckedIcon: "../images/uncheckedIcon.png"
                 }
-
             }
 
             RowLayout {
@@ -238,7 +232,6 @@ Rectangle {
                            + "\"pool\":" + "\"" + pool_address + "\"," + "\"port\":" + pool_port + ","
                            + "\"user\":" + "\""+ appWindow.currentWallet.address +"\"," + "\"password\":\"x\"}";
 
-                           currentInfo.deleteFile(1) //remove daemon node_info
                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
                            currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
                            console.debug(json_config);
@@ -271,7 +264,6 @@ Rectangle {
                            }
 
                         } else {
-                               currentInfo.deleteFile(2) //remove rpc pool_info
                                currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
                                success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
                         }
@@ -309,13 +301,11 @@ Rectangle {
                     releasedColor: "#4ed9d9"
                     pressedColor: "#4ed9d9"
                     onClicked: {
-                         if (choiceminingtype.currentIndex > 0) {
+                        if (choiceminingtype.currentIndex > 0) {
                              rpcManager.stopMining()
-                             currentInfo.deleteFile(2)
-                         } else {
-                             walletManager.stopMining()
-                             currentInfo.deleteFile(1)
-                         }
+                        } else {
+                             walletManager.stopMining()                           
+                        }
                         update()
                     }
                 }

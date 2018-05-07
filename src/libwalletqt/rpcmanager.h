@@ -24,6 +24,8 @@ public:
     Q_INVOKABLE bool startXmrig(int port);
     Q_INVOKABLE bool stopXmrig();
     Q_INVOKABLE bool running(); 
+    Q_INVOKABLE bool startRrncd();
+    Q_INVOKABLE bool stopRrncd();
 
 private:
     explicit RpcManager(QObject *parent = 0);

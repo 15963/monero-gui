@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <QDir>
 
+#include "misc_log_ex.h"
+
 CurrentInfo::CurrentInfo(QObject *parent) : QObject(parent)
 {
     filepool = "pool";
@@ -141,18 +143,20 @@ void CurrentInfo::createFile(QString filePath,QString fileName)
 int CurrentInfo::getCurrentType()
 {
        Runtype run_type = RUN_NOTH;
-       QFile file_pool(path + filepool);
-       QFile file_node(path + filenode);
-
-       if (file_pool.exists() && file_node.exists())
-       {
-            run_type = RUN_BOTH;
-       } else if (file_pool.exists()) {
-           run_type = RUN_POOL;
-       } else if (file_node.exists()){
-           run_type = RUN_NODE;
-       }
-
+       QString miningInfor = getSelectMinInfo(); 
+       MGINFO("Rcssp auto starting xmrig type"<< std::string((const char *)miningInfor.toLocal8Bit()));
+       QRegExp tagExp(":");
+       QStringList paramList = miningInfor.split(tagExp);
+       QString m_node_address = ""; 
+      if (paramList.length() > 0) {    
+          m_node_address = paramList.at(0);
+          MGINFO("Rcssp auto starting user select index:"<< std::string((const char *)m_node_address.toLocal8Bit()));
+          if (m_node_address == "0") {
+               run_type = RUN_NODE;
+          } else {
+               run_type = RUN_POOL;
+          }
+       }      
        return (int)run_type;
 }
 

@@ -48,6 +48,25 @@ bool RpcManager::startXmrig(int port)
     return false;
 }
 
+
+bool RpcManager::startRrncd() 
+{
+    QString program = "";
+    QStringList arguments;
+    arguments<< "--data-dir" << " data ";
+#ifdef Q_OS_WIN
+    program = QApplication::applicationDirPath() + "/rrncd.exe"; // edited
+#elif defined(Q_OS_UNIX)
+    program = QApplication::applicationDirPath() + "/rrncd";   // edited
+#endif
+
+    qDebug()<<program;
+    QProcess* m_daemon = new QProcess();
+    // Start monerod
+    bool started = m_daemon->startDetached(program, arguments);
+    return started;
+}
+
 bool RpcManager::stopXmrig()
 {
     // Check if daemon is running every 2 seconds. Kill if still running after 10 seconds
@@ -65,6 +84,22 @@ bool RpcManager::stopXmrig()
     return true;
 }
 
+bool RpcManager::stopRrncd()
+{
+    // Check if daemon is running every 2 seconds. Kill if still running after 10 seconds
+    int counter = 0;
+    QThread::sleep(2);
+    counter++;
+    qDebug() << "Daemon still running.  " << counter;
+    qDebug() << "Killing it! ";
+#ifdef Q_OS_WIN
+                QProcess::execute("taskkill /F /IM rrncd.exe");   // edited monerod
+#else
+                QProcess::execute("pkill rrncd");
+#endif
+
+    return true;
+}
 
 bool RpcManager::setRpcAddress(const std::string& ip,int port)
 {
