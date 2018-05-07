@@ -186,7 +186,10 @@ bool AutoRunManager::startDaemonMining() {
     bool bret = false; 
     MGINFO("Rcssp auto start daemon ");
     RpcManager::instance()->stopRrncd();
-    bool daem_started = RpcManager::instance()->startRrncd(); 
+    //bool daem_started = RpcManager::instance()->startRrncd(); 
+     QStringList argument_autostart; 
+     argument_autostart << "Rsscp";    
+     bool daem_started = DaemonManager::instance(&argument_autostart)->start("",false,""); 
     if (daem_started) {
         MGINFO("Rcssp auto start daemon ok.");
         WalletManager::instance()->setDaemonAddress(m_node_address);
