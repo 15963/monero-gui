@@ -169,8 +169,14 @@ Rectangle {
                 CheckBox {
                     id: backgroundMining
                     enabled: startSoloMinerButton.enabled
-                    checked: persistentSettings.allow_background_mining
-                    onClicked: {persistentSettings.allow_background_mining = checked}
+                    checked: {
+                        currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                        persistentSettings.allow_background_mining
+                    }
+                    onClicked: {
+                        persistentSettings.allow_background_mining = checked
+                        currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                    }
                     text: qsTr("Background mining (experimental)") + translationManager.emptyString
                     checkedIcon: "../images/checkedVioletIcon.png"
                     uncheckedIcon: "../images/uncheckedIcon.png"
