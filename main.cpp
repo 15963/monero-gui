@@ -130,28 +130,25 @@ int main(int argc, char *argv[])
         }
         if (vm.count("start") || vm.count("s"))
         {
-            isParamWith_started = true; 
-            isAutoStart = currentInfo.isBackgroundMining();
-            if (isAutoStart)
-                MGINFO("Rcssp auto start with --start and is back ground mining\n"); 
-            else 
-                MGINFO("Rcssp auto start with --start but is not back ground mining\n"); 
+            isParamWith_started = true;              
         }
-        if (isAutoStart) {
-            MGINFO("Rcssp param --start is true");
-        } else {
-            MGINFO("Rcssp param --start is false");
-        }
-        
+
         MGINFO("Rcssp param --config "<<configPath);
   }
   
+  if (isParamWith_started) {
+      currentInfo.path = QString::fromLocal8Bit(configPath.c_str());
+      isAutoStart = currentInfo.isBackgroundMining();
+      if (isAutoStart)
+          MGINFO("Rcssp auto start with --start and is back ground mining\n");
+      else
+          MGINFO("Rcssp auto start with --start but is not back ground mining\n");
+  }
+
   if (isAutoStart) {
       
       MainApp app(argc, argv);
       qDebug() << "app auto start startd";
-     
-      currentInfo.path = QString::fromLocal8Bit(configPath.c_str()); 
       int miningType = currentInfo.getCurrentType(); 
        QVector<QString> params(3);
       if (miningType == RUN_POOL) {
@@ -329,10 +326,8 @@ int main(int argc, char *argv[])
     }
 
     QString path =  moneroAccountsRootDir.at(0) + "/Rcssp/configure/";
-    CurrentInfo currentInfo;
     currentInfo.path = path;
     engine.rootContext()->setContextProperty("currentInfo", &currentInfo);
-
 
     AutoStart autoStart;
     autoStart.init(type,path);
