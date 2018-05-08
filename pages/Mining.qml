@@ -170,10 +170,11 @@ Rectangle {
                     id: backgroundMining
                     enabled: startSoloMinerButton.enabled
                     checked: {
-                        currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                        //console.log("edit the updat1e####################################")
                         persistentSettings.allow_background_mining
                     }
                     onClicked: {
+                        //console.log("edit the updat2e####################################")
                         persistentSettings.allow_background_mining = checked
                         currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
                     }
@@ -350,9 +351,12 @@ Rectangle {
             }
         }
 
+        choiceminingtype.currentIndex = 1;
+
         var selNodeInfo = currentInfo.getSelectMinInfo()
         if(selNodeInfo.split(":")[0].length > 0)
         {
+            //console.log("edit the update####################################")
             choiceminingtype.currentIndex = selNodeInfo.split(":")[0]
             soloMinerThreadsLine.text =  selNodeInfo.split(":")[2]
             if(selNodeInfo.split(":")[1] === "true"){
