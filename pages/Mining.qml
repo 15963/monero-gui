@@ -150,15 +150,22 @@ Rectangle {
                     placeholderText: qsTr("(optional)") + translationManager.emptyString
                     validator: IntValidator { bottom: 1 }
                     onTextUpdated: {
-                        if (choiceminingtype.currentIndex == 0) {
-                            currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
-                         } else if (choiceminingtype.currentIndex > 0) {
-                           var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
-                           var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
-                           currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
-                           currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                        if(!is32){
+                            if (choiceminingtype.currentIndex == 0) {
+                                currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
+                            } else if (choiceminingtype.currentIndex > 0) {
+                            var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
+                            var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
+                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+                            currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
 
-                         }
+                            }
+                        } else {
+                            var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
+                            var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
+                            currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+                            currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                        }
 
                     }
                 }
@@ -232,12 +239,20 @@ Rectangle {
 
                         console.debug(cbItems.get(choiceminingtype.currentIndex).text + ", " + cbItems.get(choiceminingtype.currentIndex).index)
                         var success = false;
-                        if (choiceminingtype.currentIndex > 0) {
+                        //set xmrig rpc port 7777
+                        var rpc_xmrig_port = 7777;
+                        var pool_address = ""; 
+                        var pool_port = "";
+                        var json_config = ""; 
 
-                           var pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
-                           var pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
+                        if(!is32){
 
-                           var json_config ="{\"algorithm\":\"cryptonight\","
+                         if (choiceminingtype.currentIndex > 0) {
+
+                           pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
+                           pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
+
+                           json_config ="{\"algorithm\":\"cryptonight\","
                            + "\"pool\":" + "\"" + pool_address + "\"," + "\"port\":" + pool_port + ","
                            + "\"user\":" + "\""+ appWindow.currentWallet.address +"\"," + "\"password\":\"x\"}";
 
@@ -248,8 +263,6 @@ Rectangle {
 
                            if (!rpcManager.isMining()) {
 
-                                //set xmrig rpc port 7777
-                                var rpc_xmrig_port = 7777;
                                 //todo: startxmrig process
                                 if (rpcManager.startXmrig(rpc_xmrig_port)) {
                                      //start json rpc send /start request to mining
@@ -273,20 +286,66 @@ Rectangle {
                                   success = true;
                            }
 
-                        } else {
+                          } else {
                                currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
                                currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
                                success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
+                          }
                         }
+                        else { //is 32 bit 
+                           
+                            pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
+                            pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
+                            json_config ="{\"algorithm\":\"cryptonight\","
+                           + "\"pool\":" + "\"" + pool_address + "\"," + "\"port\":" + pool_port + ","
+                           + "\"user\":" + "\""+ appWindow.currentWallet.address +"\"," + "\"password\":\"x\"}";
+
+                           currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+                           console.debug( "###########setcurrentInurrentIndex2" +choiceminingtype.currentIndex)
+                           currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                           console.debug(json_config);
+
+                           if (!rpcManager.isMining()) {
+                               
+                                //todo: startxmrig process
+                                if (rpcManager.startXmrig(rpc_xmrig_port)) {
+                                     //start json rpc send /start request to mining
+                                     success = rpcManager.startMining(json_config, soloMinerThreadsLine.text);
+                                     if (success == false) {
+                                        //connect fail to restart xmrig
+                                        console.debug("start json rpc mining failed\n");
+                                        rpcManager.stopXmrig();
+                                        if (rpcManager.startXmrig(rpc_xmrig_port)) {
+                                            success = rpcManager.startMining(json_config, soloMinerThreadsLine.text);
+                                         }
+
+                                     }
+
+                                } else {
+                                        console.debug("startXmrig failed\n");
+                                        success = false;
+                                }
+
+                           } else {
+                                  console.debug("rpcManager.isrun ==true")
+                                  success = true;
+                           }
+
+                        }
+
+                 
 
                         if (success) {
 
                             updateStatusText()
-
-                            if (choiceminingtype.currentIndex > 0) {
-                               startSoloMinerButton.enabled = !rpcManager.isMining()
-                            } else  {
-                                startSoloMinerButton.enabled = !walletManager.isMining()
+                            if(!is32){
+                                if (choiceminingtype.currentIndex > 0) {
+                                   startSoloMinerButton.enabled = !rpcManager.isMining()
+                                } else  {
+                                    startSoloMinerButton.enabled = !walletManager.isMining()
+                                }
+                            } else {
+                                startSoloMinerButton.enabled = !rpcManager.isMining()
                             }
 
                             stopSoloMinerButton.enabled = !startSoloMinerButton.enabled
@@ -312,12 +371,17 @@ Rectangle {
                     releasedColor: "#4ed9d9"
                     pressedColor: "#4ed9d9"
                     onClicked: {
+                    if(!is32){
                         if (choiceminingtype.currentIndex > 0) {
                              rpcManager.stopMining()
                         } else {
                              walletManager.stopMining()
                         }
-                        update()
+                    } else {
+                        rpcManager.stopMining()
+                    }
+                        
+                    update()
                     }
                 }
             }
@@ -371,19 +435,29 @@ Rectangle {
 
     function updateStatusText() {
         var text = ""
-        if (choiceminingtype.currentIndex > 0) {
-            if (rpcManager.isMining()) {
-                if (text !== "")
-                    text += "<br>";
-                text += qsTr("Mining at %1 H/s").arg(rpcManager.miningHashRate())
+         if(!is32){
+            if (choiceminingtype.currentIndex > 0) {
+                if (rpcManager.isMining()) {
+                    if (text !== "")
+                        text += "<br>";
+                    text += qsTr("Mining at %1 H/s").arg(rpcManager.miningHashRate())
+                }
+            } else {
+                if (walletManager.isMining()) {
+                    if (text !== "")
+                        text += "<br>";
+                    text += qsTr("Mining at %1 H/s").arg(walletManager.miningHashRate())
+                }
             }
-         } else {
-            if (walletManager.isMining()) {
-                if (text !== "")
-                    text += "<br>";
-                text += qsTr("Mining at %1 H/s").arg(walletManager.miningHashRate())
-            }
-        }
+         }
+         else 
+         {
+                if (rpcManager.isMining()) {
+                    if (text !== "")
+                        text += "<br>";
+                    text += qsTr("Mining at %1 H/s").arg(rpcManager.miningHashRate())
+                }
+         }
 
         if (text === "") {
             text += qsTr("Not mining") + translationManager.emptyString;
@@ -394,11 +468,14 @@ Rectangle {
     function update() {
 
         updateStatusText()
-
-        if (choiceminingtype.currentIndex > 0) {
-           startSoloMinerButton.enabled = !rpcManager.isMining()
-        } else  {
-            startSoloMinerButton.enabled = !walletManager.isMining()
+        if(!is32){
+            if (choiceminingtype.currentIndex > 0) {
+                startSoloMinerButton.enabled = !rpcManager.isMining()
+            } else  {
+                startSoloMinerButton.enabled = !walletManager.isMining()
+            }
+        } else {
+             startSoloMinerButton.enabled = !rpcManager.isMining()
         }
 
         stopSoloMinerButton.enabled = !startSoloMinerButton.enabled
