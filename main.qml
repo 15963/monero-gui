@@ -325,14 +325,14 @@ ApplicationWindow {
                 // try to open wallet with password;
                 passwordDialog.open(walletName);
 
-                if(!isLogin){
+                /*if(!isLogin){
                     if(isAutoStart){
                         systemTray.hideALL();
                         passwordDialog.hide();
                         ispasswordDialogHide = true
                         isLogin = true
                     }
-                }
+                }*/
 
             } else {
                 // opening with password but password doesn't match
@@ -1426,10 +1426,10 @@ ApplicationWindow {
         target: systemTray
         // signal - show window
         onSignalShow: {
-            if(ispasswordDialogHide){
+            /*if(ispasswordDialogHide){
                 passwordDialog.show();
                 ispasswordDialogHide = false
-            }
+            }*/
             show();
         }
         onSignalHide: {
