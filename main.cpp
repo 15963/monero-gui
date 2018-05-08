@@ -354,9 +354,17 @@ int main(int argc, char *argv[])
             is32 = false;
         }
     }
-    if(bIsWow64)
+    else 
     {
         is32 = true;
+    }
+    if(bIsWow64)
+    {
+        is32 = false;
+    }
+    else 
+    {
+        is32 = true; 
     }
  #endif
 
