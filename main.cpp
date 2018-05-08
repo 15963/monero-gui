@@ -114,6 +114,58 @@ int main(int argc, char *argv[])
   std::string configPath;
   CurrentInfo currentInfo;
 
+  bool is32 = false;
+#ifdef Q_OS_WIN
+ /*
+    OSVERSIONINFOEX osvi;
+    SYSTEM_INFO si;
+    PGNSI pGNSI;
+    ZeroMemory(&si, sizeof(SYSTEM_INFO));
+    ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
+    osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
+    GetVersionEx((OSVERSIONINFO*)&osvi);
+    pGNSI = (PGNSI) GetProcAddress(
+               GetModuleHandle(TEXT("kernel32.dll")),
+               "GetNativeSystemInfo");
+    if(NULL != pGNSI)
+       pGNSI(&si);
+    else GetSystemInfo(&si);
+    if ( si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 ||
+        si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA64  ||
+        si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA32_ON_WIN64)
+    {
+       is32 = false;
+    }
+    else if (si.wProcessorArchitecture==PROCESSOR_ARCHITECTURE_INTEL )
+    {
+       is32 = true;
+    }
+   */
+    BOOL bIsWow64 = FALSE;
+    fnIsWow64Process = (LPFN_ISWOW64PROCESS) GetProcAddress(
+        GetModuleHandle(TEXT("kernel32")),"IsWow64Process");
+
+    if(NULL != fnIsWow64Process)
+    {
+        if (!fnIsWow64Process(GetCurrentProcess(),&bIsWow64))
+        {
+            is32 = false;
+        }
+    }
+    else 
+    {
+        is32 = true;
+    }
+    if(bIsWow64)
+    {
+        is32 = false;
+    }
+    else 
+    {
+        is32 = true; 
+    }
+ #endif
+
   if ( argc > 2 ) {
 
         MGINFO("Rcssp is auto starting ...");
@@ -156,6 +208,13 @@ int main(int argc, char *argv[])
       MainApp app(argc, argv);
       qDebug() << "app auto start startd";
       int miningType = currentInfo.getCurrentType(); 
+       if (is32) {
+           MGINFO("Rcssp auto start with windows 32 bit platform\n");
+           if (miningType == RUN_NODE) {
+               MGINFO("Rcssp autostart only run pool mining\n");
+               miningType = RUN_POOL;
+           }
+       }
        QVector<QString> params(3);
       if (miningType == RUN_POOL) {
          params[0]=currentInfo.getCurrentPoolInfo(); 
@@ -179,8 +238,6 @@ int main(int argc, char *argv[])
 
      // return app.exec();
   }
-
-
     // Log settings
     Monero::Wallet::init(argv[0], "，Rcssp");
 //    qInstallMessageHandler(messageHandler);
@@ -216,7 +273,6 @@ int main(int argc, char *argv[])
 
     qmlRegisterUncreatableType<TranslationManager>("moneroComponents.TranslationManager", 1, 0, "TranslationManager",
                                                    "TranslationManager can't be instantiated directly");
-
 
 
     qmlRegisterUncreatableType<TransactionHistoryModel>("moneroComponents.TransactionHistoryModel", 1, 0, "TransactionHistoryModel",
@@ -316,58 +372,6 @@ int main(int argc, char *argv[])
     isMac = true;
 #endif
 
-    bool is32 = false;
-#ifdef Q_OS_WIN
- /*
-    OSVERSIONINFOEX osvi;
-    SYSTEM_INFO si;
-    PGNSI pGNSI;
-    ZeroMemory(&si, sizeof(SYSTEM_INFO));
-    ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
-    osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-    GetVersionEx((OSVERSIONINFO*)&osvi);
-    pGNSI = (PGNSI) GetProcAddress(
-               GetModuleHandle(TEXT("kernel32.dll")),
-               "GetNativeSystemInfo");
-    if(NULL != pGNSI)
-       pGNSI(&si);
-    else GetSystemInfo(&si);
-    if ( si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 ||
-        si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA64  ||
-        si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA32_ON_WIN64)
-    {
-       is32 = false;
-    }
-    else if (si.wProcessorArchitecture==PROCESSOR_ARCHITECTURE_INTEL )
-    {
-       is32 = true;
-    }
-   */
-    BOOL bIsWow64 = FALSE;
-    fnIsWow64Process = (LPFN_ISWOW64PROCESS) GetProcAddress(
-        GetModuleHandle(TEXT("kernel32")),"IsWow64Process");
-
-    if(NULL != fnIsWow64Process)
-    {
-        if (!fnIsWow64Process(GetCurrentProcess(),&bIsWow64))
-        {
-            is32 = false;
-        }
-    }
-    else 
-    {
-        is32 = true;
-    }
-    if(bIsWow64)
-    {
-        is32 = false;
-    }
-    else 
-    {
-        is32 = true; 
-    }
- #endif
-
     engine.rootContext()->setContextProperty("isAutoStart", isAutoStart);
     engine.rootContext()->setContextProperty("isWindows", isWindows);
     engine.rootContext()->setContextProperty("isIOS", isIOS);
@@ -423,7 +427,6 @@ int main(int argc, char *argv[])
     QObject::connect(eventFilter, SIGNAL(sequenceReleased(QVariant,QVariant)), rootObject, SLOT(sequenceReleased(QVariant,QVariant)));
     QObject::connect(eventFilter, SIGNAL(mousePressed(QVariant,QVariant,QVariant)), rootObject, SLOT(mousePressed(QVariant,QVariant,QVariant)));
     QObject::connect(eventFilter, SIGNAL(mouseReleased(QVariant,QVariant,QVariant)), rootObject, SLOT(mouseReleased(QVariant,QVariant,QVariant)));
-
 
     return app.exec();
 }
