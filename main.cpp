@@ -60,8 +60,6 @@
 #include "misc_log_ex.h"
 #include "qsingleapplication.h"
 #include <QMessageBox>
-
-
 #include <QThread>
 
 // IOS exclusions
@@ -71,6 +69,14 @@
 
 #ifdef WITH_SCANNER
 #include "QrCodeScanner.h"
+#endif
+
+#ifdef Q_OS_WIN
+    #include "windows.h"
+    #include <tchar.h>
+    typedef void (WINAPI *PGNSI)(LPSYSTEM_INFO);
+    typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS) (HANDLE, PBOOL);
+    LPFN_ISWOW64PROCESS fnIsWow64Process;
 #endif
 
 void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
@@ -311,9 +317,48 @@ int main(int argc, char *argv[])
 #endif
 
     bool is32 = false;
-#ifdef Q_OS_DARWIN32 | Q_OS_WIN32
-    is32 = true;
-#endif
+#ifdef Q_OS_WIN
+ /*
+    OSVERSIONINFOEX osvi;
+    SYSTEM_INFO si;
+    PGNSI pGNSI;
+    ZeroMemory(&si, sizeof(SYSTEM_INFO));
+    ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
+    osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
+    GetVersionEx((OSVERSIONINFO*)&osvi);
+    pGNSI = (PGNSI) GetProcAddress(
+               GetModuleHandle(TEXT("kernel32.dll")),
+               "GetNativeSystemInfo");
+    if(NULL != pGNSI)
+       pGNSI(&si);
+    else GetSystemInfo(&si);
+    if ( si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 ||
+        si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA64  ||
+        si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA32_ON_WIN64)
+    {
+       is32 = false;
+    }
+    else if (si.wProcessorArchitecture==PROCESSOR_ARCHITECTURE_INTEL )
+    {
+       is32 = true;
+    }
+   */
+    BOOL bIsWow64 = FALSE;
+    fnIsWow64Process = (LPFN_ISWOW64PROCESS) GetProcAddress(
+        GetModuleHandle(TEXT("kernel32")),"IsWow64Process");
+
+    if(NULL != fnIsWow64Process)
+    {
+        if (!fnIsWow64Process(GetCurrentProcess(),&bIsWow64))
+        {
+            is32 = false;
+        }
+    }
+    if(bIsWow64)
+    {
+        is32 = true;
+    }
+ #endif
 
     engine.rootContext()->setContextProperty("isAutoStart", isAutoStart);
     engine.rootContext()->setContextProperty("isWindows", isWindows);
