@@ -158,10 +158,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Sign") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       var signature = appWindow.currentWallet.signMessage(signMessageLine.text, false)
@@ -201,10 +201,10 @@ Rectangle {
                     anchors.rightMargin: 17
                     width: 60
                     text: qsTr("Select") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       signFileDialog.open()
@@ -235,10 +235,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Sign") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       var signature = appWindow.currentWallet.signMessage(signFileLine.text, true)
@@ -334,10 +334,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Verify") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       var verified = appWindow.currentWallet.verifySignedMessage(verifyMessageLine.text, verifyAddressLine.text, verifySignatureLine.text, false)
@@ -376,10 +376,10 @@ Rectangle {
                     anchors.rightMargin: 17
                     width: 60
                     text: qsTr("Select") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       verifyFileDialog.open()
@@ -409,10 +409,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Verify") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       var verified = appWindow.currentWallet.verifySignedMessage(verifyFileLine.text, verifyAddressLine.text, verifySignatureLine.text, true)

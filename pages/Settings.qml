@@ -81,7 +81,7 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
 
         GridLayout {
@@ -89,10 +89,10 @@ Rectangle {
             StandardButton {
                 id: closeWalletButton
                 text: qsTr("Close wallet") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 visible: true
                 onClicked: {
                     console.log("closing wallet button clicked")
@@ -104,10 +104,10 @@ Rectangle {
                 enabled: !viewOnly
                 id: createViewOnlyWalletButton
                 text: qsTr("Create view only wallet") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 visible: true
                 onClicked: {
                     wizard.openCreateViewOnlyWalletPage();
@@ -116,10 +116,10 @@ Rectangle {
 
             StandardButton {
                 id: showSeedButton
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 text: qsTr("Show seed & keys") + translationManager.emptyString
                 onClicked: {
                     settingsPasswordDialog.open();
@@ -164,10 +164,10 @@ Rectangle {
             StandardButton {
                 id: rescanSpentButton
                 text: qsTr("Rescan wallet balance") + translationManager.emptyString
-                shadowReleasedColor: "#3b858b"
-                shadowPressedColor: "#3b858b"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     if (!currentWallet.rescanSpent()) {
                         console.error("Error: ", currentWallet.errorString);
@@ -202,7 +202,7 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
 
         GridLayout {
@@ -213,10 +213,10 @@ Rectangle {
                 enabled: !appWindow.daemonRunning
                 id: startDaemonButton
                 text: qsTr("Start daemon") + translationManager.emptyString
-                shadowReleasedColor: "#3b858b"
-                shadowPressedColor: "#3b858b"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     appWindow.startDaemon(daemonFlags.text)
                 }
@@ -227,10 +227,10 @@ Rectangle {
                 enabled: appWindow.daemonRunning
                 id: stopDaemonButton
                 text: qsTr("Stop daemon") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     appWindow.stopDaemon()
                 }
@@ -240,10 +240,10 @@ Rectangle {
                 visible: true
                 id: daemonStatusButton
                 text: qsTr("Show status") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     daemonManager.sendCommand("status",currentWallet.testnet);
                     daemonConsolePopup.open();
@@ -407,10 +407,10 @@ Rectangle {
                 Layout.fillWidth: false
                 Layout.leftMargin: 30
                 text: qsTr("Connect") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     console.log("saving daemon adress settings")
                     var newDaemon = daemonAddr.text.trim() + ":" + daemonPort.text.trim()
@@ -443,11 +443,14 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
 
         RowLayout {
             CheckBox {
+                background:{
+                    color:"#25313c"
+                }
                 id: customDecorationsCheckBox
                 checked: persistentSettings.customDecorations
                 onClicked: appWindow.setCustomWindowDecorations(checked)
@@ -471,7 +474,7 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
         ColumnLayout {
             ComboBox {
@@ -521,7 +524,7 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
 
         TextBlock {
@@ -569,10 +572,10 @@ Rectangle {
                 Layout.fillWidth: false
                 Layout.leftMargin: 30
                 text: qsTr("Save") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
 
                 onClicked: {
                     currentWallet.walletCreationHeight = restoreHeight.text

@@ -80,7 +80,7 @@ Rectangle {
                     anchors.leftMargin: 12
                     anchors.rightMargin: 12
                     elide: Text.ElideRight
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 14
                     color: styleData.selected ? "#FF4E40" : "#4A4646"
                     text: styleData.title
@@ -138,7 +138,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         height: 1
-        color: "#DBDBDB"
+        color: "#ff0000"
     }
 
     Rectangle {
@@ -146,7 +146,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         width: 1
-        color: "#DBDBDB"
+        color: "#00ff00"
     }
 
     // indicate disabled state

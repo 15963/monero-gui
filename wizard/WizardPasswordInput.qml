@@ -41,17 +41,22 @@ ColumnLayout {
         Layout.fillWidth: true
         id : password
         focus:true
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.pixelSize: (isMobile) ? 25 : 26
         echoMode: TextInput.Password
+
         style: TextFieldStyle {
             renderType: Text.NativeRendering
-            textColor: "#0a0a0a"
+            textColor: "#ffffff"
             passwordCharacter: "•"
             background: Rectangle {
                 radius: 0
-                border.width: 0
+                color:"transparent"
+                border.width: 0.5
+                border.color: "#747b82"
             }
+
+
         }
         onTextChanged: changed(text)
 
@@ -63,6 +68,6 @@ ColumnLayout {
     Rectangle {
         Layout.fillWidth:true
         height: 1
-        color: "#0a0a0a"
+        color: "transparent"
     }
 }

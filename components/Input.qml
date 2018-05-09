@@ -31,7 +31,7 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick 2.2
 
 TextField {
-    font.family: "Arial"
+    font.family: "微软雅黑"
     horizontalAlignment: TextInput.AlignLeft
 
     style: TextFieldStyle {
@@ -41,7 +41,7 @@ TextField {
 
         background: Rectangle {
             border.width: 0.5
-            border.color: "#747c82"
+            border.color: "#747b82"
             color: "#25313c"
             radius: 4
         }

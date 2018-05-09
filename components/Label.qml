@@ -46,7 +46,7 @@ Item {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 2
         anchors.left: parent.left
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.pixelSize: parent.fontSize
         color: "#555555"
         onLinkActivated: item.linkActivated()

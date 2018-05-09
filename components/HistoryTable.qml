@@ -73,9 +73,9 @@ ListView {
 
         Text {
             anchors.centerIn: parent
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 14
-            color: "#545454"
+            color: "#747b82"
             text: qsTr("No more results") + translationManager.emptyString
         }
     }
@@ -104,10 +104,10 @@ ListView {
             anchors.topMargin: parent.height/2 - this.height/2
             width: 80
             fontSize: 14
-            shadowReleasedColor: "#4ed9d9"
-            shadowPressedColor: "#4ed9d9"
+            shadowReleasedColor: "#3b848c"
+            shadowPressedColor: "#ff0000"
             releasedColor: "#4ed9d9"
-            pressedColor: "#4ed9d9"
+            pressedColor: "#0000ff"
             text: qsTr("Details")
             onClicked: {
                 var tx_key = currentWallet.getTxKey(hash)
@@ -145,7 +145,7 @@ ListView {
                 id: descriptionText
                 width: text.length ? (descriptionArea.containsMouse ? parent.width - x - 12 : 120) : 0
                 anchors.verticalCenter: dot.verticalCenter
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.bold: true
                 font.pixelSize: 19
                 color: "#444444"
@@ -174,7 +174,7 @@ ListView {
                 anchors.verticalCenter: dot.verticalCenter
                 width: parent.width - x - 12
                 //elide: Text.ElideRight
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 14
                 color: "#545454"
                 text: hash
@@ -196,7 +196,7 @@ ListView {
                 id: paymentLabel
                 width: 86
                 anchors.bottom: parent.bottom
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 12
                 color: "#535353"
                 text: paymentId !== "" ? qsTr("Payment ID:")  + translationManager.emptyString : ""
@@ -209,7 +209,7 @@ ListView {
                 width: 136
                 anchors.bottom: parent.bottom
                 //elide: Text.ElideRight
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize:13
                 color: "#545454"
                 text: paymentId
@@ -223,7 +223,7 @@ ListView {
                 width: 136
                 anchors.bottom: parent.bottom
                 //elide: Text.ElideRight
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize:13
                 color: "#545454"
                 text: "(" + lookupPaymentID(paymentId) + ")"
@@ -244,7 +244,7 @@ ListView {
                 id: blockHeghtTitle
                 anchors.bottom: parent.bottom
                 width: 86
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 12
                 color: "#535353"
                 text:  qsTr("BlockHeight:")  + translationManager.emptyString
@@ -256,7 +256,7 @@ ListView {
                 width: 85
                 anchors.bottom: parent.bottom
                 //elide: Text.ElideRight
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 13
                 color:  (confirmations < confirmationsRequired)? "#FF6C3C" : "#545454"
                 text: {
@@ -293,7 +293,7 @@ ListView {
 
                 Text {
                     anchors.left: parent.left
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 12
                     color: "#545454"
                     text: qsTr("Date") + translationManager.emptyString
@@ -305,14 +305,14 @@ ListView {
                     spacing: 33
 
                     Text {
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.pixelSize: 18
                         color: "#000000"
                         text: date
                     }
 
                     Text {
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.pixelSize: 18
                         color: "#000000"
                         text: time
@@ -329,14 +329,14 @@ ListView {
 
                 Text {
                     anchors.left: parent.left
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 12
                     color: "#545454"
                     text: qsTr("Balance") + translationManager.emptyString
                 }
 
                 Text {
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 18
                     color: "#000000"
                     text: balance
@@ -350,7 +350,7 @@ ListView {
 
                 Text {
                     anchors.left: parent.left
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 12
                     color: "#545454"
                     text: qsTr("Amount") + translationManager.emptyString
@@ -361,7 +361,7 @@ ListView {
                     Text {
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: 3
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.pixelSize: 16
                         color: isOut ? "#FF4F41" : "#36B05B"
                         text: isOut ? "↓" : "↑"
@@ -370,7 +370,7 @@ ListView {
                     Text {
                         id: amountText
                         anchors.bottom: parent.bottom
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.pixelSize: 18
                         color: isOut ? "#FF4F41" : "#36B05B"
                         text:  displayAmount
@@ -385,7 +385,7 @@ ListView {
                 visible: isOut
                 Text {
                     anchors.left: parent.left
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 12
                     color: "#545454"
                     text: qsTr("Fee") + translationManager.emptyString
@@ -395,7 +395,7 @@ ListView {
                     spacing: 2
                     Text {
                         anchors.bottom: parent.bottom
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.pixelSize: 18
                         color: "#FF4F41"
                         text:  fee

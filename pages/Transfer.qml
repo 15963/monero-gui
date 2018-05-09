@@ -175,10 +175,10 @@ Rectangle {
               //anchors.bottom: amountLine.bottom
               width: 60
               text: qsTr("All") + translationManager.emptyString
-              shadowReleasedColor: "#4ed9d9"
-              shadowPressedColor: "#4ed9d9"
+              shadowReleasedColor: "#3b848c"
+              shadowPressedColor: "#ff0000"
               releasedColor: "#4ed9d9"
-              pressedColor: "#4ed9d9"
+              pressedColor: "#0000ff"
               enabled : true
               onClicked: amountLine.text = "(all)"
           }
@@ -219,10 +219,10 @@ Rectangle {
           anchors.rightMargin: 17
           anchors.topMargin: 5
           anchors.left: transactionPriority.left
-          shadowReleasedColor: "#4ed9d9"
-          shadowPressedColor: "#4ed9d9"
-          releasedColor: "#4ed9d9"
-          pressedColor: "#4ed9d9"
+          shadowReleasedColor: "#25313c"
+          shadowPressedColor: "#25313c"
+          releasedColor: "#25313c"
+          pressedColor: "#25313c"
           z: 1
       }
 
@@ -236,7 +236,7 @@ Rectangle {
           anchors.topMargin: 30
           fontSize: 14
           textFormat: Text.RichText
-          text: qsTr("<style type='text/css'>a {text-decoration: none; color: #4ed9d9; font-size: 14px;}</style>\
+          text: qsTr("<style type='text/css'>a {text-decoration: none; color: #FF6C3C; font-size: 14px;}</style>\
                       Address <font size='2'>  ( Paste in or select from </font> <a href='#'>Address book</a><font size='2'> )</font>")
                 + translationManager.emptyString
 
@@ -255,10 +255,10 @@ Rectangle {
               anchors.leftMargin: 17
               anchors.topMargin: 5
               text: qsTr("QR Code") + translationManager.emptyString
-              shadowReleasedColor: "#4ed9d9"
-              shadowPressedColor: "#4ed9d9"
+              shadowReleasedColor: "#3b848c"
+              shadowPressedColor: "#ff0000"
               releasedColor: "#4ed9d9"
-              pressedColor: "#4ed9d9"
+              pressedColor: "#0000ff"
               visible : appWindow.qrScannerEnabled
               enabled : visible
               width: visible ? 60 : 0
@@ -285,10 +285,10 @@ Rectangle {
               anchors.rightMargin: 17
               width: 60
               text: qsTr("Resolve") + translationManager.emptyString
-              shadowReleasedColor: "#4ed9d9"
-              shadowPressedColor: "#4ed9d9"
+              shadowReleasedColor: "#3b848c"
+              shadowPressedColor: "#ff0000"
               releasedColor: "#4ed9d9"
-              pressedColor: "#4ed9d9"
+              pressedColor: "#0000ff"
 
               enabled : isValidOpenAliasAddress(addressLine.text)
               onClicked: {
@@ -404,10 +404,10 @@ Rectangle {
           StandardButton {
               id: sendButton
               text: qsTr("Send") + translationManager.emptyString
-              shadowReleasedColor: "#4ed9d9"
-              shadowPressedColor: "#4ed9d9"
+              shadowReleasedColor: "#3b848c"
+              shadowPressedColor: "#ff0000"
               releasedColor: "#4ed9d9"
-              pressedColor: "#4ed9d9"
+              pressedColor: "#0000ff"
               enabled : !appWindow.viewOnly && pageRoot.checkInformation(amountLine.text, addressLine.text, paymentIdLine.text, appWindow.persistentSettings.testnet)
               onClicked: {
                   console.log("Transfer: paymentClicked")
@@ -444,6 +444,9 @@ Rectangle {
 
         RowLayout {
             CheckBox {
+                background:{
+                    color:"#25313c"
+                }
                 id: showAdvancedCheckbox
                 checked: persistentSettings.transferShowAdvanced
                 onClicked: {
@@ -459,7 +462,7 @@ Rectangle {
             visible: persistentSettings.transferShowAdvanced
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
             Layout.bottomMargin: 30
         }
 
@@ -504,10 +507,10 @@ Rectangle {
             StandardButton {
                 id: sweepUnmixableButton
                 text: qsTr("Sweep Unmixable") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 enabled : pageRoot.enabled
                 onClicked: {
                     console.log("Transfer: sweepUnmixableClicked")
@@ -525,11 +528,10 @@ Rectangle {
                 pressedColor: "#FF4304"
                 */
 
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
-
+                pressedColor: "#0000ff"
                 visible: appWindow.viewOnly
                 enabled: pageRoot.checkInformation(amountLine.text, addressLine.text, paymentIdLine.text, appWindow.persistentSettings.testnet)
                 onClicked: {
@@ -548,10 +550,10 @@ Rectangle {
             StandardButton {
                 id: signTxButton
                 text: qsTr("Sign tx file") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 visible: !appWindow.viewOnly
                 onClicked: {
                     console.log("Transfer: sign tx clicked")
@@ -562,10 +564,10 @@ Rectangle {
             StandardButton {
                 id: submitTxButton
                 text: qsTr("Submit tx file") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 visible: appWindow.viewOnly
                 enabled: pageRoot.enabled
                 onClicked: {
@@ -675,7 +677,9 @@ Rectangle {
         height:statusText.paintedHeight + 50
         width:statusText.paintedWidth + 40
         visible: statusText.text != ""
-        opacity: 0.9
+        // opacity: 0.9
+        color:"#25313c"
+        border.color: "#4ed9d9"
 
         Text {
             id: statusText

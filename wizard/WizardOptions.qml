@@ -65,7 +65,7 @@ ColumnLayout {
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 28
             Layout.bottomMargin: 25
             //renderType: Text.NativeRendering
@@ -77,7 +77,7 @@ ColumnLayout {
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 18
             //renderType: Text.NativeRendering
             color: "#ffffff"
@@ -124,7 +124,7 @@ ColumnLayout {
 
                 Text {
                     Layout.preferredWidth: 190
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 16
                     color: createWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
                     horizontalAlignment: Text.AlignHCenter
@@ -169,7 +169,7 @@ ColumnLayout {
                 }
                 Text {
                     Layout.preferredWidth: 190
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 16
                     color: recoverWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
                     horizontalAlignment: Text.AlignHCenter
@@ -217,7 +217,7 @@ ColumnLayout {
 
                 Text {
                     Layout.preferredWidth: 190
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 16
                     color: openWalletArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
                     horizontalAlignment: Text.AlignHCenter

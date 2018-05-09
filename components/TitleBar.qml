@@ -45,7 +45,7 @@ Rectangle {
 
     Text {
         anchors.centerIn: parent
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.pixelSize: 15
         color: "#FFFFFF"
         text: titleBar.title
@@ -58,14 +58,14 @@ Rectangle {
         property bool checked: false
         anchors.top: parent.top
         anchors.left: parent.left
-        color:  basicMouseArea.containsMouse || !leftPanel.visible ? "#FFE00A" : "#2f3943"
+        color:  basicMouseArea.containsMouse || !leftPanel.visible ? "#4ed9d9" : "#2f3943"
         height: 30
         width: height
         visible: isMobile
 
         Image {
             anchors.centerIn: parent
-            rotation: !leftPanel.visible ? 180 : 0
+            rotation: !leftPanel.visible ? 0 : 0
             source: parent.customDecorations || !leftPanel.visible ? "../images/goToBasicVersionHovered.png" :
                                                              "../images/gotoBasicVersion.png"
         }
@@ -97,7 +97,7 @@ Rectangle {
 
             Image {
                 anchors.centerIn: parent
-                source: "../images/helpIcon.png"
+               // source: "../images/helpIcon.png"
             }
 
             MouseArea {

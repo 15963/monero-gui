@@ -51,7 +51,7 @@ Item {
             backgroundVisible: false
             textFormat: TextEdit.AutoText
             anchors.fill: parent
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
             textMargin: 20
             textColor: "white"

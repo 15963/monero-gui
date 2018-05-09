@@ -67,16 +67,16 @@ Item {
             height: parent.height
             radius: 4
             y: 0
-            color: "#ffffff"
+            color: "#747b82"
 
         }
 
         Rectangle {
             border.width: 1
-            border.color: "#ffffff"
+            border.color: "#747b82"
             anchors.left: parent.left
             anchors.right: parent.right
-            height: parent.height - 1
+            height: parent.height
             anchors.leftMargin: datePicker.expanded ? 1 : 0
             anchors.rightMargin: datePicker.expanded ? 1 : 0
             radius: 4
@@ -96,10 +96,10 @@ Item {
             StandardButton {
                 id: button
                 anchors.fill: parent
-                shadowReleasedColor: "#DBDBDB"
-                shadowPressedColor: "#888888"
-                releasedColor: "#F0EEEE"
-                pressedColor: "#DBDBDB"
+                shadowReleasedColor: "transparent"
+                shadowPressedColor: "transparent"
+                releasedColor: "transparent"
+                pressedColor: "transparent"
                 icon: "../images/datePicker.png"
                 visible: !datePicker.expanded
                 onClicked: datePicker.expanded = true
@@ -154,7 +154,7 @@ Item {
                 id: dayInput
                 readOnly: true
                 width: 22
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 18
                 // color: "#525252"
                 color:"#ffffff"
@@ -178,7 +178,7 @@ Item {
             }
 
             Text {
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 18
                 // color: "#525252"
                 color:"#ffffff"
@@ -189,7 +189,7 @@ Item {
                 id: monthInput
                 readOnly: true
                 width: 22
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 18
                 // color: "#525252"
                 color:"#ffffff"
@@ -212,7 +212,7 @@ Item {
             }
 
             Text {
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 18
                 // color: "#525252"
                 color:"#ffffff"
@@ -222,7 +222,7 @@ Item {
             TextInput {
                 id: yearInput
                 width: 44
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 18
                 /// color: "#525252"
                 color:"#ffffff"
@@ -292,14 +292,14 @@ Item {
 
                     Text {
                         anchors.centerIn: parent
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.pixelSize: 12
                         font.bold: dayArea.pressed
                         text: styleData.date.getDate()
                         color: {
                             if(!styleData.visibleMonth) return "#DBDBDB"
                             if(dayArea.pressed) return "#FFFFFF"
-                            if(styleData.today) return "#FF6C3B"
+                            if(styleData.today) return "#4ed9d9"
                             return "#4A4848"
                         }
                     }
@@ -328,7 +328,7 @@ Item {
                     Text {
                         anchors.centerIn: parent
                         elide: Text.ElideRight
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.pixelSize: 9
                         color: "#535353"
                         text: {
@@ -344,7 +344,7 @@ Item {
 
                     Text {
                         anchors.centerIn: parent
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.pixelSize: 12
                         color: "#4A4646"
                         text: styleData.title

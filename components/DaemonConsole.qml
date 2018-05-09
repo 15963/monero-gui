@@ -82,7 +82,7 @@ Window {
                 id: dialogTitle
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 32
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 color: "#ffffff"
             }
 
@@ -93,7 +93,7 @@ Window {
                 id : dialogContent
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 textFormat: TextEdit.AutoText
                 readOnly: true
                 font.pixelSize: 12
@@ -110,10 +110,10 @@ Window {
                 id: okButton
                 width: 120
                 fontSize: 14
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 text: qsTr("Close") + translationManager.emptyString
                 onClicked: {
                     root.close()

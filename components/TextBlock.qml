@@ -4,4 +4,5 @@ TextEdit {
     wrapMode: Text.Wrap
     readOnly: true
     selectByMouse: true
+    color:"#ffffff"
 }

@@ -49,7 +49,7 @@ Item {
         anchors.top: parent.top
         height: 24
         //radius: 4
-        color: "#DBDBDB"
+        color: "#2f3943"
     }
 
     Rectangle {
@@ -60,7 +60,7 @@ Item {
         anchors.topMargin: 1
         height: 24
         //radius: 4
-        color: "#FFFFFF"
+        color: "#2f3943"
 
         Rectangle {
             id: fillRect
@@ -93,27 +93,27 @@ Item {
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 15
-            color: "#000000"
+            color: "#ffffff"
             x: row.x + (row.positions[0] !== undefined ? row.positions[0].currentX - 3 : 0) - width
             text: qsTr("Low") + translationManager.emptyString
         }
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 15
-            color: "#000000"
+            color: "#ffffff"
             x: row.x + (row.positions[4] !== undefined ? row.positions[4].currentX - 3 : 0) - width
             text: qsTr("Medium") + translationManager.emptyString
         }
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 15
-            color: "#000000"
+            color: "#ffffff"
             x: row.x + (row.positions[13] !== undefined ? row.positions[13].currentX - 3 : 0) - width
             text: qsTr("High") + translationManager.emptyString
         }
@@ -164,7 +164,7 @@ Item {
                     property int currentX: x + row2.x
                     height: 8
                     width: 1
-                    color: "#DBDBDB"
+                    color: "#2f3943"
                     Component.onCompleted: {
                         row.positions[index] = delegateItem2
                     }
@@ -184,7 +184,7 @@ Item {
                     property int currentX: x + row1.x
                     height: index === 4 ? 8 : 4
                     width: 1
-                    color: "#DBDBDB"
+                    color: "#2f3943"
                     Component.onCompleted: {
                         row.positions[index + 4] = delegateItem1
                     }

@@ -52,8 +52,8 @@ Item {
         y: buttonArea.pressed ? 0 : 1
         radius: 4
         color: {
-            parent.enabled ? (buttonArea.pressed ? parent.shadowPressedColor : parent.shadowReleasedColor)
-                           : parent.shadowReleasedColor
+            parent.enabled ?
+                           parent.releasedColor:parent.shadowReleasedColor
         }
         border.color: parent.releasedColor
         border.width: parent.focus ? 1 : 0
@@ -66,9 +66,8 @@ Item {
         height: parent.height - 1
         y: buttonArea.pressed ? 1 : 0
         color: {
-            parent.enabled ? (buttonArea.pressed ? parent.pressedColor : parent.releasedColor)
-                           : Qt.lighter(parent.releasedColor)
-
+            parent.enabled ?
+                           parent.releasedColor:shadowReleasedColor
         }
         radius: 4
 

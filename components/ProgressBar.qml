@@ -94,7 +94,7 @@ Item {
             Text {
                 id:progressText
                 anchors.bottom: parent.bottom
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 12
                 color: "#ffffff"
                 text: qsTr("Synchronizing blocks")

@@ -90,16 +90,15 @@ ColumnLayout {
         wizard.nextButton.visible = false;
     }
 
-
     RowLayout {
         id: dotsRow
         Layout.alignment: Qt.AlignRight
 
         ListModel {
             id: dotsModel
-            ListElement { dotColor: "#36B05B" }
-            ListElement { dotColor: "#36B05B" }
-            ListElement { dotColor: "#36B05B" }
+            ListElement { dotColor: "#4fdbdc" }
+            ListElement { dotColor: "#4fdbdc" }
+            ListElement { dotColor: "#4fdbdc" }
             //ListElement { dotColor: "#36B05B" }
         }
 
@@ -116,10 +115,11 @@ ColumnLayout {
     ColumnLayout {
         id: headerColumn
         Layout.fillWidth: true
+        spacing: 80
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 28
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
@@ -131,8 +131,8 @@ ColumnLayout {
         Text {
             Layout.fillWidth: true
             id: settingsText
-            font.family: "Arial"
-            font.pixelSize: 16
+            font.family: "微软雅黑"
+            font.pixelSize: 14
             wrapMode: Text.Wrap
             textFormat: Text.RichText
             horizontalAlignment: Text.AlignHLeft

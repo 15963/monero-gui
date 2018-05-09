@@ -40,6 +40,7 @@ Item {
     property bool expanded: false
     height: 37
 
+
     onExpandedChanged: if(expanded) appWindow.currentItem = dropdown
     function hide() { dropdown.expanded = false }
     function containsPoint(px, py) {
@@ -62,6 +63,7 @@ Item {
         height: 37
 
         Rectangle {
+            border.color: "#747b82"
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height - 1
@@ -71,6 +73,7 @@ Item {
         }
 
         Rectangle {
+            border.color: "#747b82"
             anchors.left: parent.left
             anchors.right: parent.right
             height: parent.height - 1
@@ -103,10 +106,10 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 12
             elide: Text.ElideRight
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.bold: true
             font.pixelSize: 12
-            color: "#525252"
+            color: "#ffffff"
             text: column.currentIndex < repeater.model.rowCount() ? qsTr(repeater.model.get(column.currentIndex).column1) + translationManager.emptyString : ""
         }
 
@@ -116,9 +119,9 @@ Item {
             anchors.right: separator.left
             anchors.rightMargin: 12
             width: dropdown.expanded ? w : (separator.x - 12) - (firstColText.x + firstColText.width + 5)
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
-            color: "#525252"
+            color: "#ffffff"
             text: column.currentIndex < repeater.model.rowCount() ? qsTr(repeater.model.get(column.currentIndex).column2) + translationManager.emptyString : ""
 
             property int w: 0
@@ -143,7 +146,7 @@ Item {
 
             Image {
                 anchors.centerIn: parent
-                source: "../images/whiteDropIndicator.png"
+                source: "../images/open.png"
                 rotation: dropdown.expanded ? 180 : 0
             }
         }
@@ -219,10 +222,10 @@ Item {
                         anchors.right: col2Text.left
                         anchors.leftMargin: 12
                         anchors.rightMargin: column2.length > 0 ? 12 : 0
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.bold: true
                         font.pixelSize: 12
-                        color: "#4d4d4d"
+                        color: "#ffffff"
                         text: qsTr(column1) + translationManager.emptyString
                     }
 
@@ -231,9 +234,9 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.right: parent.right
                         anchors.rightMargin: 45
-                        font.family: "Arial"
+                        font.family: "微软雅黑"
                         font.pixelSize: 12
-                        color: "#4d4d4d"
+                        color: "#ffffff"
                         text: column2
                     }
 

@@ -47,10 +47,10 @@ Item {
             anchors.rightMargin: 12
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 2
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.bold: true
             font.pixelSize: 12
-            color: "#ffffff"
+            color: "#747b82"
             text: {
                 if(currentIndex === 0) return qsTr("Normal") + translationManager.emptyString
                 if(currentIndex === 13) return qsTr("High") + translationManager.emptyString
@@ -63,7 +63,7 @@ Item {
         anchors.top: parent.top
         anchors.topMargin: 14
         width: 1
-        color: "#DBDBDB"
+        color: "#747b82"
         height:  8
         visible: !parent.mainTick
     }

@@ -50,7 +50,7 @@ Item {
         width: 25
         //radius: 4
         y: 0
-        color: "#DBDBDB"
+        color: "#25313c"
     }
 
     Rectangle {
@@ -74,7 +74,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 25 + 12
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.pixelSize: checkBox.fontSize
         color: "#ffffff"
     }

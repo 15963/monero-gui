@@ -129,7 +129,7 @@ Rectangle {
         anchors.topMargin: 17
 
         elide: Text.ElideRight
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.pixelSize: 18
         color: "#ffffff"
         text: qsTr("Filter transaction history") + translationManager.emptyString
@@ -278,10 +278,10 @@ Rectangle {
         anchors.leftMargin: 17
         width: 60
         text: qsTr("Filter") + translationManager.emptyString
-        shadowReleasedColor: "#4ed9d9"
-        shadowPressedColor: "#4ed9d9"
+        shadowReleasedColor: "#3b848c"
+        shadowPressedColor: "#ff0000"
         releasedColor: "#4ed9d9"
-        pressedColor: "#4ed9d9"
+        pressedColor: "#0000ff"
         onClicked:  {
             // Apply filter here;
 
@@ -313,6 +313,9 @@ Rectangle {
     }
 
     CheckBox {
+        background:{
+            color:"#25313c"
+        }
         visible: !isMobile
         id: advancedFilteringCheckBox
         text: qsTr("Advanced filtering") + translationManager.emptyString
@@ -350,16 +353,17 @@ Rectangle {
 
     StandardDropdown {
         visible: !isMobile
+
         id: transactionTypeDropdown
         anchors.left: parent.left
         anchors.top: transactionTypeText.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 5
         width: 156
-        shadowReleasedColor: "#e9eaeb"
-        shadowPressedColor: "#ffffff"
-        releasedColor: "#e9eaeb"
-        pressedColor: "#ffffff"
+        shadowReleasedColor: "#25313c"
+        shadowPressedColor: "#25313c"
+        releasedColor: "#25313c"
+        pressedColor: "#25313c"
         dataModel: transactionsModel
         z: 1
     }
@@ -445,8 +449,8 @@ Rectangle {
 
         Image {
             anchors.centerIn: parent
-            source: "../images/expandTable.png"
-            rotation: parent.expanded ? 180 : 0
+            source: "../images/open.png"
+            rotation: parent.expanded ? 0 : 180
         }
 
         MouseArea {
@@ -492,7 +496,7 @@ Rectangle {
             anchors.right: parent.right
             anchors.top: parent.top
             height: 1
-            color: "#DBDBDB"
+            color: "#747b82"
         }
 
         ListModel {

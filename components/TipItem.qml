@@ -63,7 +63,7 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
             y: 6
             lineHeight: 0.7
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
             color: "#FFFFFF"
         }
