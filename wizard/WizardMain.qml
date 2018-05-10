@@ -165,8 +165,10 @@ ColumnLayout {
         // Store releative path on ios.
         if(isIOS)
             folder_path = "";
-
-        return folder_path + "/" + account_name + "/" + account_name
+        if (isWindows)
+            return folder_path + "\\" + account_name + "\\" + account_name
+         else
+            return folder_path + "/" + account_name + "/" + account_name
     }
 
     function walletPathValid(path){
@@ -313,7 +315,7 @@ ColumnLayout {
 
         width: 50; height: 50
         radius: 25
-        color: "transparent" // prevArea.containsMouse ?"#FF4304" : "#FF6C3C"
+        color: "transparent" // prevArea.containsMouse ?"#FF4304" : "#4ed9d9"
 
         Image {
             anchors.centerIn: parent
@@ -340,7 +342,7 @@ ColumnLayout {
         visible: currentPage > 1 && currentPage < pages.length - 1
         width: 50; height: 50
         radius: 25
-        color: "transparent" // enabled ? nextArea.containsMouse ? "#FF4304" : "#FF6C3C" : "#DBDBDB"
+        color: "transparent" // enabled ? nextArea.containsMouse ? "#FF4304" : "#4ed9d9" : "#DBDBDB"
 
 
         Image {
@@ -366,10 +368,10 @@ ColumnLayout {
         anchors.left: parent.left + 50
         anchors.margins:  (isMobile) ? 20 : 50
         text: qsTr("USE CSSP") + translationManager.emptyString
-        shadowReleasedColor: "#4ed9d9"
-        shadowPressedColor: "#4ed9d9"
+        shadowReleasedColor: "#3b848c"
+        shadowPressedColor: "#ff0000"
         releasedColor: "#4ed9d9"
-        pressedColor: "#4ed9d9"
+        pressedColor: "#0000ff"
         visible: parent.paths[currentPath][currentPage] === finishPage
         onClicked: {
             wizard.applySettings();
@@ -383,10 +385,10 @@ ColumnLayout {
        anchors.bottom: parent.bottom
        anchors.margins: (isMobile) ? 20 : 50
        text: qsTr("Create wallet") + translationManager.emptyString
-       shadowReleasedColor: "#4ed9d9"
-       shadowPressedColor: "#4ed9d9"
+       shadowReleasedColor: "#3b848c"
+       shadowPressedColor: "#ff0000"
        releasedColor: "#4ed9d9"
-       pressedColor: "#4ed9d9"
+       pressedColor: "#0000ff"
        visible: currentPath === "create_view_only_wallet" &&  parent.paths[currentPath][currentPage] === passwordPage
        enabled: passwordPage.passwordsMatch
        onClicked: {
@@ -415,10 +417,10 @@ ColumnLayout {
        anchors.bottom: parent.bottom
        anchors.margins:  (isMobile) ? 20 : 50
        text: qsTr("Abort") + translationManager.emptyString
-       shadowReleasedColor: "#4ed9d9"
-       shadowPressedColor: "#4ed9d9"
+       shadowReleasedColor: "#3b848c"
+       shadowPressedColor: "#ff0000"
        releasedColor: "#4ed9d9"
-       pressedColor: "#4ed9d9"
+       pressedColor: "#0000ff"
        visible: currentPath === "create_view_only_wallet" &&  parent.paths[currentPath][currentPage] === passwordPage
        onClicked: {
            wizard.restart();

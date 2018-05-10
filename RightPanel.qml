@@ -80,7 +80,7 @@ Rectangle {
                     anchors.leftMargin: 12
                     anchors.rightMargin: 12
                     elide: Text.ElideRight
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 14
                     color: styleData.selected ? "#FF4E40" : "#4A4646"
                     text: styleData.title
@@ -128,7 +128,7 @@ Rectangle {
 
         Rectangle { height: 8; width: parent.width / 5; color: "#FFE00A" }
         Rectangle { height: 8; width: parent.width / 5; color: "#6B0072" }
-        Rectangle { height: 8; width: parent.width / 5; color: "#FF6C3C" }
+        Rectangle { height: 8; width: parent.width / 5; color: "#4ed9d9" }
         Rectangle { height: 8; width: parent.width / 5; color: "#FFD781" }
         Rectangle { height: 8; width: parent.width / 5 - 30; color: "#FF4F41" }
     }

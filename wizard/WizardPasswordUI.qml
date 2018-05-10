@@ -67,7 +67,8 @@ ColumnLayout {
         Layout.maximumWidth: 300
         Layout.minimumWidth: 200
         Layout.alignment: Qt.AlignHCenter
-        placeholderText : qsTr("Password") + translationManager.emptyString;
+        // placeholderText : qsTr("Password") + translationManager.emptyString;
+        placeholderText: '<font size="4" color="#747b82" >'+qsTr("Password") + translationManager.emptyString   +'</font>'
         KeyNavigation.tab: retypePasswordItem
         onChanged: handlePassword()
         focus: true
@@ -79,7 +80,8 @@ ColumnLayout {
         Layout.maximumWidth: 300
         Layout.minimumWidth: 200
         Layout.alignment: Qt.AlignHCenter
-        placeholderText : qsTr("Confirm password") + translationManager.emptyString;
+        // placeholderText :  "<font size= "5" color="red" >" + qsTr("Confirm password") + translationManager.emptyString + " </font>"
+        placeholderText: '<font size="4" color="#747b82" >'+ qsTr("Confirm password") + translationManager.emptyString   +'</font>'
         KeyNavigation.tab: passwordItem
         onChanged: handlePassword()
     }
@@ -88,7 +90,7 @@ ColumnLayout {
         Layout.topMargin: isMobile ? 20 : 40
         Layout.fillWidth: true
         id: privacyLevel
-        background: "#F0EEEE"
+        background: "#2f3943"
         interactive: false
     }
 

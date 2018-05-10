@@ -62,6 +62,9 @@
 #include <QMessageBox>
 #include <QThread>
 
+#include "QmlLog4Qml/QmlLog4Qml.h"
+
+
 // IOS exclusions
 #ifndef Q_OS_IOS
 #include "daemon/DaemonManager.h"
@@ -92,6 +95,8 @@ int main(int argc, char *argv[])
 //    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 //    qDebug() << "High DPI auto scaling - enabled";
 //#endif
+
+    QmlLog4Qml log4Qml;
 
     SingleApplication app1(argc,argv);
     if (app1.isRunning())
@@ -305,6 +310,9 @@ int main(int argc, char *argv[])
 #endif
 
     QQmlApplicationEngine engine;
+
+    // qml log
+    engine.rootContext()->setContextProperty("log4Qml", &log4Qml);
 
     // http get pools and nodes
     Dohttp dohttp;

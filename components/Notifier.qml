@@ -41,7 +41,7 @@ Item {
     y: parent.height - height * scale.yScale - margin * scale.yScale
 
     Rectangle {
-        color: "#FF6C3C"
+        color: "#4ed9d9"
         border.color: "black"
         anchors.fill: parent
 
@@ -51,7 +51,7 @@ Item {
             backgroundVisible: false
             textFormat: TextEdit.AutoText
             anchors.fill: parent
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
             textMargin: 20
             textColor: "white"

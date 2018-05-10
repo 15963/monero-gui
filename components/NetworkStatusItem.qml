@@ -79,7 +79,7 @@ Row {
 
         Text {
             anchors.left: parent.left
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
             color: "#b2b6ba"
             text: qsTr("Network status") + translationManager.emptyString
@@ -87,7 +87,7 @@ Row {
 
         Text {
             anchors.left: parent.left
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 18
             color: getConnectionStatusColor(item.connected)
             text: getConnectionStatusString(item.connected) + translationManager.emptyString

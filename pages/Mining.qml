@@ -66,7 +66,7 @@ Rectangle {
 
             Label {
                 id: soloTitleLabel
-                fontSize: 24
+                fontSize: 18
                 color:"#ffffff"
                 text: qsTr("Solo mining") + translationManager.emptyString
             }
@@ -84,7 +84,7 @@ Rectangle {
                     id: labelminingtype
                     color: "#ffffff"
                     text: qsTr("mingtype") + translationManager.emptyString
-                    fontSize: 16
+                    fontSize: 14
                     Layout.preferredWidth: 120
                 }
                 ComboBox {
@@ -140,14 +140,14 @@ Rectangle {
                     id: soloMinerThreadsLabel
                     color: "#ffffff"
                     text: qsTr("CPU threads") + translationManager.emptyString
-                    fontSize: 16
+                    fontSize: 14
                     Layout.preferredWidth: 120
                 }
                 LineEdit {
                     id: soloMinerThreadsLine
                     Layout.preferredWidth:  200
                     text: "1"
-                    placeholderText: qsTr("(optional)") + translationManager.emptyString
+                    placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("(optional)") + translationManager.emptyString + '</font>'
                     validator: IntValidator { bottom: 1 }
                     onTextUpdated: {
                         if(!is32){
@@ -174,6 +174,9 @@ Rectangle {
             RowLayout {
                 Layout.leftMargin: 125
                 CheckBox {
+                    background:{
+                        color:"#25313c"
+                    }
                     id: backgroundMining
                     enabled: startSoloMinerButton.enabled
                     checked: {
@@ -196,6 +199,9 @@ Rectangle {
                 visible: false
                 Layout.leftMargin: 125
                 CheckBox {
+                    background:{
+                        color:"#25313c"
+                    }
                     id: ignoreBattery
                     enabled: startSoloMinerButton.enabled
                     checked: !persistentSettings.miningIgnoreBattery
@@ -211,7 +217,7 @@ Rectangle {
                     id: manageSoloMinerLabel
                     color: "#ffffff"
                     text: qsTr("Manage miner") + translationManager.emptyString
-                    fontSize: 16
+                    fontSize: 14
                 }
 
                 StandardButton {
@@ -220,10 +226,10 @@ Rectangle {
                     id: startSoloMinerButton
                     width: 110
                     text: qsTr("Start mining") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     onClicked: {
 
                         /*
@@ -366,10 +372,10 @@ Rectangle {
                     id: stopSoloMinerButton
                     width: 110
                     text: qsTr("Stop mining") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     onClicked: {
                     if(!is32){
                         if (choiceminingtype.currentIndex > 0) {

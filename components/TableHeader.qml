@@ -83,7 +83,7 @@ Rectangle {
                     anchors.leftMargin: 13
                     anchors.rightMargin: 13
                     elide: Text.ElideRight
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 14
                     color: {
                         if(delegateArea.pressed)
@@ -171,7 +171,7 @@ Rectangle {
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     height: 1
-                    color: index === header.activeSortColumn ? "#FFFFFF" : "#DBDBDB"  // active bottom line
+                    color: index === header.activeSortColumn ? "#4ed9d9" : "#747b82"  // active bottom line
                 }
 
                 Rectangle {

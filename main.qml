@@ -165,6 +165,7 @@ ApplicationWindow {
 
     function initialize() {
         console.log("initializing..")
+        log4Qml.qDebug_Info(0,"#####initializing")
         walletInitialized = false;
 
         // Use stored log level
@@ -198,6 +199,18 @@ ApplicationWindow {
 
         walletManager.setDaemonAddress(persistentSettings.daemon_address)
         // wallet already opened with wizard, we just need to initialize it
+
+       //  log4Qml.qDebug_Info(0, "##### typeof settings： ####" + typeof wizard.settings['wallet'] );
+        if (isWindows) {
+            var wallet_path = walletPath();
+                wallet_path =  wallet_path+".keys";
+            // console.log("opening wallet at: ", wallet_path, "with password: ", appWindow.password);
+            log4Qml.qDebug_Info(0, "##### opening wallet at: ####" + wallet_path);
+            console.log("opening wallet at: ", wallet_path, ", testnet: ", persistentSettings.testnet);
+            walletManager.openWalletAsync(wallet_path, appWindow.password,
+                                              persistentSettings.testnet);
+        } else {
+
         if (typeof wizard.settings['wallet'] !== 'undefined') {
             console.log("using wizard wallet")
             //Set restoreHeight
@@ -219,6 +232,7 @@ ApplicationWindow {
             console.log("opening wallet at: ", wallet_path, ", testnet: ", persistentSettings.testnet);
             walletManager.openWalletAsync(wallet_path, appWindow.password,
                                               persistentSettings.testnet);
+        }
         }
 
     }
@@ -289,9 +303,16 @@ ApplicationWindow {
 
     function usefulName(path) {
         // arbitrary "short enough" limit
+        if(isWindows) {
+            log4Qml.qDebug_Info(0, "##### isWindows wallet file: ####" + path + ".keys" );
+            return path + ".keys";
+        }
+        else
+        {
         if (path.length < 32)
             return path
         return path.replace(/.*[\/\\]/, '').replace(/\.keys$/, '')
+        }
     }
 
     function onWalletConnectionStatusChanged(status){
@@ -1056,7 +1077,7 @@ ApplicationWindow {
 //                PropertyChanges { target: frameArea; blocked: true }
                 PropertyChanges { target: titleBar; visible: true }
 //                PropertyChanges { target: titleBar; y: 0 }
-                PropertyChanges { target: titleBar; title: qsTr("Cssp") + translationManager.emptyString }
+                PropertyChanges { target: titleBar; title: qsTr("Rrnc") + translationManager.emptyString }
             }
         ]
 
@@ -1320,7 +1341,7 @@ ApplicationWindow {
             property alias text: content.text
             width: content.width + 12
             height: content.height + 17
-            color: "#FF6C3C"
+            color: "#4ed9d9"
             //radius: 3
             visible:false;
 
@@ -1337,7 +1358,7 @@ ApplicationWindow {
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: 6
                 lineHeight: 0.7
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 12
                 color: "#FFFFFF"
             }

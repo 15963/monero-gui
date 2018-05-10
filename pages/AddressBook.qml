@@ -46,7 +46,7 @@ Rectangle {
         anchors.topMargin: 17
 
         elide: Text.ElideRight
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.pixelSize: 18
         color: "#ffffff"
         text: qsTr("Add new entry") + translationManager.emptyString
@@ -92,7 +92,8 @@ Rectangle {
         anchors.rightMargin: 17
         anchors.topMargin: 5
         error: true;
-        placeholderText: qsTr("4...") + translationManager.emptyString
+        placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("4...") + translationManager.emptyString + '</font>'
+
     }
 
     Label {
@@ -114,7 +115,8 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.rightMargin: 17
         anchors.topMargin: 5
-        placeholderText: qsTr("Paste 64 hexadecimal characters") + translationManager.emptyString
+        placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Paste 64 hexadecimal characters") + translationManager.emptyString + '</font>'
+
     }
 
     Label {
@@ -136,7 +138,7 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.rightMargin: 17
         anchors.topMargin: 5
-        placeholderText: qsTr("Give this entry a name or description") + translationManager.emptyString
+        placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Give this entry a name or description") + translationManager.emptyString + '</font>'
     }
 
 
@@ -148,10 +150,10 @@ Rectangle {
         anchors.topMargin: 17
 
         StandardButton {
-            shadowReleasedColor: "#4ed9d9"
-            shadowPressedColor: "#4ed9d9"
+            shadowReleasedColor: "#3b848c"
+            shadowPressedColor: "#ff0000"
             releasedColor: "#4ed9d9"
-            pressedColor: "#4ed9d9"
+            pressedColor: "#0000ff"
             text: qsTr("Add") + translationManager.emptyString
             enabled: checkInformation(addressLine.text, paymentIdLine.text, appWindow.persistentSettings.testnet)
 
@@ -218,7 +220,7 @@ Rectangle {
             anchors.right: parent.right
             anchors.top: parent.top
             height: 1
-            color: "#DBDBDB"
+            color: "#747b82"
         }
 
         ListModel {

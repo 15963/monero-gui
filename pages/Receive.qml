@@ -195,7 +195,7 @@ Rectangle {
             LineEdit {
                 id: addressLine
                 fontSize: mainLayout.lineEditFontSize
-                placeholderText: qsTr("ReadOnly wallet address displayed here") + translationManager.emptyString;
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("ReadOnly wallet address displayed here") + translationManager.emptyString + '</font>'
                 readOnly: true
                 width: mainLayout.editWidth
                 Layout.fillWidth: true
@@ -229,7 +229,7 @@ Rectangle {
             LineEdit {
                 id: paymentIdLine
                 fontSize: mainLayout.lineEditFontSize
-                placeholderText: qsTr("16 hexadecimal characters") + translationManager.emptyString;
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("16 hexadecimal characters") + translationManager.emptyString + '</font>'
                 readOnly: false
                 onTextChanged: updatePaymentId(paymentIdLine.text)
 
@@ -249,10 +249,10 @@ Rectangle {
             StandardButton {
                 id: generatePaymentId
                 width: 80
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 text: qsTr("Generate") + translationManager.emptyString;
                 onClicked: updatePaymentId()
             }
@@ -261,10 +261,10 @@ Rectangle {
                 id: clearPaymentId
                 enabled: !!paymentIdLine.text
                 width: 80
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 text: qsTr("Clear") + translationManager.emptyString;
                 onClicked: updatePaymentId("")
             }
@@ -285,7 +285,7 @@ Rectangle {
 
                 id: integratedAddressLine
                 fontSize: mainLayout.lineEditFontSize
-                placeholderText: qsTr("Generate payment ID for integrated address") + translationManager.emptyString
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Generate payment ID for integrated address") + translationManager.emptyString + '</font>'
                 readOnly: true
                 width: mainLayout.editWidth
                 Layout.fillWidth: true
@@ -318,7 +318,7 @@ Rectangle {
             LineEdit {
                 id: amountLine
                 fontSize: mainLayout.lineEditFontSize
-                placeholderText: qsTr("Amount to receive") + translationManager.emptyString
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Amount to receive") + translationManager.emptyString + '</font>'
                 readOnly: false
                 width: mainLayout.editWidth
                 Layout.fillWidth: true
@@ -339,7 +339,8 @@ Rectangle {
                 id: trackingLabel
                 fontSize: 14
                 textFormat: Text.RichText
-                text: qsTr("<style type='text/css'>a {text-decoration: none; color: #FF6C3C; font-size: 14px;}</style>\
+                color:"#ffffff"
+                text: qsTr("<style type='text/css'>a {text-decoration: none; color: #4ed9d9; font-size: 14px;}</style>\
                            Tracking <font size='2'> (</font><a href='#'>help</a><font size='2'>)</font>")
                            + translationManager.emptyString
                 width: mainLayout.labelWidth
@@ -371,6 +372,7 @@ Rectangle {
                 width: mainLayout.editWidth
                 Layout.fillWidth: true
                 selectByMouse: true
+                color:"#ffffff"
             }
 
         }

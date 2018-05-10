@@ -20,7 +20,7 @@ Column {
                     + (tipRect.visible ? tipRect.height : 0)
         }
         border.width: 1
-        border.color: "#DBDBDB"
+        border.color: "#747b82"
         color:"#25313c" // 0d0d0d
 
         TextEdit {
@@ -28,7 +28,7 @@ Column {
             property alias placeholderText: memoTextPlaceholder.text
             textMargin: 8
             text: ""
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 16
             color:"#ffffff"
             anchors.bottom:parent.bottom - 10
@@ -79,7 +79,7 @@ Column {
             color: "transparent" // 0d0d0d #25313c
             property alias text: wordsTipText.text
             border.width: 1
-            border.color: "#DBDBDB"
+            border.color: "#747b82"
             //color:"#25313c" // 0d0d0d
 
             Text {
@@ -91,10 +91,11 @@ Column {
                 anchors.rightMargin: 16
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                font.family: "Arial"
-                font.pixelSize: 15
-                color: "#ffffff"
-                wrapMode: Text.Wrap
+
+                font.family: "微软雅黑"
+                font.pixelSize: 12
+                color: "#747b82"
+                 wrapMode: Text.Wrap
                 //text: qsTr("This seed is <b><font color=\"#4ed9d9\">very</font></b> important to write down and keep secret. It is all you need to backup and restore your wallet.")
                 text: qsTr("This seed is <b>very</b> important to write down and keep secret. It is all you need to backup and restore your wallet.")
                       + translationManager.emptyString

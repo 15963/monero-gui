@@ -46,7 +46,7 @@ Rectangle {
             id: balanceLabel
             width: 116
             height: 20
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
             font.letterSpacing: -1
             elide: Text.ElideRight
@@ -60,7 +60,7 @@ Rectangle {
             id: balanceText
             width: 110
             height: 20
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 18
             font.letterSpacing: -1
             elide: Text.ElideRight
@@ -84,7 +84,7 @@ Rectangle {
         Text {
             width: 116
             height: 20
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
             font.letterSpacing: -1
             elide: Text.ElideRight
@@ -98,7 +98,7 @@ Rectangle {
             id: availableBalanceText
             width: 110
             height: 20
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 14
             font.letterSpacing: -1
             elide: Text.ElideRight

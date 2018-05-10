@@ -70,7 +70,7 @@ Rectangle {
     width: (isMobile)? appWindow.width : 260
     color: "#2f3943"
 
-    // Item with monero logo
+    // Item with Rcssp logo
     Item {
         visible: !isMobile
         id: logoItem
@@ -152,7 +152,7 @@ Rectangle {
                 visible: !isMobile
                 id: balanceText
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 color: "#ffffff"
                 text: "N/A"
                 // dynamically adjust text size
@@ -185,7 +185,7 @@ Rectangle {
             id: unlockedBalanceText
             anchors.left: parent.left
             anchors.leftMargin: 50
-            font.family: "Arial"
+            font.family: "微软雅黑"
             color: "#ffffff"
             text: "N/A"
             // dynamically adjust text size
@@ -280,7 +280,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Send") + translationManager.emptyString
                 symbol: qsTr("S") + translationManager.emptyString
-                dotColor: "#FF6C3C"
+                dotColor: "#4ed9d9"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = transferButton
@@ -305,7 +305,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Address book") + translationManager.emptyString
                 symbol: qsTr("B") + translationManager.emptyString
-                dotColor: "#FF4F41"
+                dotColor: "#4ed9d9"
                 under: transferButton
                 onClicked: {
                     parent.previousButton.checked = false
@@ -330,7 +330,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Receive") + translationManager.emptyString
                 symbol: qsTr("R") + translationManager.emptyString
-                dotColor: "#AAFFBB"
+                dotColor: "#4ed9d9"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = receiveButton
@@ -354,7 +354,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("History") + translationManager.emptyString
                 symbol: qsTr("H") + translationManager.emptyString
-                dotColor: "#6B0072"
+                dotColor: "#4ed9d9"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = historyButton
@@ -377,7 +377,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Advanced") + translationManager.emptyString
                 symbol: qsTr("D") + translationManager.emptyString
-                dotColor: "#FFD781"
+                dotColor: "#4ed9d9"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = advancedButton
@@ -399,7 +399,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Mining") + translationManager.emptyString
                 symbol: qsTr("M") + translationManager.emptyString
-                dotColor: "#FFD781"
+                dotColor: "#4ed9d9"
                 under: advancedButton
                 onClicked: {
                     parent.previousButton.checked = false
@@ -423,7 +423,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Check payment") + translationManager.emptyString
                 symbol: qsTr("K") + translationManager.emptyString
-                dotColor: "#FFD781"
+                dotColor: "#4ed9d9"
                 under: advancedButton
                 onClicked: {
                     parent.previousButton.checked = false
@@ -447,7 +447,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Sign/verify") + translationManager.emptyString
                 symbol: qsTr("I") + translationManager.emptyString
-                dotColor: "#FFD781"
+                dotColor: "#4ed9d9"
                 under: advancedButton
                 onClicked: {
                     parent.previousButton.checked = false
@@ -470,7 +470,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Settings") + translationManager.emptyString
                 symbol: qsTr("E") + translationManager.emptyString
-                dotColor: "#36B25C"
+                dotColor: "#4ed9d9"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = settingsButton

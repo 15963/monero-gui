@@ -66,7 +66,7 @@ Item {
             anchors.leftMargin: 45
             font.pixelSize: 18
             verticalAlignment: TextInput.AlignVCenter
-            placeholderText: qsTr("Search by...") + translationManager.emptyString
+            placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Search by...") + translationManager.emptyString + '</font>'
         }
 
         Item {
@@ -97,7 +97,7 @@ Item {
                     id: dropText
                     width: 114 - 12
                     anchors.verticalCenter: parent.verticalCenter
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 12
                     font.bold: true
                     color: "#4A4747"
@@ -192,7 +192,7 @@ Item {
                             elide: Text.ElideRight
                             anchors.leftMargin: 12
                             anchors.rightMargin: 12
-                            font.family: "Arial"
+                            font.family: "微软雅黑"
                             font.bold: true
                             font.pixelSize: 12
                             color: delegateArea.pressed || parent.isCurrent ? "#FFFFFF" : "#4A4646"
@@ -221,10 +221,10 @@ Item {
             anchors.margins: 6
             width: 80
 
-            shadowReleasedColor: "#C60F00"
-            shadowPressedColor: "#8C0B00"
-            pressedColor: "#C60F00"
-            releasedColor: "#FF4F41"
+            shadowReleasedColor: "#3b848c"
+            shadowPressedColor: "#ff0000"
+            releasedColor: "#4ed9d9"
+            pressedColor: "#0000ff"
             text: qsTr("SEARCH")
             onClicked: item.searchClicked(input.text, droplist.currentOption)
         }

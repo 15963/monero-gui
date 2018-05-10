@@ -51,7 +51,7 @@ Rectangle {
         anchors.topMargin: 20
         elide: Text.ElideRight
         anchors.margins: 17
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.pixelSize: 18
         color: "#4A4949"
         text: qsTr("Quick transfer") + translationManager.emptyString
@@ -80,26 +80,26 @@ Rectangle {
         LineEdit {
             id: amountLine
             width: 148
-            placeholderText: "amount..."
+            placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + "amount..." + '</font>'
         }
 
         StandardButton {
             id: sendButton
             width: 60
             text: qsTr("SEND")
-            shadowReleasedColor: "#4ed9d9"
-            shadowPressedColor: "#4ed9d9"
+            shadowReleasedColor: "#3b848c"
+            shadowPressedColor: "#ff0000"
             releasedColor: "#4ed9d9"
-            pressedColor: "#4ed9d9"
+            pressedColor: "#0000ff"
         }
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
             color: "#545454"
             textFormat: Text.RichText
-            text: qsTr("<style type='text/css'>a {text-decoration: none; color: #FF6C3C; font-size: 14px;}</style>\
+            text: qsTr("<style type='text/css'>a {text-decoration: none; color: #4ed9d9; font-size: 14px;}</style>\
                         looking for security level and address book? go to <a href='#'>Transfer</a> tab")
                      + translationManager.emptyString
             font.underline: false

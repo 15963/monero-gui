@@ -73,7 +73,7 @@ Rectangle {
                 Layout.fillWidth: true
                 color: "#ffffff"
                 text: qsTr("Manage wallet") + translationManager.emptyString
-                fontSize: 16
+                fontSize: 18
                 Layout.topMargin: 10
             }
         }
@@ -81,7 +81,7 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
 
         GridLayout {
@@ -89,10 +89,10 @@ Rectangle {
             StandardButton {
                 id: closeWalletButton
                 text: qsTr("Close wallet") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 visible: true
                 onClicked: {
                     console.log("closing wallet button clicked")
@@ -104,10 +104,10 @@ Rectangle {
                 enabled: !viewOnly
                 id: createViewOnlyWalletButton
                 text: qsTr("Create view only wallet") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 visible: true
                 onClicked: {
                     wizard.openCreateViewOnlyWalletPage();
@@ -116,10 +116,10 @@ Rectangle {
 
             StandardButton {
                 id: showSeedButton
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 text: qsTr("Show seed & keys") + translationManager.emptyString
                 onClicked: {
                     settingsPasswordDialog.open();
@@ -132,7 +132,7 @@ Rectangle {
                 id: rescanWalletbutton
                 shadowReleasedColor: "#FF4304"
                 shadowPressedColor: "#B32D00"
-                releasedColor: "#FF6C3C"
+                releasedColor: "#4ed9d9"
                 pressedColor: "#FF4304"
                 text: qsTr("Rescan wallet cache") + translationManager.emptyString
                 onClicked: {
@@ -164,10 +164,10 @@ Rectangle {
             StandardButton {
                 id: rescanSpentButton
                 text: qsTr("Rescan wallet balance") + translationManager.emptyString
-                shadowReleasedColor: "#3b858b"
-                shadowPressedColor: "#3b858b"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     if (!currentWallet.rescanSpent()) {
                         console.error("Error: ", currentWallet.errorString);
@@ -194,7 +194,7 @@ Rectangle {
                 Layout.fillWidth: true
                 color: "#ffffff"
                 text: qsTr("Manage daemon") + translationManager.emptyString
-                fontSize: 16
+                fontSize: 18
                 anchors.topMargin: 30
                 Layout.topMargin: 30
             }
@@ -202,7 +202,7 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
 
         GridLayout {
@@ -213,10 +213,10 @@ Rectangle {
                 enabled: !appWindow.daemonRunning
                 id: startDaemonButton
                 text: qsTr("Start daemon") + translationManager.emptyString
-                shadowReleasedColor: "#3b858b"
-                shadowPressedColor: "#3b858b"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     appWindow.startDaemon(daemonFlags.text)
                 }
@@ -227,10 +227,10 @@ Rectangle {
                 enabled: appWindow.daemonRunning
                 id: stopDaemonButton
                 text: qsTr("Stop daemon") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     appWindow.stopDaemon()
                 }
@@ -240,10 +240,10 @@ Rectangle {
                 visible: true
                 id: daemonStatusButton
                 text: qsTr("Show status") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     daemonManager.sendCommand("status",currentWallet.testnet);
                     daemonConsolePopup.open();
@@ -257,14 +257,17 @@ Rectangle {
                 id: blockchainFolderLabel
                 color: "#ffffff"
                 text: qsTr("Blockchain location") + translationManager.emptyString
-                fontSize: 16
+                fontSize: 14
             }
             LineEdit {
                 id: blockchainFolder
                 Layout.preferredWidth:  200
                 Layout.fillWidth: true
                 text: persistentSettings.blockchainDataDir
-                placeholderText: qsTr("(optional)") + translationManager.emptyString
+                //  '<font size="4" color="#747b82" >'+qsTr("Password") + translationManager.emptyString   +'</font>'
+                //  placeholderText: qsTr("(optional)") + translationManager.emptyString
+
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("(optional)") + translationManager.emptyString + '</font>'
 
                 MouseArea {
                     anchors.fill: parent
@@ -286,14 +289,14 @@ Rectangle {
                 id: daemonFlagsLabel
                 color: "#ffffff"
                 text: qsTr("Daemon startup flags") + translationManager.emptyString
-                fontSize: 16
+                fontSize: 14
             }
             LineEdit {
                 id: daemonFlags
                 Layout.preferredWidth:  200
                 Layout.fillWidth: true
                 text: appWindow.persistentSettings.daemonFlags;
-                placeholderText: qsTr("(optional)") + translationManager.emptyString
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("(optional)") + translationManager.emptyString + '</font>'
             }
         }
 
@@ -306,7 +309,7 @@ Rectangle {
                 Layout.fillWidth: true
                 color: "#ffffff"
                 text: qsTr("Daemon address") + translationManager.emptyString
-                fontSize: 16
+                fontSize: 14
             }
 
             ComboBox {
@@ -356,7 +359,7 @@ Rectangle {
                 Layout.preferredWidth:  100
                 Layout.fillWidth: true
                 text: (daemonAddress !== undefined) ? daemonAddress[0] : ""
-                placeholderText: qsTr("Hostname / IP") + translationManager.emptyString
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Hostname / IP") + translationManager.emptyString+ '</font>'
             }
 
 
@@ -365,7 +368,7 @@ Rectangle {
                 Layout.preferredWidth: 100
                 Layout.fillWidth: true
                 text: (daemonAddress !== undefined) ? daemonAddress[1] : "22338"
-                placeholderText: qsTr("Port") + translationManager.emptyString
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Port") + translationManager.emptyString + '</font>'
             }
         }
 
@@ -377,7 +380,7 @@ Rectangle {
                 Layout.fillWidth: true
                 color: "#ffffff"
                 text: qsTr("Login (optional)") + translationManager.emptyString
-                fontSize: 16
+                fontSize: 14
             }
 
         }
@@ -389,7 +392,7 @@ Rectangle {
                 Layout.preferredWidth:  100
                 Layout.fillWidth: true
                 text: persistentSettings.daemonUsername
-                placeholderText: qsTr("Username") + translationManager.emptyString
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Username") + translationManager.emptyString + '</font>'
             }
 
 
@@ -398,7 +401,7 @@ Rectangle {
                 Layout.preferredWidth: 100
                 Layout.fillWidth: true
                 text: persistentSettings.daemonPassword
-                placeholderText: qsTr("Password") + translationManager.emptyString
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Password") + translationManager.emptyString + '</font>'
                 echoMode: TextInput.Password
             }
 
@@ -407,10 +410,10 @@ Rectangle {
                 Layout.fillWidth: false
                 Layout.leftMargin: 30
                 text: qsTr("Connect") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 onClicked: {
                     console.log("saving daemon adress settings")
                     var newDaemon = daemonAddr.text.trim() + ":" + daemonPort.text.trim()
@@ -435,7 +438,7 @@ Rectangle {
             Label {
                 color: "#ffffff"
                 text: qsTr("Layout settings") + translationManager.emptyString
-                fontSize: 16
+                fontSize: 18
                 anchors.topMargin: 30
                 Layout.topMargin: 30
             }
@@ -443,11 +446,14 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
 
         RowLayout {
             CheckBox {
+                background:{
+                    color:"#25313c"
+                }
                 id: customDecorationsCheckBox
                 checked: persistentSettings.customDecorations
                 onClicked: appWindow.setCustomWindowDecorations(checked)
@@ -463,7 +469,7 @@ Rectangle {
             Label {
                 color: "#ffffff"
                 text: qsTr("Log level") + translationManager.emptyString
-                fontSize: 16
+                fontSize: 18
                 anchors.topMargin: 30
                 Layout.topMargin: 30
             }
@@ -471,7 +477,7 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
         ColumnLayout {
             ComboBox {
@@ -496,7 +502,7 @@ Rectangle {
                 Layout.preferredWidth:  200
                 Layout.fillWidth: true
                 text: appWindow.persistentSettings.logCategories
-                placeholderText: qsTr("(e.g. *:WARNING,net.p2p:DEBUG)") + translationManager.emptyString
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("(e.g. *:WARNING,net.p2p:DEBUG)") + translationManager.emptyString + '</font>'
                 enabled: logLevel.currentIndex == 5
                 onEditingFinished: {
                     if(enabled) {
@@ -521,7 +527,7 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             height: 1
-            color: "#DEDEDE"
+            color: "#747b82"
         }
 
         TextBlock {
@@ -541,7 +547,7 @@ Rectangle {
             id: restoreHeightText
             Layout.fillWidth: true
             textFormat: Text.RichText
-            property var txt: "<style type='text/css'>a {text-decoration: none; color: #FF6C3C}</style>" + qsTr("Wallet creation height: ") + currentWallet.walletCreationHeight + translationManager.emptyString
+            property var txt: "<style type='text/css'>a {text-decoration: none; color: #4ed9d9}</style>" + qsTr("Wallet creation height: ") + currentWallet.walletCreationHeight + translationManager.emptyString
             property var linkTxt: qsTr(" <a href='#'>(Click to change)</a>") + translationManager.emptyString
             text: (typeof currentWallet == "undefined") ? "" : txt + linkTxt
             color:"#ffffff"
@@ -569,10 +575,10 @@ Rectangle {
                 Layout.fillWidth: false
                 Layout.leftMargin: 30
                 text: qsTr("Save") + translationManager.emptyString
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
 
                 onClicked: {
                     currentWallet.walletCreationHeight = restoreHeight.text

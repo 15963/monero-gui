@@ -38,7 +38,7 @@ Item {
     property string releasedColor
     property string icon: ""
     property string textColor: "#FFFFFF"
-    property int fontSize: 12
+    property int fontSize: 14
     property alias text: label.text
     signal clicked()
 
@@ -52,8 +52,8 @@ Item {
         y: buttonArea.pressed ? 0 : 1
         radius: 4
         color: {
-            parent.enabled ? (buttonArea.pressed ? parent.shadowPressedColor : parent.shadowReleasedColor)
-                           : parent.shadowReleasedColor
+            parent.enabled ?
+                           parent.releasedColor:parent.shadowReleasedColor
         }
         border.color: parent.releasedColor
         border.width: parent.focus ? 1 : 0
@@ -66,9 +66,8 @@ Item {
         height: parent.height - 1
         y: buttonArea.pressed ? 1 : 0
         color: {
-            parent.enabled ? (buttonArea.pressed ? parent.pressedColor : parent.releasedColor)
-                           : Qt.lighter(parent.releasedColor)
-
+            parent.enabled ?
+                           parent.releasedColor:shadowReleasedColor
         }
         radius: 4
 
@@ -81,7 +80,7 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         horizontalAlignment: Text.AlignHCenter
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.bold: true
         font.pixelSize: button.fontSize
         color: parent.textColor

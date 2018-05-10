@@ -65,7 +65,7 @@ ColumnLayout {
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 28
             color: "#ffffff"
             wrapMode: Text.Wrap
@@ -75,7 +75,7 @@ ColumnLayout {
 
         Text {
             Layout.fillWidth: true
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 18
             color: "#ffffff"
             wrapMode: Text.Wrap
@@ -149,7 +149,7 @@ ColumnLayout {
 
                 Text {
                     color: delegateArea.containsMouse ? "#4ed9d9" : "#FFFFFF"
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 18
 //                    anchors.horizontalCenter: parent.horizontalCenter
                     font.bold: gridView.currentIndex === index

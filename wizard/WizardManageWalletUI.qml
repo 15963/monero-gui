@@ -54,6 +54,7 @@ ColumnLayout {
     // Recover form seed or keys
     property bool recoverFromSeedMode: true
     property int rowSpacing: 10
+    spacing: 20
 
     function checkFields(){
         var addressOK = walletManager.addressValid(addressLine.text, persistentSettings.testnet)
@@ -93,7 +94,7 @@ ColumnLayout {
 
         ListModel {
             id: dotsModel
-            ListElement { dotColor: "#36B05B" }
+            ListElement { dotColor: "#4fdbdc" }
             //ListElement { dotColor: "#DBDBDB" }
             ListElement { dotColor: "#3F3F3F" }
             ListElement { dotColor: "#3F3F3F" }
@@ -117,7 +118,7 @@ ColumnLayout {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
             id: titleText
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 28
             wrapMode: Text.Wrap
             color: "#ffffff"
@@ -126,6 +127,7 @@ ColumnLayout {
 
     ColumnLayout {
         Layout.bottomMargin: rowSpacing
+        spacing: 8
 
         Label {
             Layout.topMargin: 20
@@ -147,14 +149,16 @@ ColumnLayout {
 
     RowLayout{
         visible: recoverMode
-        spacing: 0
+        spacing: 10
         StandardButton {
             id: recoverFromSeedButton
             text: qsTr("Restore from seed") + translationManager.emptyString
-            shadowReleasedColor: "#4ed9d9"
-            shadowPressedColor: "#4ed9d9"
+
+            shadowReleasedColor: "#3b848c"
+            shadowPressedColor: "#ff0000"
             releasedColor: "#4ed9d9"
-            pressedColor: "#4ed9ff"
+            pressedColor: "#0000ff"
+
             enabled: recoverFromKeys.visible
             onClicked: {
                 recoverFromSeedMode = true;
@@ -165,10 +169,10 @@ ColumnLayout {
         StandardButton {
             id: recoverFromKeysButton
             text: qsTr("Restore from keys") + translationManager.emptyString
-            shadowReleasedColor: "#4ed9d9"
-            shadowPressedColor: "#4ed9d9"
+            shadowReleasedColor: "#3b848c"
+            shadowPressedColor: "#ff0000"
             releasedColor: "#4ed9d9"
-            pressedColor: "#4ed9ff"
+            pressedColor: "#0000ff"
             enabled: recoverFromSeed.visible
             onClicked: {
                 recoverFromSeedMode = false;
@@ -201,7 +205,7 @@ ColumnLayout {
             id: addressLine
             Layout.maximumWidth: 600
             Layout.minimumWidth: 200
-            placeholderText: qsTr("Account address (public)") + translationManager.emptyString
+            placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' +  qsTr("Account address (public)") + translationManager.emptyString + '</font>';
             onTextUpdated: checkNextButton()
         }
         LineEdit {
@@ -209,7 +213,7 @@ ColumnLayout {
             id: viewKeyLine
             Layout.maximumWidth: 600
             Layout.minimumWidth: 200
-            placeholderText: qsTr("View key (private)") + translationManager.emptyString
+            placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("View key (private)") + translationManager.emptyString + '</font>';
             onTextUpdated: checkNextButton()
 
         }
@@ -218,7 +222,7 @@ ColumnLayout {
             Layout.maximumWidth: 600
             Layout.minimumWidth: 200
             id: spendKeyLine
-            placeholderText: qsTr("Spend key (private)") + translationManager.emptyString
+            placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Spend key (private)") + translationManager.emptyString + '</font>';
             onTextUpdated: checkNextButton()
         }
     }
@@ -230,7 +234,7 @@ ColumnLayout {
             Layout.fillWidth: true
             Layout.maximumWidth: 600
             Layout.minimumWidth: 200
-            placeholderText: qsTr("Restore height (optional)") + translationManager.emptyString
+            placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Restore height (optional)") + translationManager.emptyString + '</font>';
             validator: IntValidator {
                 bottom:0
             }
@@ -252,6 +256,7 @@ ColumnLayout {
             Layout.maximumWidth: 600
             Layout.minimumWidth: 200
             id: fileUrlInput
+            fontSize: 14
             text: moneroAccountsDir + "/"
 
             // workaround for the bug "filechooser only opens once"

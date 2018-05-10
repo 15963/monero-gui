@@ -47,8 +47,8 @@ Item {
 
         ListModel {
             id: dotsModel
-            ListElement { dotColor: "#36B05B" }
-            ListElement { dotColor: "#36B05B" }
+            ListElement { dotColor: "#4fdbdc" }
+            ListElement { dotColor: "#4fdbdc" }
             ListElement { dotColor: "#FFE00A" }
             ListElement { dotColor: "#DBDBDB" }
         }
@@ -71,7 +71,7 @@ Item {
         anchors.leftMargin: 16
         width: parent.width - dotsRow.width - 16
 
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.pixelSize: 28
         wrapMode: Text.Wrap
         //renderType: Text.NativeRendering
@@ -108,7 +108,7 @@ Item {
             Text {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 15
                 color: "#4A4646"
                 wrapMode: Text.Wrap
@@ -137,7 +137,7 @@ Item {
             Text {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 15
                 color: "#4A4646"
                 wrapMode: Text.Wrap
@@ -168,7 +168,7 @@ Item {
             Text {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 15
                 color: "#4A4646"
                 wrapMode: Text.Wrap

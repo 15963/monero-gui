@@ -90,30 +90,35 @@ Rectangle {
                     text: qsTr("Verify that a third party made a payment by supplying:") + translationManager.emptyString
                     color:"#ffffff"
                     wrapMode: Text.Wrap
+                    font.pixelSize: 14
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr(" - the recipient address") + translationManager.emptyString
                     color:"#ffffff"
                     wrapMode: Text.Wrap
+                    font.pixelSize: 14
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr(" - the transaction ID") + translationManager.emptyString
                     color:"#ffffff"
                     wrapMode: Text.Wrap
+                    font.pixelSize: 14
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr(" - the secret transaction key supplied by the sender") + translationManager.emptyString
                     color:"#ffffff"
                     wrapMode: Text.Wrap
+                    font.pixelSize: 14
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr("If a payment had several transactions then each must be checked and the results combined.") + translationManager.emptyString
                     color:"#ffffff"
                     wrapMode: Text.Wrap
+                    font.pixelSize: 14
                     Layout.fillWidth: true;
                 }
             }
@@ -133,7 +138,7 @@ Rectangle {
             LineEdit {
                 id: addressLine
                 fontSize: mainLayout.lineEditFontSize
-                placeholderText: qsTr("Recipient's wallet address") + translationManager.emptyString;
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Recipient's wallet address") + translationManager.emptyString + '</font>';
                 readOnly: false
                 width: mainLayout.editWidth
                 Layout.fillWidth: true
@@ -165,7 +170,7 @@ Rectangle {
 
                 id: txIdLine
                 fontSize: mainLayout.lineEditFontSize
-                placeholderText: qsTr("Paste tx ID") + translationManager.emptyString
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Paste tx ID") + translationManager.emptyString + '</font>';
                 readOnly: false
                 width: mainLayout.editWidth
                 Layout.fillWidth: true
@@ -198,7 +203,7 @@ Rectangle {
             LineEdit {
                 id: txKeyLine
                 fontSize: mainLayout.lineEditFontSize
-                placeholderText: qsTr("Paste tx key") + translationManager.emptyString;
+                placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Paste tx key") + translationManager.emptyString  + '</font>';
                 readOnly: false
 
                 width: mainLayout.editWidth
@@ -222,10 +227,10 @@ Rectangle {
             anchors.topMargin: 17
             width: 60
             text: qsTr("Check") + translationManager.emptyString
-            shadowReleasedColor: "#4ed9d9"
-            shadowPressedColor: "#4ed9d9"
+            shadowReleasedColor: "#3b848c"
+            shadowPressedColor: "#ff0000"
             releasedColor: "#4ed9d9"
-            pressedColor: "#4ed9d9"
+            pressedColor: "#0000ff"
             enabled: checkAddress(addressLine.text, appWindow.persistentSettings.testnet) && checkTxID(txIdLine.text) && checkTxKey(txKeyLine.text)
             onClicked: {
                 console.log("TxKey: Check clicked: address " + addressLine.text + ", txid " << txIdLine.text + ", tx key " + txKeyLine.text);

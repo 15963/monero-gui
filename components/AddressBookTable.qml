@@ -41,9 +41,9 @@ ListView {
 
         Text {
             anchors.centerIn: parent
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 14
-            color: "#545454"
+            color: "#747b82"
             text: qsTr("No more results") + translationManager.emptyString
         }
     }
@@ -63,7 +63,7 @@ ListView {
             anchors.top: parent.top
             anchors.topMargin: 12
             width: text.length ? (descriptionArea.containsMouse ? dropdown.x - x - 12 : 139) : 0
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.bold: true
             font.pixelSize: 19
             color: "#444444"
@@ -85,7 +85,7 @@ ListView {
             anchors.right: dropdown.left
             anchors.leftMargin: description.length > 0 ? 12 : 0
             anchors.rightMargin: 40
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 16
             color: "#545454"
             text: address
@@ -98,7 +98,7 @@ ListView {
             anchors.bottomMargin: 12
 
             width: 139
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
             color: "#535353"
             text: qsTr("Payment ID:") + translationManager.emptyString
@@ -113,7 +113,7 @@ ListView {
             anchors.right: dropdown.left
 
 
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 13
             color: "#545454"
             text: paymentId

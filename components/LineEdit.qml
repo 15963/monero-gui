@@ -36,7 +36,7 @@ Item {
     property alias readOnly : input.readOnly
     property alias cursorPosition: input.cursorPosition
     property alias echoMode: input.echoMode
-    property int fontSize: 18
+    property int fontSize: 14
     property bool error: false
     signal editingFinished()
     signal accepted();
@@ -48,7 +48,7 @@ Item {
       if (error)
         return "#FF3030"
       else
-        return "#747c82"
+        return "#747b82"
     }
 
     Rectangle {
@@ -71,9 +71,9 @@ Item {
 
         id: input
         anchors.fill: parent
-         anchors.leftMargin: 1
-         anchors.rightMargin: 30
-        font.pixelSize: parent.fontSize
+        anchors.leftMargin: 1
+        anchors.rightMargin: 30
+        font.pixelSize: 14
         onEditingFinished: item.editingFinished()
         onAccepted: item.accepted();
         onTextChanged: item.textUpdated()

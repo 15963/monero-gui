@@ -47,7 +47,7 @@ Window {
         id: rect
         width: content.width + 12
         height: content.height + 17
-        color: "#FF6C3C"
+        color: "#4ed9d9"
         //radius: 3
 
         Image {
@@ -63,7 +63,7 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
             y: 6
             lineHeight: 0.7
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 12
             color: "#FFFFFF"
         }

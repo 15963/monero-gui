@@ -119,7 +119,8 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 20
         anchors.leftMargin: parent.getOffset()
-        source: "../images/menuIndicator.png"
+        rotation: parent.checked ? -90:-90
+        source:  "../images/open.png"
     }
 
     Text {
@@ -127,9 +128,9 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: parent.getOffset() + 50
-        font.family: "Arial"
-        font.pixelSize: 18
-        color: parent.checked ? "#000000" : "#FFFFFF"
+        font.family: "微软雅黑"
+        font.pixelSize: 16
+        color: parent.checked ? "#ffffff" : "#FFFFFF"
     }
 
     MouseArea {

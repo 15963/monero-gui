@@ -151,5 +151,7 @@
         <file>images/openAccountpr.png</file>
         <file>images/prevPagepr.png</file>
         <file>images/greyTrianglepr.png</file>
+        <file>images/datePickerpr.png</file>
+        <file>images/open.png</file>
     </qresource>
 </RCC>

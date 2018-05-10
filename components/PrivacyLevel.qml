@@ -40,7 +40,7 @@ Item {
         anchors.top: parent.top
         height: 24
         //radius: 4
-        color: "#DBDBDB"
+        color: "#2f3943"
     }
 
     Rectangle {
@@ -51,7 +51,7 @@ Item {
         anchors.topMargin: 1
         height: 24
         //radius: 4
-        color: "#FFFFFF"
+        color: "#2f3943"
 
         Rectangle {
             id: fillRect

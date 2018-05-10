@@ -98,13 +98,13 @@ Rectangle {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
-        spacing: 5
+        spacing: 0
 
         // sign
         ColumnLayout {
             id: signBox
 
-            spacing: 5
+            spacing: 2
 
             RowLayout {
                 ColumnLayout {
@@ -112,7 +112,7 @@ Rectangle {
                     Label {
                         color:"#ffffff"
                         text: qsTr("Sign a message or file contents with your address:") + translationManager.emptyString
-                        fontSize: 16
+                        fontSize: 18
                         wrapMode: Text.Wrap
                     }
                     Label {}
@@ -138,7 +138,7 @@ Rectangle {
                     anchors.left: parent.left
                     anchors.right: signMessageButton.left
                     fontSize: mainLayout.lineEditFontSize
-                    placeholderText: qsTr("Message to sign") + translationManager.emptyString;
+                    placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Message to sign") + translationManager.emptyString  + '</font>'
                     readOnly: false
 //                    Layout.fillWidth: true
                     onTextChanged: signSignatureLine.text = ""
@@ -158,10 +158,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Sign") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       var signature = appWindow.currentWallet.signMessage(signMessageLine.text, false)
@@ -201,10 +201,10 @@ Rectangle {
                     anchors.rightMargin: 17
                     width: 60
                     text: qsTr("Select") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       signFileDialog.open()
@@ -215,7 +215,7 @@ Rectangle {
                     anchors.left: loadFileToSignButton.right
                     anchors.right: signFileButton.left
                     fontSize: mainLayout.lineEditFontSize
-                    placeholderText: qsTr("Filename with message to sign") + translationManager.emptyString;
+                    placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Filename with message to sign") + translationManager.emptyString  + '</font>' ;
                     readOnly: false
                     Layout.fillWidth: true
                     onTextChanged: signSignatureLine.text = ""
@@ -235,10 +235,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Sign") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       var signature = appWindow.currentWallet.signMessage(signFileLine.text, true)
@@ -261,7 +261,7 @@ Rectangle {
                 LineEdit {
                     id: signSignatureLine
                     fontSize: mainLayout.lineEditFontSize
-                    placeholderText: qsTr("Signature") + translationManager.emptyString;
+                    placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Signature") + translationManager.emptyString + '</font>'  ;
                     readOnly: true
                     Layout.fillWidth: true
 
@@ -288,7 +288,7 @@ Rectangle {
                     Label {
                         color:"#ffffff"
                         text: qsTr("Verify a message or file signature from an address:") + translationManager.emptyString
-                        fontSize: 16
+                        fontSize: 18
 //                        Layout.fillWidth: true
                         wrapMode: Text.Wrap
                     }
@@ -315,7 +315,7 @@ Rectangle {
                     anchors.left: parent.left
                     anchors.right: verifyMessageButton.left
                     fontSize: mainLayout.lineEditFontSize
-                    placeholderText: qsTr("Message to verify") + translationManager.emptyString;
+                    placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Message to verify") + translationManager.emptyString + '</font>' ;
                     readOnly: false
                     Layout.fillWidth: true
 
@@ -334,10 +334,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Verify") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       var verified = appWindow.currentWallet.verifySignedMessage(verifyMessageLine.text, verifyAddressLine.text, verifySignatureLine.text, false)
@@ -376,10 +376,10 @@ Rectangle {
                     anchors.rightMargin: 17
                     width: 60
                     text: qsTr("Select") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       verifyFileDialog.open()
@@ -390,7 +390,7 @@ Rectangle {
                     anchors.left: loadFileToVerifyButton.right
                     anchors.right: verifyFileButton.left
                     fontSize: mainLayout.lineEditFontSize
-                    placeholderText: qsTr("Filename with message to verify") + translationManager.emptyString;
+                    placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Filename with message to verify") + translationManager.emptyString + '</font>';
                     readOnly: false
                     Layout.fillWidth: true
 
@@ -409,10 +409,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Verify") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#3b848c"
+                    shadowPressedColor: "#ff0000"
                     releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    pressedColor: "#0000ff"
                     enabled: true
                     onClicked: {
                       var verified = appWindow.currentWallet.verifySignedMessage(verifyFileLine.text, verifyAddressLine.text, verifySignatureLine.text, true)
@@ -426,7 +426,8 @@ Rectangle {
                 fontSize: 14
                 width: mainLayout.labelWidth
                 textFormat: Text.RichText
-                text: qsTr("<style type='text/css'>a {text-decoration: none; color: #FF6C3C; font-size: 14px;}</style>\
+                color:"#ffffff"
+                text: qsTr("<style type='text/css'>a {text-decoration: none; color: #4ed9d9; font-size: 14px;}</style>\
                             Signing address <font size='2'>  ( Paste in  or select from </font> <a href='#'>Address book</a><font size='2'> )</font>")
                       + translationManager.emptyString
 //                Layout.fillWidth: true
@@ -441,7 +442,7 @@ Rectangle {
                 anchors.right: parent.right
                 anchors.top: verifyAddressLabel.bottom
                 anchors.topMargin: 5
-                placeholderText: "4..."
+                placeholderText:  '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + "4..."  + '</font>'
                 // validator: RegExpValidator { regExp: /[0-9A-Fa-f]{95}/g }
             }
 
@@ -459,7 +460,7 @@ Rectangle {
                 LineEdit {
                     id: verifySignatureLine
                     fontSize: mainLayout.lineEditFontSize
-                    placeholderText: qsTr("Signature") + translationManager.emptyString;
+                    placeholderText:  '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("Signature") + translationManager.emptyString + '</font>';
                     Layout.fillWidth: true
 
                     IconButton {

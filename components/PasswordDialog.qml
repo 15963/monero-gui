@@ -84,7 +84,7 @@ Window {
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: 24
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 color: "#ffffff"
             }
 
@@ -95,7 +95,7 @@ Window {
                 Layout.alignment: Qt.AlignHCenter
                 horizontalAlignment: TextInput.AlignHCenter
                 verticalAlignment: TextInput.AlignVCenter
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 32
                 echoMode: TextInput.Password
                 KeyNavigation.tab: okButton
@@ -127,7 +127,7 @@ Window {
             // underline
             Rectangle {
                 height: 1
-                color: "#DBDBDB"
+                color: "#747b82"
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
                 anchors.bottomMargin: 3
@@ -152,10 +152,10 @@ Window {
                 id: cancelButton
                 width: 120
                 fontSize: 14
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 text: qsTr("Cancel") + translationManager.emptyString
                 KeyNavigation.tab: passwordInput
                 onClicked: {
@@ -167,10 +167,10 @@ Window {
                 id: okButton
                 width: 120
                 fontSize: 14
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
+                shadowReleasedColor: "#3b848c"
+                shadowPressedColor: "#ff0000"
                 releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                pressedColor: "#0000ff"
                 text: qsTr("Ok") + translationManager.emptyString
                 KeyNavigation.tab: cancelButton
                 onClicked: {

@@ -61,9 +61,9 @@ Item {
 
         ListModel {
             id: dotsModel
-            ListElement { dotColor: "#36B05B" }
-            ListElement { dotColor: "#36B05B" }
-            ListElement { dotColor: "#36B05B" }
+            ListElement { dotColor: "#4fdbdc" }
+            ListElement { dotColor: "#4fdbdc" }
+            ListElement { dotColor: "#4fdbdc" }
             ListElement { dotColor: "#FFE00A" }
         }
 
@@ -85,7 +85,7 @@ Item {
         anchors.leftMargin: 16
         width: parent.width - dotsRow.width - 16
 
-        font.family: "Arial"
+        font.family: "微软雅黑"
         font.pixelSize: 28
         wrapMode: Text.Wrap
         //renderType: Text.NativeRendering
@@ -129,7 +129,7 @@ Item {
                     anchors.fill: parent
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    font.family: "Arial"
+                    font.family: "微软雅黑"
                     font.pixelSize: 18
                     color: "#6B0072"
                     text: "50"
@@ -147,7 +147,7 @@ Item {
 
             Text {
                 anchors.verticalCenter: parent.verticalCenter
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 18
                 color: "#4A4646"
                 text: qsTr("% of my fee added to each transaction") + translationManager.emptyString
@@ -157,7 +157,7 @@ Item {
         Text {
             anchors.left: parent.left
             anchors.right: parent.right
-            font.family: "Arial"
+            font.family: "微软雅黑"
             font.pixelSize: 15
             color: "#4A4646"
             wrapMode: Text.Wrap
@@ -187,7 +187,7 @@ Item {
             Text {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                font.family: "Arial"
+                font.family: "微软雅黑"
                 font.pixelSize: 15
                 color: "#4A4646"
                 wrapMode: Text.Wrap
