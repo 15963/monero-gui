@@ -381,6 +381,9 @@ ApplicationWindow {
         else
         {
             log4Qml.qDebug_Info(0, "#####  wallet.status !== Wallet.Status_Ok ####");
+            log4Qml.qDebug_Info(0, "#####  wallet.status = ####" + wallet.status);
+
+            passwordDialog.open(walletName)
 
         }
         // wallet opened successfully, subscribing for wallet updates
