@@ -394,13 +394,11 @@ int main(int argc, char *argv[])
             temppath = temppath.replace("/","\\");
             moneroAccountsDir =temppath + "\\Rrnc\\wallets";
             path =  temppath + "\\Rrnc\\configure\\";
-
         }
         else
         {
             moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Rrnc/wallets";
             path =  moneroAccountsRootDir.at(0) + "/Rrnc/configure/";
-
         }
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }

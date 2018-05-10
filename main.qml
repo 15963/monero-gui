@@ -203,8 +203,9 @@ ApplicationWindow {
        //  log4Qml.qDebug_Info(0, "##### typeof settings： ####" + typeof wizard.settings['wallet'] );
         if (isWindows) {
             var wallet_path = walletPath();
-                wallet_path =  wallet_path+".keys";
-             console.log("opening wallet at: ", wallet_path, "with password: ", appWindow.password);
+            log4Qml.qDebug_Info(0, "##### remove  wallet at: ####" + wallet_path);
+            // wallet_path =  wallet_path+".keys";
+            console.log("opening wallet at: ", wallet_path, "with password: ", appWindow.password);
             log4Qml.qDebug_Info(0, "##### opening wallet at: ####" + wallet_path);
             console.log("opening wallet at: ", wallet_path, ", testnet: ", persistentSettings.testnet);
             walletManager.openWalletAsync(wallet_path, appWindow.password,
