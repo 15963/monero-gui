@@ -101,7 +101,7 @@ Window {
                 KeyNavigation.tab: okButton
 
                 style: TextFieldStyle {
-                    renderType: Text.NativeRendering5
+                    renderType: Text.NativeRendering
                     textColor: "#ffffff"
                     passwordCharacter: "•"
                     // no background
