@@ -39,11 +39,11 @@ import moneroComponents.WalletManager 1.0
 Rectangle {
     id: mainLayout
 
-    property int labelWidth: 30
+    property int labelWidth: 120
 //    property int editWidth: 400
     property int lineEditFontSize: 12
 
-    color: "#25313c"
+    color: "#F0EEEE"
 
     Clipboard { id: clipboard }
 
@@ -98,19 +98,16 @@ Rectangle {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
-        spacing: 5
+        spacing: 20
 
         // sign
         ColumnLayout {
             id: signBox
 
-            spacing: 5
-
             RowLayout {
                 ColumnLayout {
                     spacing: 8
                     Label {
-                        color:"#ffffff"
                         text: qsTr("Sign a message or file contents with your address:") + translationManager.emptyString
                         fontSize: 16
                         wrapMode: Text.Wrap
@@ -123,7 +120,6 @@ Rectangle {
                 id: signMessageLabel
                 fontSize: 14
                 text: qsTr("Either message:") + translationManager.emptyString
-                color:"#ffffff"
                 width: mainLayout.labelWidth
             }
 
@@ -158,10 +154,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Sign") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
-                    releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#FF4304"
+                    shadowPressedColor: "#B32D00"
+                    releasedColor: "#FF6C3C"
+                    pressedColor: "#FF4304"
                     enabled: true
                     onClicked: {
                       var signature = appWindow.currentWallet.signMessage(signMessageLine.text, false)
@@ -172,9 +168,7 @@ Rectangle {
 
             Label {
                 id: signMessageFileLabel
-                anchors.top:signMessageLine.Bottom+10
                 fontSize: 14
-                color:"#ffffff"
                 text: qsTr("Or file:") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -183,7 +177,7 @@ Rectangle {
                 id: signFileRow
                 anchors.topMargin: 17
                 anchors.left: parent.left
-                anchors.right: parent.right
+		anchors.right: parent.right
 
                 FileDialog {
                     id: signFileDialog
@@ -201,10 +195,10 @@ Rectangle {
                     anchors.rightMargin: 17
                     width: 60
                     text: qsTr("Select") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
-                    releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#FF4304"
+                    shadowPressedColor: "#B32D00"
+                    releasedColor: "#FF6C3C"
+                    pressedColor: "#FF4304"
                     enabled: true
                     onClicked: {
                       signFileDialog.open()
@@ -235,10 +229,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Sign") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
-                    releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#FF4304"
+                    shadowPressedColor: "#B32D00"
+                    releasedColor: "#FF6C3C"
+                    pressedColor: "#FF4304"
                     enabled: true
                     onClicked: {
                       var signature = appWindow.currentWallet.signMessage(signFileLine.text, true)
@@ -247,14 +241,13 @@ Rectangle {
                 }
             }
 
-            ColumnLayout {
+            RowLayout {
                 id: signSignatureRow
                 anchors.topMargin: 17
 
                 Label {
                     id: signSignatureLabel
                     fontSize: 14
-                    color: "#ffffff"
                     text: qsTr("Signature") + translationManager.emptyString
                 }
 
@@ -286,7 +279,6 @@ Rectangle {
                 ColumnLayout {
                     spacing: 8
                     Label {
-                        color:"#ffffff"
                         text: qsTr("Verify a message or file signature from an address:") + translationManager.emptyString
                         fontSize: 16
 //                        Layout.fillWidth: true
@@ -299,7 +291,6 @@ Rectangle {
             Label {
                 id: verifyMessageLabel
                 fontSize: 14
-                color:"#ffffff"
                 text: qsTr("Either message:") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -334,10 +325,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Verify") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
-                    releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#FF4304"
+                    shadowPressedColor: "#B32D00"
+                    releasedColor: "#FF6C3C"
+                    pressedColor: "#FF4304"
                     enabled: true
                     onClicked: {
                       var verified = appWindow.currentWallet.verifySignedMessage(verifyMessageLine.text, verifyAddressLine.text, verifySignatureLine.text, false)
@@ -349,7 +340,6 @@ Rectangle {
             Label {
                 id: verifyMessageFileLabel
                 fontSize: 14
-                color:"#ffffff"
                 text: qsTr("Or file:") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -376,10 +366,10 @@ Rectangle {
                     anchors.rightMargin: 17
                     width: 60
                     text: qsTr("Select") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
-                    releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#FF4304"
+                    shadowPressedColor: "#B32D00"
+                    releasedColor: "#FF6C3C"
+                    pressedColor: "#FF4304"
                     enabled: true
                     onClicked: {
                       verifyFileDialog.open()
@@ -409,10 +399,10 @@ Rectangle {
                     anchors.right: parent.right
                     width: 60
                     text: qsTr("Verify") + translationManager.emptyString
-                    shadowReleasedColor: "#4ed9d9"
-                    shadowPressedColor: "#4ed9d9"
-                    releasedColor: "#4ed9d9"
-                    pressedColor: "#4ed9d9"
+                    shadowReleasedColor: "#FF4304"
+                    shadowPressedColor: "#B32D00"
+                    releasedColor: "#FF6C3C"
+                    pressedColor: "#FF4304"
                     enabled: true
                     onClicked: {
                       var verified = appWindow.currentWallet.verifySignedMessage(verifyFileLine.text, verifyAddressLine.text, verifySignatureLine.text, true)
@@ -445,14 +435,13 @@ Rectangle {
                 // validator: RegExpValidator { regExp: /[0-9A-Fa-f]{95}/g }
             }
 
-            ColumnLayout {
+            RowLayout {
                 id: verifySignatureRow
                 anchors.topMargin: 17
 
                 Label {
                     id: verifySignatureLabel
                     fontSize: 14
-                    color:"#ffffff"
                     text: qsTr("Signature") + translationManager.emptyString
                 }
 

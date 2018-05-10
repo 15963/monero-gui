@@ -42,7 +42,7 @@ import "wizard"
 
 ApplicationWindow {
     id: appWindow
-    title: "Rcssp"
+    title: "Monero"
 
     property var currentItem
     property bool whatIsEnable: false
@@ -68,8 +68,7 @@ ApplicationWindow {
     property int blocksToSync: 1
     property var isMobile: (appWindow.width > 700) ? false : true
     property var cameraUi
-    property bool isLogin : false
-    property bool ispasswordDialogHide:false
+
     // true if wallet ever synchronized
     property bool walletInitialized : false
 
@@ -156,6 +155,7 @@ ApplicationWindow {
     }
 
     function openWalletFromFile(){
+        log4Qml.qDebug_Info(0, "##### openWalletFromFile ####");
         persistentSettings.restore_height = 0
         restoreHeight = 0;
         persistentSettings.is_recovering = false
@@ -165,6 +165,7 @@ ApplicationWindow {
 
     function initialize() {
         console.log("initializing..")
+         log4Qml.qDebug_Info(0, "##### initializing ####");
         walletInitialized = false;
 
         // Use stored log level
@@ -177,7 +178,6 @@ ApplicationWindow {
         var locale = persistentSettings.locale
         if (locale !== "") {
             translationManager.setLanguage(locale.split("_")[0]);
-            systemTray.qmlOut("");
         }
 
         // Reload transfer page with translations enabled
@@ -197,9 +197,14 @@ ApplicationWindow {
         }
 
         walletManager.setDaemonAddress(persistentSettings.daemon_address)
+        
+        log4Qml.qDebug_Info(0, "##### typeof wizard.settings['wallet']£º ####" + typeof wizard.settings['wallet']);
+        
         // wallet already opened with wizard, we just need to initialize it
         if (typeof wizard.settings['wallet'] !== 'undefined') {
             console.log("using wizard wallet")
+
+            log4Qml.qDebug_Info(0, "##### using wizard wallet ####");
             //Set restoreHeight
             if(persistentSettings.restore_height > 0){
                 // We store restore height in own variable for performance reasons.
@@ -216,6 +221,9 @@ ApplicationWindow {
             if(isIOS)
                 wallet_path = moneroAccountsDir + wallet_path;
             // console.log("opening wallet at: ", wallet_path, "with password: ", appWindow.password);
+
+            log4Qml.qDebug_Info(0, "##### opening wallet at: ####" + wallet_path);
+           
             console.log("opening wallet at: ", wallet_path, ", testnet: ", persistentSettings.testnet);
             walletManager.openWalletAsync(wallet_path, appWindow.password,
                                               persistentSettings.testnet);
@@ -247,11 +255,17 @@ ApplicationWindow {
     }
 
     function connectWallet(wallet) {
+
+        log4Qml.qDebug_Info(0, "##### connectWallet ####");
+
         currentWallet = wallet
         walletName = usefulName(wallet.path)
         updateSyncing(false)
 
         viewOnly = currentWallet.viewOnly;
+
+         log4Qml.qDebug_Info(0, "##### walletName: ####");
+         log4Qml.qDebug_Info(0,  walletName);
 
         // New wallets saves the testnet flag in keys file.
         if(persistentSettings.testnet != currentWallet.testnet) {
@@ -315,29 +329,25 @@ ApplicationWindow {
      }
 
     function onWalletOpened(wallet) {
+         console.log(">>> wallet opened path: " + wallet.path)
         walletName = usefulName(wallet.path)
-        console.log(">>> wallet opened: " + wallet)
+        console.log(">>> wallet opened: " + walletName)
+
+        log4Qml.qDebug_Info(0,  ">>> wallet opened: " + wallet);
+
         if (wallet.status !== Wallet.Status_Ok) {
             if (appWindow.password === '') {
                 console.error("Error opening wallet with empty password: ", wallet.errorString);
+                log4Qml.qDebug_Info(0,  "Error opening wallet with empty password ");
                 console.log("closing wallet async : " + wallet.address)
                 closeWallet();
                 // try to open wallet with password;
+                  log4Qml.qDebug_Info(0,  "try to open wallet with password");
                 passwordDialog.open(walletName);
-
-                /*if(!isLogin){
-                    if(isAutoStart){
-                        systemTray.hideALL();
-                        passwordDialog.hide();
-                        ispasswordDialogHide = true
-                        isLogin = true
-                    }
-                }*/
-
             } else {
                 // opening with password but password doesn't match
                 console.error("Error opening wallet with password: ", wallet.errorString);
-
+                 log4Qml.qDebug_Info(0,  "Error opening wallet with empty password ");
                 informationPopup.title  = qsTr("Error") + translationManager.emptyString;
                 informationPopup.text = qsTr("Couldn't open wallet: ") + wallet.errorString;
                 informationPopup.icon = StandardIcon.Critical
@@ -385,7 +395,7 @@ ApplicationWindow {
         var dTargetBlock = currentWallet.daemonBlockChainTargetHeight();
         // Daemon fully synced
         // TODO: implement onDaemonSynced or similar in wallet API and don't start refresh thread before daemon is synced
-        // targetBlnock = currentBlock = 1 before network connection is established.
+        // targetBlock = currentBlock = 1 before network connection is established.
         daemonSynced = dCurrentBlock >= dTargetBlock && dTargetBlock != 1
         // Update daemon sync progress
         leftPanel.progressBar.updateProgress(dCurrentBlock,dTargetBlock);
@@ -601,7 +611,7 @@ ApplicationWindow {
     //Choose where to save transaction
     FileDialog {
         id: saveTxDialog
-        title: "Please choose a location" // need
+        title: "Please choose a location"
         folder: "file://" +moneroAccountsDir
         selectExisting: false;
 
@@ -811,8 +821,8 @@ ApplicationWindow {
     visible: true
 //    width: Screen.width //rightPanelExpanded ? 1269 : 1269 - 300
 //    height: 900 //300//maxWindowHeight;
-    color: "#25313c" // 0d0d0d
-    flags: persistentSettings.customDecorations ? (Qt.FramelessWindowHint | !Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint) : (!Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint | Qt.WindowMaximizeButtonHint)
+    color: "#FFFFFF"
+    flags: persistentSettings.customDecorations ? (Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint) : (Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint | Qt.WindowMaximizeButtonHint)
     onWidthChanged: x -= 0
 
     function setCustomWindowDecorations(custom) {
@@ -824,9 +834,9 @@ ApplicationWindow {
         y = 0
       persistentSettings.customDecorations = custom
       if (custom)
-        appWindow.flags = Qt.FramelessWindowHint | !Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint
+        appWindow.flags = Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint
       else
-        appWindow.flags = !Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint | Qt.WindowMaximizeButtonHint
+        appWindow.flags = Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint | Qt.WindowMaximizeButtonHint
       appWindow.hide()
       appWindow.x = x
       appWindow.y = y
@@ -892,7 +902,7 @@ ApplicationWindow {
         property bool   allow_background_mining : false
         property bool   miningIgnoreBattery : true
         property bool   testnet: false
-        property string daemon_address: testnet ? "localhost:32338" : "localhost:22338"
+        property string daemon_address: testnet ? "localhost:28081" : "localhost:18081"
         property string payment_id
         property int    restore_height : 0
         property bool   is_recovering : false
@@ -911,7 +921,6 @@ ApplicationWindow {
         // dynamically change onclose handler
         property var onCloseCallback
         id: informationPopup
-        color:"#25313c"
         cancelVisible: false
         onAccepted:  {
             if (onCloseCallback) {
@@ -1014,7 +1023,6 @@ ApplicationWindow {
         id: splash
         width: appWindow.width / 1.5
         height: appWindow.height / 2
-        color:"#25313c"
         x: (appWindow.width - width) / 2 + appWindow.x
         y: (appWindow.height - height) / 2 + appWindow.y
         messageText: qsTr("Please wait...")
@@ -1056,7 +1064,7 @@ ApplicationWindow {
 //                PropertyChanges { target: frameArea; blocked: true }
                 PropertyChanges { target: titleBar; visible: true }
 //                PropertyChanges { target: titleBar; y: 0 }
-                PropertyChanges { target: titleBar; title: qsTr("Cssp") + translationManager.emptyString }
+                PropertyChanges { target: titleBar; title: qsTr("Monero") + translationManager.emptyString }
             }
         ]
 
@@ -1366,7 +1374,6 @@ ApplicationWindow {
 
             confirmationDialog.onRejectedCallback = function() {
                 daemonManager.stop(persistentSettings.testnet);
-                rpcManager.stopXmrig(); 
                 closeAccepted();
             };
 
@@ -1419,44 +1426,7 @@ ApplicationWindow {
         var daemonHost = daemonAddress.split(":")[0]
         if (daemonHost === "127.0.0.1" || daemonHost === "localhost")
             return true
-         return true
+        return false
     }
 
-    Connections {
-        target: systemTray
-        // signal - show window
-        onSignalShow: {
-            /*if(ispasswordDialogHide){
-                passwordDialog.show();
-                ispasswordDialogHide = false
-            }*/
-            show();
-        }
-        onSignalHide: {
-           // if(isAutoStart){
-           //     passwordDialog.hide();
-           //     isLogin = true
-           // }
-            hide();
-        }
-        // signal - close app, ignore checkbox
-        onSignalQuit: {
-             close();
-        }
-        // show/hidden window (click on system tray)
-        onSignalIconActivated: {
-           // if(application.visibility === Window.Hidden) {
-           //     application.hide()
-           // } else {
-           //     application.hide()
-           // }
-        }
-        onSignalShowActivated:{
-           // systemTray.testOut("rccp")
-        }
-        // on window exit
-        onClosing: {
-            Qt.quit()
-        }
-    }
 }

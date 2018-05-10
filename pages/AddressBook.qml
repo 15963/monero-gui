@@ -33,7 +33,7 @@ import moneroComponents.AddressBook 1.0
 import moneroComponents.AddressBookModel 1.0
 
 Rectangle {
-    color: "#25313c"
+    color: "#F0EEEE"
     id: root
     property var model
 
@@ -48,7 +48,7 @@ Rectangle {
         elide: Text.ElideRight
         font.family: "Arial"
         font.pixelSize: 18
-        color: "#ffffff"
+        color: "#4A4949"
         text: qsTr("Add new entry") + translationManager.emptyString
     }
 
@@ -58,8 +58,6 @@ Rectangle {
         anchors.top: newEntryText.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 17
-        color: "#ffffff"
-
         text: qsTr("Address") + translationManager.emptyString
         fontSize: 14
     }
@@ -71,10 +69,10 @@ Rectangle {
         anchors.topMargin: 5
         anchors.top: addressLabel.bottom
         text: qsTr("QRCODE") + translationManager.emptyString
-        shadowReleasedColor: "#4ed9d9"
-        shadowPressedColor: "#4ed9d9"
-        releasedColor: "#4ed9d9"
-        pressedColor: "#4ed9d9"
+        shadowReleasedColor: "#FF4304"
+        shadowPressedColor: "#B32D00"
+        releasedColor: "#FF6C3C"
+        pressedColor: "#FF4304"
         visible : appWindow.qrScannerEnabled
         enabled : visible
         width: visible ? 60 : 0
@@ -101,7 +99,6 @@ Rectangle {
         anchors.top: addressLine.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 17
-        color: "#ffffff"
         text: qsTr("Payment ID <font size='2'>(Optional)</font>") + translationManager.emptyString
         fontSize: 14
     }
@@ -123,7 +120,6 @@ Rectangle {
         anchors.top: paymentIdLine.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 17
-        color: "#ffffff"
         text: qsTr("Description <font size='2'>(Optional)</font>") + translationManager.emptyString
         fontSize: 14
     }
@@ -148,10 +144,10 @@ Rectangle {
         anchors.topMargin: 17
 
         StandardButton {
-            shadowReleasedColor: "#4ed9d9"
-            shadowPressedColor: "#4ed9d9"
-            releasedColor: "#4ed9d9"
-            pressedColor: "#4ed9d9"
+            shadowReleasedColor: "#FF4304"
+            shadowPressedColor: "#B32D00"
+            releasedColor: "#FF6C3C"
+            pressedColor: "#FF4304"
             text: qsTr("Add") + translationManager.emptyString
             enabled: checkInformation(addressLine.text, paymentIdLine.text, appWindow.persistentSettings.testnet)
 
@@ -207,7 +203,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         height: expandItem.expanded ? parent.height - newEntryText.y - newEntryText.height - 17 :
                                       parent.height - addButton.y - addButton.height - 17
-        color: "#25313c"
+        color: "#FFFFFF"
 
         Behavior on height {
             NumberAnimation { duration: 200; easing.type: Easing.InQuad }

@@ -41,7 +41,7 @@ import moneroComponents.TransactionHistoryModel 1.0
 
 Rectangle {
 
-    color: "#25313c"
+    color: "#F0EEEE"
     property alias addressText : addressLine.text
     property alias paymentIdText : paymentIdLine.text
     property alias integratedAddressText : integratedAddressLine.text
@@ -188,7 +188,6 @@ Rectangle {
                 id: addressLabel
                 fontSize: 14
                 text: qsTr("Address") + translationManager.emptyString
-                color: "#ffffff"
                 width: mainLayout.labelWidth
             }
 
@@ -220,7 +219,6 @@ Rectangle {
                 Layout.columnSpan: 2
                 id: paymentIdLabel
                 fontSize: 14
-                color: "#ffffff"
                 text: qsTr("Payment ID") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -249,10 +247,10 @@ Rectangle {
             StandardButton {
                 id: generatePaymentId
                 width: 80
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
-                releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                shadowReleasedColor: "#FF4304"
+                shadowPressedColor: "#B32D00"
+                releasedColor: "#FF6C3C"
+                pressedColor: "#FF4304"
                 text: qsTr("Generate") + translationManager.emptyString;
                 onClicked: updatePaymentId()
             }
@@ -261,10 +259,10 @@ Rectangle {
                 id: clearPaymentId
                 enabled: !!paymentIdLine.text
                 width: 80
-                shadowReleasedColor: "#4ed9d9"
-                shadowPressedColor: "#4ed9d9"
-                releasedColor: "#4ed9d9"
-                pressedColor: "#4ed9d9"
+                shadowReleasedColor: "#FF4304"
+                shadowPressedColor: "#B32D00"
+                releasedColor: "#FF6C3C"
+                pressedColor: "#FF4304"
                 text: qsTr("Clear") + translationManager.emptyString;
                 onClicked: updatePaymentId("")
             }
@@ -275,7 +273,6 @@ Rectangle {
             Label {
                 id: integratedAddressLabel
                 fontSize: 14
-                color: "#ffffff"
                 text: qsTr("Integrated address") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }
@@ -309,7 +306,6 @@ Rectangle {
             Label {
                 id: amountLabel
                 fontSize: 14
-                color: "#ffffff"
                 text: qsTr("Amount") + translationManager.emptyString
                 width: mainLayout.labelWidth
             }

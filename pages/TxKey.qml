@@ -36,7 +36,7 @@ import moneroComponents.Clipboard 1.0
 
 Rectangle {
 
-    color: "#25313c"
+    color: "#F0EEEE"
     property alias addressText : addressLine.text
     property alias txIdText : txIdLine.text
     property alias txKeyText : txKeyLine.text
@@ -88,31 +88,26 @@ Rectangle {
 
                 Text {
                     text: qsTr("Verify that a third party made a payment by supplying:") + translationManager.emptyString
-                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr(" - the recipient address") + translationManager.emptyString
-                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr(" - the transaction ID") + translationManager.emptyString
-                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr(" - the secret transaction key supplied by the sender") + translationManager.emptyString
-                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
                 Text {
                     text: qsTr("If a payment had several transactions then each must be checked and the results combined.") + translationManager.emptyString
-                    color:"#ffffff"
                     wrapMode: Text.Wrap
                     Layout.fillWidth: true;
                 }
@@ -126,7 +121,6 @@ Rectangle {
                 id: addressLabel
                 fontSize: 14
                 text: qsTr("Address") + translationManager.emptyString
-                color:"#ffffff"
                 width: mainLayout.labelWidth
             }
 
@@ -156,7 +150,6 @@ Rectangle {
                 id: txIdLabel
                 fontSize: 14
                 text: qsTr("Transaction ID") + translationManager.emptyString
-                color:"#ffffff"
                 width: mainLayout.labelWidth
             }
 
@@ -190,7 +183,6 @@ Rectangle {
                 id: paymentIdLabel
                 fontSize: 14
                 text: qsTr("Transaction key") + translationManager.emptyString
-                color:"#ffffff"
                 width: mainLayout.labelWidth
             }
 
@@ -222,10 +214,10 @@ Rectangle {
             anchors.topMargin: 17
             width: 60
             text: qsTr("Check") + translationManager.emptyString
-            shadowReleasedColor: "#4ed9d9"
-            shadowPressedColor: "#4ed9d9"
-            releasedColor: "#4ed9d9"
-            pressedColor: "#4ed9d9"
+            shadowReleasedColor: "#FF4304"
+            shadowPressedColor: "#B32D00"
+            releasedColor: "#FF6C3C"
+            pressedColor: "#FF4304"
             enabled: checkAddress(addressLine.text, appWindow.persistentSettings.testnet) && checkTxID(txIdLine.text) && checkTxKey(txKeyLine.text)
             onClicked: {
                 console.log("TxKey: Check clicked: address " + addressLine.text + ", txid " << txIdLine.text + ", tx key " + txKeyLine.text);

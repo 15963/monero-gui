@@ -32,7 +32,6 @@
 #include <QStandardPaths>
 #include <QDebug>
 #include <QObject>
-#include <boost/program_options.hpp>
 #include "clipboardAdapter.h"
 #include "filter.h"
 #include "oscursor.h"
@@ -51,16 +50,8 @@
 #include "model/AddressBookModel.h"
 #include "wallet/wallet2_api.h"
 #include "MainApp.h"
-#include "dohttp.h"
-#include "systemtray.h"
-#include "autostart.h"
-#include "currentinfo.h"
-#include "rpcmanager.h"
-#include "autorunmanager.h"
-#include "misc_log_ex.h"
-#include "qsingleapplication.h"
-#include <QMessageBox>
-#include <QThread>
+
+#include "QmlLog4Qml/QmlLog4Qml.h"
 
 // IOS exclusions
 #ifndef Q_OS_IOS
@@ -69,14 +60,6 @@
 
 #ifdef WITH_SCANNER
 #include "QrCodeScanner.h"
-#endif
-
-#ifdef Q_OS_WIN
-    #include "windows.h"
-    #include <tchar.h>
-    typedef void (WINAPI *PGNSI)(LPSYSTEM_INFO);
-    typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS) (HANDLE, PBOOL);
-    LPFN_ISWOW64PROCESS fnIsWow64Process;
 #endif
 
 void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
@@ -93,162 +76,19 @@ int main(int argc, char *argv[])
 //    qDebug() << "High DPI auto scaling - enabled";
 //#endif
 
-    SingleApplication app1(argc,argv);
-    if (app1.isRunning())
-    {
-        // QMessageBox::information(NULL, "Title", "already started", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
-        exit(0);
-    }
+    QmlLog4Qml log4Qml;
 
-  mlog_configure(mlog_get_default_log_path("Rcssp.log"), true);
-  mlog_set_log_level(2);
-    
-  if (argc == 1) {
-        MGINFO("param argv[0]: " << argv[0]);
-  }
-
-  MGINFO("Rcssp starting ...");
-
-  bool isAutoStart = false; 
-  bool isParamWith_started = false; 
-  std::string configPath;
-  CurrentInfo currentInfo;
-
-  bool is32 = false;
-#ifdef Q_OS_WIN
- /*
-    OSVERSIONINFOEX osvi;
-    SYSTEM_INFO si;
-    PGNSI pGNSI;
-    ZeroMemory(&si, sizeof(SYSTEM_INFO));
-    ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
-    osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-    GetVersionEx((OSVERSIONINFO*)&osvi);
-    pGNSI = (PGNSI) GetProcAddress(
-               GetModuleHandle(TEXT("kernel32.dll")),
-               "GetNativeSystemInfo");
-    if(NULL != pGNSI)
-       pGNSI(&si);
-    else GetSystemInfo(&si);
-    if ( si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 ||
-        si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA64  ||
-        si.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_IA32_ON_WIN64)
-    {
-       is32 = false;
-    }
-    else if (si.wProcessorArchitecture==PROCESSOR_ARCHITECTURE_INTEL )
-    {
-       is32 = true;
-    }
-   */
-    BOOL bIsWow64 = FALSE;
-    fnIsWow64Process = (LPFN_ISWOW64PROCESS) GetProcAddress(
-        GetModuleHandle(TEXT("kernel32")),"IsWow64Process");
-
-    if(NULL != fnIsWow64Process)
-    {
-        if (!fnIsWow64Process(GetCurrentProcess(),&bIsWow64))
-        {
-            is32 = false;
-        }
-    }
-    else 
-    {
-        is32 = true;
-    }
-    if(bIsWow64)
-    {
-        is32 = false;
-    }
-    else 
-    {
-        is32 = true; 
-    }
- #endif
-
-  if ( argc > 2 ) {
-
-        MGINFO("Rcssp is auto starting ...");
-        namespace po = boost::program_options;
-        po::options_description desc_params_help("Rsscp options");
-        desc_params_help.add_options()
-        ("help","produce help message")
-        ("start", "set Rsscp auto startup")
-        ("config", po::value<string>(&configPath),"set progame config path")
-        ("s", "set Rsscp auto startup")
-        ("c", po::value<string>(&configPath),"set progame config path");
-        po::variables_map vm;          
-        po::store(po::parse_command_line(argc, argv, desc_params_help), vm);  
-        po::notify(vm);  
-            
-        if (vm.count("help"))
-        {
-            std::cout<< desc_params_help <<std::endl;
-            return 1; 
-        }
-        if (vm.count("start") || vm.count("s"))
-        {
-            isParamWith_started = true;              
-        }
-
-        MGINFO("Rcssp param --config "<<configPath);
-  }
-  
-  if (isParamWith_started) {
-      currentInfo.path = QString::fromLocal8Bit(configPath.c_str());
-      isAutoStart = currentInfo.isBackgroundMining();
-      if (isAutoStart)
-          MGINFO("Rcssp auto start with --start and is back ground mining\n");
-      else
-          MGINFO("Rcssp auto start with --start but is not back ground mining\n");
-  }
-
-  if (isAutoStart) {
-      
-      MainApp app(argc, argv);
-      qDebug() << "app auto start startd";
-      int miningType = currentInfo.getCurrentType(); 
-       if (is32) {
-           MGINFO("Rcssp auto start with windows 32 bit platform\n");
-           if (miningType == RUN_NODE) {
-               MGINFO("Rcssp autostart only run pool mining\n");
-               miningType = RUN_POOL;
-           }
-       }
-       QVector<QString> params(3);
-      if (miningType == RUN_POOL) {
-         params[0]=currentInfo.getCurrentPoolInfo(); 
-         MGINFO("Rcssp auto start pool mining:"<<string((const char *)params[0].toLocal8Bit())); 
-         AutoRunManager::instance()->setMiningParam(params, miningType);          
-      } else if (miningType == RUN_NODE) {
-         params[0]=currentInfo.getCurrentNodeInfo(); 
-         MGINFO("Rcssp auto start node mining:"<<string((const char *)params[0].toLocal8Bit())); 
-         AutoRunManager::instance()->setMiningParam(params, miningType);  
-      } else if (miningType == RUN_BOTH) {
-         params[0]=currentInfo.getCurrentPoolInfo(); 
-         MGINFO("Rcssp auto start pool mining:"<<string((const char *)params[0].toLocal8Bit())); 
-         params[1]=currentInfo.getCurrentNodeInfo(); 
-         MGINFO("Rcssp auto start node mining:"<<string((const char *)params[1].toLocal8Bit())); 
-         AutoRunManager::instance()->setMiningParam(params, miningType);    
-      }
-      if (miningType != RUN_NOTH) {
-          MGINFO("Rcssp AutoRunManager::instance()->start");
-          AutoRunManager::instance()->start();
-      }
-
-     // return app.exec();
-  }
     // Log settings
-    Monero::Wallet::init(argv[0], "，Rcssp");
+    Monero::Wallet::init(argv[0], "monero-wallet-gui");
 //    qInstallMessageHandler(messageHandler);
 
     MainApp app(argc, argv);
 
     qDebug() << "app startd";
 
-    // app.setApplicationName("，monero-core");
-    // app.setOrganizationDomain("getmonero.org");
-    // app.setOrganizationName("，monero-project");
+    app.setApplicationName("monero-core");
+    app.setOrganizationDomain("getmonero.org");
+    app.setOrganizationName("monero-project");
 
     filter *eventFilter = new filter;
     app.installEventFilter(eventFilter);
@@ -268,11 +108,9 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<WalletManager>("moneroComponents.WalletManager", 1, 0, "WalletManager",
                                                    "WalletManager can't be instantiated directly");
 
-    qmlRegisterUncreatableType<RpcManager>("moneroComponents.RpcManager", 1, 0, "RpcManager",
-                                                   "RpcManager can't be instantiated directly");
-
     qmlRegisterUncreatableType<TranslationManager>("moneroComponents.TranslationManager", 1, 0, "TranslationManager",
                                                    "TranslationManager can't be instantiated directly");
+
 
 
     qmlRegisterUncreatableType<TransactionHistoryModel>("moneroComponents.TransactionHistoryModel", 1, 0, "TransactionHistoryModel",
@@ -306,15 +144,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    // http get pools and nodes
-    Dohttp dohttp;
-    engine.rootContext()->setContextProperty("dohttp", &dohttp);
-    dohttp.fetch_nodes();
-    dohttp.fetch_pools();
-
-    // system tray
-    SystemTray systemTray;
-    engine.rootContext()->setContextProperty("systemTray", &systemTray);
+    engine.rootContext()->setContextProperty("log4Qml", &log4Qml);
 
     OSCursor cursor;
     engine.rootContext()->setContextProperty("globalCursor", &cursor);
@@ -323,26 +153,16 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("walletManager", WalletManager::instance());
 
-    engine.rootContext()->setContextProperty("rpcManager", RpcManager::instance());
-
     engine.rootContext()->setContextProperty("translationManager", TranslationManager::instance());
 
     engine.addImageProvider(QLatin1String("qrcode"), new QRCodeImageProvider());
-
-    const QStringList arguments = QCoreApplication::arguments();  
+    const QStringList arguments = QCoreApplication::arguments();
 
     engine.rootContext()->setContextProperty("mainApp", &app);
 
 // Exclude daemon manager from IOS
 #ifndef Q_OS_IOS
-    DaemonManager * daemonManager; 
-    if (isParamWith_started) {
-       QStringList argument_autostart; 
-       argument_autostart << "Rsscp";
-       daemonManager = DaemonManager::instance(&argument_autostart);
-    } else {
-       daemonManager = DaemonManager::instance(&arguments);  
-    }
+    DaemonManager * daemonManager = DaemonManager::instance(&arguments);
     engine.rootContext()->setContextProperty("daemonManager", daemonManager);
 #endif
 
@@ -354,40 +174,27 @@ int main(int argc, char *argv[])
     bool isWindows = false;
     bool isIOS = false;
     bool isMac = false;
-    int type = -1;
 #ifdef Q_OS_WIN
     isWindows = true;
-    type = 0;
     QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
 #elif defined(Q_OS_IOS)
     isIOS = true;
-    type = 1;
     QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
 #elif defined(Q_OS_UNIX)
-    type = 2;
     QStringList moneroAccountsRootDir = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
 #endif
 #ifdef Q_OS_MAC
-    type = 3;
     isMac = true;
 #endif
 
-    engine.rootContext()->setContextProperty("isAutoStart", isAutoStart);
     engine.rootContext()->setContextProperty("isWindows", isWindows);
     engine.rootContext()->setContextProperty("isIOS", isIOS);
-    engine.rootContext()->setContextProperty("is32", is32);
 
     if (!moneroAccountsRootDir.empty()) {
-        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Rcssp/wallets";
+        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Monero/wallets";
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
 
-    QString path =  moneroAccountsRootDir.at(0) + "/Rcssp/configure/";
-    currentInfo.path = path;
-    engine.rootContext()->setContextProperty("currentInfo", &currentInfo);
-
-    AutoStart autoStart;
-    autoStart.init(type,path);
 
     // Get default account name
     QString accountName = qgetenv("USER"); // mac/linux

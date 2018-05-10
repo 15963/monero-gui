@@ -45,7 +45,7 @@ Rectangle {
         property bool initialized: false
     }
 
-    color: "#25313c"
+    color: "#F0EEEE"
 
     function getSelectedAmount() {
       if (typeof model === 'undefined' || model == null)
@@ -131,7 +131,7 @@ Rectangle {
         elide: Text.ElideRight
         font.family: "Arial"
         font.pixelSize: 18
-        color: "#ffffff"
+        color: "#4A4949"
         text: qsTr("Filter transaction history") + translationManager.emptyString
     }
 
@@ -143,7 +143,6 @@ Rectangle {
         anchors.rightMargin: 17
         anchors.topMargin: 17
         text: getSelectedAmount()
-        color:"#ffffff"
         fontSize: 14
     }
 
@@ -221,7 +220,6 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 17
         width: 156
-        color:"#ffffff"
         text: qsTr("Date from") + translationManager.emptyString
         fontSize: 14
     }
@@ -233,7 +231,6 @@ Rectangle {
         anchors.top: dateFromText.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 5
-
         z: 2
         onCurrentDateChanged: {
             error = currentDate > toDatePicker.currentDate
@@ -249,7 +246,6 @@ Rectangle {
         anchors.top:  searchLine.bottom //descriptionLine.bottom
         anchors.leftMargin: 17
         anchors.topMargin: 17
-        color:"#ffffff"
         text: qsTr("To") + translationManager.emptyString
         fontSize: 14
     }
@@ -278,10 +274,10 @@ Rectangle {
         anchors.leftMargin: 17
         width: 60
         text: qsTr("Filter") + translationManager.emptyString
-        shadowReleasedColor: "#4ed9d9"
-        shadowPressedColor: "#4ed9d9"
-        releasedColor: "#4ed9d9"
-        pressedColor: "#4ed9d9"
+        shadowReleasedColor: "#4D0051"
+        shadowPressedColor: "#2D002F"
+        releasedColor: "#6B0072"
+        pressedColor: "#4D0051"
         onClicked:  {
             // Apply filter here;
 
@@ -335,7 +331,6 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 17
         width: 156
-        color:"#ffffff"
         text: qsTr("Type of transaction") + translationManager.emptyString
         fontSize: 14
     }
@@ -356,10 +351,10 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 5
         width: 156
-        shadowReleasedColor: "#e9eaeb"
-        shadowPressedColor: "#ffffff"
-        releasedColor: "#e9eaeb"
-        pressedColor: "#ffffff"
+        shadowReleasedColor: "#4D0051"
+        shadowPressedColor: "#2D002F"
+        releasedColor: "#6B0072"
+        pressedColor: "#4D0051"
         dataModel: transactionsModel
         z: 1
     }
@@ -372,7 +367,6 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 17
         width: 156
-        color:"#ffffff"
         text: qsTr("Amount from") + translationManager.emptyString
         fontSize: 14
     }
@@ -406,7 +400,6 @@ Rectangle {
         anchors.leftMargin: 17
         anchors.topMargin: 17
         width: 156
-        color:"#ffffff"
         text: qsTr("To") + translationManager.emptyString
         fontSize: 14
     }
@@ -471,9 +464,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
 //        anchors.top: parent.top
-        // color: "#FFFFFF"
-        color: "#25313c"
-
+        color: "#FFFFFF"
         z: 1
 
         height: (isMobile)? parent.height : middleHeight
@@ -514,7 +505,6 @@ Rectangle {
             anchors.leftMargin: 14
             anchors.rightMargin: 14
             dataModel: columnsModel
-            color:"#303c49"
             offset: 20
             onSortRequest: {
                 console.log("column: " + column + " desc: " + desc)
@@ -560,7 +550,6 @@ Rectangle {
             onContentYChanged: flickableScroll.flickableContentYChanged()
             model: root.model
             addressBookModel: null
-
         }
     }
 

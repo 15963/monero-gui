@@ -49,7 +49,8 @@ HEADERS += \
     autostart.h \
     currentinfo.h \
     src/libwalletqt/AutorunManager.h \
-    qsingleapplication.h
+    qsingleapplication.h \
+    QmlLog4Qml/QmlLog4Qml.h
 
 SOURCES += main.cpp \
     filter.cpp \
@@ -80,7 +81,8 @@ SOURCES += main.cpp \
     autostart.cpp \
     currentinfo.cpp \
     src/libwalletqt/AutorunManager.cpp \
-    qsingleapplication.cpp
+    qsingleapplication.cpp \
+    QmlLog4Qml/QmlLog4Qml.cpp
 
 !ios {
     HEADERS += src/daemon/DaemonManager.h
