@@ -204,11 +204,13 @@ ApplicationWindow {
         if (isWindows) {
             var wallet_path = walletPath();
                 wallet_path =  wallet_path+".keys";
-            // console.log("opening wallet at: ", wallet_path, "with password: ", appWindow.password);
+             console.log("opening wallet at: ", wallet_path, "with password: ", appWindow.password);
             log4Qml.qDebug_Info(0, "##### opening wallet at: ####" + wallet_path);
             console.log("opening wallet at: ", wallet_path, ", testnet: ", persistentSettings.testnet);
             walletManager.openWalletAsync(wallet_path, appWindow.password,
                                               persistentSettings.testnet);
+            log4Qml.qDebug_Info(0, "##### end openWalletAsync at: ####" + wallet_path);
+
         } else {
 
         if (typeof wizard.settings['wallet'] !== 'undefined') {
@@ -336,8 +338,12 @@ ApplicationWindow {
      }
 
     function onWalletOpened(wallet) {
+
         walletName = usefulName(wallet.path)
+
         console.log(">>> wallet opened: " + wallet)
+        log4Qml.qDebug_Info(0, "#####  walletName ####" + walletName);
+
         if (wallet.status !== Wallet.Status_Ok) {
             if (appWindow.password === '') {
                 console.error("Error opening wallet with empty password: ", wallet.errorString);
@@ -369,9 +375,14 @@ ApplicationWindow {
                     passwordDialog.open(walletName)
                 }
             }
+
             return;
         }
+        else
+        {
+            log4Qml.qDebug_Info(0, "#####  wallet.status !== Wallet.Status_Ok ####");
 
+        }
         // wallet opened successfully, subscribing for wallet updates
         connectWallet(wallet)
     }

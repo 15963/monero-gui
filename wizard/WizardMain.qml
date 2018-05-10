@@ -167,8 +167,6 @@ ColumnLayout {
             folder_path = "";
         if (isWindows)
         {
-            folder_path = folder_path.replace("/","\\")
-            console.log("######folder_path="+folder_path)
             return folder_path + "\\" + account_name + "\\" + account_name
         }
         else
