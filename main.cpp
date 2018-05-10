@@ -385,12 +385,25 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("isIOS", isIOS);
     engine.rootContext()->setContextProperty("is32", is32);
 
+    QString moneroAccountsDir;
+    QString path ;
     if (!moneroAccountsRootDir.empty()) {
-        QString moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Rcssp/wallets";
+        if(isWindows)
+        {
+            QString temppath = moneroAccountsRootDir.at(0);
+            temppath = temppath.replace("/","\\");
+            moneroAccountsDir =temppath + "\\Rrnc\\wallets";
+            path =  temppath + "\\Rrnc\\configure\\";
+
+        }
+        else
+        {
+            moneroAccountsDir = moneroAccountsRootDir.at(0) + "/Rrnc/wallets";
+            path =  moneroAccountsRootDir.at(0) + "/Rrnc/configure/";
+
+        }
         engine.rootContext()->setContextProperty("moneroAccountsDir", moneroAccountsDir);
     }
-
-    QString path =  moneroAccountsRootDir.at(0) + "/Rcssp/configure/";
     currentInfo.path = path;
     engine.rootContext()->setContextProperty("currentInfo", &currentInfo);
 
