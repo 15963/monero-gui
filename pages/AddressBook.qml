@@ -92,7 +92,7 @@ Rectangle {
         anchors.rightMargin: 17
         anchors.topMargin: 5
         error: true;
-        placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("4...") + translationManager.emptyString + '</font>'
+        placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + qsTr("RR...") + translationManager.emptyString + '</font>'
 
     }
 

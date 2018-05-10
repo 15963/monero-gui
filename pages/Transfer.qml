@@ -274,7 +274,7 @@ Rectangle {
               anchors.right: resolveButton.left
               //anchors.leftMargin: 17
               anchors.topMargin: 5
-              placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + "4..." + '</font>'
+              placeholderText: '<font color="#747b82" fontFamily="微软雅黑/Microsoft YaHei">' + "RR..." + '</font>'
               // validator: RegExpValidator { regExp: /[0-9A-Fa-f]{95}/g }
           }
 

@@ -1077,7 +1077,7 @@ ApplicationWindow {
 //                PropertyChanges { target: frameArea; blocked: true }
                 PropertyChanges { target: titleBar; visible: true }
 //                PropertyChanges { target: titleBar; y: 0 }
-                PropertyChanges { target: titleBar; title: qsTr("Rrnc") + translationManager.emptyString }
+                PropertyChanges { target: titleBar; title: qsTr("RRNC") + translationManager.emptyString }
             }
         ]
 

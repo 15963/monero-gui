@@ -20,8 +20,8 @@
     </message>
     <message>
         <location filename="../pages/AddressBook.qml" line="95"/>
-        <source>4...</source>
-        <translation>4...</translation>
+        <source>RR...</source>
+        <translation>RR...</translation>
     </message>
     <message>
         <location filename="../pages/AddressBook.qml" line="105"/>
@@ -1503,7 +1503,7 @@ The old wallet cache file will be renamed and can be restored later.
     <message>
         <location filename="../pages/Transfer.qml" line="239"/>
         <source>&lt;style type=&apos;text/css&apos;&gt;a {text-decoration: none; color: #4ed9d9; font-size: 14px;}&lt;/style&gt;                      Address &lt;font size=&apos;2&apos;&gt;  ( Paste in or select from &lt;/font&gt; &lt;a href=&apos;#&apos;&gt;Address book&lt;/a&gt;&lt;font size=&apos;2&apos;&gt; )&lt;/font&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;style type=&apos;text/css&apos;&gt;a {text-decoration: none; color: #4ed9d9; font-size: 14px;}&lt;/style&gt;                      地址&lt;font size=&apos;2&apos;&gt; ( 贴上或从&lt;/font&gt; &lt;a href=&apos;#&apos;&gt;地址薄&lt;/a&gt; &lt;font size=&apos;2&apos;&gt; 中选择 )&lt;/font&gt;</translation>
     </message>
     <message>
         <location filename="../pages/Transfer.qml" line="598"/>
