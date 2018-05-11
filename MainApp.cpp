@@ -26,8 +26,6 @@ void MainApp::_newLocalConnection() {
         socket->waitForReadyRead(2*TIME_OUT);
         delete socket;
         socket = NULL;
-        // 其他处理，如：读取启动参数
-
     }
 }
 
@@ -51,8 +49,8 @@ void MainApp::_newLocalServer() {
     connect(_localServer, SIGNAL(newConnection()), this, SLOT(_newLocalConnection()));
     if(!_localServer->listen(_serverName)) {
          if(_localServer->serverError() == QAbstractSocket::AddressInUseError) {
-            QLocalServer::removeServer(_serverName); // <-- 重点
-            _localServer->listen(_serverName); // 再次监听
+            QLocalServer::removeServer(_serverName);
+            _localServer->listen(_serverName);
         }
     }
 }
