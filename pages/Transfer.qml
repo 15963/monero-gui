@@ -75,7 +75,7 @@ Rectangle {
         var mixin = scaleValueToMixinCount(fillLevel)
         print ("PrivacyLevel changed:"  + fillLevel)
         print ("mixin count: "  + mixin)
-        privacyLabel.text = qsTr("Privacy level (ringsize %1)").arg(mixin+1) + translationManager.emptyString
+        privacyLabel.text = qsTr("Privacy level (ringsize %1)").arg(mixin) + translationManager.emptyString  // min +1
     }
 
     function updateFromQrCode(address, payment_id, amount, tx_description, recipient_name) {
