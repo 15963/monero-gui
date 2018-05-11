@@ -92,7 +92,7 @@ ListView {
         id: delegate
         height: 144
         width: listView.width
-        color: index % 2 ? "#F8F8F8" : "#FFFFFF"
+        color: index % 2 ? "#303c4a" : "#303c4a"
         z: listView.count - index
         function collapseDropdown() { dropdown.expanded = false }
 
@@ -131,7 +131,7 @@ ListView {
                 width: 14
                 height: width
                 radius: width / 2
-                color: isOut ? "#FF4F41" : "#36B05B"
+                color: isOut ? "#FF4F41" : "#4ed9d9"
             }
 
             Item { //separator
@@ -176,7 +176,7 @@ ListView {
                 //elide: Text.ElideRight
                 font.family: "微软雅黑"
                 font.pixelSize: 14
-                color: "#545454"
+                color: "#ffffff"
                 text: hash
                 // visible: !descriptionArea.containsMouse
             }
@@ -198,7 +198,7 @@ ListView {
                 anchors.bottom: parent.bottom
                 font.family: "微软雅黑"
                 font.pixelSize: 12
-                color: "#535353"
+                color: "#ffffff"
                 text: paymentId !== "" ? qsTr("Payment ID:")  + translationManager.emptyString : ""
             }
             // -- "PaymentID" value
@@ -211,7 +211,7 @@ ListView {
                 //elide: Text.ElideRight
                 font.family: "微软雅黑"
                 font.pixelSize:13
-                color: "#545454"
+                color: "#ffffff"
                 text: paymentId
 
             }
@@ -225,7 +225,7 @@ ListView {
                 //elide: Text.ElideRight
                 font.family: "微软雅黑"
                 font.pixelSize:13
-                color: "#545454"
+                color: "#ffffff"
                 text: "(" + lookupPaymentID(paymentId) + ")"
                 visible: text !== "()"
             }
@@ -246,7 +246,7 @@ ListView {
                 width: 86
                 font.family: "微软雅黑"
                 font.pixelSize: 12
-                color: "#535353"
+                color: "#ffffff"
                 text:  qsTr("BlockHeight:")  + translationManager.emptyString
             }
             // -- "BlockHeight" value
@@ -295,7 +295,7 @@ ListView {
                     anchors.left: parent.left
                     font.family: "微软雅黑"
                     font.pixelSize: 12
-                    color: "#545454"
+                    color: "#ffffff"
                     text: qsTr("Date") + translationManager.emptyString
                 }
 
@@ -307,14 +307,14 @@ ListView {
                     Text {
                         font.family: "微软雅黑"
                         font.pixelSize: 18
-                        color: "#000000"
+                        color: "#ffffff"
                         text: date
                     }
 
                     Text {
                         font.family: "微软雅黑"
                         font.pixelSize: 18
-                        color: "#000000"
+                        color: "#ffffff"
                         text: time
                     }
                 }
@@ -352,7 +352,7 @@ ListView {
                     anchors.left: parent.left
                     font.family: "微软雅黑"
                     font.pixelSize: 12
-                    color: "#545454"
+                    color: "#ffffff"
                     text: qsTr("Amount") + translationManager.emptyString
                 }
 
@@ -387,7 +387,7 @@ ListView {
                     anchors.left: parent.left
                     font.family: "微软雅黑"
                     font.pixelSize: 12
-                    color: "#545454"
+                    color: "#ffffff"
                     text: qsTr("Fee") + translationManager.emptyString
                 }
 
@@ -397,7 +397,7 @@ ListView {
                         anchors.bottom: parent.bottom
                         font.family: "微软雅黑"
                         font.pixelSize: 18
-                        color: "#FF4F41"
+                        color: "#ffffff"
                         text:  fee
                     }
                 }

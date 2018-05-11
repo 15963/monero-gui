@@ -1,4 +1,4 @@
-TEMPLATE = app
+ TEMPLATE = app
 
 QT += qml quick widgets network
 

@@ -436,7 +436,6 @@ Rectangle {
                 backgroundMining.checked = false
             }
         }
-
     }
 
     function updateStatusText() {
