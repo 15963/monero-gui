@@ -1,5 +1,61 @@
 #include "MainApp.h"
 #include <QCloseEvent>
+#include <QtNetwork/QLocalSocket>
+#include <QFileInfo>
+
+
+
+#define TIME_OUT                (500)    // 500ms
+
+MainApp::MainApp(int &argc, char **argv)
+    : QApplication(argc, argv)
+    , _isRunning(false)
+    , _localServer(NULL) {
+     _serverName = QFileInfo(QCoreApplication::applicationFilePath()).fileName();
+
+    _initLocalConnection();
+}
+
+bool MainApp::isRunning() {
+    return _isRunning;
+}
+
+void MainApp::_newLocalConnection() {
+    QLocalSocket *socket = _localServer->nextPendingConnection();
+    if(socket) {
+        socket->waitForReadyRead(2*TIME_OUT);
+        delete socket;
+        socket = NULL;
+        // 其他处理，如：读取启动参数
+
+    }
+}
+
+void MainApp::_initLocalConnection() {
+    _isRunning = false;
+
+    QLocalSocket socket;
+    socket.connectToServer(_serverName);
+    if(socket.waitForConnected(TIME_OUT)) {
+        fprintf(stderr, "%s already running.\n",
+                _serverName.toLocal8Bit().constData());
+        _isRunning = true;
+         return;
+    }
+
+     _newLocalServer();
+}
+
+void MainApp::_newLocalServer() {
+    _localServer =  new QLocalServer(this);
+    connect(_localServer, SIGNAL(newConnection()), this, SLOT(_newLocalConnection()));
+    if(!_localServer->listen(_serverName)) {
+         if(_localServer->serverError() == QAbstractSocket::AddressInUseError) {
+            QLocalServer::removeServer(_serverName); // <-- 重点
+            _localServer->listen(_serverName); // 再次监听
+        }
+    }
+}
 
 bool MainApp::event (QEvent *event)
 {

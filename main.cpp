@@ -98,8 +98,10 @@ int main(int argc, char *argv[])
 
     QmlLog4Qml log4Qml;
 
-    SingleApplication app1(argc,argv);
-    if (app1.isRunning())
+
+   // SingleApplication app1(argc,argv);
+    MainApp app(argc,argv);
+    if (app.isRunning())
     {
         // QMessageBox::information(NULL, "Title", "already started", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
         exit(0);
@@ -212,7 +214,6 @@ int main(int argc, char *argv[])
 
   if (isAutoStart) {
       
-      MainApp app(argc, argv);
       qDebug() << "app auto start startd";
       int miningType = currentInfo.getCurrentType(); 
        if (is32) {
@@ -249,7 +250,7 @@ int main(int argc, char *argv[])
     Monero::Wallet::init(argv[0], "RRNC");
     // qInstallMessageHandler(messageHandler);
 
-    MainApp app(argc, argv);
+   // MainApp app(argc, argv);
 
     qDebug() << "app startd";
 
