@@ -208,8 +208,10 @@ ApplicationWindow {
             console.log("opening wallet at: ", wallet_path, "with password: ", appWindow.password);
             log4Qml.qDebug_Info(0, "##### opening wallet at: ####" + wallet_path);
             console.log("opening wallet at: ", wallet_path, ", testnet: ", persistentSettings.testnet);
+
             walletManager.openWalletAsync(wallet_path, appWindow.password,
                                               persistentSettings.testnet);
+
             log4Qml.qDebug_Info(0, "##### end openWalletAsync at: ####" + wallet_path);
 
         } else {
@@ -305,17 +307,17 @@ ApplicationWindow {
     }
 
     function usefulName(path) {
-        // arbitrary "short enough" limit
-        if(isWindows) {
-            log4Qml.qDebug_Info(0, "##### isWindows wallet file: ####" + path + ".keys" );
-            return path + ".keys";
-        }
-        else
-        {
+       // arbitrary "short enough" limit
+       // if(isWindows) {
+       //     log4Qml.qDebug_Info(0, "##### isWindows wallet file: ####" + path + ".keys" );
+       //     return path + ".keys";
+       // }
+       // else
+       // {
         if (path.length < 32)
             return path
-        return path.replace(/.*[\/\\]/, '').replace(/\.keys$/, '')
-        }
+            return path.replace(/.*[\/\\]/, '').replace(/\.keys$/, '')
+       // }
     }
 
     function onWalletConnectionStatusChanged(status){
@@ -384,7 +386,6 @@ ApplicationWindow {
             log4Qml.qDebug_Info(0, "#####  wallet.status !== Wallet.Status_Ok ####");
             log4Qml.qDebug_Info(0, "#####  wallet.status = ####" + wallet.status);
 
-            passwordDialog.open(walletName)
 
         }
         // wallet opened successfully, subscribing for wallet updates
