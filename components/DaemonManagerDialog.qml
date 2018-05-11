@@ -93,7 +93,7 @@ Window {
 
             Text {
                 color:"#ffffff"
-                text: qsTr("Starting Rcssp daemon in %1 seconds").arg(countDown);
+                text: qsTr("Starting RRNC daemon in %1 seconds").arg(countDown);
                 font.pixelSize: 18
                 Layout.alignment: Qt.AlignHCenter
                 Layout.fillWidth: true

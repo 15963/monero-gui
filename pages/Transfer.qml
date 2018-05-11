@@ -592,6 +592,9 @@ Rectangle {
 
         onAccepted: {
             var path = walletManager.urlToLocalPath(fileUrl);
+            console.log("### add the filelog walletManager fileUrl"+fileUrl)
+            console.log("### add the filelog walletManager path"+path)
+
             // Load the unsigned tx from file
             var transaction = currentWallet.loadTxFile(path);
 

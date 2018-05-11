@@ -70,7 +70,7 @@ Rectangle {
     width: (isMobile)? appWindow.width : 260
     color: "#2f3943"
 
-    // Item with Rcssp logo
+    // Item with RRNC logo
     Item {
         visible: !isMobile
         id: logoItem

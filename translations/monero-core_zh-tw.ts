@@ -117,8 +117,8 @@
     <name>DaemonManagerDialog</name>
     <message>
         <location filename="../components/DaemonManagerDialog.qml" line="96"/>
-        <source>Starting Rcssp daemon in %1 seconds</source>
-        <translation>在 %1 秒後啟動 Monero 區塊同步</translation>
+        <source>Starting RRNC daemon in %1 seconds</source>
+        <translation>在 %1 秒後啟動 RRNC 區塊同步</translation>
     </message>
     <message>
         <location filename="../components/DaemonManagerDialog.qml" line="118"/>
@@ -1844,8 +1844,8 @@ Please upgrade or connect to another daemon</source>
     </message>
     <message>
         <location filename="../wizard/WizardMain.qml" line="368"/>
-        <source>USE CSSP</source>
-        <translation>使用 CSSP</translation>
+        <source>USE RRNC</source>
+        <translation>使用 RRNC</translation>
     </message>
     <message>
         <location filename="../wizard/WizardMain.qml" line="385"/>
@@ -1940,8 +1940,8 @@ Please upgrade or connect to another daemon</source>
     <name>WizardOptions</name>
     <message>
         <location filename="../wizard/WizardOptions.qml" line="75"/>
-        <source>Welcome to CSSP!</source>
-        <translation>歡迎使用 CSSP！</translation>
+        <source>Welcome to RRNC!</source>
+        <translation>歡迎使用 RRNC！</translation>
     </message>
     <message>
         <location filename="../wizard/WizardOptions.qml" line="86"/>
@@ -2017,8 +2017,8 @@ Please upgrade or connect to another daemon</source>
     </message>
     <message>
         <location filename="../wizard/WizardWelcome.qml" line="73"/>
-        <source>Welcome to CSSP!</source>
-        <translation type="unfinished">歡迎使用 CSSP！</translation>
+        <source>Welcome to RRNC!</source>
+        <translation type="unfinished">歡迎使用 RRNC！</translation>
     </message>
     <message>
         <location filename="../wizard/WizardWelcome.qml" line="83"/>

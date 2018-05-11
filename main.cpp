@@ -105,14 +105,16 @@ int main(int argc, char *argv[])
         exit(0);
     }
 
-  mlog_configure(mlog_get_default_log_path("Rcssp.log"), true);
+   // app1.quit();
+
+  mlog_configure(mlog_get_default_log_path("RRNC.log"), true);
   mlog_set_log_level(2);
     
   if (argc == 1) {
         MGINFO("param argv[0]: " << argv[0]);
   }
 
-  MGINFO("Rcssp starting ...");
+  MGINFO("RRNC starting ...");
 
   bool isAutoStart = false; 
   bool isParamWith_started = false; 
@@ -173,7 +175,7 @@ int main(int argc, char *argv[])
 
   if ( argc > 2 ) {
 
-        MGINFO("Rcssp is auto starting ...");
+        MGINFO("RRNC is auto starting ...");
         namespace po = boost::program_options;
         po::options_description desc_params_help("Rsscp options");
         desc_params_help.add_options()
@@ -196,16 +198,16 @@ int main(int argc, char *argv[])
             isParamWith_started = true;              
         }
 
-        MGINFO("Rcssp param --config "<<configPath);
+        MGINFO("RRNC param --config "<<configPath);
   }
   
   if (isParamWith_started) {
       currentInfo.path = QString::fromLocal8Bit(configPath.c_str());
       isAutoStart = currentInfo.isBackgroundMining();
       if (isAutoStart)
-          MGINFO("Rcssp auto start with --start and is back ground mining\n");
+          MGINFO("RRNC auto start with --start and is back ground mining\n");
       else
-          MGINFO("Rcssp auto start with --start but is not back ground mining\n");
+          MGINFO("RRNC auto start with --start but is not back ground mining\n");
   }
 
   if (isAutoStart) {
@@ -214,38 +216,38 @@ int main(int argc, char *argv[])
       qDebug() << "app auto start startd";
       int miningType = currentInfo.getCurrentType(); 
        if (is32) {
-           MGINFO("Rcssp auto start with windows 32 bit platform\n");
+           MGINFO("RRNC auto start with windows 32 bit platform\n");
            if (miningType == RUN_NODE) {
-               MGINFO("Rcssp autostart only run pool mining\n");
+               MGINFO("RRNC autostart only run pool mining\n");
                miningType = RUN_POOL;
            }
        }
        QVector<QString> params(3);
       if (miningType == RUN_POOL) {
          params[0]=currentInfo.getCurrentPoolInfo(); 
-         MGINFO("Rcssp auto start pool mining:"<<string((const char *)params[0].toLocal8Bit())); 
+         MGINFO("RRNC auto start pool mining:"<<string((const char *)params[0].toLocal8Bit()));
          AutoRunManager::instance()->setMiningParam(params, miningType);          
       } else if (miningType == RUN_NODE) {
          params[0]=currentInfo.getCurrentNodeInfo(); 
-         MGINFO("Rcssp auto start node mining:"<<string((const char *)params[0].toLocal8Bit())); 
+         MGINFO("RRNC auto start node mining:"<<string((const char *)params[0].toLocal8Bit()));
          AutoRunManager::instance()->setMiningParam(params, miningType);  
       } else if (miningType == RUN_BOTH) {
          params[0]=currentInfo.getCurrentPoolInfo(); 
-         MGINFO("Rcssp auto start pool mining:"<<string((const char *)params[0].toLocal8Bit())); 
+         MGINFO("RRNC auto start pool mining:"<<string((const char *)params[0].toLocal8Bit()));
          params[1]=currentInfo.getCurrentNodeInfo(); 
-         MGINFO("Rcssp auto start node mining:"<<string((const char *)params[1].toLocal8Bit())); 
+         MGINFO("RRNC auto start node mining:"<<string((const char *)params[1].toLocal8Bit()));
          AutoRunManager::instance()->setMiningParam(params, miningType);    
       }
       if (miningType != RUN_NOTH) {
-          MGINFO("Rcssp AutoRunManager::instance()->start");
+          MGINFO("RRNC AutoRunManager::instance()->start");
           AutoRunManager::instance()->start();
       }
 
      // return app.exec();
   }
     // Log settings
-    Monero::Wallet::init(argv[0], "，Rcssp");
-//    qInstallMessageHandler(messageHandler);
+    Monero::Wallet::init(argv[0], "RRNC");
+    // qInstallMessageHandler(messageHandler);
 
     MainApp app(argc, argv);
 
@@ -446,6 +448,5 @@ int main(int argc, char *argv[])
     QObject::connect(eventFilter, SIGNAL(sequenceReleased(QVariant,QVariant)), rootObject, SLOT(sequenceReleased(QVariant,QVariant)));
     QObject::connect(eventFilter, SIGNAL(mousePressed(QVariant,QVariant,QVariant)), rootObject, SLOT(mousePressed(QVariant,QVariant,QVariant)));
     QObject::connect(eventFilter, SIGNAL(mouseReleased(QVariant,QVariant,QVariant)), rootObject, SLOT(mouseReleased(QVariant,QVariant,QVariant)));
-
     return app.exec();
 }

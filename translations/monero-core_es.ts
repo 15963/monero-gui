@@ -121,7 +121,7 @@
     </message>
     <message>
         <location filename="../components/DaemonManagerDialog.qml" line="96"/>
-        <source>Starting Rcssp daemon in %1 seconds</source>
+        <source>Starting RRNC daemon in %1 seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1848,8 +1848,8 @@ Por favor, actualice o conéctese a otro daemon</translation>
     </message>
     <message>
         <location filename="../wizard/WizardMain.qml" line="368"/>
-        <source>USE CSSP</source>
-        <translation>USE CSSP</translation>
+        <source>USE RRNC</source>
+        <translation>USE RRNC</translation>
     </message>
     <message>
         <location filename="../wizard/WizardMain.qml" line="385"/>
@@ -1948,7 +1948,7 @@ Por favor, actualice o conéctese a otro daemon</translation>
     </message>
     <message>
         <location filename="../wizard/WizardOptions.qml" line="75"/>
-        <source>Welcome to CSSP!</source>
+        <source>Welcome to RRNC!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2025,7 +2025,7 @@ Por favor, actualice o conéctese a otro daemon</translation>
     </message>
     <message>
         <location filename="../wizard/WizardWelcome.qml" line="73"/>
-        <source>Welcome to CSSP!</source>
+        <source>Welcome to RRNC!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

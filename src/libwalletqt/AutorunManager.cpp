@@ -105,7 +105,7 @@ void AutoRunManager::setMiningParam(QVector<QString>& params,int runType) {
 }
 
 bool AutoRunManager::startXmrigMining() {
-    MGINFO("Rcssp auto starting xmrig ...");
+    MGINFO("RRNC auto starting xmrig ...");
     bool bret = false; 
     if (RpcManager::instance()->isMining())     
     {
@@ -114,7 +114,7 @@ bool AutoRunManager::startXmrigMining() {
 
     RpcManager::instance()->stopXmrig();
     if (RpcManager::instance()->startXmrig(7777)) {
-        MGINFO("Rcssp auto xmrig started ok.");
+        MGINFO("RRNC auto xmrig started ok.");
         QThread::sleep(2);
         bret = RpcManager::instance()->startMining(m_pool_config,(quint32)m_threads);
         if (bret == false) {
@@ -133,7 +133,7 @@ bool AutoRunManager::startXmrigMining() {
     }
    
     if (bret==true) {
-        MGINFO("Rcssp auto xmrig start mining ok.");
+        MGINFO("RRNC auto xmrig start mining ok.");
         boost::thread thr (boost::bind(&AutoRunManager::get_mining_hashrate,this));
         thr.detach();
     }
@@ -145,10 +145,10 @@ void* AutoRunManager::start_mining(void* p) {
     AutoRunManager *ptr = (AutoRunManager*)p;
     bool bret = false;
     for (;;) {
-      MGINFO("Rcssp auto start rrncd mining thread try to connect daemon.");
+      MGINFO("RRNC auto start rrncd mining thread try to connect daemon.");
       bret = WalletManager::instance()->startMining(ptr->getWalletAddress(),(quint32)ptr->getThreadCount(),true,true);
       if (bret) {
-          MGINFO("Rcssp auto start rrncd mining ok.");
+          MGINFO("RRNC auto start rrncd mining ok.");
           break;
       }
       QThread::sleep(30); // waiting 30 seconds
@@ -168,12 +168,12 @@ void* AutoRunManager::get_mining_hashrate(void*p)
            nrate = RpcManager::instance()->miningHashRate();
            printf("hashrate: %3.1f H/\s\n",nrate);
            sprintf(buff,"%3.1f H/s", nrate); 
-           MGINFO("Rcssp auto xmrig hash rate:\n"<< buff);
+           MGINFO("RRNC auto xmrig hash rate:\n"<< buff);
         } else {
            nrate = WalletManager::instance()->miningHashRate();
            printf("hashrate: %3.1f H/\s\n",nrate);
            sprintf(buff,"%3.1f H/s", nrate); 
-           MGINFO("Rcssp auto daemon hash rate:\n"<< buff);
+           MGINFO("RRNC auto daemon hash rate:\n"<< buff);
         }
       
        QThread::sleep(10);
@@ -184,21 +184,21 @@ void* AutoRunManager::get_mining_hashrate(void*p)
 
 bool AutoRunManager::startDaemonMining() {
     bool bret = false; 
-    MGINFO("Rcssp auto start daemon ");
+    MGINFO("RRNC auto start daemon ");
     RpcManager::instance()->stopRrncd();
     //bool daem_started = RpcManager::instance()->startRrncd(); 
      QStringList argument_autostart; 
      argument_autostart << "Rsscp";    
      bool daem_started = DaemonManager::instance(&argument_autostart)->start("",false,""); 
     if (daem_started) {
-        MGINFO("Rcssp auto start daemon ok.");
+        MGINFO("RRNC auto start daemon ok.");
         WalletManager::instance()->setDaemonAddress(m_node_address);
-        MGINFO("Rcssp auto start rrncd mining thread.");
+        MGINFO("RRNC auto start rrncd mining thread.");
         QThread::sleep(20);
         boost::thread thr (boost::bind(&AutoRunManager::start_mining,this));
         thr.detach();
     } else {
-        MGINFO("Rcssp auto start daemon failed.");
+        MGINFO("RRNC auto start daemon failed.");
     }
    
     return bret; 
@@ -209,13 +209,13 @@ bool AutoRunManager::start() {
    bool bothStarted = false; 
    if (m_runType == 4) //noth
    {
-       MGINFO("Rcssp auto run start xmring and daemon mining.");
+       MGINFO("RRNC auto run start xmring and daemon mining.");
        return false; 
    } 
 
    if (m_runType == 3) //both
    {
-        MGINFO("Rcssp auto run start xmring and daemon mining.");
+        MGINFO("RRNC auto run start xmring and daemon mining.");
         bothStarted = startXmrigMining();
         if (bothStarted == true) {           
             bothStarted = startDaemonMining();
@@ -228,12 +228,12 @@ bool AutoRunManager::start() {
    } 
    else if (m_runType == 2)//node
    {
-      MGINFO("Rcssp auto run start daemon mining for rrncd rpc.");
+      MGINFO("RRNC auto run start daemon mining for rrncd rpc.");
       return startDaemonMining();
    } 
    else if (m_runType == 1) //pool
    {
-     MGINFO("Rcssp auto run start xmring mining for xmrig rpc.");
+     MGINFO("RRNC auto run start xmring mining for xmrig rpc.");
      return startXmrigMining();      
    }
 

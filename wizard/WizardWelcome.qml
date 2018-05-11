@@ -70,7 +70,7 @@ ColumnLayout {
             color: "#ffffff"
             wrapMode: Text.Wrap
             horizontalAlignment: Text.AlignHCenter
-            text: qsTr("Welcome to CSSP!") + translationManager.emptyString
+            text: qsTr("Welcome to RRNC!") + translationManager.emptyString
         }
 
         Text {

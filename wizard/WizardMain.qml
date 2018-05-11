@@ -371,7 +371,7 @@ ColumnLayout {
         anchors.bottom: parent.bottom
         anchors.left: parent.left + 50
         anchors.margins:  (isMobile) ? 20 : 50
-        text: qsTr("USE CSSP") + translationManager.emptyString
+        text: qsTr("USE RRNC") + translationManager.emptyString
         shadowReleasedColor: "#3b848c"
         shadowPressedColor: "#ff0000"
         releasedColor: "#4ed9d9"
