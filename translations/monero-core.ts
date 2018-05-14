@@ -475,13 +475,13 @@
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="193"/>
-        <source>mention info&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>When the system performs mining operations, some anti-virus software will prompt the risk.</source>
+        <translation>When the system performs mining operations, some anti-virus software will prompt the risk.</translation>
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="194"/>
-        <source> mention info detail&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <source> If you download the installation package for the official channel, you can add to the trust list. Please feel free to use it.</source>
+        <translation> If you download the installation package for the official channel, you can add to the trust list. Please feel free to use it.</translation>
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="204"/>

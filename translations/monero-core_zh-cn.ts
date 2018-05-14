@@ -479,13 +479,13 @@
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="193"/>
-        <source>mention info&lt;br&gt;</source>
-        <translation>系统执行挖矿操作时，部分杀毒软件会提示风险。&lt;br&gt;</translation>
+        <source>When the system performs mining operations, some anti-virus software will prompt the risk.</source>
+        <translation>系统执行挖矿操作时，部分杀毒软件会提示风险。</translation>
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="194"/>
-        <source> mention info detail&lt;br&gt;</source>
-        <translation >若为官方渠道下载安装包，可添加信任。请放心使用！&lt;br&gt;</translation>
+        <source>If you download the installation package for the official channel, you can add to the trust list. Please feel free to use it.</source>
+        <translation >若为官方渠道下载安装包，可添加信任。请放心使用！</translation>
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="204"/>

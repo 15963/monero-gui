@@ -475,12 +475,12 @@
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="193"/>
-        <source>mention info&lt;br&gt;</source>
+        <source>mention info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="194"/>
-        <source> mention info detail&lt;br&gt;</source>
+        <source> mention info detail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

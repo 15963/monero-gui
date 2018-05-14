@@ -232,17 +232,16 @@ Rectangle {
                     pressedColor: "#0000ff"
                     onClicked: {
 
-                        /*
-                        mentionPopup.title = qsTr("mention starting mining") + translationManager.emptyString;
-                        mentionPopup.text = qsTr("mention info<br>")
-                        mentionPopup.text += qsTr(" mention info detail<br>")
-                        mentionPopup.icon = StandardIcon.Critical
-                        mentionPopup.open()
-                        */
+                    console.debug("begin the starting mining")
+                    mentionPopup.title = qsTr("mention starting mining") + translationManager.emptyString
+                    mentionPopup.text = qsTr("When the system performs mining operations, some anti-virus software will prompt the risk.") + translationManager.emptyString
+                    mentionPopup.text += qsTr("If you download the installation package for the official channel, you can add to the trust list. Please feel free to use it.") + translationManager.emptyString
+                    mentionPopup.icon = StandardIcon.Critical
+                    mentionPopup.open()
 
-                    //    daemonManagerDialog.open();
+                    console.debug("after the starting mining")
 
-
+                    /*
                         console.debug(cbItems.get(choiceminingtype.currentIndex).text + ", " + cbItems.get(choiceminingtype.currentIndex).index)
                         var success = false;
                         //set xmrig rpc port 7777
@@ -362,7 +361,7 @@ Rectangle {
                                 errorPopup.text += qsTr("Mining is only available on local daemons. Run a local daemon to be able to mine.<br>")
                             errorPopup.icon = StandardIcon.Critical
                             errorPopup.open()
-                        }
+                        }*/
                     }
                 }
 
@@ -493,7 +492,128 @@ Rectangle {
     StandardDialog {
         id: mentionPopup
         cancelVisible: false
+        modality:Qt.ApplicationModal
+
         onAccepted: {
+                console.debug(cbItems.get(choiceminingtype.currentIndex).text + ", " + cbItems.get(choiceminingtype.currentIndex).index)
+                var success = false;
+                //set xmrig rpc port 7777
+                var rpc_xmrig_port = 7777;
+                var pool_address = "";
+                var pool_port = "";
+                var json_config = "";
+
+                if(!is32){
+
+                 if (choiceminingtype.currentIndex > 0) {
+
+                   pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
+                   pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
+
+                   json_config ="{\"algorithm\":\"cryptonight\","
+                   + "\"pool\":" + "\"" + pool_address + "\"," + "\"port\":" + pool_port + ","
+                   + "\"user\":" + "\""+ appWindow.currentWallet.address +"\"," + "\"password\":\"x\"}";
+
+                   currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+                    console.debug( "###########setcurrentInurrentIndex2" +choiceminingtype.currentIndex)
+                   currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                   console.debug(json_config);
+
+                   if (!rpcManager.isMining()) {
+
+                        //todo: startxmrig process
+                        if (rpcManager.startXmrig(rpc_xmrig_port)) {
+                             //start json rpc send /start request to mining
+                             success = rpcManager.startMining(json_config, soloMinerThreadsLine.text);
+                             if (success == false) {
+                                //connect fail to restart xmrig
+                                console.debug("start json rpc mining failed\n");
+                                rpcManager.stopXmrig();
+                                if (rpcManager.startXmrig(rpc_xmrig_port)) {
+                                    success = rpcManager.startMining(json_config, soloMinerThreadsLine.text);
+                                 }
+
+                             }
+
+                        } else {
+                                console.debug("startXmrig failed\n");
+                        }
+
+                   } else {
+                          console.debug("rpcManager.isrun ==true")
+                          success = true;
+                   }
+
+                  } else {
+                       currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                       currentInfo.setCurrentNodeInfo(cbItems.get(choiceminingtype.currentIndex).index,appWindow.currentWallet.address,soloMinerThreadsLine.text);
+                       success = walletManager.startMining(appWindow.currentWallet.address, soloMinerThreadsLine.text, persistentSettings.allow_background_mining, persistentSettings.miningIgnoreBattery)
+                  }
+                }
+                else { //is 32 bit
+
+                    pool_address = cbItems.get(choiceminingtype.currentIndex).index.split(":")[0];
+                    pool_port = cbItems.get(choiceminingtype.currentIndex).index.split(":")[1];
+                    json_config ="{\"algorithm\":\"cryptonight\","
+                   + "\"pool\":" + "\"" + pool_address + "\"," + "\"port\":" + pool_port + ","
+                   + "\"user\":" + "\""+ appWindow.currentWallet.address +"\"," + "\"password\":\"x\"}";
+
+                   currentInfo.setCurrentPoolInfo( pool_address,pool_port, appWindow.currentWallet.address,soloMinerThreadsLine.text)
+                   console.debug( "###########setcurrentInurrentIndex2" +choiceminingtype.currentIndex)
+                   currentInfo.setSelectMinInfo(choiceminingtype.currentIndex,backgroundMining.checked.toString(),soloMinerThreadsLine.text)
+                   console.debug(json_config);
+
+                   if (!rpcManager.isMining()) {
+
+                        //todo: startxmrig process
+                        if (rpcManager.startXmrig(rpc_xmrig_port)) {
+                             //start json rpc send /start request to mining
+                             success = rpcManager.startMining(json_config, soloMinerThreadsLine.text);
+                             if (success == false) {
+                                //connect fail to restart xmrig
+                                console.debug("start json rpc mining failed\n");
+                                rpcManager.stopXmrig();
+                                if (rpcManager.startXmrig(rpc_xmrig_port)) {
+                                    success = rpcManager.startMining(json_config, soloMinerThreadsLine.text);
+                                 }
+
+                             }
+
+                        } else {
+                                console.debug("startXmrig failed\n");
+                                success = false;
+                        }
+
+                   } else {
+                          console.debug("rpcManager.isrun ==true")
+                          success = true;
+                   }
+
+                }
+
+
+                if (success) {
+
+                    updateStatusText()
+                    if(!is32){
+                        if (choiceminingtype.currentIndex > 0) {
+                           startSoloMinerButton.enabled = !rpcManager.isMining()
+                        } else  {
+                            startSoloMinerButton.enabled = !walletManager.isMining()
+                        }
+                    } else {
+                        startSoloMinerButton.enabled = !rpcManager.isMining()
+                    }
+
+                    stopSoloMinerButton.enabled = !startSoloMinerButton.enabled
+                } else {
+                    errorPopup.title  = qsTr("Error starting mining") + translationManager.emptyString;
+                    errorPopup.text = qsTr("Couldn't start mining.<br>")
+                    if (!isDaemonLocal())
+                        errorPopup.text += qsTr("Mining is only available on local daemons. Run a local daemon to be able to mine.<br>")
+                    errorPopup.icon = StandardIcon.Critical
+                    errorPopup.open()
+                }
         }
     }
     Timer {

@@ -258,7 +258,7 @@ ListView {
                 //elide: Text.ElideRight
                 font.family: "微软雅黑"
                 font.pixelSize: 13
-                color:  (confirmations < confirmationsRequired)? "#4ed9d9" : "#545454"
+                color:  (confirmations < confirmationsRequired)? "#4ed9d9" : "#ffffff"
                 text: {
                     if (!isPending)
                         if(confirmations < confirmationsRequired)
