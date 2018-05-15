@@ -71,7 +71,7 @@ if [ "$ANDROID" != true ] && ([ "$platform" == "linux32" ] || [ "$platform" == "
 fi
 
 if [ "$platform" == "darwin" ]; then
-    BIN_PATH=$BIN_PATH/Rcssp.app/Contents/MacOS/
+    BIN_PATH=$BIN_PATH/Rrnc.app/Contents/MacOS/
 elif [ "$platform" == "mingw64" ] || [ "$platform" == "mingw32" ]; then
     MONEROD_EXEC=rrncd.exe
 fi
@@ -85,7 +85,7 @@ popd
 echo "var GUI_MONERO_VERSION = \"$TAGNAME\"" >> version.js
 
 cd build
-qmake ../Rcssp.pro "$CONFIG" || exit
+qmake ../Rrnc.pro "$CONFIG" || exit
 $MAKE || exit 
 
 # Copy monerod to bin folder

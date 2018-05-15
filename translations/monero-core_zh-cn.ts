@@ -851,12 +851,12 @@
     <message>
         <location filename="../pages/Settings.qml" line="123"/>
         <source>Show seed &amp; keys</source>
-        <translation type="unfinished"></translation>
+        <translation>显示种子码&amp;密钥</translation>
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="166"/>
         <source>Rescan wallet balance</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描钱包余额</translation>
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="175"/>
@@ -1039,7 +1039,7 @@ The old wallet cache file will be renamed and can be restored later.
     <message>
         <location filename="../pages/Settings.qml" line="506"/>
         <source>Debug info</source>
-        <translation type="unfinished"></translation>
+        <translation>调试信息</translation>
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="632"/>

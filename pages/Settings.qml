@@ -704,7 +704,7 @@ Rectangle {
                 confirmationDialog.title = qsTr("Warning") + translationManager.emptyString;
                 confirmationDialog.text = "";
                 if(validator.readOnly) {
-                    confirmationDialog.text  += qsTr("Error: Filesystem is read only") + "\n\n"                  
+                    confirmationDialog.text  += qsTr("Error: Filesystem is read only") + "\n\n"
                 }
                 
                 if(validator.storageAvailable < 20) {
@@ -748,7 +748,7 @@ Rectangle {
     // update the pool info
     function updteRemoteNodeInfo(){
         nodeItems.clear()
-        nodeItems.append({"text": "localhost", "index":"localhost"})
+        nodeItems.append({"text": qsTr("localhost") + translationManager.emptyString, "index":"localhost"})
 
         // choicenotetype.currentIndex = 0;
         var data = JSON.parse(dohttp.get_nodes_info())
@@ -756,7 +756,7 @@ Rectangle {
             return
         }else{
             for (var i= 0;i<data.data.length;i++){
-                nodeItems.append({"text": "remotenode"+i.toString(), "index":data.data[i]})
+                nodeItems.append({"text":qsTr("remotenode")+i.toString(), "index":data.data[i]})
             }
         }
 

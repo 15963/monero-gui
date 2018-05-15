@@ -407,7 +407,7 @@ Rectangle {
 
         // 32bit cannot local-mining
         if(!is32){
-            cbItems.append({"text": "localmin", "index":"127.0.0.1:22338"})
+            cbItems.append({"text": qsTr("localmin"), "index":"127.0.0.1:22338"})
             choiceminingtype.currentIndex = 0;
         }
 
@@ -416,7 +416,7 @@ Rectangle {
             return
         }else{
             for (var i= 0;i<data.data.length;i++){
-                cbItems.append({"text": "remotepool"+i.toString(), "index":data.data[i].ip+":"+data.data[i].port.toString()})
+                cbItems.append({"text":  qsTr("remotepool")+i.toString(), "index":data.data[i].ip+":"+data.data[i].port.toString()})
             }
         }
 
