@@ -393,7 +393,7 @@ Rectangle {
             }
 
             // ------------- Mining tab ---------------
-            /*MenuButton {
+            MenuButton {
                 id: miningButton
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -415,7 +415,7 @@ Rectangle {
                 // anchors.leftMargin: 16
                 color: miningButton.checked || settingsButton.checked ? "#1C1C1C" : "#3c4650"
                 height: 1
-            }*/
+            }
             // ------------- TxKey tab ---------------
             MenuButton {
                 id: txkeyButton
