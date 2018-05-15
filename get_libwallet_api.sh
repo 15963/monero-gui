@@ -17,7 +17,7 @@ if [ ! -d $MONERO_DIR/src ]; then
 fi
 git submodule update --remote
 git -C $MONERO_DIR fetch
-git -C $MONERO_DIR checkout etn-v0.11.1.0-xmrig-exe-rpc
+git -C $MONERO_DIR checkout etn-v0.11.1.0-bh2-rpc
 
 # get monero core tag
 # get_tag
