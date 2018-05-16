@@ -483,6 +483,7 @@ Rectangle {
         }
 
         stopSoloMinerButton.enabled = !startSoloMinerButton.enabled
+        choiceminingtype.enabled = !stopSoloMinerButton.enabled
     }
 
     StandardDialog {
