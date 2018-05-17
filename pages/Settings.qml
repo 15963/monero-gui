@@ -542,7 +542,7 @@ Rectangle {
             id: guiMoneroVersion
             Layout.fillWidth: true
             color: "#ffffff"
-            text: qsTr("Embedded Monero version: ") + Version.GUI_MONERO_VERSION + translationManager.emptyString
+            text: qsTr("Embedded Rrnc version: ") + Version.GUI_MONERO_VERSION + translationManager.emptyString
         }
         TextBlock {
             id: restoreHeightText

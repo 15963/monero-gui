@@ -1041,7 +1041,7 @@ The old wallet cache file will be renamed and can be restored later.
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="529"/>
-        <source>Embedded Monero version: </source>
+        <source>Embedded Rrnc version: </source>
         <translation>埋め込まれたRRNCのバージョン</translation>
     </message>
     <message>
@@ -2164,12 +2164,12 @@ Ringsize: </source>
     </message>
     <message>
         <location filename="../main.qml" line="730"/>
-        <source>This address received %1 monero, but the transaction is not yet mined</source>
+        <source>This address received %1 Rrnc, but the transaction is not yet mined</source>
         <translation>このアドレスは%1XMRを受け取りましたが、取引はまだ採掘されていません。</translation>
     </message>
     <message>
         <location filename="../main.qml" line="735"/>
-        <source>This address received %1 monero, with %2 confirmation(s).</source>
+        <source>This address received %1 Rrnc, with %2 confirmation(s).</source>
         <translation>このアドレスは%1XMRを受け取り、その取引は%2回承認されました。</translation>
     </message>
     <message>

@@ -1031,7 +1031,7 @@ The old wallet cache file will be renamed and can be restored later.
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="529"/>
-        <source>Embedded Monero version: </source>
+        <source>Embedded Rrnc version: </source>
         <translation>Version de Monero incorporée : </translation>
     </message>
     <message>
@@ -2199,7 +2199,7 @@ Taille du cercle : </translation>
     </message>
     <message>
         <location filename="../main.qml" line="735"/>
-        <source>This address received %1 monero, with %2 confirmation(s).</source>
+        <source>This address received %1 Rrnc, with %2 confirmation(s).</source>
         <translation>Cette adresse a reçu %1 monero, avec %2 confirmation(s).</translation>
     </message>
     <message>
@@ -2255,7 +2255,7 @@ Description : </translation>
     </message>
     <message>
         <location filename="../main.qml" line="730"/>
-        <source>This address received %1 monero, but the transaction is not yet mined</source>
+        <source>This address received %1 Rrnc, but the transaction is not yet mined</source>
         <translation>Cette adresse a reçu %1 monero, mais la transaction n&apos;a pas encore été incluse dans un bloc</translation>
     </message>
     <message>

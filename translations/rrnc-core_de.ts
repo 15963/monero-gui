@@ -984,7 +984,7 @@
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="529"/>
-        <source>Embedded Monero version: </source>
+        <source>Embedded Rrnc version: </source>
         <translation>Eingebundene Monero-Version: </translation>
     </message>
     <message>
@@ -2080,7 +2080,7 @@ Ringsize: </source>
     </message>
     <message>
         <location filename="../main.qml" line="730"/>
-        <source>This address received %1 monero, but the transaction is not yet mined</source>
+        <source>This address received %1 Rrnc, but the transaction is not yet mined</source>
         <translation>Diese Adresse hat %1 Monero empfangen, aber die Transaktion wurde noch nicht geschürft.</translation>
     </message>
     <message>
@@ -2236,7 +2236,7 @@ Description: </source>
     </message>
     <message>
         <location filename="../main.qml" line="735"/>
-        <source>This address received %1 monero, with %2 confirmation(s).</source>
+        <source>This address received %1 Rrnc, with %2 confirmation(s).</source>
         <translation>Diese Adresse hat %1 Monero erhalten, mit %2 Bestätigung(en)</translation>
     </message>
     <message>
