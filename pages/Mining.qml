@@ -42,6 +42,8 @@ Rectangle {
 
     property var currentHashRate: 0
     property var currentPool:0
+    property var rpcStartSuccess: false
+    property var rpcJsonConfig : "";
 
     /* main layout */
     ColumnLayout {
@@ -53,6 +55,13 @@ Rectangle {
         anchors.bottom: parent.bottom
         spacing: 20
 
+        QtObject{
+                    id:attr
+                    property int counter;
+                    Component.onCompleted: {
+                        counter=100
+                    }
+                }
 
 
         // solo
@@ -233,6 +242,7 @@ Rectangle {
                     onClicked: {
 
                     console.debug("begin the starting mining")
+                    mentionPopup.okText = qsTr("ok") + translationManager.emptyString
                     mentionPopup.title = qsTr("mention starting mining") + translationManager.emptyString
                     mentionPopup.text = qsTr("When the system performs mining operations, some anti-virus software will prompt the risk.") + translationManager.emptyString
                     mentionPopup.text += qsTr("If you download the installation package for the official channel, you can add to the trust list. Please feel free to use it.") + translationManager.emptyString
@@ -442,6 +452,13 @@ Rectangle {
          if(!is32){
             if (choiceminingtype.currentIndex > 0) {
                 if (rpcManager.isMining()) {
+                    if(errorPopup.active){
+                        errorPopup.close();
+                    }
+                    if(connectRpcPopup.active){
+                        connectRpcPopup.close();
+                    }
+
                     if (text !== "")
                         text += "<br>";
                     text += qsTr("Mining at %1 H/s").arg(rpcManager.miningHashRate())
@@ -457,6 +474,13 @@ Rectangle {
          else 
          {
                 if (rpcManager.isMining()) {
+                    if(errorPopup.active){
+                        errorPopup.close();
+                    }
+                    if(connectRpcPopup.active){
+                        connectRpcPopup.close();
+                    }
+
                     if (text !== "")
                         text += "<br>";
                     text += qsTr("Mining at %1 H/s").arg(rpcManager.miningHashRate())
@@ -491,10 +515,37 @@ Rectangle {
         cancelVisible: false
     }
     StandardDialog {
+        id: connectRpcPopup
+        cancelVisible: false
+        okVisible: false
+//        opacity: 0
+        height: 1
+        width: 1
+        modality: Qt.ApplicationModal
+    }
+    Timer{
+        id:countdown
+        interval: 100
+        repeat: true
+        triggeredOnStart: true//这一设置保证了立即触发，如果没有，你会发现有延迟
+        onTriggered: {
+            attr.counter--;
+            rpcStartSuccess = rpcManager.startMining(rpcJsonConfig, soloMinerThreadsLine.text);
+            if(attr.counter<0||rpcStartSuccess)
+            {
+                if(connectRpcPopup.active){
+                    connectRpcPopup.close();
+                }
+
+                countdown.stop();
+            }
+        }
+    }
+    StandardDialog {
         id: mentionPopup
         cancelVisible: false
         modality:Qt.ApplicationModal
-
+        okText: qsTr("ok")
         onAccepted: {
                 console.debug(cbItems.get(choiceminingtype.currentIndex).text + ", " + cbItems.get(choiceminingtype.currentIndex).index)
                 var success = false;
@@ -523,9 +574,22 @@ Rectangle {
                    if (!rpcManager.isMining()) {
 
                         //todo: startxmrig process
-                        if (rpcManager.startXmrig(rpc_xmrig_port)) {
+                       if (rpcManager.startXmrig(rpc_xmrig_port)) {
                              //start json rpc send /start request to mining
-                             success = rpcManager.startMining(json_config, soloMinerThreadsLine.text);
+                             //success = rpcManager.startMining(json_config, soloMinerThreadsLine.text);
+                             attr.counter = 100;
+                             rpcStartSuccess = false;
+                             rpcJsonConfig = json_config;
+                             countdown.start();
+
+                             connectRpcPopup.alert();
+
+                             success = rpcStartSuccess;
+
+//                             while(attr.counter>=0&&!rpcStartSuccess){
+
+//                             }
+
                              if (success == false) {
                                 //connect fail to restart xmrig
                                 console.debug("start json rpc mining failed\n");

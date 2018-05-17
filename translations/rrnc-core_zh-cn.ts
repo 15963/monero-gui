@@ -423,6 +423,11 @@
 <context>
     <name>Mining</name>
     <message>
+        <location filename="../pages/Mining.qml" line="300"/>
+        <source>ok</source>
+        <translation>确定</translation>
+    </message>
+    <message>
         <location filename="../pages/Mining.qml" line="70"/>
         <source>Solo mining</source>
         <translation>独立挖矿(Solo mining)</translation>
@@ -1028,6 +1033,16 @@ The old wallet cache file will be renamed and can be restored later.
         <location filename="../pages/Settings.qml" line="696"/>
         <source>Warning: There&apos;s only %1 GB available on the device. Blockchain requires ~%2 GB of data.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../pages/Settings.qml" line="235"/>
+        <source>localmin</source>
+        <translation>本地矿池</translation>
+    </message>
+    <message>
+        <location filename="../pages/Settings.qml" line="235"/>
+        <source>remotepool</source>
+        <translation>官方矿池</translation>
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="698"/>
