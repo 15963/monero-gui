@@ -440,7 +440,7 @@
     <message>
         <location filename="../pages/Mining.qml" line="120"/>
         <source>Mining with your computer helps strengthen the RRNC network. The more that people mine, the harder it is for the network to be attacked, and every little bit helps.Mining also gives you a small chance to earn some RRCoin. Your computer will create hashes looking for block solutions. If you find a block, you will get the associated reward. Good luck!</source>
-        <translation>挖矿可增进RRNC网络的安全性，只要越多使用者在挖矿，RRNC网络就会越难以被攻击。&lt;br&gt; &lt;br&gt;挖矿同时能让您有机会赚取额外的人人币，因为在挖矿时，您的计算机将被用来寻找RRNC区块的解答，每当您找到一个区块的解答，您即可以获得其附带的人人币奖励，祝您好运！&lt;br&gt; &lt;br&gt;建议您下拉选择官方矿池挖矿，将大大增加您获得人人币的概率。矿池将按照您贡献的算力分配人人币。</translation>
+        <translation>挖矿可增进RRNC网络的安全性，只要越多使用者在挖矿，RRNC网络就会越难以被攻击。&lt;br&gt; &lt;br&gt;挖矿同时能让您有机会赚取额外的RRC，因为在挖矿时，您的计算机将被用来寻找RRNC区块的解答，每当您找到一个区块的解答，您即可以获得其附带的RRC奖励，祝您好运！&lt;br&gt; &lt;br&gt;建议您下拉选择官方矿池挖矿，将大大增加您获得RRC的概率。矿池将按照您贡献的算力分配RRC。</translation>
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="130"/>
@@ -511,6 +511,16 @@
         <location filename="../pages/Mining.qml" line="235"/>
         <source>Status: not mining</source>
         <translation>状态: 没有在进行挖矿</translation>
+    </message>
+    <message>
+        <location filename="../pages/Mining.qml" line="235"/>
+        <source>localmin</source>
+        <translation>本地矿池</translation>
+    </message>
+    <message>
+        <location filename="../pages/Mining.qml" line="235"/>
+        <source>remotepool</source>
+        <translation>官方矿池</translation>
     </message>
     <message>
         <location filename="../pages/Mining.qml" line="263"/>
@@ -866,12 +876,17 @@
     <message>
         <location filename="../pages/Settings.qml" line="180"/>
         <source>Information</source>
-        <translation type="unfinished">信息</translation>
+        <translation type="unfinished">通知</translation>
+    </message>
+    <message>
+        <location filename="../pages/Settings.qml" line="180"/>
+        <source>ok</source>
+        <translation type="unfinished">确定</translation>
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="181"/>
         <source>Sucessfully rescanned spent outputs</source>
-        <translation type="unfinished">重新扫描付款成功</translation>
+        <translation type="unfinished">扫描成功</translation>
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="259"/>
@@ -1042,9 +1057,14 @@ The old wallet cache file will be renamed and can be restored later.
         <translation>调试信息</translation>
     </message>
     <message>
+        <location filename="../pages/Settings.qml" line="506"/>
+        <source>Blockchain location</source>
+        <translation>区块信息同步目录</translation>
+    </message>
+    <message>
         <location filename="../pages/Settings.qml" line="632"/>
         <source>Wallet seed &amp; keys</source>
-        <translation type="unfinished"></translation>
+        <translation>种子码&amp;密钥</translation>
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="634"/>
@@ -1283,7 +1303,7 @@ The old wallet cache file will be renamed and can be restored later.
     <message>
         <location filename="../components/TableDropdown.qml" line="183"/>
         <source>&lt;b&gt;Send to this address&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;向该地址转账&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../components/TableDropdown.qml" line="184"/>
@@ -1338,6 +1358,16 @@ The old wallet cache file will be renamed and can be restored later.
 </context>
 <context>
     <name>Transfer</name>
+    <message>
+        <location filename="../pages/Transfer.qml" line="112"/>
+        <source>ok</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../pages/Transfer.qml" line="112"/>
+        <source>cancel</source>
+        <translation>取消</translation>
+    </message>
     <message>
         <location filename="../pages/Transfer.qml" line="66"/>
         <source>OpenAlias error</source>
@@ -2008,6 +2038,16 @@ Please upgrade or connect to another daemon</source>
         <source>Restore wallet</source>
         <translation>恢复钱包</translation>
     </message>
+    <message>
+        <location filename="../wizard/WizardRecoveryWallet.qml" line="112"/>
+        <source>ok</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../wizard/WizardRecoveryWallet.qml" line="112"/>
+        <source>cancel</source>
+        <translation>取消</translation>
+    </message>
 </context>
 <context>
     <name>WizardWelcome</name>
@@ -2174,6 +2214,11 @@ Ringsize: </source>
         <location filename="../main.qml" line="1348"/>
         <source>Daemon will still be running in background when GUI is closed.</source>
         <translation>区块同步程序将在钱包接口关闭后于后台执行。</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="1348"/>
+        <source>ok</source>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1350"/>

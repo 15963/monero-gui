@@ -94,7 +94,7 @@ Column {
 
                 font.family: "微软雅黑"
                 font.pixelSize: 12
-                color: "#747b82"
+                color: "#4fdbdc"
                  wrapMode: Text.Wrap
                 //text: qsTr("This seed is <b><font color=\"#4ed9d9\">very</font></b> important to write down and keep secret. It is all you need to backup and restore your wallet.")
                 text: qsTr("This seed is <b>very</b> important to write down and keep secret. It is all you need to backup and restore your wallet.")

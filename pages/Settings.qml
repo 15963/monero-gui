@@ -169,6 +169,7 @@ Rectangle {
                 releasedColor: "#4ed9d9"
                 pressedColor: "#0000ff"
                 onClicked: {
+                    informationPopup.okText = qsTr("ok") + currentWallet.errorString
                     if (!currentWallet.rescanSpent()) {
                         console.error("Error: ", currentWallet.errorString);
                         informationPopup.title = qsTr("Error") + translationManager.emptyString;
@@ -644,6 +645,7 @@ Rectangle {
                     currentWallet.setSeedLanguage("English");
                 }
 
+                seedPopup.okText = qsTr("ok") + translationManager.emptyString;
                 seedPopup.title  = qsTr("Wallet seed & keys") + translationManager.emptyString;
                 seedPopup.text = "<b>Wallet Mnemonic seed</b> <br>" + currentWallet.seed
                         + "<br><br> <b>" + qsTr("Secret view key") + ":</b> " + currentWallet.secretViewKey

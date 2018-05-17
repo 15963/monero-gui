@@ -104,7 +104,9 @@ ColumnLayout {
                 console.log("languages availible: ",count);
                 if(count === 1){
                     console.log("Skipping language page until more languages are availible")
-                }                    wizard.switchPage(true);
+                }
+                // don't do anything when app start.
+//                wizard.switchPage(true);
 
             }
         }

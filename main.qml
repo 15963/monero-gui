@@ -1389,6 +1389,7 @@ ApplicationWindow {
     onClosing: {
 
         // If daemon is running - prompt user before exiting
+        confirmationDialog.okText = qsTr("ok") + translationManager.emptyString;
         if(typeof daemonManager != "undefined" && daemonManager.running(persistentSettings.testnet)) {
             close.accepted = false;
 

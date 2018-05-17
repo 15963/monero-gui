@@ -63,6 +63,8 @@ Rectangle {
     }
 
     function oa_message(text) {
+      oaPopup.okText = qsTr("ok") + translationManager.emptyString
+      oaPopup.cancelText = qsTr("cancel") + translationManager.emptyString
       oaPopup.title = qsTr("OpenAlias error") + translationManager.emptyString
       oaPopup.text = text
       oaPopup.icon = StandardIcon.Information
