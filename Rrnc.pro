@@ -308,28 +308,28 @@ macx {
 
 # translation stuff
 TRANSLATIONS =  \ # English is default language, no explicit translation file
-                $$PWD/translations/monero-core.ts \ # translation source (copy this file when creating a new translation)
-                $$PWD/translations/monero-core_ar.ts \ # Arabic
-                $$PWD/translations/monero-core_pt-br.ts \ # Portuguese (Brazil)
-                $$PWD/translations/monero-core_de.ts \ # German
-                $$PWD/translations/monero-core_eo.ts \ # Esperanto
-                $$PWD/translations/monero-core_es.ts \ # Spanish
-                $$PWD/translations/monero-core_fi.ts \ # Finnish
-                $$PWD/translations/monero-core_fr.ts \ # French
-                $$PWD/translations/monero-core_hr.ts \ # Croatian
-                $$PWD/translations/monero-core_id.ts \ # Indonesian
-                $$PWD/translations/monero-core_hi.ts \ # Hindi
-                $$PWD/translations/monero-core_it.ts \ # Italian
-                $$PWD/translations/monero-core_ja.ts \ # Japanese
-                $$PWD/translations/monero-core_nl.ts \ # Dutch
-                $$PWD/translations/monero-core_pl.ts \ # Polish
-                $$PWD/translations/monero-core_ru.ts \ # Russian
-                $$PWD/translations/monero-core_sv.ts \ # Swedish
-                $$PWD/translations/monero-core_zh-cn.ts \ # Chinese (Simplified-China)
-                $$PWD/translations/monero-core_zh-tw.ts \ # Chinese (Traditional-Taiwan)
-                $$PWD/translations/monero-core_he.ts \ # Hebrew
-                $$PWD/translations/monero-core_ko.ts \ # Korean
-                $$PWD/translations/monero-core_ro.ts \ # Romanian
+                $$PWD/translations/rrnc-core.ts \ # translation source (copy this file when creating a new translation)
+                $$PWD/translations/rrnc-core_ar.ts \ # Arabic
+                $$PWD/translations/rrnc-core_pt-br.ts \ # Portuguese (Brazil)
+                $$PWD/translations/rrnc-core_de.ts \ # German
+                $$PWD/translations/rrnc-core_eo.ts \ # Esperanto
+                $$PWD/translations/rrnc-core_es.ts \ # Spanish
+                $$PWD/translations/rrnc-core_fi.ts \ # Finnish
+                $$PWD/translations/rrnc-core_fr.ts \ # French
+                $$PWD/translations/rrnc-core_hr.ts \ # Croatian
+                $$PWD/translations/rrnc-core_id.ts \ # Indonesian
+                $$PWD/translations/rrnc-core_hi.ts \ # Hindi
+                $$PWD/translations/rrnc-core_it.ts \ # Italian
+                $$PWD/translations/rrnc-core_ja.ts \ # Japanese
+                $$PWD/translations/rrnc-core_nl.ts \ # Dutch
+                $$PWD/translations/rrnc-core_pl.ts \ # Polish
+                $$PWD/translations/rrnc-core_ru.ts \ # Russian
+                $$PWD/translations/rrnc-core_sv.ts \ # Swedish
+                $$PWD/translations/rrnc-core_zh-cn.ts \ # Chinese (Simplified-China)
+                $$PWD/translations/rrnc-core_zh-tw.ts \ # Chinese (Traditional-Taiwan)
+                $$PWD/translations/rrnc-core_he.ts \ # Hebrew
+                $$PWD/translations/rrnc-core_ko.ts \ # Korean
+                $$PWD/translations/rrnc-core_ro.ts \ # Romanian
 
 CONFIG(release, debug|release) {
     DESTDIR = release/bin
@@ -435,7 +435,7 @@ DISTFILES += \
 
 
 # windows application icon
-RC_FILE = monero-core.rc
+RC_FILE = rrnc-core.rc
 
 # mac application icon
 ICON = $$PWD/images/appicon.icns

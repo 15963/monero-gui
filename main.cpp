@@ -254,9 +254,9 @@ int main(int argc, char *argv[])
 
     qDebug() << "app startd";
 
-    // app.setApplicationName("，monero-core");
+    // app.setApplicationName("，rrnc-core");
     // app.setOrganizationDomain("getmonero.org");
-    // app.setOrganizationName("，monero-project");
+    // app.setOrganizationName("，rrnc-project");
 
     filter *eventFilter = new filter;
     app.installEventFilter(eventFilter);
