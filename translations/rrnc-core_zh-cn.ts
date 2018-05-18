@@ -1036,13 +1036,13 @@ The old wallet cache file will be renamed and can be restored later.
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="235"/>
-        <source>localmin</source>
-        <translation>本地矿池</translation>
+        <source>localhost</source>
+        <translation>本地节点</translation>
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="235"/>
-        <source>remotepool</source>
-        <translation>官方矿池</translation>
+        <source>remotenode</source>
+        <translation>官方节点</translation>
     </message>
     <message>
         <location filename="../pages/Settings.qml" line="698"/>
